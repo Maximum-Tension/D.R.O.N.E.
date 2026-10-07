@@ -1,0 +1,29 @@
+# What this AI cannot do or be, as plain words. The sense core reads this file when it starts.
+# When a question asks the AI about one of these, the core answers "no" with the reason from
+# brain/self.txt ("I don't have a body", "I run offline on this computer") instead of letting
+# the voice make something up. Add or remove words freely; one list per line, words split by commas.
+#
+# body: used when brain/self.txt says "I don't have a body".
+body verbs: eat, drink, sleep, dream, see, watch, hear, listen, nap, walk, swim, dance, cook, bake, drive, ride, travel, visit, wear, hug, kiss, touch, taste, smell, sing, meet, shower, wake, jog, hike, fly, sit, stand, breathe, exercise, shop, weigh
+body words: dreams, dream, nightmares, hungry, thirsty, tired, sleepy, sick, ill, unwell, hurt, injured, cold, sweaty, breakfast, lunch, dinner, meal, snack, vacation, holiday, tall, short, heavy, height, weight, fat, thin, pretty, beautiful, handsome, ugly, dressed, naked
+body parts: body, eyes, eye, hair, face, hands, hand, legs, leg, feet, foot, skin, height, weight, clothes, voice, mouth, nose, ears, arms, teeth, shoes
+irregular: seen=see, watched=watch, ate=eat, eaten=eat, drank=drink, drunk=drink, slept=sleep, swam=swim, swum=swim, drove=drive, driven=drive, rode=ride, ridden=ride, wore=wear, worn=wear, sang=sing, sung=sing, met=meet, woke=wake, flew=fly, flown=fly, sat=sit, stood=stand, went=go, gone=go, bought=buy, sent=send, paid=pay, called=call, texted=text, ordered=order, booked=book, saw=see, heard=hear, made=make, took=take
+# offline: used when brain/self.txt says the AI runs offline.
+offline things: newspaper, newspapers, news, headlines, internet, web, website, websites, online, google, youtube, weather, forecast, email, emails, e-mail, inbox, phone, sms, whatsapp, facebook, instagram, twitter, tiktok, netflix, spotify
+offline verbs: call, phone, text, send, order, buy, purchase, book, pay, browse, google, download, upload, stream, post, tweet, email, mail, deliver, ship
+live topics: trending, viral, ceo, president, prime, minister, king, queen, mayor, governor, pope, chancellor, owner, coach, champion, study, studies, survey, research, statistics, statistic, percent, percentage, population, source, sources, citation, weather, forecast, news, headlines, traffic, stock, stocks, score, scores, temperature, rain, raining, snowing, sunny, election, elections, president, bitcoin, crypto, lottery, game, match, games, matches
+# feelings: used when brain/self.txt says "I don't have ... feelings".
+feeling words: sad, lonely, angry, upset, jealous, scared, afraid, bored, nervous, hurt, offended, mad, depressed, heartbroken, worried
+feeling verbs: love, miss, hate, cry
+# people: the AI is not one of these (the reason comes from the "I am a ..." line in brain/self.txt).
+human: human, person, people, man, woman, girl, boy, guy, lady, alive, adult, kid, child, teenager, conscious, sentient, self-aware, aware
+ai: ai, bot, chatbot, program, assistant, machine, software
+# other words for the things in brain/self.txt's "I don't have" list
+same as family: folks, relatives, mom, mum, mother, dad, father, parents, brother, brothers, sister, sisters, siblings, wife, husband, son, daughter, kids, child, grandma, grandpa, cousin, aunt, uncle, girlfriend, boyfriend, partner
+same as boss: manager, supervisor, employer, coworkers, colleagues
+same as job: office, salary, career, profession, coworker, colleague
+same as address: home, house, apartment, flat, hometown
+same as car: bike, bicycle, motorcycle, vehicle
+same as pets: pet, dog, dogs, cat, cats, puppy, kitten, fish, hamster, bird
+same as body: eyes, hair, face, hands, legs, feet
+same as phone: cellphone, cell, mobile, smartphone, telephone, email, e-mail, whatsapp, instagram, facebook, snapchat, tiktok, twitter

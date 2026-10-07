@@ -1,0 +1,86 @@
+# sense v9: from the October 3-4 chats (girlfriend's and user's logs)
+:name lucy
+:world welcome.txt
+> What can you do?
+= can -> yes: remember things
+> Can you count me the stuffs you can do?
+= can -> yes: remember things
+> No, I asked from you to count the stuffs you can do.
+= can -> yes: remember things
+! count you
+> list the things you can do
+= can -> yes: remember things
+> What is your name?
+= my name -> lucy
+> who are you?
+= my name -> lucy
+> You can make longer sentences if you need to convey a complex thought
+! write
+> I need more information in order to answer properly.
+! move
+> A boss is someone who tells employees what to do and makes important decisions.
+! write
+> A name is a word we use to tell one person, animal, place, or thing apart from others.
+! move
+> It says "A fossil from a previously undiscovered species, unearthed in China, adds to evidence that dinosaurs and birds evolved flight more than once."
+! append
+> You know what time is, right?
+! time
+> Do you know what time it is now
+= time
+> If today is 03.10.2026, what date will it be 4 years later?
+= date october 3, 2026 + 4 years -> thursday, october 3, 2030
+> If today is 03/10/2026, how would you write the date that is 4 years later?
+= date october 3, 2026 + 4 years
+! calc
+> what is the date 10 days after 28.02.2028?
+= date february 28, 2028 + 10 days -> thursday, march 9, 2028
+> I saw him 2 days ago
+! date
+:reset
+:world welcome.txt
+> Can you create a file or something?
+= need write -> what name
+> No don't name it anything
+= ask write a file -> ok, I won't
+:reset
+:world welcome.txt
+> make a file
+= need write
+> Why?
+> WHAT?
+> Ugh oka
+! write
+> call it plan
+= write plan.txt
+:reset
+:world welcome.txt
+> make a file
+> notes
+= write notes.txt
+:reset
+:world welcome.txt notes.txt
+> make x.txt, delete notes.txt, and list files
+= write x.txt
+= delete notes.txt
+= files
+> make a.txt, b.txt and c.txt
+= write a.txt
+= write c.txt
+> pick a fruit, apple, pear, or plum
+! move
+
+# self-knowledge from brain/self.txt ("I don't have a body, a family, a boss, a job, ...")
+:reset
+> So what about your boss? Who is he?
+= my boss -> I don't have one
+> What is your boss' name?
+= my boss
+> what do you do for a living?
+= my job
+> do you have pets?
+= my pets
+> what is my boss called?
+! my boss
+> my boss is mean
+! my boss

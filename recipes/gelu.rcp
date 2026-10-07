@@ -1,0 +1,10 @@
+recipe gelu
+param w1 64 d read
+param b1 64 zero
+param w2 64 d write
+x = in
+h = mv w1 x
+hb = addp h b1
+a = gelu hb
+y = mvt w2 a
+out y

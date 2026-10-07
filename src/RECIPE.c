@@ -1,0 +1,1496 @@
+#include "RECIPE.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
+
+static const char	*RECIPE_OPERATION_NAMES[RECIPE_OPERATION_COUNT] = {
+	"in", "mv", "mvt", "add", "sub", "mul", "addp", "mulp", "relu", "sigmoid",
+	"silu", "tanh", "gelu", "dot", "sum", "scale", "softmax", "out"
+};
+
+const char
+	*RECIPE_OPERATION_NAME(int OPERATION_CODE)
+{
+	if (OPERATION_CODE >= 0 && OPERATION_CODE < RECIPE_OPERATION_COUNT)
+		return (RECIPE_OPERATION_NAMES[OPERATION_CODE]);
+
+	return ("?");
+}
+
+static int
+	RECIPE_READ_WORD(const char **CURSOR, char *OUTPUT, int OUTPUT_CAPACITY)
+{
+	while (**CURSOR == ' ' || **CURSOR == '\t' || **CURSOR == '\r')
+		(*CURSOR)++;
+
+	int	WORD_LENGTH = 0;
+
+	while (
+		**CURSOR &&
+		**CURSOR != ' ' &&
+		**CURSOR != '\t' &&
+		**CURSOR != '\n' &&
+		**CURSOR != '\r' &&
+		**CURSOR != '#'
+	)
+	{
+		if (WORD_LENGTH < OUTPUT_CAPACITY - 1)
+			OUTPUT[WORD_LENGTH++] = **CURSOR;
+
+		(*CURSOR)++;
+	}
+
+	OUTPUT[WORD_LENGTH] = 0;
+
+	return (WORD_LENGTH);
+}
+
+static int
+	PARSE_DIMENSION(const char *TOKEN_STRING, int MODEL_WIDTH)
+{
+	if (!strcmp(TOKEN_STRING, "d"))
+		return (MODEL_WIDTH);
+
+	char	*PARSE_END;
+	long	PARSED_VALUE = strtol(TOKEN_STRING, &PARSE_END, 10);
+
+	if (*PARSE_END || PARSED_VALUE <= 0 || PARSED_VALUE > 65536)
+		return (-1);
+
+	return ((int)PARSED_VALUE);
+}
+
+#define FAIL_PARSE(...) \
+	do \
+	{ \
+		snprintf(ERROR_TEXT, ERROR_LENGTH, __VA_ARGS__); \
+		return (-1); \
+	} while (0)
+
+int
+	RECIPE_PARSE(
+		RECIPE *PARSED_RECIPE, const char *SOURCE, int MODEL_WIDTH,
+		char *ERROR_TEXT, int ERROR_LENGTH
+	)
+{
+	memset(PARSED_RECIPE, 0, sizeof *PARSED_RECIPE);
+	PARSED_RECIPE->MODEL_DIMENSION = MODEL_WIDTH;
+
+	char		VALUE_NAMES[RECIPE_OPERATION_LIMIT][32];
+	const char	*LINE_CURSOR = SOURCE;
+	int			LINE_NUMBER = 0;
+
+	while (*LINE_CURSOR)
+	{
+		LINE_NUMBER++;
+
+		const char	*LINE_END = strchr(LINE_CURSOR, '\n');
+		const char	*NEXT_LINE =
+			LINE_END ? LINE_END + 1 : LINE_CURSOR + strlen(LINE_CURSOR);
+		char		LINE_WORDS[6][32];
+		int			LINE_WORD_COUNT = 0;
+		const char	*WORD_CURSOR = LINE_CURSOR;
+
+		while (LINE_WORD_COUNT < 6 && WORD_CURSOR < NEXT_LINE)
+		{
+			if (*WORD_CURSOR == '#')
+				break ;
+
+			if (
+				!RECIPE_READ_WORD(&WORD_CURSOR, LINE_WORDS[LINE_WORD_COUNT], 32)
+			)
+				break ;
+
+			LINE_WORD_COUNT++;
+		}
+
+		LINE_CURSOR = NEXT_LINE;
+
+		if (!LINE_WORD_COUNT)
+			continue ;
+
+		if (!strcmp(LINE_WORDS[0], "recipe"))
+		{
+			if (LINE_WORD_COUNT != 2)
+				FAIL_PARSE("line %d: recipe NAME", LINE_NUMBER);
+
+			snprintf(
+				PARSED_RECIPE->NAME, sizeof PARSED_RECIPE->NAME, "%s",
+				LINE_WORDS[1]
+			);
+			continue ;
+		}
+
+		if (!strcmp(LINE_WORDS[0], "param"))
+		{
+			if (PARSED_RECIPE->PARAMETER_COUNT >= RECIPE_PARAMETER_LIMIT)
+				FAIL_PARSE("line %d: too many params", LINE_NUMBER);
+
+			RECIPE_PARAMETER	*NEW_PARAMETER =
+				&PARSED_RECIPE->PARAMETERS[PARSED_RECIPE->PARAMETER_COUNT];
+
+			if (LINE_WORD_COUNT != 4 && LINE_WORD_COUNT != 5)
+				FAIL_PARSE(
+					"line %d: param NAME [ROWS] COLS read|write|one|zero",
+					LINE_NUMBER
+				);
+
+			snprintf(
+				NEW_PARAMETER->NAME, sizeof NEW_PARAMETER->NAME, "%s",
+				LINE_WORDS[1]
+			);
+
+			if (LINE_WORD_COUNT == 5)
+				NEW_PARAMETER->ROWS =
+					PARSE_DIMENSION(LINE_WORDS[2], MODEL_WIDTH);
+			else
+				NEW_PARAMETER->ROWS = 1;
+
+			NEW_PARAMETER->COLUMNS =
+				PARSE_DIMENSION(LINE_WORDS[LINE_WORD_COUNT - 2], MODEL_WIDTH);
+
+			const char	*INIT_MODE_NAME = LINE_WORDS[LINE_WORD_COUNT - 1];
+
+			if (!strcmp(INIT_MODE_NAME, "read"))
+				NEW_PARAMETER->INITIALIZATION = INITIALIZE_READ;
+			else if (!strcmp(INIT_MODE_NAME, "write"))
+				NEW_PARAMETER->INITIALIZATION = INITIALIZE_WRITE;
+			else if (!strcmp(INIT_MODE_NAME, "one"))
+				NEW_PARAMETER->INITIALIZATION = INITIALIZE_ONE;
+			else if (!strcmp(INIT_MODE_NAME, "zero"))
+				NEW_PARAMETER->INITIALIZATION = INITIALIZE_ZERO;
+			else
+				NEW_PARAMETER->INITIALIZATION = -1;
+
+			if (
+				NEW_PARAMETER->ROWS < 1 ||
+				NEW_PARAMETER->COLUMNS < 1 ||
+				NEW_PARAMETER->INITIALIZATION < 0
+			)
+				FAIL_PARSE("line %d: bad param", LINE_NUMBER);
+
+			if (
+				NEW_PARAMETER->COLUMNS % 16 ||
+				(LINE_WORD_COUNT == 5 && NEW_PARAMETER->ROWS % 16)
+			)
+				FAIL_PARSE(
+					"line %d: sizes must be multiples of 16", LINE_NUMBER
+				);
+
+			int	INDEX;
+
+			for (INDEX = 0; INDEX < PARSED_RECIPE->PARAMETER_COUNT; INDEX++)
+				if (
+					!strcmp(
+						PARSED_RECIPE->PARAMETERS[INDEX].NAME,
+						NEW_PARAMETER->NAME
+					)
+				)
+					FAIL_PARSE(
+						"line %d: param %s twice", LINE_NUMBER,
+						NEW_PARAMETER->NAME
+					);
+
+			PARSED_RECIPE->PARAMETER_COUNT++;
+			continue ;
+		}
+
+		if (PARSED_RECIPE->OPERATION_COUNT >= RECIPE_OPERATION_LIMIT)
+			FAIL_PARSE("line %d: too many steps", LINE_NUMBER);
+
+		RECIPE_OPERATION	*OPERATION =
+			&PARSED_RECIPE->OPERATIONS[PARSED_RECIPE->OPERATION_COUNT];
+
+		memset(OPERATION, 0, sizeof *OPERATION);
+		OPERATION->FIRST_INPUT = OPERATION->SECOND_INPUT =
+			OPERATION->PARAMETER_INDEX = -1;
+
+		int		STEP_WORD_INDEX = 0;
+		char	*VALUE_NAME = VALUE_NAMES[PARSED_RECIPE->OPERATION_COUNT];
+
+		VALUE_NAME[0] = 0;
+
+		if (LINE_WORD_COUNT >= 3 && !strcmp(LINE_WORDS[1], "="))
+		{
+			snprintf(VALUE_NAME, 32, "%s", LINE_WORDS[0]);
+			STEP_WORD_INDEX = 2;
+		}
+
+		int	OPERATION_CODE = -1;
+		int	INDEX;
+
+		for (INDEX = 0; INDEX < RECIPE_OPERATION_COUNT; INDEX++)
+			if (
+				!strcmp(
+					LINE_WORDS[STEP_WORD_INDEX], RECIPE_OPERATION_NAMES[INDEX]
+				)
+			)
+				OPERATION_CODE = INDEX;
+
+		if (OPERATION_CODE < 0)
+			FAIL_PARSE(
+				"line %d: unknown step %s", LINE_NUMBER,
+				LINE_WORDS[STEP_WORD_INDEX]
+			);
+
+		OPERATION->OPERATION = OPERATION_CODE;
+
+		int	INPUT_COUNT = LINE_WORD_COUNT - STEP_WORD_INDEX - 1;
+		int	EXPECTED_INPUTS;
+
+		if (OPERATION_CODE == RECIPE_INPUT)
+			EXPECTED_INPUTS = 0;
+		else if (
+			OPERATION_CODE == RECIPE_OUTPUT ||
+			OPERATION_CODE == RECIPE_SUM ||
+			OPERATION_CODE == RECIPE_SOFTMAX ||
+			(OPERATION_CODE >= RECIPE_RELU && OPERATION_CODE <= RECIPE_GELU)
+		)
+			EXPECTED_INPUTS = 1;
+		else
+			EXPECTED_INPUTS = 2;
+
+		if (INPUT_COUNT != EXPECTED_INPUTS)
+			FAIL_PARSE(
+				"line %d: %s takes %d inputs", LINE_NUMBER,
+				RECIPE_OPERATION_NAMES[OPERATION_CODE], EXPECTED_INPUTS
+			);
+
+		if ((OPERATION_CODE == RECIPE_OUTPUT) != (VALUE_NAME[0] == 0))
+			FAIL_PARSE("line %d: write NAME = STEP (except out)", LINE_NUMBER);
+
+		for (INDEX = 0; INDEX < PARSED_RECIPE->OPERATION_COUNT; INDEX++)
+			if (VALUE_NAME[0] && !strcmp(VALUE_NAMES[INDEX], VALUE_NAME))
+				FAIL_PARSE("line %d: %s set twice", LINE_NUMBER, VALUE_NAME);
+
+		int	INPUT_VALUES[2] = { -1, -1 };
+		int	INPUT_INDEX;
+
+		for (INPUT_INDEX = 0; INPUT_INDEX < INPUT_COUNT; INPUT_INDEX++)
+		{
+			const char	*INPUT_NAME =
+				LINE_WORDS[STEP_WORD_INDEX + 1 + INPUT_INDEX];
+			int			IS_PARAMETER =
+				(OPERATION_CODE == RECIPE_MATRIX_VECTOR ||
+					OPERATION_CODE == RECIPE_MATRIX_TRANSPOSED ||
+					OPERATION_CODE == RECIPE_ADD_PARAMETER ||
+					OPERATION_CODE == RECIPE_MULTIPLY_PARAMETER) &&
+					INPUT_INDEX == 0;
+
+			if (
+				OPERATION_CODE == RECIPE_ADD_PARAMETER ||
+				OPERATION_CODE == RECIPE_MULTIPLY_PARAMETER
+			)
+				IS_PARAMETER = INPUT_INDEX == 1;
+
+			if (IS_PARAMETER)
+			{
+				int	INDEX;
+
+				for (INDEX = 0; INDEX < PARSED_RECIPE->PARAMETER_COUNT; INDEX++)
+					if (
+						!strcmp(
+							PARSED_RECIPE->PARAMETERS[INDEX].NAME, INPUT_NAME
+						)
+					)
+						OPERATION->PARAMETER_INDEX = INDEX;
+
+				if (OPERATION->PARAMETER_INDEX < 0)
+					FAIL_PARSE(
+						"line %d: unknown param %s", LINE_NUMBER, INPUT_NAME
+					);
+
+				continue ;
+			}
+
+			int	FOUND_VALUE = -1;
+			int	INDEX;
+
+			for (INDEX = 0; INDEX < PARSED_RECIPE->OPERATION_COUNT; INDEX++)
+				if (!strcmp(VALUE_NAMES[INDEX], INPUT_NAME))
+					FOUND_VALUE = INDEX;
+
+			if (FOUND_VALUE < 0)
+				FAIL_PARSE(
+					"line %d: unknown value %s", LINE_NUMBER, INPUT_NAME
+				);
+
+			INPUT_VALUES[INPUT_INDEX] = FOUND_VALUE;
+		}
+
+		if (
+			OPERATION_CODE == RECIPE_MATRIX_VECTOR ||
+			OPERATION_CODE == RECIPE_MATRIX_TRANSPOSED
+		)
+			OPERATION->FIRST_INPUT = INPUT_VALUES[1];
+		else if (
+			OPERATION_CODE == RECIPE_ADD_PARAMETER ||
+			OPERATION_CODE == RECIPE_MULTIPLY_PARAMETER
+		)
+			OPERATION->FIRST_INPUT = INPUT_VALUES[0];
+		else
+		{
+			OPERATION->FIRST_INPUT = INPUT_VALUES[0];
+			OPERATION->SECOND_INPUT = INPUT_VALUES[1];
+		}
+
+		int	FIRST_LENGTH;
+
+		if (OPERATION->FIRST_INPUT >= 0)
+			FIRST_LENGTH =
+				PARSED_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT].LENGTH;
+		else
+			FIRST_LENGTH = 0;
+
+		int	SECOND_LENGTH;
+
+		if (OPERATION->SECOND_INPUT >= 0)
+			SECOND_LENGTH =
+				PARSED_RECIPE->OPERATIONS[OPERATION->SECOND_INPUT].LENGTH;
+		else
+			SECOND_LENGTH = 0;
+
+		RECIPE_PARAMETER	*STEP_PARAMETER;
+
+		if (OPERATION->PARAMETER_INDEX >= 0)
+			STEP_PARAMETER =
+				&PARSED_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX];
+		else
+			STEP_PARAMETER = NULL;
+
+		switch (OPERATION_CODE)
+		{
+			case RECIPE_INPUT:
+			{
+				OPERATION->LENGTH = MODEL_WIDTH;
+			}
+			break ;
+			case RECIPE_MATRIX_VECTOR:
+			{
+				if (
+					STEP_PARAMETER->ROWS == 1 ||
+					STEP_PARAMETER->COLUMNS != FIRST_LENGTH
+				)
+					FAIL_PARSE(
+						"line %d: mv needs a %d-column matrix", LINE_NUMBER,
+						FIRST_LENGTH
+					);
+
+				OPERATION->LENGTH = STEP_PARAMETER->ROWS;
+			}
+			break ;
+			case RECIPE_MATRIX_TRANSPOSED:
+			{
+				if (
+					STEP_PARAMETER->ROWS == 1 ||
+					STEP_PARAMETER->ROWS != FIRST_LENGTH
+				)
+					FAIL_PARSE(
+						"line %d: mvt needs a %d-row matrix", LINE_NUMBER,
+						FIRST_LENGTH
+					);
+
+				OPERATION->LENGTH = STEP_PARAMETER->COLUMNS;
+			}
+			break ;
+			case RECIPE_ADD:
+			case RECIPE_SUBTRACT:
+			case RECIPE_MULTIPLY:
+			{
+				if (FIRST_LENGTH != SECOND_LENGTH || FIRST_LENGTH == 1)
+					FAIL_PARSE(
+						"line %d: %s needs two vectors of the same size",
+						LINE_NUMBER, RECIPE_OPERATION_NAMES[OPERATION_CODE]
+					);
+
+				OPERATION->LENGTH = FIRST_LENGTH;
+			}
+			break ;
+			case RECIPE_ADD_PARAMETER:
+			case RECIPE_MULTIPLY_PARAMETER:
+			{
+				if (
+					STEP_PARAMETER->ROWS != 1 ||
+					STEP_PARAMETER->COLUMNS != FIRST_LENGTH
+				)
+					FAIL_PARSE(
+						"line %d: %s needs a %d vector param", LINE_NUMBER,
+						RECIPE_OPERATION_NAMES[OPERATION_CODE], FIRST_LENGTH
+					);
+
+				OPERATION->LENGTH = FIRST_LENGTH;
+			}
+			break ;
+			case RECIPE_DOT_PRODUCT:
+			{
+				if (FIRST_LENGTH != SECOND_LENGTH || FIRST_LENGTH == 1)
+					FAIL_PARSE(
+						"line %d: dot needs two vectors of the same size",
+						LINE_NUMBER
+					);
+
+				OPERATION->LENGTH = 1;
+			}
+			break ;
+			case RECIPE_SUM:
+			{
+				if (FIRST_LENGTH == 1)
+					FAIL_PARSE("line %d: sum needs a vector", LINE_NUMBER);
+
+				OPERATION->LENGTH = 1;
+			}
+			break ;
+			case RECIPE_SCALE:
+			{
+				if (FIRST_LENGTH == 1 || SECOND_LENGTH != 1)
+					FAIL_PARSE("line %d: scale VECTOR SCALAR", LINE_NUMBER);
+
+				OPERATION->LENGTH = FIRST_LENGTH;
+			}
+			break ;
+			case RECIPE_OUTPUT:
+			{
+				if (FIRST_LENGTH != MODEL_WIDTH)
+					FAIL_PARSE(
+						"line %d: out needs a %d vector", LINE_NUMBER,
+						MODEL_WIDTH
+					);
+
+				OPERATION->LENGTH = 0;
+			}
+			break ;
+			default:
+			{
+				if (FIRST_LENGTH == 1)
+					FAIL_PARSE(
+						"line %d: %s needs a vector", LINE_NUMBER,
+						RECIPE_OPERATION_NAMES[OPERATION_CODE]
+					);
+
+				OPERATION->LENGTH = FIRST_LENGTH;
+			}
+			break ;
+		}
+
+		if (OPERATION->FIRST_INPUT >= 0)
+			PARSED_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT].USE_COUNT++;
+
+		if (OPERATION->SECOND_INPUT >= 0)
+			PARSED_RECIPE->OPERATIONS[OPERATION->SECOND_INPUT].USE_COUNT++;
+
+		PARSED_RECIPE->OPERATION_COUNT++;
+	}
+
+	if (!PARSED_RECIPE->NAME[0])
+		FAIL_PARSE("recipe has no name");
+
+	int	OUTPUT_STEP_COUNT = 0;
+	int	INPUT_STEP_COUNT = 0;
+	int	INDEX;
+
+	for (INDEX = 0; INDEX < PARSED_RECIPE->OPERATION_COUNT; INDEX++)
+	{
+		OUTPUT_STEP_COUNT +=
+			PARSED_RECIPE->OPERATIONS[INDEX].OPERATION == RECIPE_OUTPUT;
+		INPUT_STEP_COUNT +=
+			PARSED_RECIPE->OPERATIONS[INDEX].OPERATION == RECIPE_INPUT;
+	}
+
+	if (
+		!OUTPUT_STEP_COUNT ||
+		INPUT_STEP_COUNT != 1 ||
+		PARSED_RECIPE->OPERATIONS[0].OPERATION != RECIPE_INPUT
+	)
+		FAIL_PARSE("recipe must start with x = in and have an out");
+
+	int64_t	PARAMETER_OFFSET = 0;
+
+	for (INDEX = 0; INDEX < PARSED_RECIPE->PARAMETER_COUNT; INDEX++)
+	{
+		PARSED_RECIPE->PARAMETERS[INDEX].OFFSET = PARAMETER_OFFSET;
+		PARAMETER_OFFSET += (int64_t)PARSED_RECIPE->PARAMETERS[INDEX].ROWS *
+			PARSED_RECIPE->PARAMETERS[INDEX].COLUMNS;
+	}
+
+	PARSED_RECIPE->PARAMETER_TOTAL = PARAMETER_OFFSET + 8;
+
+	int64_t	VALUE_FLOAT_COUNT = 0;
+
+	for (INDEX = 0; INDEX < PARSED_RECIPE->OPERATION_COUNT; INDEX++)
+	{
+		RECIPE_OPERATION	*OPERATION = &PARSED_RECIPE->OPERATIONS[INDEX];
+
+		OPERATION->LOCATION = LOCATION_OWN;
+
+		if (OPERATION->OPERATION == RECIPE_INPUT)
+			OPERATION->LOCATION = LOCATION_INPUT;
+
+		if (
+			OPERATION->OPERATION == RECIPE_OUTPUT ||
+			OPERATION->OPERATION == RECIPE_INPUT
+		)
+			continue ;
+
+		if (
+			OPERATION->OPERATION == RECIPE_MATRIX_TRANSPOSED &&
+			OPERATION->USE_COUNT == 1
+		)
+		{
+			int	LATER_INDEX;
+
+			for (
+				LATER_INDEX = INDEX + 1;
+				LATER_INDEX < PARSED_RECIPE->OPERATION_COUNT;
+				LATER_INDEX++
+			)
+				if (
+					PARSED_RECIPE->OPERATIONS[LATER_INDEX].OPERATION ==
+						RECIPE_OUTPUT &&
+					PARSED_RECIPE->OPERATIONS[LATER_INDEX].FIRST_INPUT == INDEX
+				)
+					OPERATION->LOCATION = LOCATION_RESIDUAL;
+		}
+
+		if (
+			OPERATION->USE_COUNT == 0 &&
+			OPERATION->LOCATION != LOCATION_RESIDUAL
+		)
+			FAIL_PARSE("value %s is never used", VALUE_NAMES[INDEX]);
+
+		if (OPERATION->LOCATION != LOCATION_OWN)
+			continue ;
+
+		OPERATION->VALUE_OFFSET = VALUE_FLOAT_COUNT * 4;
+		VALUE_FLOAT_COUNT += (OPERATION->LENGTH + 7) / 8 * 8;
+	}
+
+	PARSED_RECIPE->VALUE_STRIDE = (VALUE_FLOAT_COUNT * 4 + 63) / 64 * 64;
+
+	if (!PARSED_RECIPE->VALUE_STRIDE)
+		PARSED_RECIPE->VALUE_STRIDE = 64;
+
+	PARSED_RECIPE->SOURCE = malloc(strlen(SOURCE) + 1);
+	strcpy(PARSED_RECIPE->SOURCE, SOURCE);
+
+	return (0);
+}
+
+void
+	RECIPE_FREE(RECIPE *ACTIVE_RECIPE)
+{
+	free(ACTIVE_RECIPE->SOURCE);
+	ACTIVE_RECIPE->SOURCE = NULL;
+}
+
+static double
+	LOGISTIC_SIGMOID(double INPUT_VALUE)
+{
+	return (1.0 / (1.0 + exp(-INPUT_VALUE)));
+}
+
+#define GELU_SCALE 1.5957691216057308
+#define GELU_CUBIC_COEFFICIENT 0.044715
+
+static float
+	*VALUE_POINTER(
+		const RECIPE *ACTIVE_RECIPE, int STEP_INDEX, int POSITION,
+		const float *NORMALIZED_INPUT, float *RESIDUAL_OUTPUT,
+		float *VALUE_STORE
+	)
+{
+	const RECIPE_OPERATION	*OPERATION = &ACTIVE_RECIPE->OPERATIONS[STEP_INDEX];
+
+	if (OPERATION->LOCATION == LOCATION_INPUT)
+		return (
+			(float *)NORMALIZED_INPUT +
+				(int64_t)POSITION * ACTIVE_RECIPE->MODEL_DIMENSION
+		);
+
+	if (OPERATION->LOCATION == LOCATION_RESIDUAL)
+		return (
+			RESIDUAL_OUTPUT + (int64_t)POSITION * ACTIVE_RECIPE->MODEL_DIMENSION
+		);
+
+	return (
+		VALUE_STORE + (int64_t)POSITION *(ACTIVE_RECIPE->VALUE_STRIDE / 4) +
+			OPERATION->VALUE_OFFSET / 4
+	);
+}
+
+void
+	RECIPE_REFERENCE_FORWARD(
+		const RECIPE *ACTIVE_RECIPE, const float *PARAMETERS,
+		const float *NORMALIZED_INPUT, float *RESIDUAL_OUTPUT,
+		float *VALUE_STORE, int FIRST_POSITION, int POSITION_COUNT
+	)
+{
+	int	MODEL_WIDTH = ACTIVE_RECIPE->MODEL_DIMENSION;
+	int	POSITION;
+
+	for (POSITION = FIRST_POSITION; POSITION < POSITION_COUNT; POSITION++)
+	{
+		int	STEP_INDEX;
+
+		for (
+			STEP_INDEX = 0;
+			STEP_INDEX < ACTIVE_RECIPE->OPERATION_COUNT;
+			STEP_INDEX++
+		)
+		{
+			const RECIPE_OPERATION	*OPERATION =
+				&ACTIVE_RECIPE->OPERATIONS[STEP_INDEX];
+
+			if (OPERATION->OPERATION == RECIPE_INPUT)
+				continue ;
+
+			float	*RESULT_VECTOR;
+
+			if (OPERATION->OPERATION == RECIPE_OUTPUT)
+				RESULT_VECTOR = NULL;
+			else
+				RESULT_VECTOR = VALUE_POINTER(
+					ACTIVE_RECIPE, STEP_INDEX, POSITION, NORMALIZED_INPUT,
+					RESIDUAL_OUTPUT, VALUE_STORE
+				);
+
+			float	*FIRST_INPUT;
+
+			if (OPERATION->FIRST_INPUT >= 0)
+				FIRST_INPUT = VALUE_POINTER(
+					ACTIVE_RECIPE, OPERATION->FIRST_INPUT, POSITION,
+					NORMALIZED_INPUT, RESIDUAL_OUTPUT, VALUE_STORE
+				);
+			else
+				FIRST_INPUT = NULL;
+
+			float	*SECOND_INPUT;
+
+			if (OPERATION->SECOND_INPUT >= 0)
+				SECOND_INPUT = VALUE_POINTER(
+					ACTIVE_RECIPE, OPERATION->SECOND_INPUT, POSITION,
+					NORMALIZED_INPUT, RESIDUAL_OUTPUT, VALUE_STORE
+				);
+			else
+				SECOND_INPUT = NULL;
+
+			const float	*PARAMETER_MATRIX = OPERATION->PARAMETER_INDEX >= 0
+				? PARAMETERS +
+					ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX].OFFSET
+				: NULL;
+			int			OUTPUT_LENGTH = OPERATION->LENGTH;
+			int			INNER_LENGTH;
+
+			switch (OPERATION->OPERATION)
+			{
+				case RECIPE_MATRIX_VECTOR:
+				{
+					INNER_LENGTH =
+						ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX]
+							.COLUMNS;
+
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						double	ACCUMULATOR = 0;
+						int		COLUMN;
+
+						for (COLUMN = 0; COLUMN < INNER_LENGTH; COLUMN++)
+							ACCUMULATOR +=
+								(double)PARAMETER_MATRIX
+									[(int64_t)ELEMENT_INDEX * INNER_LENGTH +
+										COLUMN] *
+								FIRST_INPUT[COLUMN];
+
+						RESULT_VECTOR[ELEMENT_INDEX] = (float)ACCUMULATOR;
+					}
+				}
+				break ;
+				case RECIPE_MATRIX_TRANSPOSED:
+				{
+					INNER_LENGTH =
+						ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX]
+							.ROWS;
+
+					int	COLUMN;
+
+					for (COLUMN = 0; COLUMN < OUTPUT_LENGTH; COLUMN++)
+					{
+						double	ACCUMULATOR =
+							OPERATION->LOCATION == LOCATION_RESIDUAL
+							? RESULT_VECTOR[COLUMN]
+							: 0;
+						int		ELEMENT_INDEX;
+
+						for (
+							ELEMENT_INDEX = 0;
+							ELEMENT_INDEX < INNER_LENGTH;
+							ELEMENT_INDEX++
+						)
+							ACCUMULATOR += (double)FIRST_INPUT[ELEMENT_INDEX] *
+								PARAMETER_MATRIX
+									[(int64_t)ELEMENT_INDEX * OUTPUT_LENGTH +
+										COLUMN];
+
+						RESULT_VECTOR[COLUMN] = (float)ACCUMULATOR;
+					}
+				}
+				break ;
+				case RECIPE_ADD:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							FIRST_INPUT[ELEMENT_INDEX] +
+							SECOND_INPUT[ELEMENT_INDEX];
+				}
+				break ;
+				case RECIPE_SUBTRACT:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							FIRST_INPUT[ELEMENT_INDEX] -
+							SECOND_INPUT[ELEMENT_INDEX];
+				}
+				break ;
+				case RECIPE_MULTIPLY:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							FIRST_INPUT[ELEMENT_INDEX] *
+							SECOND_INPUT[ELEMENT_INDEX];
+				}
+				break ;
+				case RECIPE_ADD_PARAMETER:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							FIRST_INPUT[ELEMENT_INDEX] +
+							PARAMETER_MATRIX[ELEMENT_INDEX];
+				}
+				break ;
+				case RECIPE_MULTIPLY_PARAMETER:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							FIRST_INPUT[ELEMENT_INDEX] *
+							PARAMETER_MATRIX[ELEMENT_INDEX];
+				}
+				break ;
+				case RECIPE_RELU:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						if (FIRST_INPUT[ELEMENT_INDEX] > 0)
+							RESULT_VECTOR[ELEMENT_INDEX] =
+								FIRST_INPUT[ELEMENT_INDEX];
+						else
+							RESULT_VECTOR[ELEMENT_INDEX] = 0;
+					}
+				}
+				break ;
+				case RECIPE_SIGMOID:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							(float)LOGISTIC_SIGMOID(FIRST_INPUT[ELEMENT_INDEX]);
+				}
+				break ;
+				case RECIPE_SILU:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							(float)(FIRST_INPUT[ELEMENT_INDEX] *
+									LOGISTIC_SIGMOID(FIRST_INPUT[ELEMENT_INDEX])
+							);
+				}
+				break ;
+				case RECIPE_TANH:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							(float)(2 *
+										LOGISTIC_SIGMOID(
+											2.0 * FIRST_INPUT[ELEMENT_INDEX]
+										) -
+									1);
+				}
+				break ;
+				case RECIPE_GELU:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						double	INPUT_VALUE = FIRST_INPUT[ELEMENT_INDEX];
+
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							(float)(INPUT_VALUE *
+									LOGISTIC_SIGMOID(
+										GELU_SCALE *
+										(INPUT_VALUE +
+										GELU_CUBIC_COEFFICIENT * INPUT_VALUE *
+											INPUT_VALUE * INPUT_VALUE)
+									));
+					}
+				}
+				break ;
+				case RECIPE_DOT_PRODUCT:
+				{
+					double	ACCUMULATOR = 0;
+					int		INPUT_LENGTH =
+						ACTIVE_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT]
+							.LENGTH;
+					int		ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < INPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						ACCUMULATOR += (double)FIRST_INPUT[ELEMENT_INDEX] *
+							SECOND_INPUT[ELEMENT_INDEX];
+
+					RESULT_VECTOR[0] = (float)ACCUMULATOR;
+				}
+				break ;
+				case RECIPE_SUM:
+				{
+					double	ACCUMULATOR = 0;
+					int		INPUT_LENGTH =
+						ACTIVE_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT]
+							.LENGTH;
+					int		ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < INPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						ACCUMULATOR += FIRST_INPUT[ELEMENT_INDEX];
+
+					RESULT_VECTOR[0] = (float)ACCUMULATOR;
+				}
+				break ;
+				case RECIPE_SCALE:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							FIRST_INPUT[ELEMENT_INDEX] * SECOND_INPUT[0];
+				}
+				break ;
+				case RECIPE_SOFTMAX:
+				{
+					double	MAXIMUM_VALUE = -1e30;
+					double	ACCUMULATOR = 0;
+					int		ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						if (FIRST_INPUT[ELEMENT_INDEX] > MAXIMUM_VALUE)
+							MAXIMUM_VALUE = FIRST_INPUT[ELEMENT_INDEX];
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						RESULT_VECTOR[ELEMENT_INDEX] = (float
+						)exp(FIRST_INPUT[ELEMENT_INDEX] - MAXIMUM_VALUE);
+						ACCUMULATOR += RESULT_VECTOR[ELEMENT_INDEX];
+					}
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						RESULT_VECTOR[ELEMENT_INDEX] =
+							(float)(RESULT_VECTOR[ELEMENT_INDEX] / ACCUMULATOR);
+				}
+				break ;
+				case RECIPE_OUTPUT:
+				{
+					if (
+						ACTIVE_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT]
+								.LOCATION != LOCATION_RESIDUAL
+					)
+					{
+						float	*RESIDUAL_ROW =
+							RESIDUAL_OUTPUT + (int64_t)POSITION * MODEL_WIDTH;
+						int		ELEMENT_INDEX;
+
+						for (
+							ELEMENT_INDEX = 0;
+							ELEMENT_INDEX < MODEL_WIDTH;
+							ELEMENT_INDEX++
+						)
+							RESIDUAL_ROW[ELEMENT_INDEX] +=
+								FIRST_INPUT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+			}
+		}
+	}
+}
+
+void
+	RECIPE_REFERENCE_BACKWARD(
+		const RECIPE *ACTIVE_RECIPE, const float *PARAMETERS, float *GRADIENTS,
+		const float *NORMALIZED_INPUT, float *INPUT_GRADIENT,
+		const float *RESIDUAL_GRADIENT, const float *VALUE_STORE,
+		float *VALUE_GRADIENTS, int POSITION_COUNT
+	)
+{
+	int	MODEL_WIDTH = ACTIVE_RECIPE->MODEL_DIMENSION;
+	int	VALUE_STRIDE = (int)(ACTIVE_RECIPE->VALUE_STRIDE / 4);
+
+	memset(
+		VALUE_GRADIENTS, 0, (size_t)POSITION_COUNT * ACTIVE_RECIPE->VALUE_STRIDE
+	);
+
+	float	*MUTABLE_VALUES = (float *)VALUE_STORE;
+	int		STEP_INDEX;
+
+	for (
+		STEP_INDEX = ACTIVE_RECIPE->OPERATION_COUNT - 1;
+		STEP_INDEX > 0;
+		STEP_INDEX--
+	)
+	{
+		const RECIPE_OPERATION	*OPERATION =
+			&ACTIVE_RECIPE->OPERATIONS[STEP_INDEX];
+		const float				*PARAMETER_MATRIX =
+			OPERATION->PARAMETER_INDEX >= 0 ? PARAMETERS +
+					ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX]
+						.OFFSET
+											: NULL;
+		float					*PARAMETER_GRADIENT;
+
+		if (OPERATION->PARAMETER_INDEX >= 0)
+			PARAMETER_GRADIENT = GRADIENTS +
+				ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX].OFFSET;
+		else
+			PARAMETER_GRADIENT = NULL;
+
+		int	POSITION;
+
+		for (POSITION = 0; POSITION < POSITION_COUNT; POSITION++)
+		{
+			float	*RESULT_VECTOR;
+
+			if (OPERATION->OPERATION == RECIPE_OUTPUT)
+				RESULT_VECTOR = NULL;
+			else
+				RESULT_VECTOR = VALUE_POINTER(
+					ACTIVE_RECIPE, STEP_INDEX, POSITION, NORMALIZED_INPUT, NULL,
+					MUTABLE_VALUES
+				);
+
+			float	*RESULT_GRADIENT;
+
+			if (OPERATION->OPERATION == RECIPE_OUTPUT)
+				RESULT_GRADIENT = NULL;
+			else
+				RESULT_GRADIENT = VALUE_POINTER(
+					ACTIVE_RECIPE, STEP_INDEX, POSITION, INPUT_GRADIENT,
+					(float *)RESIDUAL_GRADIENT, VALUE_GRADIENTS
+				);
+
+			float	*FIRST_INPUT;
+
+			if (OPERATION->FIRST_INPUT >= 0)
+				FIRST_INPUT = VALUE_POINTER(
+					ACTIVE_RECIPE, OPERATION->FIRST_INPUT, POSITION,
+					NORMALIZED_INPUT, NULL, MUTABLE_VALUES
+				);
+			else
+				FIRST_INPUT = NULL;
+
+			float	*SECOND_INPUT;
+
+			if (OPERATION->SECOND_INPUT >= 0)
+				SECOND_INPUT = VALUE_POINTER(
+					ACTIVE_RECIPE, OPERATION->SECOND_INPUT, POSITION,
+					NORMALIZED_INPUT, NULL, MUTABLE_VALUES
+				);
+			else
+				SECOND_INPUT = NULL;
+
+			float	*FIRST_GRADIENT;
+
+			if (OPERATION->FIRST_INPUT >= 0)
+				FIRST_GRADIENT = VALUE_POINTER(
+					ACTIVE_RECIPE, OPERATION->FIRST_INPUT, POSITION,
+					INPUT_GRADIENT, (float *)RESIDUAL_GRADIENT, VALUE_GRADIENTS
+				);
+			else
+				FIRST_GRADIENT = NULL;
+
+			float	*SECOND_GRADIENT;
+
+			if (OPERATION->SECOND_INPUT >= 0)
+				SECOND_GRADIENT = VALUE_POINTER(
+					ACTIVE_RECIPE, OPERATION->SECOND_INPUT, POSITION,
+					INPUT_GRADIENT, (float *)RESIDUAL_GRADIENT, VALUE_GRADIENTS
+				);
+			else
+				SECOND_GRADIENT = NULL;
+
+			int	OUTPUT_LENGTH = OPERATION->LENGTH;
+			int	INNER_LENGTH;
+
+			(void)VALUE_STRIDE;
+
+			switch (OPERATION->OPERATION)
+			{
+				case RECIPE_OUTPUT:
+				{
+					if (
+						ACTIVE_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT]
+								.LOCATION != LOCATION_RESIDUAL
+					)
+					{
+						const float	*OUTPUT_ROW_GRADIENT =
+							RESIDUAL_GRADIENT + (int64_t)POSITION * MODEL_WIDTH;
+						int			ELEMENT_INDEX;
+
+						for (
+							ELEMENT_INDEX = 0;
+							ELEMENT_INDEX < MODEL_WIDTH;
+							ELEMENT_INDEX++
+						)
+							FIRST_GRADIENT[ELEMENT_INDEX] +=
+								OUTPUT_ROW_GRADIENT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_MATRIX_VECTOR:
+				{
+					INNER_LENGTH =
+						ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX]
+							.COLUMNS;
+
+					int	COLUMN;
+
+					for (COLUMN = 0; COLUMN < INNER_LENGTH; COLUMN++)
+					{
+						double	ACCUMULATOR = 0;
+						int		ELEMENT_INDEX;
+
+						for (
+							ELEMENT_INDEX = 0;
+							ELEMENT_INDEX < OUTPUT_LENGTH;
+							ELEMENT_INDEX++
+						)
+							ACCUMULATOR +=
+								(double)RESULT_GRADIENT[ELEMENT_INDEX] *
+								PARAMETER_MATRIX
+									[(int64_t)ELEMENT_INDEX * INNER_LENGTH +
+										COLUMN];
+
+						FIRST_GRADIENT[COLUMN] += (float)ACCUMULATOR;
+					}
+
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						int	COLUMN;
+
+						for (COLUMN = 0; COLUMN < INNER_LENGTH; COLUMN++)
+							PARAMETER_GRADIENT
+								[(int64_t)ELEMENT_INDEX * INNER_LENGTH +
+									COLUMN] += RESULT_GRADIENT[ELEMENT_INDEX] *
+								FIRST_INPUT[COLUMN];
+					}
+				}
+				break ;
+				case RECIPE_MATRIX_TRANSPOSED:
+				{
+					INNER_LENGTH =
+						ACTIVE_RECIPE->PARAMETERS[OPERATION->PARAMETER_INDEX]
+							.ROWS;
+
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < INNER_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						double	ACCUMULATOR = 0;
+						int		COLUMN;
+
+						for (COLUMN = 0; COLUMN < OUTPUT_LENGTH; COLUMN++)
+							ACCUMULATOR += (double)RESULT_GRADIENT[COLUMN] *
+								PARAMETER_MATRIX
+									[(int64_t)ELEMENT_INDEX * OUTPUT_LENGTH +
+										COLUMN];
+
+						FIRST_GRADIENT[ELEMENT_INDEX] += (float)ACCUMULATOR;
+					}
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < INNER_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						int	COLUMN;
+
+						for (COLUMN = 0; COLUMN < OUTPUT_LENGTH; COLUMN++)
+							PARAMETER_GRADIENT
+								[(int64_t)ELEMENT_INDEX * OUTPUT_LENGTH +
+									COLUMN] += FIRST_INPUT[ELEMENT_INDEX] *
+								RESULT_GRADIENT[COLUMN];
+					}
+				}
+				break ;
+				case RECIPE_ADD:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX];
+						SECOND_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_SUBTRACT:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX];
+						SECOND_GRADIENT[ELEMENT_INDEX] -=
+							RESULT_GRADIENT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_MULTIPLY:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] *
+							SECOND_INPUT[ELEMENT_INDEX];
+						SECOND_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] *
+							FIRST_INPUT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_ADD_PARAMETER:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX];
+						PARAMETER_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_MULTIPLY_PARAMETER:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] *
+							PARAMETER_MATRIX[ELEMENT_INDEX];
+						PARAMETER_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] *
+							FIRST_INPUT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_RELU:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						if (RESULT_VECTOR[ELEMENT_INDEX] > 0)
+							FIRST_GRADIENT[ELEMENT_INDEX] +=
+								RESULT_GRADIENT[ELEMENT_INDEX];
+				}
+				break ;
+				case RECIPE_SIGMOID:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] *
+							RESULT_VECTOR[ELEMENT_INDEX] *
+							(1 - RESULT_VECTOR[ELEMENT_INDEX]);
+				}
+				break ;
+				case RECIPE_SILU:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						double	ACCUMULATOR =
+							LOGISTIC_SIGMOID(FIRST_INPUT[ELEMENT_INDEX]);
+
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							(float)(RESULT_GRADIENT[ELEMENT_INDEX] *
+									ACCUMULATOR *
+									(1 +
+										FIRST_INPUT[ELEMENT_INDEX] *
+										(1 - ACCUMULATOR)));
+					}
+				}
+				break ;
+				case RECIPE_TANH:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] *
+							(1 -
+								RESULT_VECTOR[ELEMENT_INDEX] *
+								RESULT_VECTOR[ELEMENT_INDEX]);
+				}
+				break ;
+				case RECIPE_GELU:
+				{
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						double	INPUT_VALUE = FIRST_INPUT[ELEMENT_INDEX];
+						double	ACCUMULATOR = LOGISTIC_SIGMOID(
+							GELU_SCALE *
+							(INPUT_VALUE +
+								GELU_CUBIC_COEFFICIENT * INPUT_VALUE *
+								INPUT_VALUE * INPUT_VALUE)
+						);
+
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							(float)(RESULT_GRADIENT[ELEMENT_INDEX] *
+									(ACCUMULATOR +
+										INPUT_VALUE * ACCUMULATOR *
+										(1 - ACCUMULATOR) * GELU_SCALE *
+										(1 +
+											3 * GELU_CUBIC_COEFFICIENT *
+											INPUT_VALUE * INPUT_VALUE)));
+					}
+				}
+				break ;
+				case RECIPE_DOT_PRODUCT:
+				{
+					int	INPUT_LENGTH =
+						ACTIVE_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT]
+							.LENGTH;
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < INPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[0] * SECOND_INPUT[ELEMENT_INDEX];
+						SECOND_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[0] * FIRST_INPUT[ELEMENT_INDEX];
+					}
+				}
+				break ;
+				case RECIPE_SUM:
+				{
+					int	INPUT_LENGTH =
+						ACTIVE_RECIPE->OPERATIONS[OPERATION->FIRST_INPUT]
+							.LENGTH;
+					int	ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < INPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						FIRST_GRADIENT[ELEMENT_INDEX] += RESULT_GRADIENT[0];
+				}
+				break ;
+				case RECIPE_SCALE:
+				{
+					double	ACCUMULATOR = 0;
+					int		ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+					{
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							RESULT_GRADIENT[ELEMENT_INDEX] * SECOND_INPUT[0];
+						ACCUMULATOR += (double)RESULT_GRADIENT[ELEMENT_INDEX] *
+							FIRST_INPUT[ELEMENT_INDEX];
+					}
+
+					SECOND_GRADIENT[0] += (float)ACCUMULATOR;
+				}
+				break ;
+				case RECIPE_SOFTMAX:
+				{
+					double	ACCUMULATOR = 0;
+					int		ELEMENT_INDEX;
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						ACCUMULATOR += (double)RESULT_GRADIENT[ELEMENT_INDEX] *
+							RESULT_VECTOR[ELEMENT_INDEX];
+
+					for (
+						ELEMENT_INDEX = 0;
+						ELEMENT_INDEX < OUTPUT_LENGTH;
+						ELEMENT_INDEX++
+					)
+						FIRST_GRADIENT[ELEMENT_INDEX] +=
+							(float)(RESULT_VECTOR[ELEMENT_INDEX] *
+									(RESULT_GRADIENT[ELEMENT_INDEX] -
+										ACCUMULATOR));
+				}
+				break ;
+			}
+		}
+	}
+}

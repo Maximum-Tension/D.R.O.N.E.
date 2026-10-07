@@ -1,0 +1,44 @@
+A computer is a machine that stores information and runs programs.
+A file is a named piece of information stored on a computer, like a text, a picture or a song.
+A folder is a place on a computer that holds files and other folders.
+A text file is a file that holds plain written words. Its name usually ends with .txt.
+A program is a list of instructions that tells a computer what to do.
+An app is a program, usually one that people use on a phone or computer.
+A keyboard is the set of keys used to type letters and numbers into a computer.
+A mouse is a small device you move with your hand to point and click on a computer screen.
+A screen is the part of a computer or phone that shows pictures and words.
+A laptop is a small computer you can carry, with the screen and keyboard joined together.
+The internet is a huge network that connects computers all over the world.
+A website is a group of pages on the internet that you open with a web browser.
+A web browser is a program for opening websites, like Chrome, Firefox or Edge.
+An email is a message sent from one computer or phone to another over the internet.
+A password is a secret word or code that keeps an account or device safe.
+A download is a copy of a file that comes from the internet onto your computer.
+To download means to copy a file from the internet to your computer.
+To upload means to send a file from your computer to the internet.
+A byte is a tiny unit of computer memory. A kilobyte is about a thousand bytes, a megabyte is about a million bytes and a gigabyte is about a billion bytes.
+Memory in a computer is where it keeps information it is working with right now. It is also called RAM.
+A hard drive or SSD is where a computer keeps files even when it is turned off.
+A CPU is the processor, the part of a computer that does the thinking and calculating.
+Windows is an operating system made by Microsoft. Linux and macOS are other operating systems.
+An operating system is the main program that runs a computer and lets other programs work.
+A bug is a mistake in a program that makes it act wrong.
+Code is the text that programmers write to make programs.
+A programmer is a person who writes computer programs.
+To save a file means to store it so it is still there later.
+To delete a file means to remove it. I move deleted files into the trash folder so they can be brought back.
+To rename a file means to give it a new name.
+To move a file means to put it into a different folder.
+A file name has a name and an extension, like notes.txt, where txt is the extension.
+A path tells where a file is, like work/notes.txt means the file notes.txt inside the folder work.
+A backup is an extra copy of files, kept in case the originals are lost.
+A virus is a harmful program that can damage a computer or steal information.
+Wi-Fi is a way for computers and phones to connect to the internet without cables.
+A router is the box that shares an internet connection with the devices in a home.
+A USB stick is a small device that stores files and plugs into a computer.
+A printer is a machine that puts text and pictures from a computer onto paper.
+A camera is a device that takes pictures or videos.
+A game is something you play for fun, and many games run on computers and consoles.
+An AI is a computer program that can learn and do things that usually need a mind, like talking or answering questions.
+Offline means not connected to the internet. I work offline.
+Online means connected to the internet.

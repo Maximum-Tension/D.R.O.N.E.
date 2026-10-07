@@ -1,0 +1,1345 @@
+#include "CALCULATOR.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
+
+#define MAXIMUM_FORMULAS 256
+#define MAXIMUM_PARAMETERS 6
+
+typedef struct
+{
+	char	NAME[48];
+	char	PARAMETERS[MAXIMUM_PARAMETERS][24];
+	int		PARAMETER_COUNT;
+	char	BODY[256];
+} FORMULA;
+
+static FORMULA	FORMULAS[MAXIMUM_FORMULAS];
+static int		FORMULA_COUNT;
+static int		FORMULAS_DIRTY;
+
+typedef struct
+{
+	const char	*NAME;
+	double		VALUE;
+} BINDING;
+
+typedef struct
+{
+	const char	*CURSOR;
+	int			ERROR_CODE;
+	int			DEPTH;
+	BINDING		*ENVIRONMENT;
+	int			ENVIRONMENT_COUNT;
+} PARSER_STATE;
+
+static double	PARSE_EXPRESSION(PARSER_STATE *PARSER);
+static double	PARSE_POWER(PARSER_STATE *PARSER);
+
+static void
+	SKIP_SPACES(PARSER_STATE *PARSER)
+{
+	while (*PARSER->CURSOR == ' ' || *PARSER->CURSOR == '\t')
+		PARSER->CURSOR++;
+}
+
+static int
+	PARSE_IDENTIFIER(PARSER_STATE *PARSER, char *OUTPUT, int OUTPUT_SIZE)
+{
+	SKIP_SPACES(PARSER);
+
+	if (!isalpha((unsigned char)*PARSER->CURSOR) && *PARSER->CURSOR != '_')
+		return (0);
+
+	int	LENGTH = 0;
+
+	while (isalnum((unsigned char)*PARSER->CURSOR) || *PARSER->CURSOR == '_')
+	{
+		if (LENGTH < OUTPUT_SIZE - 1)
+			OUTPUT[LENGTH++] = (char)tolower((unsigned char)*PARSER->CURSOR);
+
+		PARSER->CURSOR++;
+	}
+
+	OUTPUT[LENGTH] = 0;
+
+	return (1);
+}
+
+static FORMULA
+	*FIND_FORMULA(const char *FORMULA_NAME)
+{
+	int	FORMULA_INDEX;
+
+	for (FORMULA_INDEX = 0; FORMULA_INDEX < FORMULA_COUNT; FORMULA_INDEX++)
+		if (!strcmp(FORMULAS[FORMULA_INDEX].NAME, FORMULA_NAME))
+			return (&FORMULAS[FORMULA_INDEX]);
+
+	return (NULL);
+}
+
+static int
+	PARSE_ARGUMENTS(
+		PARSER_STATE *PARSER, double *ARGUMENT_VALUES, int MAXIMUM_ARGUMENTS
+	)
+{
+	int	ARGUMENT_COUNT = 0;
+
+	SKIP_SPACES(PARSER);
+
+	if (*PARSER->CURSOR != '(')
+	{
+		PARSER->ERROR_CODE = 1;
+		return (0);
+	}
+
+	PARSER->CURSOR++;
+	SKIP_SPACES(PARSER);
+
+	if (*PARSER->CURSOR == ')')
+	{
+		PARSER->CURSOR++;
+		return (0);
+	}
+
+	for (;;)
+	{
+		double	ARGUMENT_VALUE = PARSE_EXPRESSION(PARSER);
+
+		if (ARGUMENT_COUNT < MAXIMUM_ARGUMENTS)
+			ARGUMENT_VALUES[ARGUMENT_COUNT] = ARGUMENT_VALUE;
+
+		ARGUMENT_COUNT++;
+		SKIP_SPACES(PARSER);
+
+		if (*PARSER->CURSOR == ',')
+		{
+			PARSER->CURSOR++;
+			continue ;
+		}
+
+		if (*PARSER->CURSOR == ')')
+		{
+			PARSER->CURSOR++;
+			break ;
+		}
+
+		PARSER->ERROR_CODE = 1;
+		break ;
+	}
+
+	return (ARGUMENT_COUNT);
+}
+
+static double
+	CALL_FUNCTION(PARSER_STATE *PARSER, const char *FUNCTION_NAME)
+{
+	double				ARGUMENT_VALUES[8];
+	static const char	*BUILTIN_NAMES[11] = {
+		"sqrt", "abs", "round", "floor", "ceil", "sin", "cos", "tan", "ln",
+		"log", "exp"
+	};
+	int					INDEX;
+
+	for (INDEX = 0; INDEX < 11; INDEX++)
+		if (!strcmp(FUNCTION_NAME, BUILTIN_NAMES[INDEX]))
+		{
+			int	ARGUMENT_COUNT;
+
+			SKIP_SPACES(PARSER);
+
+			if (*PARSER->CURSOR == '(')
+				ARGUMENT_COUNT = PARSE_ARGUMENTS(PARSER, ARGUMENT_VALUES, 8);
+			else
+			{
+				ARGUMENT_VALUES[0] = PARSE_POWER(PARSER);
+				ARGUMENT_COUNT = 1;
+			}
+
+			if (ARGUMENT_COUNT != 1)
+			{
+				PARSER->ERROR_CODE = 1;
+				return (0);
+			}
+
+			double	ARGUMENT = ARGUMENT_VALUES[0];
+
+			switch (INDEX)
+			{
+				case 0:
+				{
+					if (ARGUMENT < 0)
+						PARSER->ERROR_CODE = 2;
+
+					return (sqrt(ARGUMENT));
+				}
+				case 1:
+				{
+					return (fabs(ARGUMENT));
+				}
+				case 2:
+				{
+					return (floor(ARGUMENT + 0.5));
+				}
+				case 3:
+				{
+					return (floor(ARGUMENT));
+				}
+				case 4:
+				{
+					return (ceil(ARGUMENT));
+				}
+				case 5:
+				{
+					return (sin(ARGUMENT));
+				}
+				case 6:
+				{
+					return (cos(ARGUMENT));
+				}
+				case 7:
+				{
+					return (tan(ARGUMENT));
+				}
+				case 8:
+				{
+					if (ARGUMENT <= 0)
+						PARSER->ERROR_CODE = 2;
+
+					return (log(ARGUMENT));
+				}
+				case 9:
+				{
+					if (ARGUMENT <= 0)
+						PARSER->ERROR_CODE = 2;
+
+					return (log10(ARGUMENT));
+				}
+				default:
+				{
+					return (exp(ARGUMENT));
+				}
+			}
+		}
+
+	if (
+		!strcmp(FUNCTION_NAME, "min") ||
+		!strcmp(FUNCTION_NAME, "max") ||
+		!strcmp(FUNCTION_NAME, "pow")
+	)
+	{
+		int	ARGUMENT_COUNT = PARSE_ARGUMENTS(PARSER, ARGUMENT_VALUES, 8);
+
+		if (
+			ARGUMENT_COUNT < 2 ||
+			ARGUMENT_COUNT > 8 ||
+			(FUNCTION_NAME[0] == 'p' && ARGUMENT_COUNT != 2)
+		)
+		{
+			PARSER->ERROR_CODE = 1;
+			return (0);
+		}
+
+		if (FUNCTION_NAME[0] == 'p')
+			return (pow(ARGUMENT_VALUES[0], ARGUMENT_VALUES[1]));
+
+		double	EXTREME_VALUE = ARGUMENT_VALUES[0];
+		int		INDEX;
+
+		for (INDEX = 1; INDEX < ARGUMENT_COUNT; INDEX++)
+		{
+			if (FUNCTION_NAME[1] == 'i')
+				EXTREME_VALUE =
+					(ARGUMENT_VALUES[INDEX] < EXTREME_VALUE
+						? ARGUMENT_VALUES[INDEX]
+						: EXTREME_VALUE);
+			else if (ARGUMENT_VALUES[INDEX] > EXTREME_VALUE)
+				EXTREME_VALUE = ARGUMENT_VALUES[INDEX];
+			else
+				EXTREME_VALUE = EXTREME_VALUE;
+		}
+
+		return (EXTREME_VALUE);
+	}
+
+	FORMULA	*USER_FORMULA = FIND_FORMULA(FUNCTION_NAME);
+
+	if (!USER_FORMULA)
+	{
+		PARSER->ERROR_CODE = 1;
+		return (0);
+	}
+
+	int	ARGUMENT_COUNT;
+
+	if (USER_FORMULA->PARAMETER_COUNT)
+		ARGUMENT_COUNT =
+			PARSE_ARGUMENTS(PARSER, ARGUMENT_VALUES, MAXIMUM_PARAMETERS);
+	else
+		ARGUMENT_COUNT = 0;
+
+	if (ARGUMENT_COUNT != USER_FORMULA->PARAMETER_COUNT || PARSER->ERROR_CODE)
+	{
+		PARSER->ERROR_CODE = 1;
+		return (0);
+	}
+
+	if (PARSER->DEPTH > 32)
+	{
+		PARSER->ERROR_CODE = 2;
+		return (0);
+	}
+
+	BINDING	BINDINGS[MAXIMUM_PARAMETERS];
+
+	for (INDEX = 0; INDEX < ARGUMENT_COUNT; INDEX++)
+	{
+		BINDINGS[INDEX].NAME = USER_FORMULA->PARAMETERS[INDEX];
+		BINDINGS[INDEX].VALUE = ARGUMENT_VALUES[INDEX];
+	}
+
+	PARSER_STATE	BODY_PARSER = {
+		USER_FORMULA->BODY, 0, PARSER->DEPTH + 1, BINDINGS, ARGUMENT_COUNT
+	};
+	double			RESULT = PARSE_EXPRESSION(&BODY_PARSER);
+
+	SKIP_SPACES(&BODY_PARSER);
+
+	if (*BODY_PARSER.CURSOR)
+		BODY_PARSER.ERROR_CODE = 1;
+
+	if (BODY_PARSER.ERROR_CODE)
+		PARSER->ERROR_CODE = BODY_PARSER.ERROR_CODE;
+
+	return (RESULT);
+}
+
+static double
+	PARSE_PRIMARY(PARSER_STATE *PARSER)
+{
+	SKIP_SPACES(PARSER);
+
+	char	IDENTIFIER[48];
+
+	if (*PARSER->CURSOR == '(')
+	{
+		PARSER->CURSOR++;
+
+		double	PRIMARY_VALUE = PARSE_EXPRESSION(PARSER);
+
+		SKIP_SPACES(PARSER);
+
+		if (*PARSER->CURSOR == ')')
+			PARSER->CURSOR++;
+		else
+			PARSER->ERROR_CODE = 1;
+
+		return (PRIMARY_VALUE);
+	}
+
+	if (*PARSER->CURSOR == '-')
+	{
+		PARSER->CURSOR++;
+		return (-PARSE_PRIMARY(PARSER));
+	}
+
+	if (*PARSER->CURSOR == '+')
+	{
+		PARSER->CURSOR++;
+		return (PARSE_PRIMARY(PARSER));
+	}
+
+	if (isdigit((unsigned char)*PARSER->CURSOR) || *PARSER->CURSOR == '.')
+	{
+		char	*NUMBER_END;
+		double	PRIMARY_VALUE = strtod(PARSER->CURSOR, &NUMBER_END);
+
+		if (NUMBER_END == PARSER->CURSOR)
+			PARSER->ERROR_CODE = 1;
+
+		PARSER->CURSOR = NUMBER_END;
+		return (PRIMARY_VALUE);
+	}
+
+	if (PARSE_IDENTIFIER(PARSER, IDENTIFIER, sizeof IDENTIFIER))
+	{
+		int	INDEX;
+
+		for (INDEX = PARSER->ENVIRONMENT_COUNT - 1; INDEX >= 0; INDEX--)
+			if (!strcmp(PARSER->ENVIRONMENT[INDEX].NAME, IDENTIFIER))
+				return (PARSER->ENVIRONMENT[INDEX].VALUE);
+
+		if (!strcmp(IDENTIFIER, "pi"))
+			return (3.14159265358979323846);
+
+		if (!strcmp(IDENTIFIER, "e"))
+			return (2.71828182845904523536);
+
+		SKIP_SPACES(PARSER);
+
+		FORMULA				*USER_FORMULA = FIND_FORMULA(IDENTIFIER);
+		static const char	*BUILTIN_NAMES[11] = {
+			"sqrt", "abs", "round", "floor", "ceil", "sin", "cos", "tan", "ln",
+			"log", "exp"
+		};
+		int					IS_BUILTIN = 0;
+
+		for (INDEX = 0; INDEX < 11; INDEX++)
+			if (!strcmp(IDENTIFIER, BUILTIN_NAMES[INDEX]))
+				IS_BUILTIN = 1;
+
+		if (
+			*PARSER->CURSOR == '(' ||
+			(USER_FORMULA && USER_FORMULA->PARAMETER_COUNT == 0) ||
+			(
+				IS_BUILTIN &&
+				*PARSER->CURSOR &&
+				strchr("0123456789.-+", *PARSER->CURSOR)
+			)
+		)
+			return (CALL_FUNCTION(PARSER, IDENTIFIER));
+
+		PARSER->ERROR_CODE = 1;
+		return (0);
+	}
+
+	PARSER->ERROR_CODE = 1;
+
+	return (0);
+}
+
+static double
+	PARSE_POWER(PARSER_STATE *PARSER)
+{
+	double	BASE_VALUE = PARSE_PRIMARY(PARSER);
+
+	SKIP_SPACES(PARSER);
+
+	if (*PARSER->CURSOR == '^')
+	{
+		PARSER->CURSOR++;
+		BASE_VALUE = pow(BASE_VALUE, PARSE_POWER(PARSER));
+	}
+
+	return (BASE_VALUE);
+}
+
+static double
+	PARSE_TERM(PARSER_STATE *PARSER)
+{
+	double	PRODUCT = PARSE_POWER(PARSER);
+
+	for (;;)
+	{
+		SKIP_SPACES(PARSER);
+
+		char	OPERATOR = *PARSER->CURSOR;
+
+		if (OPERATOR == '(' || isalpha((unsigned char)OPERATOR))
+		{
+			PRODUCT *= PARSE_POWER(PARSER);
+			continue ;
+		}
+
+		if (OPERATOR != '*' && OPERATOR != '/' && OPERATOR != '%')
+			return (PRODUCT);
+
+		PARSER->CURSOR++;
+
+		double	OPERAND = PARSE_POWER(PARSER);
+
+		if (OPERATOR == '*')
+			PRODUCT *= OPERAND;
+		else if (OPERAND == 0)
+		{
+			PARSER->ERROR_CODE = 2;
+			return (0);
+		}
+		else if (OPERATOR == '/')
+			PRODUCT /= OPERAND;
+		else
+			PRODUCT = fmod(PRODUCT, OPERAND);
+	}
+}
+
+static double
+	PARSE_EXPRESSION(PARSER_STATE *PARSER)
+{
+	double	SUM = PARSE_TERM(PARSER);
+
+	for (;;)
+	{
+		SKIP_SPACES(PARSER);
+
+		char	OPERATOR = *PARSER->CURSOR;
+
+		if (OPERATOR != '+' && OPERATOR != '-')
+			return (SUM);
+
+		PARSER->CURSOR++;
+
+		double	OPERAND = PARSE_TERM(PARSER);
+
+		if (OPERATOR == '+')
+			SUM = SUM + OPERAND;
+		else
+			SUM = SUM - OPERAND;
+	}
+}
+
+int
+	CALCULATOR_EVALUATE(const char *EXPRESSION, double *RESULT_VALUE)
+{
+	PARSER_STATE	PARSER = { EXPRESSION, 0, 0, NULL, 0 };
+	double			RESULT = PARSE_EXPRESSION(&PARSER);
+
+	SKIP_SPACES(&PARSER);
+
+	if (
+		*PARSER.CURSOR ||
+		PARSER.ERROR_CODE ||
+		!*EXPRESSION ||
+		RESULT != RESULT ||
+		RESULT - RESULT != 0
+	)
+		return (-1);
+
+	*RESULT_VALUE = RESULT;
+
+	return (0);
+}
+
+static int
+	IS_RESERVED_NAME(const char *CANDIDATE_NAME)
+{
+	static const char	*RESERVED_NAMES[16] = {
+		"sqrt", "abs", "round", "floor", "ceil", "sin", "cos", "tan", "ln",
+		"log", "exp", "min", "max", "pow", "pi", "e"
+	};
+	int					NAME_INDEX;
+
+	for (NAME_INDEX = 0; NAME_INDEX < 16; NAME_INDEX++)
+		if (!strcmp(CANDIDATE_NAME, RESERVED_NAMES[NAME_INDEX]))
+			return (1);
+
+	return (0);
+}
+
+int
+	CALCULATOR_DEFINE(const char *DEFINITION)
+{
+	FORMULA	NEW_FORMULA;
+
+	memset(&NEW_FORMULA, 0, sizeof NEW_FORMULA);
+
+	PARSER_STATE	PARSER = { DEFINITION, 0, 0, NULL, 0 };
+
+	if (
+		!PARSE_IDENTIFIER(&PARSER, NEW_FORMULA.NAME, sizeof NEW_FORMULA.NAME) ||
+		IS_RESERVED_NAME(NEW_FORMULA.NAME)
+	)
+		return (-1);
+
+	SKIP_SPACES(&PARSER);
+
+	if (*PARSER.CURSOR == '(')
+	{
+		PARSER.CURSOR++;
+
+		for (;;)
+		{
+			SKIP_SPACES(&PARSER);
+
+			if (*PARSER.CURSOR == ')')
+			{
+				PARSER.CURSOR++;
+				break ;
+			}
+
+			if (
+				NEW_FORMULA.PARAMETER_COUNT >= MAXIMUM_PARAMETERS ||
+				!PARSE_IDENTIFIER(
+					&PARSER,
+					NEW_FORMULA.PARAMETERS[NEW_FORMULA.PARAMETER_COUNT],
+					sizeof NEW_FORMULA.PARAMETERS[0]
+				)
+			)
+				return (-1);
+
+			NEW_FORMULA.PARAMETER_COUNT++;
+			SKIP_SPACES(&PARSER);
+
+			if (*PARSER.CURSOR == ',')
+				PARSER.CURSOR++;
+			else if (*PARSER.CURSOR != ')')
+				return (-1);
+		}
+
+		SKIP_SPACES(&PARSER);
+	}
+
+	if (*PARSER.CURSOR != '=')
+		return (-1);
+
+	PARSER.CURSOR++;
+	SKIP_SPACES(&PARSER);
+
+	size_t	BODY_LENGTH = strlen(PARSER.CURSOR);
+
+	while (
+		BODY_LENGTH &&
+		(
+			PARSER.CURSOR[BODY_LENGTH - 1] == ' ' ||
+			PARSER.CURSOR[BODY_LENGTH - 1] == '.'
+		)
+	)
+		BODY_LENGTH--;
+
+	if (!BODY_LENGTH || BODY_LENGTH >= sizeof NEW_FORMULA.BODY)
+		return (-1);
+
+	memcpy(NEW_FORMULA.BODY, PARSER.CURSOR, BODY_LENGTH);
+	NEW_FORMULA.BODY[BODY_LENGTH] = 0;
+
+	BINDING	BINDINGS[MAXIMUM_PARAMETERS];
+	int		PARAMETER_INDEX;
+
+	for (
+		PARAMETER_INDEX = 0;
+		PARAMETER_INDEX < NEW_FORMULA.PARAMETER_COUNT;
+		PARAMETER_INDEX++
+	)
+	{
+		BINDINGS[PARAMETER_INDEX].NAME =
+			NEW_FORMULA.PARAMETERS[PARAMETER_INDEX];
+		BINDINGS[PARAMETER_INDEX].VALUE = 1.37 + PARAMETER_INDEX;
+	}
+
+	FORMULA	*EXISTING_FORMULA = FIND_FORMULA(NEW_FORMULA.NAME);
+	FORMULA	SAVED_FORMULA;
+
+	if (EXISTING_FORMULA)
+	{
+		SAVED_FORMULA = *EXISTING_FORMULA;
+		*EXISTING_FORMULA = NEW_FORMULA;
+	}
+	else if (FORMULA_COUNT < MAXIMUM_FORMULAS)
+		FORMULAS[FORMULA_COUNT++] = NEW_FORMULA;
+	else
+		return (-1);
+
+	PARSER_STATE	BODY_PARSER = {
+		NEW_FORMULA.BODY, 0, 0, BINDINGS, NEW_FORMULA.PARAMETER_COUNT
+	};
+
+	PARSE_EXPRESSION(&BODY_PARSER);
+	SKIP_SPACES(&BODY_PARSER);
+
+	if (BODY_PARSER.ERROR_CODE == 1 || *BODY_PARSER.CURSOR)
+	{
+		if (EXISTING_FORMULA)
+			*EXISTING_FORMULA = SAVED_FORMULA;
+		else
+			FORMULA_COUNT--;
+
+		return (-1);
+	}
+
+	FORMULAS_DIRTY = 1;
+
+	return (0);
+}
+
+static int
+	FORMAT_FORMULA(FORMULA *SHOWN_FORMULA, char *OUTPUT, int OUTPUT_SIZE)
+{
+	int	WRITTEN = snprintf(OUTPUT, OUTPUT_SIZE, "%s", SHOWN_FORMULA->NAME);
+
+	if (SHOWN_FORMULA->PARAMETER_COUNT)
+	{
+		WRITTEN += snprintf(
+			OUTPUT + WRITTEN, OUTPUT_SIZE > WRITTEN ? OUTPUT_SIZE - WRITTEN : 0,
+			"("
+		);
+
+		int	PARAMETER_INDEX;
+
+		for (
+			PARAMETER_INDEX = 0;
+			PARAMETER_INDEX < SHOWN_FORMULA->PARAMETER_COUNT;
+			PARAMETER_INDEX++
+		)
+			WRITTEN += snprintf(
+				OUTPUT + WRITTEN,
+				OUTPUT_SIZE > WRITTEN ? OUTPUT_SIZE - WRITTEN : 0, "%s%s",
+				PARAMETER_INDEX ? ", " : "",
+				SHOWN_FORMULA->PARAMETERS[PARAMETER_INDEX]
+			);
+
+		WRITTEN += snprintf(
+			OUTPUT + WRITTEN, OUTPUT_SIZE > WRITTEN ? OUTPUT_SIZE - WRITTEN : 0,
+			")"
+		);
+	}
+
+	WRITTEN += snprintf(
+		OUTPUT + WRITTEN, OUTPUT_SIZE > WRITTEN ? OUTPUT_SIZE - WRITTEN : 0,
+		" = %s", SHOWN_FORMULA->BODY
+	);
+
+	return (WRITTEN);
+}
+
+int
+	CALCULATOR_LIST(char *OUTPUT, int OUTPUT_SIZE)
+{
+	int	WRITTEN = 0;
+
+	OUTPUT[0] = 0;
+
+	int	FORMULA_INDEX;
+
+	for (
+		FORMULA_INDEX = 0;
+		FORMULA_INDEX < FORMULA_COUNT && WRITTEN < OUTPUT_SIZE - 1;
+		FORMULA_INDEX++
+	)
+	{
+		if (FORMULA_INDEX)
+			WRITTEN += snprintf(OUTPUT + WRITTEN, OUTPUT_SIZE - WRITTEN, "; ");
+
+		if (WRITTEN < OUTPUT_SIZE - 1)
+			WRITTEN += FORMAT_FORMULA(
+				&FORMULAS[FORMULA_INDEX], OUTPUT + WRITTEN,
+				OUTPUT_SIZE - WRITTEN
+			);
+	}
+
+	return (WRITTEN);
+}
+
+int
+	CALCULATOR_COUNT(void)
+{
+	return (FORMULA_COUNT);
+}
+
+void
+	CALCULATOR_RESET(void)
+{
+	FORMULA_COUNT = 0;
+	FORMULAS_DIRTY = 0;
+}
+
+int
+	CALCULATOR_IS_DIRTY(void)
+{
+	return (FORMULAS_DIRTY);
+}
+
+int
+	CALCULATOR_LOAD(const char *PATH)
+{
+	FILE	*STREAM = fopen(PATH, "rb");
+
+	if (!STREAM)
+		return (-1);
+
+	char	LINE[512];
+
+	while (fgets(LINE, sizeof LINE, STREAM))
+	{
+		size_t	LINE_LENGTH = strlen(LINE);
+
+		while (
+			LINE_LENGTH &&
+			(LINE[LINE_LENGTH - 1] == '\n' || LINE[LINE_LENGTH - 1] == '\r')
+		)
+			LINE[--LINE_LENGTH] = 0;
+
+		if (LINE_LENGTH)
+			CALCULATOR_DEFINE(LINE);
+	}
+
+	fclose(STREAM);
+	FORMULAS_DIRTY = 0;
+
+	return (0);
+}
+
+int
+	CALCULATOR_SAVE(const char *PATH)
+{
+	if (!FORMULAS_DIRTY)
+		return (0);
+
+	FILE	*STREAM = fopen(PATH, "wb");
+
+	if (!STREAM)
+		return (-1);
+
+	char	LINE_BUFFER[512];
+	int		FORMULA_INDEX;
+
+	for (FORMULA_INDEX = 0; FORMULA_INDEX < FORMULA_COUNT; FORMULA_INDEX++)
+	{
+		FORMAT_FORMULA(
+			&FORMULAS[FORMULA_INDEX], LINE_BUFFER, sizeof LINE_BUFFER
+		);
+		fprintf(STREAM, "%s\n", LINE_BUFFER);
+	}
+
+	fclose(STREAM);
+	FORMULAS_DIRTY = 0;
+
+	return (0);
+}
+
+void
+	CALCULATOR_FORMAT(double NUMBER_VALUE, char *OUTPUT, int OUTPUT_SIZE)
+{
+	if (
+		fabs(NUMBER_VALUE - (double)llround(NUMBER_VALUE)) < 1e-9 &&
+		fabs(NUMBER_VALUE) < 1e15
+	)
+		snprintf(OUTPUT, OUTPUT_SIZE, "%lld", (long long)llround(NUMBER_VALUE));
+	else
+		snprintf(OUTPUT, OUTPUT_SIZE, "%.6g", NUMBER_VALUE);
+}
+
+#define BIG_NUMBER_DIGITS 48
+
+typedef struct
+{
+	int				IS_NEGATIVE;
+	int				DIGIT_COUNT;
+	unsigned int	DIGITS[BIG_NUMBER_DIGITS];
+} BIG_NUMBER;
+
+typedef struct
+{
+	const char	*CURSOR;
+	int			ERROR_CODE;
+} BIG_NUMBER_PARSER;
+
+static void
+	BIG_TRIM(BIG_NUMBER *TRIMMED)
+{
+	while (
+		TRIMMED->DIGIT_COUNT > 0 &&
+		!TRIMMED->DIGITS[TRIMMED->DIGIT_COUNT - 1]
+	)
+		TRIMMED->DIGIT_COUNT--;
+
+	if (!TRIMMED->DIGIT_COUNT)
+		TRIMMED->IS_NEGATIVE = 0;
+}
+
+static int
+	BIG_COMPARE_ABSOLUTE(const BIG_NUMBER *LEFT, const BIG_NUMBER *RIGHT)
+{
+	if (LEFT->DIGIT_COUNT != RIGHT->DIGIT_COUNT)
+	{
+		if (LEFT->DIGIT_COUNT < RIGHT->DIGIT_COUNT)
+			return (-1);
+
+		return (1);
+	}
+
+	int	DIGIT_INDEX;
+
+	for (DIGIT_INDEX = LEFT->DIGIT_COUNT - 1; DIGIT_INDEX >= 0; DIGIT_INDEX--)
+		if (LEFT->DIGITS[DIGIT_INDEX] != RIGHT->DIGITS[DIGIT_INDEX])
+		{
+			if (LEFT->DIGITS[DIGIT_INDEX] < RIGHT->DIGITS[DIGIT_INDEX])
+				return (-1);
+
+			return (1);
+		}
+
+	return (0);
+}
+
+static int
+	BIG_ADD_ABSOLUTE(
+		const BIG_NUMBER *LEFT, const BIG_NUMBER *RIGHT, BIG_NUMBER *SUM
+	)
+{
+	unsigned long long	CARRY = 0;
+	int					SUM_LENGTH;
+
+	if (LEFT->DIGIT_COUNT > RIGHT->DIGIT_COUNT)
+		SUM_LENGTH = LEFT->DIGIT_COUNT;
+	else
+		SUM_LENGTH = RIGHT->DIGIT_COUNT;
+
+	int	DIGIT_INDEX;
+
+	for (DIGIT_INDEX = 0; DIGIT_INDEX < SUM_LENGTH; DIGIT_INDEX++)
+	{
+		CARRY += (unsigned long long)(DIGIT_INDEX < LEFT->DIGIT_COUNT
+			? LEFT->DIGITS[DIGIT_INDEX]
+			: 0) +
+			(DIGIT_INDEX < RIGHT->DIGIT_COUNT ? RIGHT->DIGITS[DIGIT_INDEX] : 0);
+		SUM->DIGITS[DIGIT_INDEX] =
+			(unsigned int)(CARRY % (unsigned long long)1000000000);
+		CARRY /= (unsigned long long)1000000000;
+	}
+
+	if (CARRY)
+	{
+		if (SUM_LENGTH >= BIG_NUMBER_DIGITS)
+			return (1);
+
+		SUM->DIGITS[SUM_LENGTH++] = (unsigned int)CARRY;
+	}
+
+	SUM->DIGIT_COUNT = SUM_LENGTH;
+
+	return (0);
+}
+
+static void
+	BIG_SUBTRACT_ABSOLUTE(
+		const BIG_NUMBER *LEFT, const BIG_NUMBER *RIGHT,
+		BIG_NUMBER *ABSOLUTE_DIFFERENCE
+	)
+{
+	long long	BORROW = 0;
+	int			DIGIT_INDEX;
+
+	for (DIGIT_INDEX = 0; DIGIT_INDEX < LEFT->DIGIT_COUNT; DIGIT_INDEX++)
+	{
+		long long	DIGIT_VALUE = (long long)LEFT->DIGITS[DIGIT_INDEX] -
+			(DIGIT_INDEX < RIGHT->DIGIT_COUNT ? RIGHT->DIGITS[DIGIT_INDEX] : 0
+			) -
+			BORROW;
+
+		BORROW = DIGIT_VALUE < 0;
+
+		if (DIGIT_VALUE < 0)
+			DIGIT_VALUE += (long long)1000000000;
+
+		ABSOLUTE_DIFFERENCE->DIGITS[DIGIT_INDEX] = (unsigned int)DIGIT_VALUE;
+	}
+
+	ABSOLUTE_DIFFERENCE->DIGIT_COUNT = LEFT->DIGIT_COUNT;
+	BIG_TRIM(ABSOLUTE_DIFFERENCE);
+}
+
+static int
+	BIG_ADD(const BIG_NUMBER *LEFT, const BIG_NUMBER *RIGHT, BIG_NUMBER *SUM)
+{
+	BIG_NUMBER	TEMPORARY_SUM;
+
+	if (LEFT->IS_NEGATIVE == RIGHT->IS_NEGATIVE)
+	{
+		if (BIG_ADD_ABSOLUTE(LEFT, RIGHT, &TEMPORARY_SUM))
+			return (1);
+
+		TEMPORARY_SUM.IS_NEGATIVE = LEFT->IS_NEGATIVE;
+	}
+	else if (BIG_COMPARE_ABSOLUTE(LEFT, RIGHT) >= 0)
+	{
+		BIG_SUBTRACT_ABSOLUTE(LEFT, RIGHT, &TEMPORARY_SUM);
+		TEMPORARY_SUM.IS_NEGATIVE = LEFT->IS_NEGATIVE;
+	}
+	else
+	{
+		BIG_SUBTRACT_ABSOLUTE(RIGHT, LEFT, &TEMPORARY_SUM);
+		TEMPORARY_SUM.IS_NEGATIVE = RIGHT->IS_NEGATIVE;
+	}
+
+	BIG_TRIM(&TEMPORARY_SUM);
+	*SUM = TEMPORARY_SUM;
+
+	return (0);
+}
+
+static int
+	BIG_MULTIPLY(
+		const BIG_NUMBER *LEFT, const BIG_NUMBER *RIGHT, BIG_NUMBER *PRODUCT
+	)
+{
+	if (LEFT->DIGIT_COUNT + RIGHT->DIGIT_COUNT > BIG_NUMBER_DIGITS)
+		return (1);
+
+	unsigned long long	PARTIAL_DIGITS[2 * BIG_NUMBER_DIGITS] = { 0 };
+	int					LEFT_INDEX;
+
+	for (LEFT_INDEX = 0; LEFT_INDEX < LEFT->DIGIT_COUNT; LEFT_INDEX++)
+	{
+		unsigned long long	CARRY = 0;
+		int					RIGHT_INDEX;
+
+		for (RIGHT_INDEX = 0; RIGHT_INDEX < RIGHT->DIGIT_COUNT; RIGHT_INDEX++)
+		{
+			unsigned long long	DIGIT_PRODUCT =
+				PARTIAL_DIGITS[LEFT_INDEX + RIGHT_INDEX] +
+				(unsigned long long)LEFT->DIGITS[LEFT_INDEX] *
+					RIGHT->DIGITS[RIGHT_INDEX] +
+				CARRY;
+
+			PARTIAL_DIGITS[LEFT_INDEX + RIGHT_INDEX] =
+				DIGIT_PRODUCT % (unsigned long long)1000000000;
+			CARRY = DIGIT_PRODUCT / (unsigned long long)1000000000;
+		}
+
+		int	CARRY_INDEX = LEFT_INDEX + RIGHT->DIGIT_COUNT;
+
+		while (CARRY)
+		{
+			unsigned long long	DIGIT_PRODUCT =
+				PARTIAL_DIGITS[CARRY_INDEX] + CARRY;
+
+			PARTIAL_DIGITS[CARRY_INDEX] =
+				DIGIT_PRODUCT % (unsigned long long)1000000000;
+			CARRY = DIGIT_PRODUCT / (unsigned long long)1000000000;
+			CARRY_INDEX++;
+		}
+	}
+
+	BIG_NUMBER	TEMPORARY_PRODUCT;
+
+	TEMPORARY_PRODUCT.DIGIT_COUNT = LEFT->DIGIT_COUNT + RIGHT->DIGIT_COUNT;
+
+	for (
+		LEFT_INDEX = 0;
+		LEFT_INDEX < TEMPORARY_PRODUCT.DIGIT_COUNT;
+		LEFT_INDEX++
+	)
+		TEMPORARY_PRODUCT.DIGITS[LEFT_INDEX] =
+			(unsigned int)PARTIAL_DIGITS[LEFT_INDEX];
+
+	TEMPORARY_PRODUCT.IS_NEGATIVE = LEFT->IS_NEGATIVE != RIGHT->IS_NEGATIVE;
+	BIG_TRIM(&TEMPORARY_PRODUCT);
+	*PRODUCT = TEMPORARY_PRODUCT;
+
+	return (0);
+}
+
+static int
+	BIG_TO_INTEGER(const BIG_NUMBER *SOURCE_NUMBER, long long *RESULT_VALUE)
+{
+	if (SOURCE_NUMBER->DIGIT_COUNT > 2)
+		return (1);
+
+	long long	MAGNITUDE = 0;
+	int			DIGIT_INDEX;
+
+	for (
+		DIGIT_INDEX = SOURCE_NUMBER->DIGIT_COUNT - 1;
+		DIGIT_INDEX >= 0;
+		DIGIT_INDEX--
+	)
+		MAGNITUDE = MAGNITUDE * (long long)1000000000 +
+			SOURCE_NUMBER->DIGITS[DIGIT_INDEX];
+
+	if (SOURCE_NUMBER->IS_NEGATIVE)
+		*RESULT_VALUE = -MAGNITUDE;
+	else
+		*RESULT_VALUE = MAGNITUDE;
+
+	return (0);
+}
+
+static BIG_NUMBER	BIG_PARSE_EXPRESSION(BIG_NUMBER_PARSER *PARSER);
+
+static void
+	BIG_SKIP_SPACES(BIG_NUMBER_PARSER *PARSER)
+{
+	while (*PARSER->CURSOR == ' ' || *PARSER->CURSOR == '\t')
+		PARSER->CURSOR++;
+}
+
+static BIG_NUMBER
+	BIG_PARSE_PRIMARY(BIG_NUMBER_PARSER *PARSER)
+{
+	BIG_NUMBER	PARSED_NUMBER = { 0, 0, { 0 } };
+
+	BIG_SKIP_SPACES(PARSER);
+
+	if (*PARSER->CURSOR == '(')
+	{
+		PARSER->CURSOR++;
+
+		BIG_NUMBER	INNER_VALUE = BIG_PARSE_EXPRESSION(PARSER);
+
+		BIG_SKIP_SPACES(PARSER);
+
+		if (*PARSER->CURSOR == ')')
+			PARSER->CURSOR++;
+		else
+			PARSER->ERROR_CODE = 1;
+
+		return (INNER_VALUE);
+	}
+
+	if (*PARSER->CURSOR == '-')
+	{
+		PARSER->CURSOR++;
+
+		BIG_NUMBER	INNER_VALUE = BIG_PARSE_PRIMARY(PARSER);
+
+		INNER_VALUE.IS_NEGATIVE = !INNER_VALUE.IS_NEGATIVE;
+		BIG_TRIM(&INNER_VALUE);
+		return (INNER_VALUE);
+	}
+
+	if (*PARSER->CURSOR == '+')
+	{
+		PARSER->CURSOR++;
+		return (BIG_PARSE_PRIMARY(PARSER));
+	}
+
+	if (!isdigit((unsigned char)*PARSER->CURSOR))
+	{
+		PARSER->ERROR_CODE = 1;
+		return (PARSED_NUMBER);
+	}
+
+	const char	*DIGITS_START = PARSER->CURSOR;
+
+	while (isdigit((unsigned char)*PARSER->CURSOR))
+		PARSER->CURSOR++;
+
+	if (*PARSER->CURSOR == '.' || isalpha((unsigned char)*PARSER->CURSOR))
+	{
+		PARSER->ERROR_CODE = 1;
+		return (PARSED_NUMBER);
+	}
+
+	int	NUMERAL_LENGTH = (int)(PARSER->CURSOR - DIGITS_START);
+
+	if ((NUMERAL_LENGTH + 8) / 9 > BIG_NUMBER_DIGITS)
+	{
+		PARSER->ERROR_CODE = 1;
+		return (PARSED_NUMBER);
+	}
+
+	int	CHUNK_END;
+
+	for (CHUNK_END = NUMERAL_LENGTH; CHUNK_END > 0; CHUNK_END -= 9)
+	{
+		int	CHUNK_START;
+
+		if (CHUNK_END - 9 < 0)
+			CHUNK_START = 0;
+		else
+			CHUNK_START = CHUNK_END - 9;
+
+		unsigned int	CHUNK_VALUE = 0;
+		int				DIGIT_POSITION;
+
+		for (
+			DIGIT_POSITION = CHUNK_START;
+			DIGIT_POSITION < CHUNK_END;
+			DIGIT_POSITION++
+		)
+			CHUNK_VALUE = CHUNK_VALUE * 10 +
+				(unsigned int)(DIGITS_START[DIGIT_POSITION] - '0');
+
+		PARSED_NUMBER.DIGITS[PARSED_NUMBER.DIGIT_COUNT++] = CHUNK_VALUE;
+	}
+
+	BIG_TRIM(&PARSED_NUMBER);
+
+	return (PARSED_NUMBER);
+}
+
+static BIG_NUMBER
+	BIG_PARSE_POWER(BIG_NUMBER_PARSER *PARSER)
+{
+	BIG_NUMBER	BASE = BIG_PARSE_PRIMARY(PARSER);
+
+	BIG_SKIP_SPACES(PARSER);
+
+	if (*PARSER->CURSOR == '^')
+	{
+		PARSER->CURSOR++;
+
+		BIG_NUMBER	EXPONENT = BIG_PARSE_POWER(PARSER);
+		long long	EXPONENT_VALUE;
+
+		if (
+			PARSER->ERROR_CODE ||
+			BIG_TO_INTEGER(&EXPONENT, &EXPONENT_VALUE) ||
+			EXPONENT_VALUE < 0 ||
+			EXPONENT_VALUE > 4000
+		)
+		{
+			PARSER->ERROR_CODE = 1;
+			return (BASE);
+		}
+
+		BIG_NUMBER	POWER = { 0, 1, { 1 } };
+		BIG_NUMBER	SQUARED_BASE = BASE;
+
+		while (EXPONENT_VALUE)
+		{
+			if (EXPONENT_VALUE & 1)
+			{
+				if (BIG_MULTIPLY(&POWER, &SQUARED_BASE, &POWER))
+				{
+					PARSER->ERROR_CODE = 1;
+					return (BASE);
+				}
+			}
+
+			EXPONENT_VALUE >>= 1;
+
+			if (
+				EXPONENT_VALUE &&
+				BIG_MULTIPLY(&SQUARED_BASE, &SQUARED_BASE, &SQUARED_BASE)
+			)
+			{
+				PARSER->ERROR_CODE = 1;
+				return (BASE);
+			}
+		}
+
+		return (POWER);
+	}
+
+	return (BASE);
+}
+
+static BIG_NUMBER
+	BIG_PARSE_TERM(BIG_NUMBER_PARSER *PARSER)
+{
+	BIG_NUMBER	PRODUCT = BIG_PARSE_POWER(PARSER);
+
+	for (;;)
+	{
+		BIG_SKIP_SPACES(PARSER);
+
+		if (*PARSER->CURSOR == '(')
+		{
+			BIG_NUMBER	FACTOR = BIG_PARSE_POWER(PARSER);
+
+			if (BIG_MULTIPLY(&PRODUCT, &FACTOR, &PRODUCT))
+				PARSER->ERROR_CODE = 1;
+
+			continue ;
+		}
+
+		if (*PARSER->CURSOR != '*')
+			return (PRODUCT);
+
+		PARSER->CURSOR++;
+
+		BIG_NUMBER	FACTOR = BIG_PARSE_POWER(PARSER);
+
+		if (BIG_MULTIPLY(&PRODUCT, &FACTOR, &PRODUCT))
+			PARSER->ERROR_CODE = 1;
+
+		if (PARSER->ERROR_CODE)
+			return (PRODUCT);
+	}
+}
+
+static BIG_NUMBER
+	BIG_PARSE_EXPRESSION(BIG_NUMBER_PARSER *PARSER)
+{
+	BIG_NUMBER	SUM = BIG_PARSE_TERM(PARSER);
+
+	for (;;)
+	{
+		BIG_SKIP_SPACES(PARSER);
+
+		char	OPERATOR = *PARSER->CURSOR;
+
+		if (OPERATOR != '+' && OPERATOR != '-')
+			return (SUM);
+
+		PARSER->CURSOR++;
+
+		BIG_NUMBER	TERM = BIG_PARSE_TERM(PARSER);
+
+		if (OPERATOR == '-')
+		{
+			TERM.IS_NEGATIVE = !TERM.IS_NEGATIVE;
+			BIG_TRIM(&TERM);
+		}
+
+		if (BIG_ADD(&SUM, &TERM, &SUM))
+			PARSER->ERROR_CODE = 1;
+
+		if (PARSER->ERROR_CODE)
+			return (SUM);
+	}
+}
+
+int
+	CALCULATOR_EXACT(const char *EXPRESSION, char *OUTPUT, int OUTPUT_SIZE)
+{
+	BIG_NUMBER_PARSER	PARSER = { EXPRESSION, 0 };
+	BIG_NUMBER			RESULT_NUMBER = BIG_PARSE_EXPRESSION(&PARSER);
+
+	BIG_SKIP_SPACES(&PARSER);
+
+	if (*PARSER.CURSOR || PARSER.ERROR_CODE || !*EXPRESSION)
+		return (-1);
+
+	int	WRITTEN = 0;
+
+	if (RESULT_NUMBER.IS_NEGATIVE && WRITTEN < OUTPUT_SIZE - 1)
+		OUTPUT[WRITTEN++] = '-';
+
+	if (!RESULT_NUMBER.DIGIT_COUNT)
+	{
+		if (OUTPUT_SIZE > 1)
+		{
+			OUTPUT[0] = '0';
+			OUTPUT[1] = 0;
+		}
+
+		return (0);
+	}
+
+	WRITTEN += snprintf(
+		OUTPUT + WRITTEN, OUTPUT_SIZE - WRITTEN, "%u",
+		RESULT_NUMBER.DIGITS[RESULT_NUMBER.DIGIT_COUNT - 1]
+	);
+
+	int	DIGIT_INDEX;
+
+	for (
+		DIGIT_INDEX = RESULT_NUMBER.DIGIT_COUNT - 2;
+		DIGIT_INDEX >= 0 && WRITTEN < OUTPUT_SIZE;
+		DIGIT_INDEX--
+	)
+		WRITTEN += snprintf(
+			OUTPUT + WRITTEN, OUTPUT_SIZE - WRITTEN, "%09u",
+			RESULT_NUMBER.DIGITS[DIGIT_INDEX]
+		);
+
+	if (WRITTEN >= OUTPUT_SIZE)
+		return (-1);
+
+	return (0);
+}
+
+int
+	CALCULATOR_RESULT(const char *EXPRESSION, char *OUTPUT, int OUTPUT_SIZE)
+{
+	double	RESULT_VALUE;
+
+	if (CALCULATOR_EVALUATE(EXPRESSION, &RESULT_VALUE))
+	{
+		snprintf(OUTPUT, OUTPUT_SIZE, "error");
+		return (-1);
+	}
+
+	if (
+		fabs(RESULT_VALUE) >= 1e15 &&
+		!CALCULATOR_EXACT(EXPRESSION, OUTPUT, OUTPUT_SIZE)
+	)
+		return (0);
+
+	CALCULATOR_FORMAT(RESULT_VALUE, OUTPUT, OUTPUT_SIZE);
+
+	return (0);
+}

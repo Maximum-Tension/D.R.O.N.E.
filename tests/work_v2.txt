@@ -1,0 +1,61 @@
+# Lucy doesn't go round in circles: what didn't work or was said no to is
+# not offered again, and when she runs out of the skill's own fixes she
+# goes a step further each time you push, saying something new each time.
+#     python3 tools/check_chat.py tests/work_v2.txt
+
+=== stuck: each push is a new step, never the same reply
+> Delete the folder ghost
+~ there is no ghost
+> Try again
+~ tried it again
+~ name like ghost
+~ Do you know where it is
+> Find a way
+~ repeat myself
+~ every way I know
+> Try something else
+~ Nothing new
+! tried it again
+> Try harder
+! Nothing new I can try for that
+
+=== a name a little off is found and offered
+> Write hello to ghosts.txt
+> Delete the folder ghost
+> Try again
+~ ghosts.txt
+~ ?
+
+=== what she was told no to is not offered again
+> Create a folder named welcome.txt
+~ Should I make the folder as "welcome (2).txt"
+> Find a way
+! Should I make the folder as
+~ Do you know what else I could try
+> no
+~ leave it
+
+=== a no can turn into a yes
+> Create a folder named welcome.txt
+~ welcome (2).txt
+> no
+~ won't
+> Ok do it
+~ made the folder as "welcome (2).txt" instead
+> What files do you have?
+~ welcome (2).txt (empty folder)
+
+=== still waiting for an answer is said so
+> Create a folder named welcome.txt
+~ Should I
+> Create the folder welcome.txt
+~ still waiting for your answer
+
+=== "try something else" is about the newest task, not one waiting for its time
+> Create a folder named box 30 seconds later
+~ in 30 seconds
+> delete ghost
+~ no ghost
+> try something else
+~ tried it again
+! haven't done it yet

@@ -1,0 +1,50 @@
+# computers.mem: a knowledge package for Lucy.
+# about: computers, files and how Lucy uses her actions
+# Each line: name, other names: what it is | property: value | property: value
+# Put this file in the mind/memory folder and Lucy knows it at once, no restart needed.
+
+computer: A computer is a machine that stores information and runs programs. | kind: computer word
+file: A file is a named piece of information stored on a computer, like a text, a picture or a song. | kind: computer word
+folder: A folder is a place on a computer that holds files and other folders. | kind: computer word
+text file: A text file is a file that holds plain written words. | kind: computer word
+computer use: Its name usually ends with .txt. Memory in a computer is where it keeps information it is working with right now. I move deleted files into the trash folder so they can be brought back. A path tells where a file is, like work/notes.txt means the file notes.txt inside the folder work. I work offline. | kind: computer word
+program: A program is a list of instructions that tells a computer what to do. | kind: computer word
+app: An app is a program, usually one that people use on a phone or computer. | kind: computer word
+keyboard: A keyboard is the set of keys used to type letters and numbers into a computer. | kind: computer word
+mouse: A mouse is a small device you move with your hand to point and click on a computer screen. | kind: computer word
+screen: A screen is the part of a computer or phone that shows pictures and words. | kind: computer word
+laptop: A laptop is a small computer you can carry, with the screen and keyboard joined together. | kind: computer word
+internet: The internet is a huge network that connects computers all over the world. | kind: computer word
+website: A website is a group of pages on the internet that you open with a web browser. | kind: computer word
+web browser: A web browser is a program for opening websites, like Chrome, Firefox or Edge. | kind: computer word
+email: An email is a message sent from one computer or phone to another over the internet. | kind: computer word
+password: A password is a secret word or code that keeps an account or device safe. | kind: computer word
+download: A download is a copy of a file that comes from the internet onto your computer. To download means to copy a file from the internet to your computer. | kind: computer word
+upload: To upload means to send a file from your computer to the internet. | kind: computer word
+byte: A byte is a tiny unit of computer memory. | kind: computer word
+kilobyte: A kilobyte is about a thousand bytes, a megabyte is about a million bytes and a gigabyte is about a billion bytes. | kind: computer word
+it: It is also called RAM. | kind: computer word
+hard drive, ssd: A hard drive or SSD is where a computer keeps files even when it is turned off. | kind: computer word
+cpu: A CPU is the processor, the part of a computer that does the thinking and calculating. | kind: computer word
+windows: Windows is an operating system made by Microsoft. | kind: computer word
+linux, macos: Linux and macOS are other operating systems. | kind: computer word
+operating system: An operating system is the main program that runs a computer and lets other programs work. | kind: computer word
+bug: A bug is a mistake in a program that makes it act wrong. | kind: computer word
+code: Code is the text that programmers write to make programs. | kind: computer word
+programmer: A programmer is a person who writes computer programs. | kind: computer word
+save a file: To save a file means to store it so it is still there later. | kind: computer word
+delete a file: To delete a file means to remove it. | kind: computer word
+rename a file: To rename a file means to give it a new name. | kind: computer word
+move a file: To move a file means to put it into a different folder. | kind: computer word
+file name: A file name has a name and an extension, like notes.txt, where txt is the extension. | kind: computer word
+backup: A backup is an extra copy of files, kept in case the originals are lost. | kind: computer word
+virus: A virus is a harmful program that can damage a computer or steal information. | kind: computer word
+wi-fi: Wi-Fi is a way for computers and phones to connect to the internet without cables. | kind: computer word
+router: A router is the box that shares an internet connection with the devices in a home. | kind: computer word
+usb stick: A USB stick is a small device that stores files and plugs into a computer. | kind: computer word
+printer: A printer is a machine that puts text and pictures from a computer onto paper. | kind: computer word
+camera: A camera is a device that takes pictures or videos. | kind: computer word
+game: A game is something you play for fun, and many games run on computers and consoles. | kind: computer word
+ai: An AI is a computer program that can learn and do things that usually need a mind, like talking or answering questions. | kind: computer word
+offline: Offline means not connected to the internet. | kind: computer word
+online: Online means connected to the internet. | kind: computer word

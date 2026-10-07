@@ -1,0 +1,230 @@
+#include "BRAIN.h"
+#include "DATA.h"
+#include "THREAD.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+int
+	main(int ARGUMENT_COUNT, char **ARGUMENTS)
+{
+	BRAIN	LOADED_BRAIN;
+
+	if (ARGUMENT_COUNT < 2 || BRAIN_OPEN(&LOADED_BRAIN, 1, 0))
+		return (1);
+
+	WEB		*NEURAL_WEB = LOADED_BRAIN.NEURAL_WEB;
+	DATASET	TRAINING_DATA = { 0 };
+
+	LOAD_TRAINING_FILE(
+		LOADED_BRAIN.LEXICON, &TRAINING_DATA, ARGUMENTS[1],
+		NEURAL_WEB->CONFIGURATION.MAXIMUM_LENGTH
+	);
+	DATASET_SET_FIRST_PERSON(&TRAINING_DATA, LOADED_BRAIN.LEXICON);
+
+	int64_t	WINDOW_COUNT;
+	WINDOW	*WINDOWS = MAKE_WINDOWS(
+		&TRAINING_DATA, NEURAL_WEB->CONFIGURATION.MAXIMUM_LENGTH, &WINDOW_COUNT
+	);
+	int		MAX_POSITIONS = NEURAL_WEB->CONFIGURATION.MAXIMUM_LENGTH;
+	int32_t	*SEQUENCE = malloc((MAX_POSITIONS + 2) * 4);
+	float	*TOKEN_WEIGHTS = malloc((MAX_POSITIONS + 2) * 4);
+	double	THRESHOLDS[6] = { 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 0 };
+	double	PAIR_COUNTS[6] = { 0 };
+	double	PROBABILITY_MASS[6] = { 0 };
+	double	PAIR_TOTAL = 0;
+	double	GRADIENT_SUM = 0;
+	int		WINDOW_LIMIT;
+
+	if (ARGUMENT_COUNT > 2)
+		WINDOW_LIMIT = atoi(ARGUMENTS[2]);
+	else
+		WINDOW_LIMIT = 8;
+
+	int	OUTER_INDEX;
+
+	for (
+		OUTER_INDEX = 0;
+		OUTER_INDEX < WINDOW_LIMIT && OUTER_INDEX < WINDOW_COUNT;
+		OUTER_INDEX++
+	)
+	{
+		int		COUNT = BUILD_SEQUENCE(
+			&TRAINING_DATA, &WINDOWS[(OUTER_INDEX * 7919) % WINDOW_COUNT],
+			MAX_POSITIONS, SEQUENCE, TOKEN_WEIGHTS
+		);
+		double	WEIGHT_SUM = 0;
+
+		LEARN_WINDOW(NEURAL_WEB, SEQUENCE, COUNT, TOKEN_WEIGHTS, &WEIGHT_SUM);
+
+		int		POSITION_COUNT = COUNT - 1;
+		float	GRADIENT_SCALE = NEURAL_WEB->KERNEL_STATE->GRADIENT_SCALE;
+		int32_t	*TARGETS =
+			(int32_t *)(NEURAL_WEB->ACTIVATIONS + NEURAL_WEB->TARGETS_OFFSET);
+		float	*POSITION_WEIGHTS = (float *)(NEURAL_WEB->ACTIVATIONS +
+											NEURAL_WEB->LOSS_WEIGHTS_OFFSET);
+		int		POSITION;
+
+		for (POSITION = 0; POSITION < POSITION_COUNT; POSITION++)
+		{
+			if (TARGETS[POSITION] < 0)
+				continue ;
+
+			float	SCALED_WEIGHT = POSITION_WEIGHTS[POSITION] *
+				(GRADIENT_SCALE > 0 ? GRADIENT_SCALE : 1);
+			int		TOKEN_ID;
+
+			for (TOKEN_ID = 0; TOKEN_ID < NEURAL_WEB->WORD_COUNT; TOKEN_ID++)
+			{
+				float	LOGIT_GRADIENT =
+					((float *)(NEURAL_WEB->ACTIVATIONS + LOGITS_OFFSET +
+						(int64_t)TOKEN_ID * MAX_POSITIONS * 4)
+					)[POSITION];
+				double	PROBABILITY = fabs(LOGIT_GRADIENT) /
+					(SCALED_WEIGHT > 0 ? SCALED_WEIGHT : 1);
+
+				if (TOKEN_ID == TARGETS[POSITION])
+					continue ;
+
+				PAIR_TOTAL++;
+				GRADIENT_SUM += PROBABILITY;
+
+				int	INNER_INDEX;
+
+				for (INNER_INDEX = 0; INNER_INDEX < 6; INNER_INDEX++)
+					if (PROBABILITY >= THRESHOLDS[INNER_INDEX])
+					{
+						PAIR_COUNTS[INNER_INDEX]++;
+						break ;
+					}
+
+				for (INNER_INDEX = 0; INNER_INDEX < 6; INNER_INDEX++)
+					if (
+						PROBABILITY < THRESHOLDS[INNER_INDEX] &&
+						(
+							INNER_INDEX == 5 ||
+							PROBABILITY >= THRESHOLDS[INNER_INDEX + 1]
+						)
+					)
+						PROBABILITY_MASS[INNER_INDEX + 1] += PROBABILITY;
+			}
+		}
+	}
+
+	{
+		int		MODEL_WIDTH = NEURAL_WEB->CONFIGURATION.DIMENSION;
+		int32_t	*TARGETS =
+			(int32_t *)(NEURAL_WEB->ACTIVATIONS + NEURAL_WEB->TARGETS_OFFSET);
+		double	SKIP_ERRORS[4] = { 0 };
+		double	FULL_NORM = 0;
+		double	SKIP_THRESHOLDS[4] = { 1e-4, 1e-5, 1e-6, 1e-7 };
+		float	*FULL_SIGNAL = calloc(MODEL_WIDTH, 4);
+		float	*PARTIAL_SIGNALS = calloc(4 * MODEL_WIDTH, 4);
+		int		POSITION;
+
+		for (
+			POSITION = 0;
+			POSITION < NEURAL_WEB->KERNEL_STATE->SEQUENCE_LENGTH;
+			POSITION++
+		)
+		{
+			if (TARGETS[POSITION] < 0)
+				continue ;
+
+			memset(FULL_SIGNAL, 0, MODEL_WIDTH * 4);
+			memset(PARTIAL_SIGNALS, 0, 4 * MODEL_WIDTH * 4);
+
+			float	LARGEST_GRADIENT = 0;
+			int		TOKEN_ID;
+
+			for (TOKEN_ID = 0; TOKEN_ID < NEURAL_WEB->WORD_COUNT; TOKEN_ID++)
+			{
+				float	LOGIT_GRADIENT =
+					fabsf(((float *)(NEURAL_WEB->ACTIVATIONS + LOGITS_OFFSET +
+						(int64_t)TOKEN_ID * MAX_POSITIONS * 4)
+					)[POSITION]);
+
+				if (LOGIT_GRADIENT > LARGEST_GRADIENT)
+					LARGEST_GRADIENT = LOGIT_GRADIENT;
+			}
+
+			for (TOKEN_ID = 0; TOKEN_ID < NEURAL_WEB->WORD_COUNT; TOKEN_ID++)
+			{
+				float	LOGIT_GRADIENT =
+					((float *)(NEURAL_WEB->ACTIVATIONS + LOGITS_OFFSET +
+						(int64_t)TOKEN_ID * MAX_POSITIONS * 4)
+					)[POSITION];
+				float	*WORD_VECTOR = NEURON_PARAMETERS(
+					NEURAL_WEB, NEURAL_WEB->WORD_NEURONS[TOKEN_ID]
+				);
+				int		INDEX;
+
+				for (INDEX = 0; INDEX < MODEL_WIDTH; INDEX++)
+					FULL_SIGNAL[INDEX] += LOGIT_GRADIENT * WORD_VECTOR[INDEX];
+
+				int	INNER_INDEX;
+
+				for (INNER_INDEX = 0; INNER_INDEX < 4; INNER_INDEX++)
+					if (
+						fabsf(LOGIT_GRADIENT) >=
+							SKIP_THRESHOLDS[INNER_INDEX] * LARGEST_GRADIENT
+					)
+					{
+						int	INDEX;
+
+						for (INDEX = 0; INDEX < MODEL_WIDTH; INDEX++)
+							PARTIAL_SIGNALS
+								[INNER_INDEX * MODEL_WIDTH + INDEX] +=
+								LOGIT_GRADIENT * WORD_VECTOR[INDEX];
+					}
+			}
+
+			int	INDEX;
+
+			for (INDEX = 0; INDEX < MODEL_WIDTH; INDEX++)
+			{
+				FULL_NORM += FULL_SIGNAL[INDEX] * FULL_SIGNAL[INDEX];
+
+				int	INNER_INDEX;
+
+				for (INNER_INDEX = 0; INNER_INDEX < 4; INNER_INDEX++)
+					SKIP_ERRORS[INNER_INDEX] +=
+						(FULL_SIGNAL[INDEX] -
+						PARTIAL_SIGNALS[INNER_INDEX * MODEL_WIDTH + INDEX]) *
+						(FULL_SIGNAL[INDEX] -
+							PARTIAL_SIGNALS[INNER_INDEX * MODEL_WIDTH + INDEX]);
+			}
+		}
+
+		int	INNER_INDEX;
+
+		for (INNER_INDEX = 0; INNER_INDEX < 4; INNER_INDEX++)
+			printf(
+				"skip |g| < %g x (largest |g| at that position): relative "
+				"error of the backward signal %.4f%%\n",
+				SKIP_THRESHOLDS[INNER_INDEX],
+				100 * sqrt(SKIP_ERRORS[INNER_INDEX] / FULL_NORM)
+			);
+	}
+
+	printf(
+		"non-target (word, position) pairs: %.0f, total probability mass %.3f "
+		"per position\n",
+		PAIR_TOTAL, GRADIENT_SUM / (PAIR_TOTAL / (NEURAL_WEB->WORD_COUNT - 1))
+	);
+
+	double	ACCUMULATED_COUNT = 0;
+	int		INNER_INDEX;
+
+	for (INNER_INDEX = 0; INNER_INDEX < 5; INNER_INDEX++)
+	{
+		ACCUMULATED_COUNT += PAIR_COUNTS[INNER_INDEX];
+		printf(
+			"p >= %g: %.3f%% of pairs\n", THRESHOLDS[INNER_INDEX],
+			100 * ACCUMULATED_COUNT / PAIR_TOTAL
+		);
+	}
+
+	return (0);
+}

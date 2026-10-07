@@ -1,0 +1,76 @@
+# Putting skills together: counting with files, one step's result into the
+# next, a row of names inside a longer request, and what she can do.
+#     python3 tools/check_chat.py tests/work_v3.txt
+
+=== a row of files, in one go
+> Can you create me multiple files? Like 1.txt to 10.txt
+~ made the files 1.txt to 10.txt
+> Create 1.txt to 12.txt
+~ 11.txt and 12.txt
+~ 1.txt to 10.txt were already there
+> Delete 1.txt to 5.txt
+~ 1.txt to 5.txt are in the trash
+
+=== the name she asked for, said in a sentence, then "the rest"
+> Create files
+~ call it
+> I told it: 1.txt.
+~ made the file 1.txt
+> Ok good, can you do that till 10.txt? Like creating 2.txt, 3.txt, and the rest?
+~ made the files 2.txt to 10.txt
+
+=== names in a row answer "What should I call it?"
+> Create files
+~ call it
+> I told you, list them 11.txt to 13.txt
+~ made the files 11.txt to 13.txt
+
+=== a row inside a longer request
+> Create 1.txt to 3.txt
+> Make a folder called archive and move 1.txt to 3.txt into it
+~ made the folder archive
+~ moved 1.txt, 2.txt and 3.txt to archive
+> What is in archive?
+~ 1.txt
+~ 3.txt
+
+=== one step's result goes into a file
+> Count from 1 to 5 and save it in numbers.txt
+~ 1, 2, 3, 4, 5
+> Read numbers.txt
+~ 1, 2, 3, 4, 5
+> What is 12 * 7? Write the answer to answer.txt
+~ wrote it to answer.txt: 84
+> Write the time into time.txt
+~ wrote it to time.txt
+
+=== counting what is in a file
+> Write hello world to notes.txt
+> How many words are in notes.txt?
+~ 2 words
+> Read notes.txt and tell me how many words it has
+~ hello world
+~ 2 words
+
+=== moving to a new name is renaming
+> Create a.txt
+> Move a.txt to b.txt
+~ b.txt
+! made the folder b.txt
+
+=== what she can do comes from her skills
+> You know how to count right?
+~ count from one number to another
+> Do you know counting?
+~ Yes, I can count
+! I don't know anything about that
+> So you can't count?
+~ really can count
+> Do you know how to fly?
+~ No
+
+=== a step that failed and was fixed is told once, by its fix
+> Can you create notes.txt and then move it into a folder called work?
+~ made the folder work
+~ moved notes.txt to work
+! There is no notes.txt

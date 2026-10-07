@@ -1,0 +1,303 @@
+# words.mem: a knowledge package for Lucy.
+# about: what describing words mean and their opposites
+# Each line: name, other names: what it is | property: value | property: value
+# Put this file in the mind/memory folder and Lucy knows it at once, no restart needed.
+
+above: kind: word | opposite: below
+accept: kind: word | opposite: refuse
+add: kind: word | opposite: subtract
+after: kind: word | opposite: before
+agree: kind: word | opposite: disagree
+alive: kind: word | opposite: dead
+always: Always means every time. | kind: word | opposite: never
+angry: Angry means feeling mad about something. | kind: word | opposite: calm
+answer: An answer is what you say back to a question. | kind: word | opposite: question, ask
+apart: kind: word | opposite: together
+arrive: kind: word | opposite: leave
+ask: kind: word | opposite: answer
+asleep: kind: word | opposite: awake
+awake: kind: word | opposite: asleep
+backward: kind: word | opposite: forward
+bad: Bad means not good. | kind: word | opposite: good
+beautiful: kind: word | opposite: ugly
+before: kind: word | opposite: after
+begin: kind: word | opposite: end
+below: kind: word | opposite: above
+big: Big means large in size. | kind: word | opposite: small, little
+blunt: kind: word | opposite: sharp
+boring: kind: word | opposite: interesting
+borrow: kind: word | opposite: lend
+bottom: kind: word | opposite: top
+brave: Brave means not afraid to do something hard or dangerous. | kind: word | opposite: cowardly
+bright: kind: word | opposite: dim
+busy: kind: word | opposite: free
+buy: kind: word | opposite: sell
+bye: kind: word | opposite: hi
+calm: Calm means quiet and not worried. | kind: word | opposite: angry
+catch: kind: word | opposite: throw
+cheap: kind: word | opposite: expensive
+city: A city is a large town where many people live and work. | kind: word | opposite: countryside
+clean: kind: word | opposite: dirty
+closed: kind: word | opposite: open
+cold: Cold means having a low temperature. | kind: word | opposite: hot
+come: kind: word | opposite: go
+complicated: kind: word | opposite: simple
+cooked: kind: word | opposite: raw
+cool: kind: word | opposite: warm
+countryside: kind: word | opposite: city
+cowardly: kind: word | opposite: brave
+crooked: kind: word | opposite: straight
+cruel: kind: word | opposite: kind
+cry: Cry means having tears come from your eyes, often because you are sad or hurt. | kind: word | opposite: laugh
+curly: kind: word | opposite: straight
+dangerous: kind: word | opposite: safe
+dark: Dark means there is little or no light. | kind: word | opposite: light
+dead: kind: word | opposite: alive
+decrease: kind: word | opposite: increase
+deep: kind: word | opposite: shallow
+different: kind: word | opposite: same
+difficult: kind: word | opposite: easy
+dim: kind: word | opposite: bright
+dirty: kind: word | opposite: clean
+disagree: kind: word | opposite: agree
+down: Down means toward the ground. | kind: word | opposite: up
+downstairs: kind: word | opposite: upstairs
+dry: kind: word | opposite: wet
+early: kind: word | opposite: late
+east: kind: word | opposite: west
+easy: Easy means not hard to do. | kind: word | opposite: hard, difficult
+empty: kind: word | opposite: full
+end: kind: word | opposite: begin
+enemy: kind: word | opposite: friend
+entrance: kind: word | opposite: exit
+even: kind: word | opposite: odd
+evening: Evening is the late part of the day. | kind: word | opposite: morning
+everyone: kind: word | opposite: no one
+everything: Everything means all things. | kind: word | opposite: nothing
+exit: kind: word | opposite: entrance
+expensive: kind: word | opposite: cheap
+export: kind: word | opposite: import
+fail: kind: word | opposite: pass
+failure: kind: word | opposite: success
+fake: kind: word | opposite: real
+false: False means not true. | kind: word | opposite: true
+far: kind: word | opposite: near
+fast: Fast means moving quickly. | kind: word | opposite: slow
+fat: kind: word | opposite: thin
+female: kind: word | opposite: male
+few: kind: word | opposite: many
+finish: kind: word | opposite: start
+first: kind: word | opposite: last
+float: kind: word | opposite: sink
+forget: To forget means to stop remembering something. | kind: word | opposite: remember
+forward: kind: word | opposite: backward
+found: kind: word | opposite: lost
+free: kind: word | opposite: busy
+freeze: kind: word | opposite: melt
+fresh: kind: word | opposite: stale
+friend: A friend is a person you like and trust. | kind: word | opposite: enemy
+front: kind: word | opposite: back
+full: kind: word | opposite: empty, hungry
+give: kind: word | opposite: take
+go: kind: word | opposite: come, stop
+good: Good means nice, right or well done. | kind: word | opposite: bad
+goodbye: Goodbye and bye are ways to say you are leaving. | kind: word | opposite: hello
+happy: Happy means feeling good and glad. | kind: word | opposite: sad
+hard: Hard means difficult, or firm to touch. | kind: word | opposite: soft, easy
+hate: Hate means a very strong bad feeling about someone or something. | kind: word | opposite: love
+heaven: kind: word | opposite: hell
+heavy: kind: word | opposite: light
+hell: kind: word | opposite: heaven
+hello: kind: word | opposite: goodbye
+hi: kind: word | opposite: bye
+high: kind: word | opposite: low
+hot: Hot means having a high temperature. | kind: word | opposite: cold
+huge: kind: word | opposite: tiny
+hungry: Hungry means wanting food. | kind: word | opposite: full
+import: kind: word | opposite: export
+in: kind: word | opposite: out
+increase: kind: word | opposite: decrease
+inside: Inside means in something. | kind: word | opposite: outside
+interesting: kind: word | opposite: boring
+kind: Kind means nice and caring to others. | kind: word | opposite: cruel
+land: kind: word | opposite: sea
+large: kind: word | opposite: small
+last: kind: word | opposite: first
+late: kind: word | opposite: early
+laugh: Laugh means making happy sounds when something is funny. | kind: word | opposite: cry
+learn: To learn means to get new knowledge or a new skill. | kind: word | opposite: teach
+leave: kind: word | opposite: arrive
+left: Left and right are the two sides, like your left hand and your right hand. | kind: word | opposite: right
+lend: kind: word | opposite: borrow
+less: kind: word | opposite: more
+light: A light is something that makes things bright so we can see. Light is what lets us see. | kind: word | opposite: dark, heavy
+little: kind: word | opposite: big
+long: kind: word | opposite: short
+loose: kind: word | opposite: tight
+lose: kind: word | opposite: win
+lost: kind: word | opposite: found
+loud: Loud means making a lot of noise. | kind: word | opposite: quiet, soft
+love: Love means a very strong good feeling for someone or something. | kind: word | opposite: hate
+low: kind: word | opposite: high
+male: kind: word | opposite: female
+many: kind: word | opposite: few
+maximum: kind: word | opposite: minimum
+melt: kind: word | opposite: freeze
+messy: kind: word | opposite: tidy
+minimum: kind: word | opposite: maximum
+minus: kind: word | opposite: plus
+more: kind: word | opposite: less
+morning: Morning is the early part of the day. | kind: word | opposite: evening
+narrow: kind: word | opposite: wide
+near: kind: word | opposite: far
+negative: kind: word | opposite: positive
+never: Never means not at any time. | kind: word | opposite: always
+new: New means recently made or started. | kind: word | opposite: old
+no: No means you do not agree. | kind: word | opposite: yes
+no one: kind: word | opposite: everyone
+noisy: kind: word | opposite: quiet
+north: kind: word | opposite: south
+nothing: Nothing means not anything. | kind: word | opposite: everything
+odd: kind: word | opposite: even
+off: kind: word | opposite: on
+old: Old means having lived or existed for a long time. | kind: word | opposite: new, young
+on: kind: word | opposite: off
+open: kind: word | opposite: closed
+out: kind: word | opposite: in
+outside: Outside means out of something, or out of a building. | kind: word | opposite: inside
+over: kind: word | opposite: under
+pass: kind: word | opposite: fail
+peace: kind: word | opposite: war
+plus: kind: word | opposite: minus
+polite: Polite means speaking and acting in a nice, respectful way. | kind: word | opposite: rude
+poor: kind: word | opposite: rich
+positive: kind: word | opposite: negative
+private: kind: word | opposite: public
+public: kind: word | opposite: private
+pull: kind: word | opposite: push
+push: kind: word | opposite: pull
+question: A question is something you ask to get an answer. | kind: word | opposite: answer
+quick: kind: word | opposite: slow
+quiet: Quiet means making little noise. | kind: word | opposite: loud, noisy
+raw: kind: word | opposite: cooked
+real: kind: word | opposite: fake
+receive: kind: word | opposite: send
+refuse: kind: word | opposite: accept
+remember: To remember means to keep something in your mind. | kind: word | opposite: forget
+rich: kind: word | opposite: poor
+right: Right means correct. | kind: word | opposite: left, wrong
+rise: kind: word | opposite: fall
+rough: kind: word | opposite: smooth
+rude: Rude means not polite. | kind: word | opposite: polite
+sad: Sad means feeling unhappy. | kind: word | opposite: happy
+safe: kind: word | opposite: dangerous
+same: kind: word | opposite: different
+sell: kind: word | opposite: buy
+send: kind: word | opposite: receive
+shallow: kind: word | opposite: deep
+sharp: kind: word | opposite: blunt
+short: kind: word | opposite: tall, long
+shout: kind: word | opposite: whisper
+simple: kind: word | opposite: complicated
+sink: kind: word | opposite: float
+sit: kind: word | opposite: stand
+sleep: Sleep is the rest people and animals need every night. | kind: word | opposite: wake
+slow: Slow means not moving quickly. | kind: word | opposite: fast, quick
+small: Small means little in size. | kind: word | opposite: big, large
+smooth: kind: word | opposite: rough
+soft: kind: word | opposite: hard, loud
+sour: kind: word | opposite: sweet
+south: kind: word | opposite: north
+stale: kind: word | opposite: fresh
+stand: kind: word | opposite: sit
+start: kind: word | opposite: finish
+stop: kind: word | opposite: go
+straight: kind: word | opposite: crooked, curly
+strong: kind: word | opposite: weak
+subtract: kind: word | opposite: add
+success: kind: word | opposite: failure
+sunrise: kind: word | opposite: sunset
+sunset: kind: word | opposite: sunrise
+sweet: kind: word | opposite: sour
+take: kind: word | opposite: give
+tall: kind: word | opposite: short
+tame: kind: word | opposite: wild
+teach: kind: word | opposite: learn
+thick: kind: word | opposite: thin
+thin: kind: word | opposite: thick, fat
+throw: kind: word | opposite: catch
+tidy: kind: word | opposite: messy
+tight: kind: word | opposite: loose
+tiny: kind: word | opposite: huge
+together: kind: word | opposite: apart
+top: kind: word | opposite: bottom
+true: True means correct and real. | kind: word | opposite: false
+ugly: kind: word | opposite: beautiful
+under: kind: word | opposite: over
+up: Up means toward the sky. | kind: word | opposite: down
+upstairs: kind: word | opposite: downstairs
+wake: kind: word | opposite: sleep
+war: kind: word | opposite: peace
+warm: kind: word | opposite: cool
+weak: kind: word | opposite: strong
+west: kind: word | opposite: east
+wet: kind: word | opposite: dry
+whisper: kind: word | opposite: shout
+wide: kind: word | opposite: narrow
+wild: kind: word | opposite: tame
+win: kind: word | opposite: lose
+wrong: Wrong means not correct. | kind: word | opposite: right
+yes: Yes means you agree. | kind: word | opposite: no
+young: Young means not old, in the early part of life. | kind: word | opposite: old
+addition: Addition means putting numbers together, like 2 plus 3 is 5.
+subtraction: Subtraction means taking a number away, like 5 minus 2 is 3.
+multiplication: Multiplication means adding a number many times, like 3 times 4 is 12.
+division: Division means sharing a number into equal parts, like 12 divided by 3 is 4.
+tired: Tired means needing rest or sleep.
+thirsty: Thirsty means wanting a drink.
+afraid, scared: Afraid or scared means feeling fear.
+funny: Funny means making people laugh.
+something: Something means a thing that is not named.
+nevermind, never mind: Nevermind or never mind means forget it, it does not matter.
+okay, ok: Okay or ok means yes, fine or alright.
+lol: Lol means laughing out loud.
+lmao: Lmao means laughing very hard.
+insufferable: Insufferable means very annoying, too much to bear.
+unbearable: Unbearable means too hard or too unpleasant to stand.
+age: Age means how old someone or something is.
+think: To think means to use your mind.
+help: To help means to make something easier for someone.
+dance: Dance means moving your body to music.
+hurt: Hurt means feeling pain, or causing pain.
+sick: Sick means not healthy, feeling ill.
+painting: A painting is a picture made with paint.
+walking: Walking means moving on your feet at a normal speed.
+cooking: Cooking means making food ready to eat by heating it.
+reading: Reading means looking at written words and understanding them.
+writing: Writing means putting words on paper or on a screen.
+drawing: Drawing means making a picture with a pen or pencil.
+singing: Singing means making music with your voice.
+playing: Playing means doing something for fun.
+working: Working means doing a job or a task.
+talking: Talking means saying words to someone.
+listening: Listening means paying attention to sounds or to someone speaking.
+speaking: Speaking means saying words out loud.
+waiting: Waiting means staying until something happens.
+buying: Buying means getting something by paying money.
+selling: Selling means giving something to someone for money.
+health: Health means how well your body and mind are.
+maybe: Maybe means perhaps, it might be or might not be.
+sometimes: Sometimes means some of the time.
+now: Now means at this moment.
+later: Later means at a time after now.
+soon: Soon means in a short time.
+here: Here means in this place.
+there: There means in that place.
+fun: Fun means enjoyment, something that makes you happy.
+bored: Bored means tired of something because it is not interesting.
+lonely: Lonely means sad because you are alone.
+proud: Proud means happy about something you or someone close to you did.
+worried: Worried means thinking that something bad might happen.
+excited: Excited means very happy and full of energy about something.
+smart, clever: Smart or clever means able to learn and understand things quickly.
+annoying: Annoying means making someone a bit angry or tired of it.

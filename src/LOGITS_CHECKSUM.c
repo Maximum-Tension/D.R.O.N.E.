@@ -1,0 +1,78 @@
+#include "CODE.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+int
+	main(int ARGUMENT_COUNT, char **ARGUMENTS)
+{
+	if (ARGUMENT_COUNT < 2)
+	{
+		printf("tlogit brain.web [T] [dump.bin]\n");
+		return (1);
+	}
+
+	WEB	*NEURAL_WEB = WEB_LOAD(ARGUMENTS[1]);
+
+	if (!NEURAL_WEB)
+		return (1);
+
+	int	POSITION_COUNT;
+
+	if (ARGUMENT_COUNT > 2)
+		POSITION_COUNT = atoi(ARGUMENTS[2]);
+	else
+		POSITION_COUNT = 64;
+
+	if (POSITION_COUNT > NEURAL_WEB->CONFIGURATION.MAXIMUM_LENGTH)
+		POSITION_COUNT = NEURAL_WEB->CONFIGURATION.MAXIMUM_LENGTH;
+
+	uint64_t	RANDOM_STATE = 77;
+	int32_t		*INPUT_TOKENS =
+		(int32_t *)(NEURAL_WEB->ACTIVATIONS + NEURAL_WEB->TOKENS_OFFSET);
+	int			INDEX;
+
+	for (INDEX = 0; INDEX < POSITION_COUNT; INDEX++)
+		INPUT_TOKENS[INDEX] = (int32_t)(RANDOM_NEXT(&RANDOM_STATE) %
+										(uint64_t)NEURAL_WEB->WORD_COUNT);
+
+	FILE	*STREAM;
+
+	if (ARGUMENT_COUNT > 3)
+		STREAM = fopen(ARGUMENTS[3], "wb");
+	else
+		STREAM = NULL;
+
+	double	CHECKSUM = 0;
+	int		COUNT;
+
+	for (COUNT = 8; COUNT <= POSITION_COUNT; COUNT += 8)
+	{
+		NEURAL_WEB->KERNEL_STATE->START_POSITION = 0;
+		NEURAL_WEB->KERNEL_STATE->SEQUENCE_LENGTH = COUNT;
+		WEB_RUN(NEURAL_WEB, MODE_INFER);
+
+		float	*LOGITS = WEB_LAST_LOGITS(NEURAL_WEB);
+		int		INDEX;
+
+		for (INDEX = 0; INDEX < NEURAL_WEB->WORD_COUNT; INDEX++)
+			CHECKSUM += LOGITS[INDEX] * (double)((INDEX % 7) + 1);
+
+		if (STREAM)
+			fwrite(LOGITS, 4, NEURAL_WEB->WORD_COUNT, STREAM);
+	}
+
+	if (STREAM)
+		fclose(STREAM);
+
+	printf(
+		"d=%d L=%d T=%d V=%d params=%lld checksum %.9g\n",
+		NEURAL_WEB->CONFIGURATION.DIMENSION,
+		NEURAL_WEB->CONFIGURATION.LAYER_COUNT, POSITION_COUNT,
+		NEURAL_WEB->WORD_COUNT, (long long)WEB_PARAMETER_COUNT(NEURAL_WEB),
+		CHECKSUM
+	);
+
+	return (0);
+}

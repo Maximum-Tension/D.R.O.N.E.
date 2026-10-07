@@ -1,0 +1,10 @@
+recipe ffn
+param wi 32 d read
+param b 32 zero
+param wo 32 d write
+x = in
+h = mv wi x
+hb = addp h b
+r = relu hb
+y = mvt wo r
+out y

@@ -1,0 +1,275 @@
+#include "CODE.h"
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+static int32_t	RULE_TABLE[16][16];
+
+static void
+	MAKE_RULE_SEQUENCE(
+		uint64_t *RANDOM_STATE, int32_t *SEQUENCE, int SEQUENCE_LENGTH,
+		int VOCABULARY_SIZE
+	)
+{
+	SEQUENCE[0] = RANDOM_NEXT(RANDOM_STATE) % VOCABULARY_SIZE;
+	SEQUENCE[1] = RANDOM_NEXT(RANDOM_STATE) % VOCABULARY_SIZE;
+
+	int	POSITION;
+
+	for (POSITION = 2; POSITION < SEQUENCE_LENGTH; POSITION++)
+		SEQUENCE[POSITION] =
+			RULE_TABLE[SEQUENCE[POSITION - 2]][SEQUENCE[POSITION - 1]];
+}
+
+static WEB
+	*MAKE_TOY_WEB(int GROWTH_ENABLED, uint64_t SEED)
+{
+	CONFIG	WEB_CONFIG = { 32, 1, 8, 32, 16, 1, 2 };
+	WEB		*NEURAL_WEB = WEB_NEW(WEB_CONFIG, SEED);
+	int		WORD_INDEX;
+
+	for (WORD_INDEX = 0; WORD_INDEX < 16; WORD_INDEX++)
+		WEB_ADD_WORD(NEURAL_WEB);
+
+	WEB_RELINK(NEURAL_WEB);
+	NEURAL_WEB->KERNEL_STATE->LEARNING_RATE = (float)3e-3;
+	NEURAL_WEB->GROWTH_STATE.ENABLED = GROWTH_ENABLED;
+	NEURAL_WEB->GROWTH_STATE.CHECK_INTERVAL = 100;
+	NEURAL_WEB->GROWTH_STATE.COOLDOWN = 200;
+	NEURAL_WEB->GROWTH_STATE.PLATEAU = (float)0.02;
+	NEURAL_WEB->GROWTH_STATE.GROW_FEED_FORWARD = 4;
+	NEURAL_WEB->GROWTH_STATE.MAXIMUM_HEADS = 4;
+	NEURAL_WEB->GROWTH_STATE.STATISTICS_INTERVAL = 10;
+	NEURAL_WEB->GROWTH_STATE.MAXIMUM_PARAMETERS = 1 << 22;
+
+	return (NEURAL_WEB);
+}
+
+static float
+	TRAIN_TOY_STEPS(
+		WEB *NEURAL_WEB, uint64_t *RANDOM_STATE, int STEP_COUNT, int VERBOSE
+	)
+{
+	int32_t	SEQUENCE[33];
+	float	LAST_LOSS = 0;
+	int		STEP;
+
+	for (STEP = 0; STEP < STEP_COUNT; STEP++)
+	{
+		double	LOSS_SUM = 0;
+		double	WEIGHT_SUM = 0;
+
+		NEURAL_WEB->KERNEL_STATE->GRADIENT_SCALE = (float)1.0 / (4 * 32);
+
+		int	BATCH_INDEX;
+
+		for (BATCH_INDEX = 0; BATCH_INDEX < 4; BATCH_INDEX++)
+		{
+			MAKE_RULE_SEQUENCE(RANDOM_STATE, SEQUENCE, 33, 16);
+			LOSS_SUM +=
+				LEARN_WINDOW(NEURAL_WEB, SEQUENCE, 33, NULL, &WEIGHT_SUM);
+		}
+
+		LAST_LOSS = (float)(LOSS_SUM / WEIGHT_SUM);
+		LEARN_RECORD_LOSS(NEURAL_WEB, LAST_LOSS);
+		LEARN_UPDATE(NEURAL_WEB);
+
+		if (VERBOSE && (NEURAL_WEB->STEP % 250 == 0))
+			printf(
+				"  step %5lld  loss %.4f  ffn neurons %3d  heads %d  params "
+				"%lld\n",
+				(long long)NEURAL_WEB->STEP,
+				NEURAL_WEB->GROWTH_STATE.LOSS_MOVING_AVERAGE,
+				WEB_COUNT_NEURONS(NEURAL_WEB, KIND_FEED_FORWARD, -1),
+				WEB_COUNT_NEURONS(NEURAL_WEB, KIND_ATTENTION_HEAD, -1),
+				(long long)WEB_PARAMETER_COUNT(NEURAL_WEB)
+			);
+	}
+
+	return (NEURAL_WEB->GROWTH_STATE.LOSS_MOVING_AVERAGE);
+}
+
+int
+	TEST_GROWTH(void)
+{
+	uint64_t	RANDOM_STATE = 77;
+	int			FIRST_TOKEN;
+
+	for (FIRST_TOKEN = 0; FIRST_TOKEN < 16; FIRST_TOKEN++)
+	{
+		int	SECOND_TOKEN;
+
+		for (SECOND_TOKEN = 0; SECOND_TOKEN < 16; SECOND_TOKEN++)
+			RULE_TABLE[FIRST_TOKEN][SECOND_TOKEN] =
+				RANDOM_NEXT(&RANDOM_STATE) % 16;
+	}
+
+	printf("growth: toy task = memorize next = f(prev2, prev1), 256 rules, "
+		"start with 2 FFN neurons, 1 head\n");
+	printf(" run A: growth OFF\n");
+
+	WEB			*PLAIN_WEB = MAKE_TOY_WEB(0, 5);
+	uint64_t	PLAIN_RANDOM = 1000;
+	float		PLAIN_LOSS = TRAIN_TOY_STEPS(PLAIN_WEB, &PLAIN_RANDOM, 3000, 1);
+
+	printf(" run B: growth ON (web creates neurons through its GROW neuron -> "
+		"function table)\n");
+
+	WEB			*GROWING_WEB = MAKE_TOY_WEB(1, 5);
+	uint64_t	GROWING_RANDOM = 1000;
+	float		GROWING_LOSS =
+		TRAIN_TOY_STEPS(GROWING_WEB, &GROWING_RANDOM, 3000, 1);
+	int			BORN_COUNT = 0;
+	int32_t		NEURON_INDEX;
+
+	for (
+		NEURON_INDEX = 0;
+		NEURON_INDEX < GROWING_WEB->NEURON_COUNT;
+		NEURON_INDEX++
+	)
+		if (GROWING_WEB->NEURONS[NEURON_INDEX].BIRTH_REASON == WHY_GROWTH)
+			BORN_COUNT++;
+
+	printf(
+		" neurons born by growth: %d (first one: id %d, area %d, birth step "
+		"%d, area error at birth %.3g)\n",
+		BORN_COUNT,
+		BORN_COUNT
+			? GROWING_WEB->NEURONS[GROWING_WEB->NEURON_COUNT - BORN_COUNT].ID
+			: -1,
+		BORN_COUNT
+			? GROWING_WEB->NEURONS[GROWING_WEB->NEURON_COUNT - BORN_COUNT]
+		.AREA_INDEX
+			: -1,
+		BORN_COUNT
+			? GROWING_WEB->NEURONS[GROWING_WEB->NEURON_COUNT - BORN_COUNT]
+		.BIRTH_STEP
+			: -1,
+		BORN_COUNT
+			? GROWING_WEB->NEURONS[GROWING_WEB->NEURON_COUNT - BORN_COUNT]
+		.BIRTH_ERROR
+			: 0
+	);
+
+	int	GROWTH_PASSED =
+		BORN_COUNT > 0 && GROWING_LOSS < PLAIN_LOSS * (float)0.8;
+
+	printf(
+		"growth: final loss without growth %.4f, with growth %.4f -> %s\n",
+		PLAIN_LOSS, GROWING_LOSS, GROWTH_PASSED ? "PASSED" : "FAILED"
+	);
+	printf("save/reload: ");
+	WEB_SAVE(GROWING_WEB, "toy.web", 1);
+
+	WEB	*RELOADED_WEB = WEB_LOAD("toy.web");
+
+	if (RELOADED_WEB)
+		WEB_LOAD_OPTIMIZER(RELOADED_WEB, "toy.web");
+
+	int	IS_SAME = RELOADED_WEB != NULL;
+
+	if (IS_SAME)
+	{
+		int32_t		SEQUENCE[33];
+		uint64_t	SEQUENCE_RANDOM = 999;
+
+		MAKE_RULE_SEQUENCE(&SEQUENCE_RANDOM, SEQUENCE, 33, 16);
+
+		WEB	**WEB_CURSOR;
+
+		for (
+			WEB_CURSOR = (WEB *[3]){ GROWING_WEB, RELOADED_WEB, NULL };
+			*WEB_CURSOR;
+			WEB_CURSOR++
+		)
+		{
+			memcpy(
+				(*WEB_CURSOR)->ACTIVATIONS + (*WEB_CURSOR)->TOKENS_OFFSET,
+				SEQUENCE, 32 * 4
+			);
+			(*WEB_CURSOR)->KERNEL_STATE->SEQUENCE_LENGTH = 32;
+			(*WEB_CURSOR)->KERNEL_STATE->START_POSITION = 0;
+			WEB_RUN(*WEB_CURSOR, MODE_INFER);
+		}
+
+		IS_SAME = memcmp(
+			WEB_LAST_LOGITS(GROWING_WEB),
+			WEB_LAST_LOGITS(RELOADED_WEB), 16 * 4
+			) == 0;
+
+		uint64_t	GROWING_TRAIN_RANDOM = 4242;
+		uint64_t	RELOADED_RANDOM = 4242;
+
+		TRAIN_TOY_STEPS(GROWING_WEB, &GROWING_TRAIN_RANDOM, 50, 0);
+		TRAIN_TOY_STEPS(RELOADED_WEB, &RELOADED_RANDOM, 50, 0);
+
+		int32_t	NEURON_INDEX;
+
+		for (
+			NEURON_INDEX = 0;
+			NEURON_INDEX < GROWING_WEB->NEURON_COUNT && IS_SAME;
+			NEURON_INDEX++
+		)
+			if (GROWING_WEB->NEURONS[NEURON_INDEX].PARAMETER_COUNT)
+				IS_SAME =
+					memcmp(
+						NEURON_PARAMETERS(GROWING_WEB, NEURON_INDEX),
+						NEURON_PARAMETERS(RELOADED_WEB, NEURON_INDEX),
+						GROWING_WEB->NEURONS[NEURON_INDEX].PARAMETER_COUNT * 4
+					) == 0;
+
+		IS_SAME =
+			IS_SAME && GROWING_WEB->NEURON_COUNT == RELOADED_WEB->NEURON_COUNT;
+	}
+
+	printf(
+		"%s (logits bit-identical after reload, and 50 more training steps "
+		"stay bit-identical)\n",
+		IS_SAME ? "PASSED" : "FAILED"
+	);
+	WEB_SAVE(GROWING_WEB, "toy.web", 0);
+
+	WEB	*FRESH_STATE_WEB = WEB_LOAD("toy.web");
+	int	FRESH_PASSED = 0;
+
+	if (FRESH_STATE_WEB)
+	{
+		WEB_LOAD_OPTIMIZER(FRESH_STATE_WEB, "toy.web");
+
+		uint64_t	FRESH_RANDOM = 4243;
+
+		TRAIN_TOY_STEPS(FRESH_STATE_WEB, &FRESH_RANDOM, 1, 0);
+
+		float	EXPECTED_CORRECTION = (float)1.0 /
+			((float)1.0 - FRESH_STATE_WEB->KERNEL_STATE->FIRST_MOMENT_DECAY);
+
+		FRESH_PASSED = FRESH_STATE_WEB->STEP > 1000 &&
+			fabsf(
+				FRESH_STATE_WEB->KERNEL_STATE->FIRST_BIAS_CORRECTION -
+				EXPECTED_CORRECTION
+			) < (float)1e-3 * EXPECTED_CORRECTION;
+		printf(
+			"training state: brain at step %lld with fresh training state "
+			"starts its step-size correction at age 1 (%.3f, want %.3f): %s\n",
+			(long long)FRESH_STATE_WEB->STEP,
+			FRESH_STATE_WEB->KERNEL_STATE->FIRST_BIAS_CORRECTION,
+			EXPECTED_CORRECTION, FRESH_PASSED ? "PASSED" : "FAILED"
+		);
+		WEB_FREE(FRESH_STATE_WEB);
+	}
+	else
+		printf("training state: FAILED (reload)\n");
+
+	remove("toy.web");
+	remove("toy.web.opt");
+	WEB_FREE(PLAIN_WEB);
+	WEB_FREE(GROWING_WEB);
+
+	if (RELOADED_WEB)
+		WEB_FREE(RELOADED_WEB);
+
+	if (GROWTH_PASSED && IS_SAME && FRESH_PASSED)
+		return (0);
+
+	return (1);
+}

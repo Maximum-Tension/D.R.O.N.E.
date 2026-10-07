@@ -1,0 +1,190 @@
+# Code - sense tests, held-out set: new wordings written after mind_v1 passed (same format as sense_v1.txt)
+
+:reset
+:world welcome.txt
+> make a new directory called projects
+= do: mkdir projects -> folder made
+> inside projects create todo.txt
+= do: write projects/todo.txt -> written
+> could you please delete todo.txt
+= do: delete projects/todo.txt -> moved to trash
+> oops, bring it back
+= do: restore todo.txt -> back from the trash
+
+:reset
+:world report.txt
+> I need you to rename report.txt to final
+= do: rename report.txt to final -> renamed
+> open it
+= do: read final.txt
+
+:reset
+:world a.txt b.txt box/
+> move a.txt and b.txt into box
+= do: move a.txt to box -> moved
+= do: move b.txt to box -> moved
+
+:reset
+:world a.txt
+> please make a folder named stuff and put a.txt in it
+= do: mkdir stuff -> folder made
+= do: move a.txt to stuff -> moved
+
+:reset
+> create a folder
+= think: need mkdir -> what name
+> call it games
+= do: mkdir games -> folder made
+
+:reset
+:world notes.txt
+> get rid of notes.txt
+= do: delete notes.txt -> moved to trash
+> no wait, I still need it
+= do: restore notes.txt -> back from the trash
+
+:reset
+:world x.txt
+> throw x.txt away
+= do: delete x.txt -> moved to trash
+
+:reset
+:world welcome.txt
+> write a file called hello.txt with the text hi there
+= do: write hello.txt hi there -> written
+
+:reset
+> make me a text file
+= think: need write -> what name
+> shopping.txt
+= do: write shopping.txt -> written
+
+:reset
+:world shopping.txt
+> add bread to shopping.txt
+= do: append shopping.txt bread
+> add milk to it
+= do: append shopping.txt milk
+
+:reset
+:world music/
+> move song.txt to music
+= do: move song.txt to music -> no such file
+
+:reset
+:world song.txt
+> move song.txt
+= think: need move -> which folder
+> music
+= do: mkdir music -> folder made
+= do: move song.txt to music -> moved
+
+# questions about the world
+:reset
+:world docs/plan.txt
+> where did you put plan.txt?
+= think: find plan.txt -> docs/plan.txt
+> which files are there?
+= do: files
+> show me what is in docs
+= do: files docs
+
+# math in many forms
+:reset
+> what's 3 + 4?
+= do: calc 3 + 4 -> 7
+> 3 + 4 = 8
+= think: check 3 + 4 = 8 -> wrong: 3 + 4 = 7
+> no, it's 8
+= think: check 3 + 4 = 8 -> still wrong: 3 + 4 = 7
+> ten minus three is seven
+= think: check 10 - 3 = 7 -> right
+> is 6 times 7 equal to 42?
+= think: check 6 * 7 = 42 -> right
+> how much is 100 divided by 4
+= do: calc 100 / 4 -> 25
+> I am 25 years old
+! think: check
+! do: calc
+
+# unknown words and things
+:reset
+:unknown glorp frimble
+> what is a glorp?
+= think: know glorp -> never heard of it
+> where is my frimble?
+= think: know frimble -> never heard of it
+
+:reset
+:unknown snarfblat
+> Where can I find the snarfblat?
+= think: know snarfblat -> never heard of it
+
+# capability
+:reset
+> can you make folders?
+= think: can create -> yes
+> are you able to send emails?
+= think: can send emails -> no: I run offline on this computer
+> can you open files?
+= think: can read -> yes
+> do you know how to sing?
+= think: can sing -> no
+
+# complaints
+:reset
+:world trash/a.txt
+:did delete a.txt -> moved to trash
+> why did you delete a.txt?
+= think: why delete a.txt -> you did not ask for it, my mistake
+> that was wrong, I didn't want that
+= do: restore a.txt -> back from the trash
+
+:reset
+:world music/a.txt
+:did move a.txt to music -> moved
+> no, you moved the wrong file
+= think: mistake move a.txt to music -> should I move it back?
+! think: need
+> yes
+= do: move music/a.txt to . -> moved
+
+:reset
+:world b.txt
+:did write b.txt -> written
+> I never asked you to make b.txt
+= think: mistake write b.txt -> should I delete b.txt?
+> yes delete it
+= do: delete b.txt -> moved to trash
+
+# statements that are not commands
+:reset
+:world a.txt
+> I'm going to delete my account tomorrow
+! do:
+> she moved the couch yesterday
+! do:
+> deleting files is scary
+! do:
+> the file a.txt is important
+! do: delete
+! do: write
+
+# its own words
+:reset
+:said I like the color of the stars.
+> what?
+= think: my words -> "I like the color of the stars." (not based on anything)
+:said I like the stars.
+> what stars?
+= think: my words
+
+# tasks over several messages
+:reset
+:world a.txt
+> rename a.txt
+= think: need rename -> what new name
+> what do you need?
+= think: goal -> rename a.txt (needs: what new name)
+> b
+= do: rename a.txt to b -> renamed

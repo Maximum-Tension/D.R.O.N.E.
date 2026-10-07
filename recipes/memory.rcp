@@ -1,0 +1,8 @@
+recipe memory
+param keys 128 d read
+param vals 128 d write
+x = in
+s = mv keys x
+p = softmax s
+y = mvt vals p
+out y

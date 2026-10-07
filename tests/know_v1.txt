@@ -1,0 +1,199 @@
+# Code - knowledge core tests (made-up words, so only reasoning can pass them)
+# > what you say
+# = text that must appear in the answer
+# ! text that must NOT appear
+# :reset forgets everything
+
+# an empty mind meets a fact about things it doesn't know
+> Cat has 4 legs.
+= saved: cat has 4 legs
+= want to know: what cat is, what leg is
+> What is a cat?
+= about cat: cat has 4 legs
+= don't know: what cat is
+> A cat is an animal.
+= saved: cat is an animal
+= learned: what cat is
+! want to know: what cat is
+> How many legs does a cat have?
+= answer: 4
+
+:reset
+# is-a chains and inheritance
+> A blick is a zorp.
+= saved: blick is a zorp
+= want to know: what zorp is
+> Zorps can fly.
+= saved: zorp can fly
+> Can a blick fly?
+= yes: blick can fly
+= because: blick is a zorp; zorp can fly
+> A zorp is a kind of wug.
+= learned: what zorp is
+> Wugs have 6 legs.
+> How many legs does a blick have?
+= answer: 6
+= because: blick is a zorp; zorp is a wug; wug has 6 legs
+> Is a blick a wug?
+= yes: blick is a wug
+> Does a blick have 6 legs?
+= yes: blick has 6 legs
+> Does a blick have 4 legs?
+= no: blick has 6 legs
+
+# the closest fact wins (an exception)
+> Blicks cannot fly.
+= saved: blick cannot fly
+= exception: blick cannot fly, although zorp can fly
+> Can a blick fly?
+= no: blick cannot fly
+= (told)
+> Can a zorp fly?
+= yes: zorp can fly
+
+# honest "don't know", naming the missing fact
+> Can a blick swim?
+= don't know: blick can swim
+= missing: whether blick can swim
+= (or whether zorp can swim)
+! yes
+> Is a blick red?
+= don't know: blick is red
+> Can a dax fly?
+= don't know: never heard of dax
+
+# contradictions are noticed, corrections are accepted
+> A zorp is red.
+= saved: zorp is red
+> A zorp is not red.
+= conflict:
+= kept the known one
+> Is a zorp red?
+= yes: zorp is red
+> Actually, a zorp is not red.
+= replaced: zorp is red -> zorp is not red
+> Is a zorp red?
+= no: zorp is not red
+> Wugs have 8 legs.
+= conflict: new "wug has 8 legs" vs known "wug has 6 legs"
+> No, wugs have 8 legs.
+= replaced: wug has 6 legs -> wug has 8 legs
+> How many legs does a blick have?
+= answer: 8
+
+# describing and listing
+> What is a blick?
+= about blick:
+= blick is a zorp
+= blick cannot fly
+= blick has 8 legs (from wug)
+= blick is a wug
+! blick can fly
+> What does a blick have?
+= list: 8 legs (from wug)
+> What can a zorp do?
+= list: fly
+> What is a wug?
+= kinds of it: zorp
+= don't know: what wug is
+
+# already known and things that follow
+> A blick is a zorp.
+= already known: blick is a zorp
+> Blicks have legs.
+= already known: blick has legs
+= follows from: blick is a zorp; zorp is a wug; wug has 8 legs
+! saved
+> How many legs does a blick have?
+= answer: 8
+> A blick is a wug.
+= already known: blick is a wug
+= follows from: blick is a zorp; zorp is a wug
+> Blicks have 2 legs.
+= saved: blick has 2 legs
+= exception: blick has 2 legs, although wug has 8 legs
+> How many legs does a blick have?
+= answer: 2
+= (told)
+> How many legs does a zorp have?
+= answer: 8
+
+:reset
+# cause-like verbs (the metal / water example with made-up words)
+> Fomp produces zorp.
+= saved: fomp produces zorp
+= want to know: what fomp is, what zorp is
+> Blick conducts zorp.
+> Water absorbs zorp.
+= saved: water absorbs zorp
+> What produces zorp?
+= list: fomp
+! water
+> What absorbs zorp?
+= list: water
+> Does water absorb zorp?
+= yes: water absorbs zorp
+> Does fomp absorb zorp?
+= don't know: fomp absorbs zorp
+> Water does not absorb glim.
+= saved: water does not absorb glim
+> Does water absorb glim?
+= no: water does not absorb glim
+> What does water absorb?
+= list: zorp
+! glim
+> Dax is a kind of water.
+> What absorbs zorp?
+= list: water, dax
+
+:reset
+# properties, several at once, and plural "are"
+> Blicks are big zorps.
+= saved: blick is a zorp
+= saved: blick is big
+> A wug is round and soft.
+= saved: wug is round
+= saved: wug is soft
+> What is round?
+= things that are round: wug
+! about round
+> Are blicks zorps?
+= yes: blick is a zorp
+= (told)
+> Is a wug soft?
+= yes: wug is soft
+> Is a wug big?
+= don't know: wug is big
+
+:reset
+# words that are not facts must not become facts
+> I like music.
+= (nothing)
+> My name is Tom.
+= (nothing)
+> List files
+= (nothing)
+> Delete notes
+= (nothing)
+> Can you count 1 to 10?
+= (nothing)
+> What time is it?
+= (nothing)
+> There is a folder called anymore.
+= (nothing)
+> Yep. Good job.
+= (nothing)
+> You dodged my question
+= (nothing)
+> what is your name?
+= (nothing)
+
+# curiosity is not annoying: each unknown is asked about once
+> A blick has a tail.
+= want to know: what blick is, what tail is
+> A blick has two eyes.
+= saved: blick has 2 eyes
+= want to know: what eye is
+! what blick is
+> Blicks can jump.
+! want to know

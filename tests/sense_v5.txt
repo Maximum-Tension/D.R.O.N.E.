@@ -1,0 +1,69 @@
+# Code - sense tests 5: what you tell Code about yourself and your people, history questions, chat acts
+# (same format as sense_v1.txt)
+
+:reset
+> hi im Deniz
+> I'm from Turkey
+> i work as a nurse
+> whats 12 times 9
+= do: calc 12 * 9 -> 108
+> where am i from?
+= think: you from -> Turkey
+> whats my job
+= think: you job -> a nurse
+> and my name?
+= think: you name -> Deniz
+> what do you know about me
+= think: you -> name Deniz; from Turkey; job a nurse
+> how old am i
+= think: you age -> you did not tell me
+
+:reset
+> my favorite color is green
+> whats my favorite color
+= think: you favorite color -> green
+> what's my favorite food
+= think: you favorite food -> you did not tell me
+
+:reset
+> my dog's name is Max
+> im 27
+> actually i'm 28, birthday was last week
+> how old am i
+= think: you age -> 28
+> whats my dogs name
+= think: your dog name -> Max
+> i also have a cat named Luna
+> what is my cat's name?
+= think: your cat name -> Luna
+
+:reset
+> my grandma used to make the best soup
+> she was from Greece
+> where was my grandma from
+= think: your grandma from -> Greece
+
+:reset
+> what about Zorvak Mendelli
+> he's my uncle
+> whats my uncles name
+= think: your uncle name -> Zorvak Mendelli
+
+:reset
+> remember my rent is 1200
+> whats my rent again
+= think: you rent -> 1200
+
+:reset
+> my birthday is in december
+> when is my birthday
+= think: you birthday -> december
+
+# things that are not facts about you
+:reset
+> i'm so tired today
+> i'm not sure
+> my bad
+> what is my name?
+= think: you name -> you did not tell me
+! think: you name -> so

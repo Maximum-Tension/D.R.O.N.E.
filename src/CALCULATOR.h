@@ -1,0 +1,18 @@
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
+
+int		CALCULATOR_EVALUATE(const char *EXPRESSION, double *RESULT_VALUE);
+int		CALCULATOR_DEFINE(const char *DEFINITION);
+int		CALCULATOR_LIST(char *OUTPUT, int OUTPUT_SIZE);
+int		CALCULATOR_COUNT(void);
+void	CALCULATOR_RESET(void);
+int		CALCULATOR_LOAD(const char *PATH);
+int		CALCULATOR_SAVE(const char *PATH);
+int		CALCULATOR_IS_DIRTY(void);
+void	CALCULATOR_FORMAT(double NUMBER_VALUE, char *OUTPUT, int OUTPUT_SIZE);
+int		CALCULATOR_EXACT(const char *EXPRESSION, char *OUTPUT, int OUTPUT_SIZE);
+int		CALCULATOR_RESULT(
+	const char *EXPRESSION, char *OUTPUT, int OUTPUT_SIZE
+);
+
+#endif

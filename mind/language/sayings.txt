@@ -1,0 +1,329 @@
+# Sayings: the sentences Lucy says herself when her engine or a skill has
+# worked something out (an explanation, a reminder, a question back).
+#
+#     key: the sentence
+#
+# {1}, {2} ... are the details of the moment (a number, a name, a time).
+# Change a sentence freely; keep the {1} ... you want to keep.  Give a key
+# more than one line and Lucy takes turns with them.  A key missing here is
+# said the way the program says it.  The file is read again whenever it
+# changes, so there is no need to restart.
+
+# ---- asking for what is missing --------------------------------------------
+ask reminder time: Sure. When should I send it? For example: in 5 minutes, or at 6:30.
+ask sequence: Next after what? Give me a few numbers or letters in order, like 2, 4, 6, 8, and I'll find the next one.
+# {1} is the number without its unit
+ask unit: {1} what? Tell me the unit too, like: convert {1} feet to meters.
+ask it: What do you mean by "it"? Tell me which animal or thing, like: a spider.
+
+# ---- knowledge packages and skills -----------------------------------------
+# {1} is the package that would know it, {2} the word asked about
+package hint: I don't have that information yet. Did you download the package {1} and put it in my mind/memory folder? Once it is there, I'll know it right away, without a restart.
+computer missing: I can't do that right now: my computer skill (computer.dll) isn't in my mind/skills folder, so I can't touch the computer. Put it back there and I can, without a restart.
+skills list: My skills: {1}.
+no skills: I have no skills loaded right now.
+packages list: What I know comes from these packages: {1}.
+no packages: I have no knowledge packages loaded.
+
+# ---- what she is ------------------------------------------------------------
+# {1} is the day she was made (from mind_original/self.txt)
+who made me: I was made on {1}. My engine, DRONEngine, is written in C, and my small brain was trained on example conversations and tasks.
+can i think: Not the way you do. My engine works things out step by step, like math, logic and what you told me, and my small brain puts the answer into words. Ask me "why?" after an answer and you can see the steps.
+# {1} layers, {2} width, {3} attention heads, {4} size
+architecture: I'm a small language model, not a big LLM. My brain is a transformer: {1} layers, {2} wide, {3} attention heads, {4}. Its neurons are machine code that my engine writes and runs itself, and it can grow new neurons while it trains. Around the brain is an engine written in C: it reads your message, plans what to do, does exact work like math, files and memory, and checks what the brain says before I say it. My skills (mind/skills) and knowledge packages (mind/memory) plug in while I run.
+architecture short: Not a large one. I'm a small language model ({1}) that runs offline, with an engine in C that plans, does exact work like math and files, and checks what I say.
+
+# ---- "why?" right after an answer --------------------------------------------
+# {1} is how it was worked out
+why calc steps: I worked it out step by step: {1}.
+why story steps: I took the numbers from your message and worked it out step by step: {1}.
+# {1} is the sum, {2} its answer
+why calc: Because {1} = {2}. I work numbers out exactly, so I don't guess them.
+why story: I took the numbers from your message: {1} = {2}.
+# {1} is what the skill wrote down about how it found the answer
+why skill: {1}.
+why worked out: I worked it out from what you wrote, step by step, with my reasoning skill: {1}.
+# {1} is the package, {2} what it says
+why package: Because my {1} package says {2}. That's where my facts come from; I don't make them up.
+why memory: That's what my memory says: {1}.
+why solve: I solved your equations together, exactly. Put the answer back in and every one holds: {1}.
+why solve plain: I wrote your equations down and solved them together, exactly: {1}
+# {1} is what you said
+why told: Because you told me: "{1}."
+why told before: Because you told me so before, and I remembered it.
+why clock: I read it from this computer's clock.
+# {1} spelled out, {2} the letter, {3} where it is
+why letter count: I spelled it out: {1}. The {2}'s are letters {3}.
+why one letter: I spelled it out: {1}. The {2} is letter {3}, and it is the only one.
+why no letter: I spelled it out: {1}. There is no {2} in it.
+why letters: I spelled it out and counted: {1}. That's {2} letters.
+# {1} and {2} lined up, {3} the smaller, {4} the bigger, {5} the difference
+why decimals: Line them up: {1} and {2}. The whole parts are the same, so look after the point: {3} has less there. So {3} is smaller than {4} ({4} - {3} = {5}).
+why compare: Because {1} - {2} = {3}: {1} is more than {2}.
+
+# ---- "are you sure?" right after an answer -----------------------------------
+sure calc steps: Yes. I checked it again, step by step: {1}.
+sure calc: Yes. I checked it again: {1} = {2}.
+sure skill: Yes. {1}.
+sure cant tell: Yes, I'm sure I can't tell: {1}.
+sure worked out: Yes. I worked it out again and got the same: {1}.
+sure changed: Hmm, I worked it out again and got something else this time: {1} So the first answer may have been wrong.
+sure package: Yes. My {1} package says {2}.
+sure memory: Yes, that's what my memory says: {1}.
+sure solve: Yes. I put the answer back into your equations and they all hold: {1}.
+sure solve plain: Yes. I solved it again and got the same: {1}
+sure told: Yes. You told me: "{1}."
+sure told before: Yes, that's what you told me before. If it changed, tell me the new one.
+sure clock: Yes, that's what this computer's clock says right now.
+sure letter count: Yes. I spelled it out again: {1}. The {2}'s are letters {3}.
+sure one letter: Yes. I spelled it out again: {1}. The {2} is letter {3}, and it is the only one.
+sure no letter: Yes. I spelled it out again: {1}. There is no {2} in it.
+sure letters: Yes. I spelled it out again: {1}. That's {2} letters.
+sure decimals: Yes. Line them up: {1} and {2}. The whole parts are the same, and after the point {3} has less, so {3} is smaller than {4} ({4} - {3} = {5}).
+sure compare: Yes. {1} - {2} = {3}, so {2} is the smaller one.
+
+# ---- what other people told Lucy about themselves ------------------------------
+# {1} is what that person said ("Sylwia has a cat named Mjölnir"), {2} the name
+person has: Yes. {1}. That's what {2} told me.
+person fact: {1}. That's what {2} told me.
+# {1} the name, {2} the thing, {3} its name
+person thing name: {1}'s {2} is called {3}. That's what {1} told me.
+person not told: I don't know. {1} never told me about that.
+# {1} the name, {2} everything they said
+person facts: Here is what {1} told me: {2}.
+person nothing: {1} hasn't told me anything about themselves yet.
+
+# ---- reminders ----------------------------------------------------------------
+# {1} is when ("in 5 minutes", "at 6:30")
+reminder set: Okay, I'll send you a message {1}.
+# {1} is what to do, {2} when
+reminder set to: Okay, I'll remind you to {1} {2}.
+reminder set about: Okay, I'll remind you {1}: {2}.
+reminder set saying: Okay, I'll tell you {1}: {2}
+# said when the time comes; {1} is how long it has been, or the time
+reminder due: Here's the message you asked for. It's been {1}.
+reminder due at: It's {1} now. Here's the message you asked for.
+reminder due to: It's time to {1}. You asked me to remind you {2}.
+reminder due about: Reminder: {1}.
+reminder cancelled: Okay, I cancelled it. I won't send that message.
+reminder cancelled newest: Okay, I cancelled the last reminder you set. The others are still waiting.
+no reminder to cancel: There is no reminder waiting.
+no reminders: No, there are no reminders waiting.
+# {1} how long until it, {2} what it says
+one reminder: Yes, one reminder is waiting. I'll write to you in {1}: {2}
+# {1} how many, {2} how long until the next, {3} what it says
+reminders: Yes, {1} reminders are waiting. The next one is in {2}: {3}
+
+# ---- small talk the engine answers -------------------------------------------
+# jokes: add as many as you like, Lucy takes turns with them
+joke: Why was the math book sad? It had too many problems.
+joke: Why did the computer go to the doctor? It had a virus.
+joke: Parallel lines have so much in common. It's a shame they'll never meet.
+joke: What did the zero say to the eight? Nice belt!
+joke: Why don't skeletons fight each other? They don't have the guts.
+joke: Why was the computer cold? It left its Windows open.
+joke: What do you call a fish without eyes? A fsh.
+joke: Why did the scarecrow win an award? He was outstanding in his field.
+cant write: I can't write poems or stories: my brain is small and made for exact work like math, logic, memory and files. I can tell you a joke, though.
+cant translate: I can't translate: I only know English words. A dictionary package in my mind/memory folder could teach me some, but I don't have one yet.
+help: I can remember what you tell me, do exact math and word problems, solve sequences and logic puzzles, convert units, count letters, work out clock times, tell the time and date, send you a reminder later, and read, write, move, rename and delete files and folders in my files folder. After an answer, ask me "why?" and I'll show you how I got it.
+listening: Yes, I read every message. When I get something wrong, tell me and I'll try again.
+stopped: Okay, I stopped. Go ahead.
+praised: Thanks! I'm glad I got it right.
+won't ask again: Sorry. I won't ask you that again.
+
+# ---- her work: checking, fixing, keeping at it ------------------------------
+# {1} is why it didn't work, {2} what she did about it (already said as done)
+work fixed: {1}, so I {2}.
+# {1} is the thing
+work now gone: Now {1} is gone from your files.
+work you are right: You're right, {1} is still there.
+# {1} why it didn't work, {2} the fix that needs a yes
+work asking: {1}. Should I {2}?
+work asking plain: Should I {1}?
+# {1} the thing asked for, {2} what was found, {3} the action with it
+work asking found: There is no {1} in your files, but there is {2}. Should I {3}?
+# {1} the fix tried, {2} what came of it
+work tried: I tried to {1}, but that didn't work ({2}).
+# {1} what she was doing, {2} why it didn't work
+work stuck: I couldn't {1}: {2}.
+work stuck plain: I couldn't {1}.
+work stuck ask: I'm out of ideas. What would you like me to do?
+work dropped: Okay, I won't. I'll leave {1} as it is.
+# {1} the thing, {2} where it went (" It's in the trash.")
+work checked gone: I just checked: {1} isn't in your files any more.{2}
+work gone answer: No, {1} isn't in your files any more.{2}
+work gone already: That's done already: {1} isn't in your files any more.{2}
+work gone already: I already did that: {1} is gone.{2}
+work gone already: It's already gone: I took {1} out of your files.{2}
+work where trash: It's in the trash.
+work where gone for good: It's not in the trash either: it's gone for good.
+work where trash as: It's in the trash as "{1}".
+work checked there: I just checked: {1} is there.
+work there answer: Yes, {1} is there.
+work there already: {1} is already there.
+# {1} the thing, {2} the folder it is (or was) in, {3} what she was asked
+work which one: I mean {1} in {2}: you asked me to {3}.
+# {1} what she was asked to do ("put 42 in the trash")
+work heard you: Yes, I heard you: you asked me to {1}.
+work same place: Could you be looking at another folder? I only work in the files folder next to me.
+work where do you see: I've looked everywhere I can reach and it isn't there. Where do you see it? Tell me the folder and I'll look there.
+# {1} the name: when there is nothing new to look at any more
+work doubt nothing new: I'd only repeat myself: everything I can check says {1} is gone from your files. If you see it somewhere, tell me the folder or its full name, and I'll go there.
+work doubt nothing new: Nothing has changed since I last looked: {1} is still gone. Tell me where you see it, and I'll go there.
+work doubt nothing new: I've run out of places to look for {1}. A folder name or its full name from you would help me most.
+work doubt nothing new there: I'd only repeat myself: everything I can check says {1} is there. If you don't see it, tell me which folder you are looking in, and I'll look there too.
+# {1} the question she asked and still waits for
+work still asking: I'm still waiting for your answer: {1}
+
+# ---- when the skill's fixes are used up: a step further each time ------------
+# what was tried, for "I've tried ..." ({1} the name or the fix)
+work attempt again: tried it again
+work attempt find: looked for {1} in all your folders
+work attempt like: looked for names like {1}
+work attempt fix: tried to {1}
+work attempt offered: offered to {1}
+# {1} why it still doesn't work
+work push again: I tried it again, but {1}.
+# {1} the name, {2} the one found, {3} doing it to that one
+work push like: I looked for names like {1} too, and found {2}. Is that the one you mean? Should I {3}?
+work push like none: I also looked for anything with a name like {1}, and there is nothing like it.
+# {1} what she was asked to do
+work push ask: I don't know another way to {1}. Do you know where it is, or what else I could try?
+work push ask other: I don't know another way to {1}. Do you know what else I could try?
+# {1} what she was asked to do, {2} everything she tried
+work push none left: I'd only repeat myself now: to {1}, I {2}, and that is every way I know. Tell me what to try, or teach me a way, and I'll do it.
+work leave it: Okay, then I'll leave it for now. If you think of something, tell me and I'll try it.
+work push nothing new: Nothing new I can try for that, sorry. Tell me what to try, and I'll do it.
+work push nothing new: I'm out of new ways for this one. If you know one, tell me and I'll do it right away.
+# {1} where she looked, {2} what is there
+work looked: I looked in {1}, and this is what is there: {2}.
+work looked empty: I looked in {1}: it's empty.
+work looked failed: I tried to look in {1}, but I couldn't ({2}).
+# {1} the name she searched for
+work searched none: I searched all your folders, and there is no other {1}.
+# {1} the name, {2} the other one found, {3} doing it to that one
+work doubt found: But there is another {1}: {2}. Is that the one you mean? Should I {3}?
+work doubt ask: Should I {1}?
+# places, for "I looked in ..."
+work place files: your files folder
+work place folder: the folder {1}
+work place trash: the trash
+# {1} the place; the names follow
+folder has: In {1}:
+# {1} the change just made
+work undo offer: Sorry! Should I undo it? I just {1}.
+# {1} the thing, {2} what was asked
+work about: {1}: you asked me to {2}.
+
+# ---- later: things asked for in a while --------------------------------------
+# {1} what she will do, {2} when ("in 5 seconds")
+later set: Okay, I'll {1} {2}.
+later already: I'm already going to {1} in {2}.
+later still waiting: I haven't done it yet: I'll {1} in {2}, like you asked.
+later called off: Okay, I won't {1} then. I hadn't done it yet.
+later redo: You're right, sorry: I did it right away. I took it back, and I'll {1} {2}.
+later failed: I can't keep that for later right now.
+
+# ---- what she did and plans --------------------------------------------------
+did nothing: Nothing on the computer yet: I haven't changed anything in your files in this chat. I only answered your messages.
+# {1} the changes, newest first
+did these: I {1}.
+# {1} how long, {2} what
+plans waiting: In {1}, I'll {2}, like you asked.
+plans asking: I'm waiting for your answer: should I {1}?
+plans stuck: I'm still trying to {1}, but I've run out of ways to do it. Tell me what you'd like me to try.
+plans none: Nothing right now: no task is waiting. I'm here for whatever you want to do next.
+my purpose: My purpose is to help you: I talk with you, remember what you tell me, work things out, and do things on the computer for you.
+
+# ---- talk about the talk -----------------------------------------------------
+# {1} the hour
+hour now: The hour is {1}.
+hour only: Sorry! Just the hour: {1}.
+hour taught: Got it: the hour is the number before the colon. Right now the hour is {1}.
+# {1} what she will remember ("your dog is called Nala")
+fact kept: Nice! I'll remember that {1}.
+fact kept: Got it: {1}. I'll remember that.
+# {1} the user's name
+name kept: Nice to meet you, {1}! I'll remember your name.
+# {1} where the user said it
+you did say: You did: you told me "{1}." If that changed, tell me and I'll remember the new one.
+you did not say: You're right, I can't find where you said it. Sorry! What is it really?
+why you did say: Because earlier you told me "{1}", and I keep what you tell me about yourself.
+why you did not say: Because I looked through what you told me and didn't find it.
+# {1} the user's message, {2} her answer
+we talked about: Just before this, you said "{1}" and I answered "{2}"
+we talked about nothing: We haven't talked about anything yet in this chat.
+# {1} the reply said twice
+why repeating: Sorry, you're right: I said "{1}" twice. I didn't know what else to say, so I said it again. Ask me in other words and I'll try harder.
+why repeating long: Sorry, you're right: I gave you the same answer twice. I didn't know what else to say. Ask me in other words and I'll try harder.
+why repeating lost: Sorry! When I don't understand something, I end up saying the same few things. Tell me what you need and I'll try again.
+# {1} the message she didn't understand
+what I didn't get: This one: "{1}". I didn't know how to answer it. Could you say it another way?
+I understood: I think I understood you. If I missed something, tell me which part.
+# {1} her last sentence, {2} why she said it ("I said it because ...")
+what I meant: Sorry, I'll put it more plainly. {1} {2}
+# {1} why she said it, when her last sentence quoted something
+what I meant why: Sorry, I'll put it more plainly. {1}
+user upset: I'm sorry for the trouble. Tell me what you need, and I'll do my best to get it right.
+user upset: Sorry, I know this has been frustrating. What should I do differently?
+user upset: I hear you, and I'm sorry. Tell me the one thing you want most right now, and I'll start there.
+too many questions: Sorry, you're right. I asked because I didn't understand, but that doesn't help you. Ask me again, and I'll answer what I can and say plainly what I can't.
+offer declined: Okay, I won't. Just tell me if you change your mind.
+offer declined again: I heard you: I won't do it, and I haven't done anything.
+no empty words: You're right. If it doesn't mean anything, I shouldn't say it. Sorry about that.
+glad at least: I'm glad that part works now. I'm still learning the rest.
+
+# ---- the same done to several things -----------------------------------------
+# {1} the names ("x, y and z")
+folders made: Done, I made the folders {1}.
+many in trash: Done, {1} are in the trash now.
+
+# ---- what she can do ("do you know how to count?") ----------------------------
+# "can CLASS" for each word class of mind/language/verbs.txt; a class without
+# a line here is answered from what the skill says about its action
+can count: Yes! I can count from one number to another ("count from 1 to 10"), count letters or words in a text ("how many r's are in strawberry?"), and number things in a row, like making 1.txt to 10.txt.
+can range: Yes! I can count from one number to another ("count from 1 to 10"), and number things in a row, like making 1.txt to 10.txt.
+can calc: Yes, I work out sums exactly ("what is 17 * 23?"), with the steps if you ask "why?".
+can create: Yes, I can make files and folders ("make a folder called photos", "create 1.txt to 10.txt").
+can write: Yes, I can write files ("write hello to notes.txt").
+can delete: Yes, I can put files and folders in the trash ("delete notes.txt"), and take them back out ("restore notes.txt").
+can read: Yes, I can read the files in my files folder ("read notes.txt").
+can remember: Yes, I remember what you tell me ("remember that my car is red"), and what you tell me about yourself.
+can time: Yes, I can read the time and the date from this computer's clock.
+can list: Yes, I can list the files and folders I have ("what files do you have?", "what is in the trash?").
+can move: Yes, I can move and rename files and folders ("move notes.txt to docs").
+# {1} the rest of what she can do, when she was asked "you can't do that?"
+can after all: Actually, I can {1}
+# {1} the word for it, asked again right away
+can again: Yes, I can {1}. Give me something to {1}, and I'll show you.
+can again after all: I really can {1}. Give me something to {1}, and I'll show you.
+can skill: Yes, I can: my {1} skill {2}.
+# the same done to a few in one message ({1} the names, {2} where to)
+group folders made: made the folders {1}
+group files made: made the files {1}
+group in trash: put {1} in the trash
+group moved: moved {1} to {2}
+# names in a row ("create 1.txt to 10.txt"): {1} the names
+row files made: Done, I made the files {1}.
+row file made: Done, I made the file {1}.
+row folders made: Done, I made the folders {1}.
+row folder made: Done, I made the folder {1}.
+row in trash: Done, {1} are in the trash now.
+row added: Done, I added to {1}.
+# {1} the names, {2} "is"/"are" or "was"/"were"
+row all there: {1} {2} already there, so there was nothing to do.
+row some there: {1} {2} already there.
+# {1} the ones that didn't work, with why
+row failed: These didn't work: {1}.
+# one step's result into a file: {1} the file, {2} what went in
+pipe saved: Done, I wrote it to {1}: {2}
+pipe added: Done, I added it to {1}: {2}
+pipe failed: I couldn't write it to {1}: {2}.
+# "that was smart!"
+praised work: Thanks! I'm glad that worked.
+praised work: Thank you! I try to work things out instead of giving up.
+# "list them 1.txt to 10.txt": {1} the ones there, {3} the ones not there
+row all here: {1}: all of them are there.
+row none here: None of them are there: {1}. Should I make them?
+row some here: {1} {2} there, but {3} {4} not.

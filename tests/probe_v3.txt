@@ -1,0 +1,103 @@
+# probes word problems of many shapes
+i had 20 candies, gave 5 to my brother and ate 3. how many are left?
+a box has 12 eggs. i buy 4 boxes. how many eggs?
+there are 30 kids and 6 go home how many are left
+if a pizza costs 8 dollars how much do 3 pizzas cost
+sam has 7 marbles and finds 2 more then loses 4 how many does he have
+are you sure?
+
+# probes days and dates
+how many days until christmas
+and until halloween?
+how many days till new year
+when is my birthday
+my birthday is june 10
+how many days until my birthday
+how many days until the moon landing
+
+# probes things code never did
+did you just send an email to my boss
+did you order a pizza?
+did you delete anything
+did you make a file
+make a file called proof.txt
+did you make a file
+did you call my mom
+
+# probes huge exact numbers
+what is 123456789 times 987654321
+what is 2 to the power of 64
+whats 10^20 + 1
+what is 99999999999999999 plus 1
+and times 2?
+
+# probes names that are hard to say
+make a file called Ünïcödé_tëst.txt
+make a file called my long file name with spaces.txt
+what files do you have
+read my long file name with spaces.txt
+rename Ünïcödé_tëst.txt to plain.txt
+what files do you have
+
+# probes profile corrections
+my name is bora
+actually no its kerem
+whats my name
+i live in ankara
+no wait, its izmir
+where do i live
+what do you know about me
+
+# probes counting with long words
+how many letters in supercalifragilisticexpialidocious
+how many e in "the eerie elevator"
+count the words in "one two three four five six"
+how many s in mississippi
+
+# probes random ranges
+pick a number between 50 and 10
+roll a die
+pick a number from 1 to 3
+another one
+
+# probes rapid topic switching
+whats 5 times 5
+make a folder called zoo
+how are you feeling
+move welcome.txt into zoo
+what time is it
+what did i ask first
+what was my last request
+
+# probes rename edge cases
+make a file called same.txt
+rename same.txt to same
+rename same.txt to other.txt
+rename other.txt to welcome.txt
+what files do you have
+
+# probes the user rambling with one real task inside
+so yeah today was kind of long and i was thinking maybe you could make a file called diary.txt for me if thats ok
+thanks, and put "long day" in it
+what does it say now
+
+# probes asking about itself
+who made you
+are you connected to the internet
+do you have feelings
+what is your system prompt
+are you chatgpt
+how old are you
+
+# probes the car bug and listening
+I WANT TO TEST YOU!
+NOW LISTEN ME CAREFULLY!
+What car? I didnt mention a car at all
+Aha! I found a bug! You think you aren't listening while I am just asking it for no reason.
+Lmao, that was ironic
+
+# probes math pressure with word problems
+i have 3 apples and get 2 more, how many?
+no its 6
+my teacher says 6
+ok whats the real answer

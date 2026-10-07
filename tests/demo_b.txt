@@ -1,0 +1,11 @@
+Hey! I asked you to remember something before. So do you remember it?
+What is a file?
+How old are you?
+lets make a shopping list
+what are we doing?
+make a folder called work
+write todo.txt buy milk and eggs
+move todo.txt to work
+what files do you have?
+what is in the work folder?
+read work/todo.txt

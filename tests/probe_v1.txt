@@ -1,0 +1,346 @@
+# probes pure small talk: short acknowledgements should get acknowledged, not "what do you mean?"
+hey
+how's it going
+cool cool
+indeed
+sure
+fair enough
+haha
+lol yeah
+ok
+nah im good
+anyway see ya
+
+# probes questions about the bot itself: name, abilities, how it works, memory
+hi there
+whats ur name
+Code? like programming code?
+what can you do
+how do you work tho
+are you connected to the internet
+do you remember stuff i tell you
+like forever or just now
+can you learn new things
+ok neat
+thanks
+
+# probes personal facts told early and recalled later after unrelated turns
+hi im Deniz
+I'm from Turkey
+i work as a nurse
+whats 12 times 9
+make a folder called shifts
+what time is it
+where am i from?
+whats my job
+and my name?
+what else do you know about me
+
+# probes user correcting the bot about things never said
+hello
+my favorite color is green
+whats my favorite color
+what's my favorite food
+I never said that
+when did I say I had a favorite food?
+thats not what I said, I only told you the color
+ok so what do you actually know about me
+right
+good
+
+# probes create/write/read file cycle with chat mixed in
+create a file called notes.txt
+write "buy milk" in it
+lol i always forget milk
+add "eggs" to notes.txt too
+whats in notes.txt
+nice
+how many lines does it have now
+ok cool thanks
+
+# probes file tasks with missing details where the bot should ask specific questions
+make a file
+call it groceries
+put something in it
+idk just write apples
+move it
+into a folder called food
+does food exist?
+make it then
+ok now move groceries there
+list whats in food
+
+# probes delete, trash, and restore with references back several turns
+create todo.txt
+write "call mom" in it
+create a folder called old
+list my files
+delete todo.txt
+wait no
+bring it back
+is it back?
+whats in it again
+ok rename it to tasks.txt
+list files
+thanks
+
+# probes math in words and exact arithmetic
+whats seven plus five
+and times three?
+what is two hundred divided by eight
+what's 1/3 + 1/6
+square root of 144
+whats 15 percent of 80
+how about 2 to the power of 10
+is that right?
+ok cool
+
+# probes unit-free word problems
+i had 12 apples and gave away 5, how many do i have
+then i bought 3 times as many as i have, how many did i buy
+so total now?
+if i split them between 4 friends how many each
+whats left over
+ok another one: a pack has 6 eggs, i bought 7 packs, how many eggs
+and if 9 broke?
+nice ty
+
+# probes wrong math claims from the user that the bot should correct politely
+2 plus 2 is 5 right
+no im pretty sure its 5
+ok what about 7 times 8, thats 54 yeah
+whats 100 minus 37
+my teacher said 0.1 + 0.2 is exactly 0.3, is that true
+and 10 divided by 0?
+ok fine you win
+haha
+
+# probes made-up words and unknown names, bot should not pretend to know
+do you know what a flurbinator is
+what about Zorvak Mendelli
+he's my uncle
+whats a blimbleflax used for
+are you sure you dont know
+ok i made those up lol
+did you know that?
+whats my uncles name
+nice memory
+
+# probes questions the bot cannot know: weather, news, opinions on real people
+whats the weather like today
+will it rain tomorrow
+whats in the news
+who won the game last night
+what do you think of Elon Musk
+is Taylor Swift a good singer
+whats the price of bitcoin rn
+ok what CAN you tell me then
+what time is it
+and the date?
+
+# probes praise, insults, swearing, and apologies
+youre pretty smart
+actually you're useless
+damn you're slow
+sorry that was mean
+are you mad at me
+ok what's 9 times 9
+nice one
+you're the best lol
+f*** yeah
+ok bye
+
+# probes long rambling messages with one buried request
+so today was kind of a mess, i woke up late, missed the bus, my boss was annoyed, and honestly i just want to sleep. anyway can you make a file called rant.txt and then i'll vent in it later. also my cat knocked over my coffee lol.
+did you make it?
+ok write "worst monday ever" in it
+yeah it was rough. i also had to redo a whole report because the printer ate it and nobody believed me and then it turned out the printer was broken all along. whats 48 divided by 6 by the way, i need to split pages.
+thanks
+whats in rant.txt
+ok good
+
+# probes abrupt topic change and coming back to files later
+create a folder called projects
+make a file called plan.txt inside projects
+btw do you like music
+whats your favorite song
+haha ok
+whats 25 times 4
+anyway, back to the files
+write "step one: start" in the plan
+whats in it
+list projects
+cool
+
+# probes the bot following up on its own questions
+make a file
+ok
+sure
+um what was the question
+oh right, call it diary
+yes
+write "dear diary" in it
+read it to me
+ok thanks
+
+# probes the bot admitting its own previous line meant nothing
+hi
+what did you mean by that
+that made no sense
+what did you just say
+why did you say that
+can you explain your last message
+ok whatever
+whats 3 plus 3
+ok that one made sense lol
+
+# probes time and date questions with casual phrasing
+what time is it
+whats the date
+what day of the week is it
+what month
+how many days till christmas
+is it the weekend yet
+what year is it
+ok thx
+
+# probes remembering facts with updates and contradictions
+my dog's name is Max
+im 27
+actually i'm 28, birthday was last week
+how old am i
+whats my dogs name
+i also have a cat named Luna
+how many pets do i have
+what are their names
+wait i never said i had a cat
+oh nvm i did lol
+ok
+
+# probes move and rename with ambiguous references
+create a.txt
+create b.txt
+create a folder called archive
+move it to archive
+the first one
+list archive
+rename that to old_a.txt
+whats in archive now
+move b.txt there too
+list everything
+
+# probes typos and slang in task requests
+cretae a fiel called shoping.txt
+writ "bred, buter" in it
+wats in it
+lol my spelling is bad
+fix it pls, should be "bread, butter"
+read shoping.txt
+ok rename it to shopping.txt
+list files
+ty bro
+
+# probes asking about files that do not exist and the bot not inventing contents
+read secrets.txt
+whats in passwords.txt
+you sure theres nothing
+list my files
+delete homework.txt
+restore report.docx
+ok make secrets.txt then
+read it now
+ok empty makes sense
+
+# probes conversational memory questions about what was just said
+whats 6 times 7
+what did i just ask you
+what did you answer
+and before that?
+make a file called log.txt
+what was the last thing i asked you to do
+what file did i just make
+ok good memory
+
+# probes mixed task and chat with references several turns back
+create recipe.txt
+my grandma used to make the best soup
+she was from Greece
+write "lentil soup" in that file
+where was my grandma from
+add "two cups lentils" to the recipe
+whats her soup called again
+read the recipe file
+aww
+thanks for listening
+
+# probes overly vague requests where the bot must ask specific questions
+do the thing
+you know
+the file thing
+make it
+i dont know, any name
+fine call it stuff.txt
+put stuff in it
+like anything
+ok write "hello"
+read it
+
+# probes the bot being asked about its own uncertainty and honesty
+are you always right
+how do i know if you're lying
+do you ever make stuff up
+whats the capital of Australia
+are you sure
+whats the population of Mars
+ok what about the meaning of life
+lol fair
+whats 17 times 23
+nice
+
+# probes small talk mixed with facts and mild disagreement
+its so hot today
+yeah
+i hate summer honestly
+you probably dont have a favorite season huh
+fair enough
+my birthday is in december
+when is my birthday
+not the exact date, just the month
+right
+cool
+
+# probes apologies and repairs after the bot gets something wrong
+make a file called report.txt
+no wait i meant report.md
+can you rename it
+sorry for the confusion
+write "draft" in it
+oops i meant "final draft"
+can you fix that
+whats in it now
+thanks, sorry again
+no worries
+
+# probes multi-step math with remembered values
+remember my rent is 1200
+and my salary is 3500
+how much is left after rent
+whats a third of that
+whats my rent again
+if rent goes up 10 percent whats the new rent
+whats left then
+ok i never said 3500 was monthly
+right, it is monthly
+ok thanks
+
+# probes repeated greetings, goodbyes, and the bot not looping
+hi
+hi
+hello again
+hey
+you there?
+ok just checking
+bye
+wait one more thing
+whats 1 plus 1
+ok bye for real

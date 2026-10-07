@@ -1,0 +1,308 @@
+# Code - sense tests 7: regressions found by probe chats on 2026-10-01 (written with the fixes, not held-out)
+# same format as sense_v1.txt
+
+:reset
+> what's 48 divided by 6 by the way, just curious
+= do: calc 48 / 6 -> 8
+> and times three?
+= do: calc (48 / 6) * 3 -> 24
+! do: time
+> is that right?
+= think: check (48 / 6) * 3 = 24 -> right
+> now divide that by 4
+= do: calc ((48 / 6) * 3) / 4 -> 6
+> 7 times 8, that's 54
+= think: check 7 * 8 = 54 -> wrong: 7 * 8 = 56
+! do: calc 7
+> 12 squared is exactly 144
+= think: check 12 ^ 2 = 144 -> right
+
+:reset
+> what's the weather like today?
+= think: know weather -> nothing known
+! do: date
+> so today was rough
+! do: date
+> what month is it?
+= do: date
+> who is Taylor Swift?
+= think: know taylor swift -> nothing known
+
+:reset
+:world welcome.txt
+> make a file called plan.txt
+= do: write plan.txt -> written
+> write "buy milk" in it
+= do: append plan.txt buy milk -> added
+> put something in it
+= think: need append -> what text
+> hold on, whats 2+2
+= do: calc 2 + 2 -> 4
+! write hold
+> ok back to the task
+= think: goal -> add to plan.txt (needs: what text)
+! write task
+
+:reset
+:world welcome.txt
+> make a file called plan.txt
+= do: write plan.txt -> written
+> wait no
+= think: mistake write plan.txt -> should i delete plan.txt?
+
+:reset
+:world a.txt
+> delete a.txt
+= do: delete a.txt -> moved to trash
+> no no no
+= do: restore a.txt -> back from the trash
+
+:reset
+:world a.txt food.txt
+> delete a.txt
+> is it gone?
+= think: find a.txt -> in the trash
+> restore it
+= do: restore a.txt
+> is it back?
+= think: find a.txt -> a.txt
+> does food exist?
+= think: find food -> food.txt
+> does pizza.txt exist?
+= think: find pizza.txt -> not found
+> is the stone in the barn?
+! think: find
+
+:reset
+:world welcome.txt
+> make a fiel called a.txt
+= do: write a.txt -> written
+> make a fodler called docs
+= do: mkdir docs -> folder made
+> wats in passwords.txt
+= do: read passwords.txt
+> create notes.txt
+> what did I just ask?
+= think: your last words -> "create notes.txt"
+> what was the last thing I asked you to do?
+= think: your last request -> "create notes.txt" -> write notes.txt (written)
+> what file did I just make?
+= think: my last action -> write notes.txt (written)
+> when did I say hello?
+= think: you said "hello" -> no
+> do you remember stuff?
+= think: can remember -> yes
+
+:reset
+> remember that the gool value of hp is hp divided by 7
+= formula
+> can you remember that my room is gold?
+= net: remember
+! think: you room
+> save this: Elias is a hunter
+= net: remember
+! need write
+> my uncle Marco is from Rome
+> where is my uncle from?
+= think: your uncle from -> Rome
+> what's my uncle's name?
+= think: your uncle name -> Marco
+
+:reset
+:world welcome.txt
+> make a file called a.txt
+> make a file called b.txt
+> delete one of them
+= think: need delete -> which one
+! do: delete
+> the first one
+= do: delete a.txt -> moved to trash
+
+:reset
+:world welcome.txt
+> make a folder
+= think: need mkdir -> what name
+> sorry for the confusion
+! do: mkdir
+> you pick
+= do: mkdir folder1 -> folder made
+
+:reset
+:world welcome.txt
+> make a file called report.txt
+> can you rename it
+= think: need rename -> what new name
+> can you fix that
+! do: rename
+> no worries
+! do:
+
+:reset
+:world welcome.txt
+> make a file
+> i dont know, any name
+= do: write file1.txt -> written
+> put stuff in it
+= think: need append -> what text
+> ok write "hello"
+= do: append file1.txt hello -> added
+
+:reset
+:world welcome.txt
+:unknown flurbinator
+> ok what about 7 times 8, thats 54 yeah
+= think: check 7 * 8 = 54 -> wrong: 7 * 8 = 56
+> how about 2 to the power of 10
+= do: calc 2 ^ 10 -> 1024
+> is that right?
+= think: check 2 ^ 10 = 1024 -> right
+> and the date?
+= do: date
+> is Taylor Swift a good singer
+= think: know taylor swift -> nothing known
+> do you know what a flurbinator is
+= think: know flurbinator -> never heard of it
+
+# from the user's chat on 2026-10-02
+:reset
+:world welcome.txt
+> I need a folder called asd
+= do: mkdir asd
+> Now in this folder, can you create me a file called 123.txt?
+= do: write asd/123.txt
+:reset
+:world welcome.txt asd/ 123.txt
+:did write 123.txt -> written
+> You created the 123.txt but it is not inside the folder "asd".
+= do: move 123.txt to asd
+> Ask me a question.
+= think: can ask -> no
+> I gotta ask: Did you actually learn what I told you in that message?
+! what i
+
+:reset
+:world welcome.txt
+> make a folder called docs
+> Inside that folder, could you make notes.txt please.
+= do: write docs/notes.txt
+> in docs, make b.txt
+= do: write docs/b.txt
+> ok, now make c.txt
+= do: write c.txt
+> ask me something
+= think: can ask
+> ask me about my day
+! think: can ask
+
+# from the user's second chat on 2026-10-02
+:reset
+:world welcome.txt
+> Can you create me a file? Anything?
+= think: need write -> what name
+> Are you asking what should the file's name?
+! never heard
+> Excuse me? I couldn't understand your sentence.
+> I am really confused.
+> From your messages.
+! do: write
+> Oh you can create files.
+! think: need write
+! do: write
+> Can you create folders?
+= think: can create
+> Helloo?
+! never heard
+> So can you create me a folder named "asd"?
+= do: mkdir asd -> folder made
+> Oh you can create it. Good job
+! think: need
+! do:
+> Please stop that
+! do:
+:reset
+:world welcome.txt messages.txt asd/
+> make a file
+> Please stop that
+! do:
+= ok, i won't
+:reset
+:world welcome.txt
+> make a file called stop.txt
+> No!
+= mistake write stop.txt
+:reset
+:world welcome.txt
+> make a file called stop.txt
+> Don't create stop.txt
+= mistake write stop.txt
+:reset
+:world welcome.txt messages.txt asd/
+> Can you put the file message.txt inside asd folder?
+! do: write
+= did you mean messages.txt
+> Oh sorry, it is messages.txt not message.txt. My bad.
+= do: move messages.txt to asd -> moved
+> Thanks for fixing my mistake too. Even thougth you didn't actually told me.
+! mistake
+:reset
+:world welcome.txt messages.txt asd/
+> Can you now move the file called messages.txt to asd folder?
+= do: move messages.txt to asd -> moved
+:reset
+:world welcome.txt asd/message.txt
+> look at asd/message.txt
+> Maybe delete the file at asd folder.
+= do: delete asd/message.txt
+
+:reset
+:world welcome.txt asd/
+> make a file called message.txt in asd
+= do: write asd/message.txt
+> ok
+> Nothng, just remove the file you just created in the folder called "asd".
+= do: delete asd/message.txt
+:reset
+:world welcome.txt
+:unknown helloo hellooo
+> Can you create me a file? Anything?
+= think: need write -> what name
+> Are you asking what should the file's name?
+= think: goal -> write a file (needs: what name)
+> Helloo?
+! never heard
+> Can you create folders?
+= think: can create
+> So you can or not? Just answer me yes or no
+= think: can create
+
+:reset
+:world welcome.txt asd/
+> Remove the file inside of the folder called asd
+> Oh good job.
+! do:
+> nice work
+! do:
+
+# bare kind words are not references
+:reset
+:world asd/plan.txt welcome.txt
+> move asd/plan.txt to asd
+> move file to folder
+= need move -> which file, which folder
+
+# colon lists, keep-in-mind phrases, late, a games folder
+:reset
+:world welcome.txt a.md b.csv c.json
+> delete these files: a.md, b.csv, and c.json
+= do: delete c.json
+> make these files: x.ini and y.cfg
+= do: write y.cfg
+> Code, create a new folder: stuff
+= do: mkdir stuff
+> keep this in mind: 12 + 3
+! do: calc
+= net: remember
+> code, is it late?
+= do: time
+> can you make a games folder?
+= do: mkdir games

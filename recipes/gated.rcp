@@ -1,0 +1,11 @@
+recipe gated
+param wg 64 d read
+param wu 64 d read
+param wd 64 d write
+x = in
+g = mv wg x
+u = mv wu x
+s = silu g
+h = mul s u
+y = mvt wd h
+out y

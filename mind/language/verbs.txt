@@ -1,0 +1,34 @@
+# Which words ask the AI for which of its actions. It reads this file when it starts.
+# Edit it to teach the AI new words for its actions.
+#
+# action: word, word, two words, ... | how the action is written
+#
+# create works for files and folders: "create a folder" makes a folder, "create a file" makes a file.
+# put works for moving ("put a.txt into docs") and for creating ("put a file named a.txt in docs").
+create: create, make, new, build, set up, generate, produce | write name.txt / mkdir name
+write: write, type, save, store | write name.txt text
+add: add, append, insert, include | append name.txt text
+put: put, place, drop, stick | move name.txt to folder
+move: move, drag, transfer, shift, relocate, carry, shove, take out, pull out, get out | move name.txt to folder
+delete: delete, remove, erase, trash, get rid of, throw away, throw out, discard, destroy, wipe, bin | delete name.txt
+restore: restore, undelete, bring back, recover, undo, put back, get back | restore name.txt
+rename: rename, call, name, change the name of | rename old.txt to new
+read: read, open, show, display, look at, look in, look into, print, view, check | read name.txt
+list: list, ls, dir | files
+calc: calculate, compute, work out, solve, evaluate, figure out | calc 1 + 2
+time: time, clock, how late, what hour | time
+date: date, day, today | date
+remember: remember, memorize, memorise, note, keep in mind, keep this in mind, keep that in mind, hold on to, hold onto, keep track of, don't forget, learn | remember fact
+recall: recall, find, search, look up, lookup | recall words
+forget: forget | forget words
+count: count | count x in text
+reverse: reverse, backwards | reverse words
+random: random, roll, pick a number, flip | random 1 6
+range: range, list numbers, numbers from, count from | range 1 10
+formula: formula | formula name(x) = expression
+
+# past forms that do not end in -ed
+past: made=make, wrote=write, put=put, threw=throw, got=get, took=take, brought=bring, did=do, read=read, saw=see, built=build, set=set, stuck=stick, made up=make
+
+# actions the voice network still chooses by itself (memory and word tools)
+net: remember, recall, forget, count, reverse, random, range, formula

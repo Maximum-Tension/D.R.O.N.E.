@@ -1,0 +1,39 @@
+# How Lucy reads what you say about her work. Each line is a meaning and the
+# words that carry it, separated by commas. Teach her more ways of saying
+# something by adding words to a line; she reads this file again when it
+# changes, so no restart is needed.
+#
+# meaning: phrase, phrase, ...
+
+# something she was asked to take away is still there
+still there: still there, still here, still exists, still exist, still see, can still see, i still see, it is there, it's there, its there, is still there, it is still, it's still, not deleted, not removed, not gone, isn't gone, is not gone, not in the trash, isn't in the trash, wasn't deleted, wasn't removed, didn't delete, didn't remove, did not delete, did not remove, didn't get removed, still in, i see it, i can see it
+
+# something she was asked to make isn't there
+not there: not there, isn't there, is not there, can't see it, cannot see it, don't see it, do not see it, doesn't exist, does not exist, wasn't made, wasn't created, didn't make, didn't create, did not make, did not create, not made, not created, there is no, there's no
+
+# it didn't work
+failed: didn't work, did not work, doesn't work, does not work, not working, isn't working, failed, failing, you failed, you are failing, you're failing, it is not, it's not, it isn't, nothing happened, nothing changed, you lied, you are lying, you're lying, not done, it did not, it didn't, you didn't, you did not, still not, not true, that's not true, wrong
+
+# keep at it
+try again: try again, try something else, try another way, try a different way, try harder, try it again, find a way, find another way, find some way, fix it, fix this, fix that, do it, do it again, do it now, do something, make it work, figure it out, figure something out, solve it, solve this, sort it out, handle it, deal with it, another way, other way, something else, keep trying
+
+# a question about how it went
+is it done: is it done, did it work, did that work, did you do it, is it gone, is it still there, is it there, is it deleted, is it removed, is it in the trash, did you delete it, did you remove it, did you make it, did you create it, is it made, is it still here, does it exist, is it still
+
+# an answer to "Should I ...?"
+yes: yes, yeah, yep, yup, sure, okay, ok, go ahead, do it, please do, please, fine, alright, all right, of course, why not, yes please, go for it, sounds good, that's fine, that is fine
+no: no, nope, don't, do not, no thanks, never mind, nevermind, leave it, cancel, don't do it, do not do it, not that
+
+# not right away
+not now: not instantly, not now, not right away, not immediately, not yet, don't do it now, do not do it now
+
+# questions about her work
+what did you do: what did you do, what have you done, what did you just do, what you did, what did you change
+what are you doing: what are you doing, what are you planning, what's your plan, what is your plan, what will you do, what are you up to, what are you working on, what are you going to do, what is next, what's next, are you doing something, what do you plan
+what were we talking about: what were we talking about, what we were talking about, what was our topic, what were we doing, what we were doing, where were we, what were we saying, what we were saying, what was i saying, what were we just talking about, what was the topic, what did we talk about, what did we just talk about, asking the past
+
+# it was done the wrong way
+done wrong: you did it wrong, that's wrong, that is wrong, not like that, you were supposed to, you supposed to, you're supposed to, you are supposed to, i told you to, i said to, i asked you to, i wanted you to, should have, instead of
+
+# asking whether she heard what was asked
+listening: were you listening, weren't you listening, wasn't you listening, are you listening, aren't you listening, did you hear, didn't you hear, did you hear me, didn't you hear me, did you listen, didn't you listen, you don't listen, you are not listening, you're not listening, you never listen

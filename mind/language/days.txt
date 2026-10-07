@@ -1,0 +1,16 @@
+# Days that fall on the same date every year. The AI uses them to count days.
+# name: month-day
+new year: 1-1
+new year's day: 1-1
+valentine's day: 2-14
+valentines day: 2-14
+valentines: 2-14
+april fools day: 4-1
+april fools: 4-1
+halloween: 10-31
+christmas eve: 12-24
+christmas: 12-25
+xmas: 12-25
+boxing day: 12-26
+new year's eve: 12-31
+new years eve: 12-31

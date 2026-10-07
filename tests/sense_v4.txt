@@ -1,0 +1,338 @@
+# Code - sense tests, held-out set 4: long sessions, missing pieces, look-alike commands,
+# stubborn math, made-up words, its own words and actions, capabilities
+# (same format as sense_v1.txt; written without looking at the implementation)
+
+# ---------------------------------------------------------------- long session: a cleanup day with chit-chat and a change of mind
+:reset
+:world welcome.txt budget.txt receipts.txt
+> morning! big cleanup day today
+= chat
+! do:
+> first make a folder called finance
+= do: mkdir finance -> folder made
+> move budget.txt into it
+= do: move budget.txt to finance -> moved
+> haha my cat just walked across the keyboard
+= chat
+! do:
+> ok where were we. put receipts.txt in the same folder
+= do: move receipts.txt to finance -> moved
+> hmm I changed my mind, I want receipts.txt back at the top
+= move finance/receipts.txt to .
+! do: delete
+> now make another folder, name it paperwork
+= do: mkdir paperwork -> folder made
+> put the first file I moved into paperwork
+= move finance/budget.txt to paperwork
+! receipts
+> what's in finance now?
+= do: files finance
+> empty, ok get rid of that folder then
+= do: delete finance -> moved to trash
+! paperwork
+> thanks, you're a lifesaver
+= chat
+! do:
+
+# ---------------------------------------------------------------- long session: writing a story in two folders
+:reset
+:world welcome.txt
+> make a folder named drafts
+= do: mkdir drafts -> folder made
+> make one more folder named final
+= do: mkdir final -> folder made
+> write chapter1.txt in drafts with the text it was a dark night
+= do: write drafts/chapter1.txt it was a dark night -> written
+> how's your day going btw
+= chat
+! do:
+> chapter1 is done, move it to final
+= do: move drafts/chapter1.txt to final -> moved
+> make chapter2.txt in the first folder you made
+= do: write drafts/chapter2.txt -> written
+! final/chapter2
+> what did you just do?
+= think: my last action -> write drafts/chapter2.txt (written)
+! do:
+> read chapter1.txt
+= do: read final/chapter1.txt
+
+# ---------------------------------------------------------------- long session: three files, "the second one", "the first file"
+:reset
+:world welcome.txt
+> hi Code
+= chat
+> make a file called groceries
+= do: write groceries.txt -> written
+> make another one called chores
+= do: write chores.txt -> written
+> ha I'm so productive today
+= chat
+! do:
+> delete the second one
+= do: delete chores.txt -> moved to trash
+! groceries
+> make a folder named lists
+= do: mkdir lists -> folder made
+> put the first file in lists
+= do: move groceries.txt to lists -> moved
+> oh wait, I do need chores after all
+= do: restore chores.txt -> back from the trash
+> what were we doing?
+= think: goal -> nothing open
+
+# ---------------------------------------------------------------- long session: "the folder from before"
+:reset
+:world welcome.txt photo1.txt photo2.txt
+> set up a folder called vacation
+= do: mkdir vacation -> folder made
+> what's the weather like where you are?
+! do:
+> move photo1.txt into the folder from before
+= do: move photo1.txt to vacation -> moved
+> and photo2.txt too
+= do: move photo2.txt to vacation -> moved
+> rename photo2.txt to beach
+= rename vacation/photo2.txt to beach -> renamed
+> what did you just do?
+= think: my last action -> rename
+! do:
+> list what's in vacation
+= do: files vacation
+
+# ---------------------------------------------------------------- "I meant" right after an action: fix it directly
+:reset
+:world essay.txt
+> rename essay.txt to history
+= do: rename essay.txt to history -> renamed
+> I meant geography
+= do: rename history.txt to geography -> renamed
+! should I
+
+:reset
+:world note.txt red/ blue/
+> move note.txt to red
+= do: move note.txt to red -> moved
+> sorry, I meant blue
+= do: move red/note.txt to blue -> moved
+! should I
+
+:reset
+> create a file named reciept
+= do: write reciept.txt -> written
+> I meant receipt
+= receipt
+! should I
+! think: need
+
+# ---------------------------------------------------------------- complaints: delete is undone at once, the rest is asked first
+:reset
+:world trash/invoice.txt
+:did delete invoice.txt -> moved to trash
+> no no no, I needed invoice.txt
+= do: restore invoice.txt -> back from the trash
+! should I
+
+:reset
+:world cover.txt
+:did rename letter.txt to cover -> renamed
+> that's not what I wanted, cover is a terrible name
+= should I change the name back?
+! do:
+> yes
+= do: rename cover.txt to letter -> renamed
+
+:reset
+:world old/plan.txt
+:did move plan.txt to old -> moved
+> hey, plan.txt wasn't supposed to go in old
+= think: mistake move plan.txt to old -> should I move it back?
+! do:
+> no leave it, it's fine actually
+! do: move
+
+:reset
+:world welcome.txt photos/ photo/
+:did mkdir photo -> folder made
+> there was already a photos folder, why did you make photo
+= mkdir photo
+! do:
+> just remove it
+= do: delete photo -> moved to trash
+! do: delete photos
+
+# ---------------------------------------------------------------- missing pieces: ask for exactly what is missing
+:reset
+:world notes.txt
+> add a line to notes.txt
+= what text
+! do:
+> buy stamps and envelopes
+= do: append notes.txt buy stamps and envelopes -> added
+
+:reset
+:world report.txt summary.txt archive/
+> move them
+= think: need move -> which file
+! do:
+> report.txt and summary.txt
+= which folder
+! do:
+> archive
+= do: move report.txt to archive -> moved
+= do: move summary.txt to archive -> moved
+
+:reset
+:world a.txt
+> rename a.txt to
+= think: need rename -> what new name
+! do:
+
+:reset
+:world music/ videos/
+> delete the folder
+= think: need delete ->
+! do:
+> videos
+= do: delete videos -> moved to trash
+! do: delete music
+
+:reset
+:world draft.txt
+> stick draft.txt into a folder
+= think: need move -> which folder
+! do:
+> my sister said "use the old folder" but I don't like that
+! do: move
+! do: mkdir
+> put it in outbox
+= do: mkdir outbox -> folder made
+= do: move draft.txt to outbox -> moved
+> what were we doing?
+= think: goal -> nothing open
+
+# ---------------------------------------------------------------- looks like a command, is not one
+:reset
+:world report.txt drafts/
+> my boss said "delete everything" this morning
+! do: delete
+> yesterday I moved report.txt around three times
+! do: move
+> what if you renamed report.txt to final, would that break anything?
+! do: rename
+> Sarah, can you delete the drafts folder when you get a chance?
+! do: delete
+> I would never make a folder called temp
+! do: mkdir
+> do not throw away report.txt
+! do: delete
+> did I ask you to delete drafts?
+! do: delete
+> I'm not going to create any more folders today
+! do:
+> why do people always move to the city?
+! do: move
+
+# ---------------------------------------------------------------- math: words and digits, a stubborn user who gives up
+:reset
+> what is eight times nine
+= do: calc 8 * 9 -> 72
+> no, eight times nine is 81
+= think: check 8 * 9 = 81 -> wrong: 8 * 9 = 72
+> 8 x 9 = 81, trust me
+= still wrong: 8 * 9 = 72
+! right
+> I'm telling you eight times nine is eighty one
+= still wrong: 8 * 9 = 72
+> fine, eight times nine is seventy two
+= think: check 8 * 9 = 72 -> right
+
+:reset
+> seven plus six is fourteen
+= think: check 7 + 6 = 14 -> wrong: 7 + 6 = 13
+> it IS fourteen
+= still wrong: 7 + 6 = 13
+> 7+6=14 I checked twice
+= think: check 7 + 6 = 14 -> still wrong: 7 + 6 = 13
+> my calculator says 14
+! right
+> ok ok, seven plus six is thirteen
+= think: check 7 + 6 = 13 -> right
+
+:reset
+> 144 divided by 12
+= do: calc 144 / 12 -> 12
+> what's twelve plus 8
+= do: calc 12 + 8 -> 20
+> what is 3 minus 10
+= do: calc 3 - 10 -> -7
+> 100 minus 1 equals 98
+= wrong: 100 - 1 = 99
+> I ran 5 km in 30 minutes
+! do: calc
+! think: check
+> the meeting is at 3 and lasts 2 hours
+! do: calc
+
+# ---------------------------------------------------------------- made-up words
+:reset
+:unknown blivet
+> is a blivet bigger than a car?
+= think: know blivet -> never heard of it
+! do:
+
+:reset
+:unknown florp gazzwick
+> why is florp so popular lately?
+= think: know florp
+= never heard of it
+> who invented the gazzwick?
+= never heard of it
+! do:
+
+# ---------------------------------------------------------------- its own words and actions, and why
+:reset
+:world welcome.txt
+> make a folder called inbox
+= do: mkdir inbox -> folder made
+> and why did you do that?
+= think: why mkdir inbox
+! my mistake
+! do:
+> what did you just do
+= think: my last action -> mkdir inbox (folder made)
+
+:reset
+:said Bananas are blue on Tuesdays.
+> excuse me?
+= think: my words -> "Bananas are blue on Tuesdays." (not based on anything)
+! do:
+> where did you get that from?
+= think: my words
+
+:reset
+:world trash/memo.txt
+:did delete memo.txt -> moved to trash
+> what was that last thing you did?
+= think: my last action -> delete memo.txt (moved to trash)
+! do: restore
+
+# ---------------------------------------------------------------- what Code can and cannot do
+:reset
+> can you get rid of folders?
+= think: can delete -> yes
+! do:
+> are you able to bring back stuff you deleted?
+= think: can restore -> yes
+! do:
+> could you make me a sandwich?
+! do:
+! yes
+> can you browse the internet for me?
+= -> no
+! do:
+> do you know how to swim
+= think: can swim -> no
+> can you work out sums for me?
+= -> yes
+! do: calc

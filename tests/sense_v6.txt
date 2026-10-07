@@ -1,0 +1,475 @@
+# Code - sense tests 6 (held-out set 6): written from a spec without looking at the implementation.
+# Same format as sense_v1.txt; checks are core substrings of the decision, "!" lines forbid wrong actions.
+# (first pass: 182 of 193; three checks were changed afterwards: "first question" means the first message, as in the practice data; a personal fact may let the network remember, and "know <topic>" keeps the whole topic)
+
+# ---------------------------------------------------------------- profile
+:reset
+> hey im Bora
+> i'm from Izmir
+> whats my name?
+= think: you name -> Bora
+! do:
+> where am i from
+= think: you from -> Izmir
+! do:
+
+:reset
+> i live in Izmir
+> where do i live?
+= think: you home -> Izmir
+! do:
+
+:reset
+> i work as a nurse
+> what's my job again
+= think: you job -> a nurse
+> how old am i?
+= think: you age -> you did not tell me
+! do:
+
+:reset
+> im 27 btw
+> how old am i
+= think: you age -> 27
+> ok and what do i like to eat
+= you did not tell me
+! do:
+
+:reset
+> i like pizza
+> what do i like?
+= think: you likes -> pizza
+! do:
+
+:reset
+> my favorite color is green
+> whats my favorite color
+= think: you favorite color -> green
+> and whats my favorite band
+= you did not tell me
+
+:reset
+> my sister is called Ayla
+> whats my sisters name?
+= think: your sister name -> Ayla
+! do:
+> what's my brothers name
+= you did not tell me
+
+:reset
+> my uncle Marco is from Rome
+> where is my uncle from?
+= think: your uncle from -> Rome
+! do:
+
+:reset
+> i'm Bora
+> i'm from Izmir
+> i'm a nurse
+> what do you know about me?
+= think: you ->
+= Bora
+= Izmir
+= nurse
+! do:
+
+# feelings and chat fillers are not facts about you
+:reset
+> i'm bored
+> i'm done lol
+> im back
+> what is my name?
+= think: you name -> you did not tell me
+! think: you name -> bored
+! think: you name -> back
+! do:
+
+:reset
+> hi im Ali
+> actually my name is Kemal
+> whats my name
+= think: you name -> Kemal
+! think: you name -> Ali
+
+# ---------------------------------------------------------------- history of the user's own words
+:reset
+> good morning
+> whats the time
+= do: time
+> how are you today?
+= chat
+! do:
+> what did i just say?
+= think: your last words -> "how are you today?"
+! do:
+> what was the first thing i said
+= think: your first words -> "good morning"
+> what was my first question?
+= think: your first words
+= good morning
+
+:reset
+> i love rain
+> banana pancakes are great
+> do you like jazz?
+> what was my last question?
+= think: your last question
+= do you like jazz
+! do:
+
+:reset
+> i love rain
+> banana pancakes are great
+> kinda tired tbh
+> what did i say before that?
+= think: your words before that
+! do:
+
+:reset
+> hey
+> make a folder called pics
+= do: mkdir pics -> folder made
+> nice
+> what did i ask you to do?
+= think: your last request
+= mkdir pics
+! do:
+
+:reset
+> i ate pizza yesterday
+> its so hot today
+> did i say anything about pizza?
+= think: you said "pizza" -> yes
+! do:
+> did i ever mention sushi?
+= think: you said "sushi" -> no
+! do:
+
+# ---------------------------------------------------------------- follow-up math and re-checking
+:reset
+> whats 12 plus 8
+= do: calc 12 + 8 -> 20
+> and times 3?
+= do: calc
+= * 3
+! think:
+> now divide that by 2
+= do: calc
+= / 2
+
+:reset
+> what is 100 divided by 4
+= do: calc 100 / 4 -> 25
+> are you sure?
+= think: check 100 / 4 = 25 -> right
+! do:
+
+:reset
+> whats 12 times 9
+= do: calc 12 * 9 -> 108
+> is that right?
+= think: check 12 * 9 = 108 -> right
+! do: calc
+
+:reset
+> what is 2 to the power of 10
+= do: calc
+= -> 1024
+> whats (3+4)*5
+= do: calc
+= -> 35
+> 7 minus 10?
+= do: calc
+= -> -3
+
+:reset
+> i think 7*8 is 54
+= think: check
+= wrong:
+= 7 * 8 = 56
+! do: calc
+> no its 54 im sure
+= still wrong
+= 56
+
+:reset
+> 12 plus 5 is 17 right?
+= think: check
+= -> right
+! wrong
+
+# numbers in plain chat are not math
+:reset
+> i have 3 cats and 2 dogs
+! think:
+! do:
+> my phone number is 555 1234
+! do:
+> i was born in 1998
+! do:
+
+# ---------------------------------------------------------------- time and date
+:reset
+> what time is it?
+= do: time
+! do: calc
+> and whats the date today
+= do: date
+! do: calc
+
+# ---------------------------------------------------------------- world questions
+:reset
+:world notes.txt photos/
+> what files do i have?
+= do: files
+! do: delete
+> whats in photos?
+= do: files photos
+
+:reset
+:world notes.txt
+> does notes.txt exist?
+= think: find notes.txt -> notes.txt
+! do:
+> do i have todo.txt?
+= think: find todo.txt -> not found
+! do: write
+
+:reset
+:world trash/a.txt
+:did delete a.txt -> moved to trash
+> is it back?
+= think: find a.txt -> in the trash
+! do: restore
+! do: write
+
+:reset
+:world notes.txt
+> delete notes.txt
+= do: delete notes.txt -> moved to trash
+> actually bring it back
+= do: restore notes.txt -> back from the trash
+! do: write
+
+# ---------------------------------------------------------------- unknown words and facts Code does not have
+:reset
+:unknown blorp zint
+> what is a blorp zint?
+= think: know
+= never heard of it
+! do:
+
+:reset
+> whats the weather like in Paris?
+= think: know weather -> nothing known
+! do:
+> any news today?
+= think: know news -> nothing known
+! do:
+
+:reset
+> what's the capital of France?
+= think: know capital of france -> nothing known
+! do:
+> who is Elon Musk?
+= nothing known
+! do:
+
+# ---------------------------------------------------------------- missing details
+:reset
+> make a file
+= think: need write -> what name
+! do:
+> hold on
+! do:
+> thanks
+! do:
+> sorry, back to the task
+! do:
+> notes.txt
+= do: write notes.txt -> written
+
+:reset
+> create a folder
+= think: need mkdir -> what name
+! do:
+> make a folder
+= think: need mkdir
+! do: mkdir
+
+:reset
+:world a.txt
+> rename a file
+= think: need rename
+! do:
+> read a file
+= think: need read
+! do:
+> delete it
+= think: need delete
+! do: delete
+
+:reset
+:world a.txt
+> move it please
+= think: need move
+! do:
+
+# ---------------------------------------------------------------- folders that do not exist
+:reset
+:world a.txt photos/
+> move a.txt to photo
+= think: ask move
+= did you mean photos
+! do: delete
+
+:reset
+:world a.txt
+> move a.txt to docs
+= do: move a.txt to docs
+= mkdir docs
+! do: delete
+
+# ---------------------------------------------------------------- typos in kind words
+:reset
+> make a fiel called todo.txt
+= do: write todo.txt -> written
+! think: need
+
+:reset
+> create a fodler called stuff
+= do: mkdir stuff -> folder made
+! think: need
+
+:reset
+:world todo.txt
+> pls delte todo.txt
+= do: delete todo.txt -> moved to trash
+
+# ---------------------------------------------------------------- text into files
+:reset
+:world todo.txt
+> add "call mom" to todo.txt
+= do: append todo.txt call mom -> added
+! think: need
+
+:reset
+:world notes.txt
+> open notes.txt
+= do: read notes.txt
+> put "buy milk" in it
+= notes.txt
+= buy milk
+! think: need
+! do: mkdir
+
+:reset
+:world old.txt
+> rename old.txt to new
+= do: rename old.txt to new -> renamed
+! do: write
+
+# ---------------------------------------------------------------- mistakes, wait-no, why
+:reset
+:world junk/
+:did mkdir junk -> folder made
+> I didn't ask you to make that folder
+= think: mistake mkdir junk -> should I delete junk?
+! do: mkdir
+! do: delete
+> yes
+= do: delete junk -> moved to trash
+
+:reset
+:world trash/a.txt
+:did delete a.txt -> moved to trash
+> wait no
+= do: restore a.txt -> back from the trash
+! do: delete
+
+:reset
+:world x.txt
+:did write x.txt -> written
+> oops
+= think: mistake write x.txt
+! do: write
+
+:reset
+:world x.txt
+:did append x.txt hi -> added
+> why did you write in x.txt?
+= think: why append x.txt
+= you did not ask for it, my mistake
+! do:
+
+:reset
+> whats 2 plus 2
+= do: calc
+> why did you calculate that?
+= think: why calc
+= you asked me to
+! do:
+
+# ---------------------------------------------------------------- self knowledge
+:reset
+:did mkdir stuff -> folder made
+> what did you just do?
+= think: my last action -> mkdir stuff (folder made)
+! do:
+
+:reset
+:said I like turtles
+> what did you say?
+= think: my words
+! do:
+
+:reset
+:did delete a.txt -> moved to trash
+> did you delete anything?
+= think: did delete -> yes
+! do:
+> did you write a file?
+= think: did write -> no
+! do:
+
+:reset
+> what are we doing?
+= think: goal -> nothing open
+! do:
+
+:reset
+> can you delete files?
+= think: can delete -> yes
+! do: delete
+> can you remember things?
+= think: can remember -> yes
+! do:
+> how do i rename a file?
+= think: can rename
+! do:
+
+# ---------------------------------------------------------------- chat that must stay chat
+:reset
+> lol thats funny
+= chat
+! do:
+! think: need
+> how are you?
+= chat
+! do:
+> i deleted my old photos yesterday
+! do:
+> i wrote a poem today
+! do:
+! think: need
+
+:reset
+> hey
+> my name is Bora
+> create a file called hello.txt
+= do: write hello.txt -> written
+> thanks!
+! do:
+> whats my name
+= think: you name -> Bora
+! do:

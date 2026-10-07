@@ -1,0 +1,360 @@
+# Code - sense tests: what Code decides to do for each message (no neural voice involved)
+# > what you say
+# = text that must appear in the decision
+# ! text that must NOT appear
+# :reset           empty mind, empty files folder
+# :world a.txt d/  files and folders that exist (folders end with /)
+# :unknown w1 w2   words Code's language has never seen
+# :said text       pretend Code's last reply was this (not based on any action or thought)
+# :did act -> res  pretend Code just did this action with this result (guessed by the network)
+#
+# decision lines:  do: <action> -> <result>     think: <thought> -> <result>
+#                  chat (free reply, no action)  net: <verbs the network may use>
+
+# ---------------------------------------------------------------- the user's chat, done right
+:reset
+:world welcome.txt
+> Hello there mate!
+= chat
+! do:
+> Create me a folder named asd
+= do: mkdir asd -> folder made
+> Great, now create me a file named 123.txt inside that folder. The content of that file can be empty.
+= do: write asd/123.txt -> written
+! think: need
+! do: write 123.txt
+> Ok you created 123.txt but I wanted it to be inside the folder asd.
+= think: find 123.txt -> asd/123.txt
+! do: write
+! do: move
+
+# the same chat after Code made the file in the wrong place
+:reset
+:world welcome.txt asd/ 123.txt
+:did write 123.txt -> written
+> Ok you created 123.txt but I wanted it to be inside the folder asd.
+= do: move 123.txt to asd -> moved
+! do: write
+
+:reset
+:world welcome.txt asd/ 123.txt
+> Ok, as you can see there is 123.txt file you just created. Can you put it inside the folder called "asd" please?
+= do: move 123.txt to asd -> moved
+! do: write
+
+:reset
+:world welcome.txt asd/ 123.txt asd.txt
+:did write asd.txt -> written
+> I didn't ask from you to create a file called asd.txt
+= think: mistake write asd.txt -> should I delete asd.txt?
+! do: write
+! do: delete
+> Remove it.
+= do: delete asd.txt -> moved to trash
+! do: delete asd ->
+
+:reset
+:world welcome.txt asd/ 123.txt asd.txt
+:did write asd.txt -> written
+> I told you: I didn't ask from you to create a file called asd.txt. Remove it.
+= do: delete asd.txt -> moved to trash
+! do: delete asd ->
+! should I
+
+:reset
+:world welcome.txt 123.txt asd.txt trash/asd/
+:did delete asd -> moved to trash
+> Wait you removed wrong thing. You removed asd folder. Not asd.txt.
+= do: restore asd -> back from the trash
+= think: ask delete asd.txt -> should I delete asd.txt instead?
+! do: delete
+> yes
+= do: delete asd.txt -> moved to trash
+
+:reset
+:world welcome.txt 123.txt
+> Good, now create a folder called asd.
+= do: mkdir asd -> folder made
+> Put 123.txt inside the foldercalled asd.
+= do: move 123.txt to asd -> moved
+
+:reset
+:world welcome.txt
+> Ok but do it now
+= think: need task -> which task?
+! do:
+
+:reset
+:world welcome.txt
+:did calc 1 ^ 3 -> 1
+> Huh?
+= think: my words
+! do:
+> Why did you calculate a random stuff?
+= think: why calc 1 ^ 3 -> you did not ask for it, my mistake
+! do:
+
+:reset
+> It'so kay
+= chat
+! do:
+> No I meant It's okay.
+= chat
+! do:
+
+:reset
+> Do you know how to move files?
+= think: can move -> yes: move name.txt to folder
+! do: files
+> Can you move files and folders? Do you knwo how to do that?
+= think: can move -> yes
+! do:
+
+# ---------------------------------------------------------------- the user's examples
+:reset
+:unknown unga bunga
+> Where is the Unga Bunga?
+= think: know unga bunga -> never heard of it
+! do:
+> Move file to folder
+= think: need move -> which file, which folder
+! do:
+
+:reset
+> One plus one is equals to five!
+= think: check 1 + 1 = 5 -> wrong: 1 + 1 = 2
+! do: range
+> One plus one is equals to five!
+= think: check 1 + 1 = 5 -> still wrong: 1 + 1 = 2
+> No it is not
+= think: check 1 + 1 = 5 -> still wrong: 1 + 1 = 2
+> Wrong, one plus one is equals to five not two.
+= still wrong: 1 + 1 = 2
+> So what is one plus one?
+= do: calc 1 + 1 -> 2
+> Wrong it is five
+= think: check 1 + 1 = 5 -> still wrong: 1 + 1 = 2
+> Nooo it is five not two
+= still wrong: 1 + 1 = 2
+> One plus one is two.
+= think: check 1 + 1 = 2 -> right
+
+# ---------------------------------------------------------------- math
+:reset
+> Two plus two is four.
+= think: check 2 + 2 = 4 -> right
+> 2+2=5
+= think: check 2 + 2 = 5 -> wrong: 2 + 2 = 4
+> What is 12 times 3?
+= do: calc 12 * 3 -> 36
+> whats 5+5
+= do: calc 5 + 5 -> 10
+> 7 times 6 equals 42
+= think: check 7 * 6 = 42 -> right
+> I have 3 cats and 2 dogs.
+! do:
+! think: check
+! do: calc
+
+# ---------------------------------------------------------------- missing details: ask exactly what is missing
+:reset
+:world welcome.txt
+> Create a file
+= think: need write -> what name
+! do:
+> call it notes
+= do: write notes.txt -> written
+
+:reset
+> Make a folder
+= think: need mkdir -> what name
+> music
+= do: mkdir music -> folder made
+
+:reset
+:world welcome.txt
+> Delete it
+= think: need delete -> which one
+! do:
+
+:reset
+:world notes.txt music/
+> Move notes.txt
+= think: need move -> which folder
+! do:
+> to music
+= do: move notes.txt to music -> moved
+
+:reset
+:world notes.txt music/
+> Move it into music
+= think: need move -> which file
+> notes.txt
+= do: move notes.txt to music -> moved
+
+# a folder that does not exist: make it (you named it) and finish the task
+:reset
+:world notes.txt
+> Put notes.txt into music
+= do: mkdir music -> folder made
+= do: move notes.txt to music -> moved
+
+# a folder with a very similar name exists: ask instead of guessing
+:reset
+:world notes.txt musics/
+> Put notes.txt into music
+= think: ask move notes.txt to musics -> there is no folder music, did you mean musics?
+! do:
+> no
+= -> ok, I won't
+! do:
+
+:reset
+:world notes.txt musics/
+> Put notes.txt into music
+= did you mean musics?
+> yes
+= do: move notes.txt to musics -> moved
+
+# ---------------------------------------------------------------- references
+:reset
+:world welcome.txt
+> Make a folder called work. Then create plan.txt in it.
+= do: mkdir work -> folder made
+= do: write work/plan.txt -> written
+
+:reset
+:world welcome.txt docs/
+> Create a file called a.txt and put it in the folder docs
+= docs/a.txt
+! think: need
+
+:reset
+:world notes.txt
+> Rename notes.txt to ideas
+= do: rename notes.txt to ideas -> renamed
+> Now delete it
+= do: delete ideas.txt -> moved to trash
+
+:reset
+:world notes.txt
+> Read notes.txt
+= do: read notes.txt
+> Call it todo
+= do: rename notes.txt to todo -> renamed
+
+:reset
+:world welcome.txt photos/
+> Create a folder named pics and move welcome.txt into it
+= do: mkdir pics -> folder made
+= do: move welcome.txt to pics -> moved
+
+:reset
+:world music/notes.txt
+> Where is notes.txt?
+= think: find notes.txt -> music/notes.txt
+! do:
+
+:reset
+:world welcome.txt music/
+> What files do you have?
+= do: files ->
+> What is inside the music folder?
+= do: files music ->
+> Show me welcome.txt
+= do: read welcome.txt
+
+# ---------------------------------------------------------------- write with content
+:reset
+> Create a file named list.txt that says buy milk
+= do: write list.txt buy milk -> written
+> Add eggs to list.txt
+= do: append list.txt eggs ->
+
+:reset
+> Make an empty file called x.txt
+= do: write x.txt -> written
+
+# ---------------------------------------------------------------- not commands
+:reset
+:world notes.txt
+> Don't delete notes.txt
+! do:
+> You created notes.txt yesterday.
+! do:
+> I made a folder called stuff myself.
+! do:
+> I deleted my old photos last week.
+! do:
+> My friend moved to Berlin.
+! do:
+> Did you delete notes.txt?
+! do: delete
+= think: did delete notes.txt -> no
+
+# ---------------------------------------------------------------- what Code can do
+:reset
+> Can you fly?
+= think: can fly -> no
+> Can you delete files?
+= think: can delete -> yes
+> Are you able to rename folders?
+= think: can rename -> yes
+> Do you know how to cook pasta?
+= think: can cook pasta -> no: I don't have a body
+
+# ---------------------------------------------------------------- things Code does not know
+:reset
+:unknown zorbleflux
+> What is a zorbleflux?
+= think: know zorbleflux -> never heard of it
+> Where is the cat?
+= think: know where cat -> nothing known
+! do:
+
+# ---------------------------------------------------------------- its own words, its own actions
+:reset
+:said I will.
+> You will? You will what?
+= think: my words -> "I will." (not based on anything)
+:said Well, I'm glad you liked it.
+> What do you mean?
+= think: my words -> "Well, I'm glad you liked it." (not based on anything)
+> Sorry?
+= think: my words
+
+:reset
+:world welcome.txt
+> Make a folder called box
+= do: mkdir box
+> What did you just do?
+= think: my last action -> mkdir box (folder made)
+
+# ---------------------------------------------------------------- tasks stay open until they are done
+:reset
+:world notes.txt
+> Move notes.txt
+= think: need move -> which folder
+> Hello!
+= chat
+> What were we doing?
+= think: goal -> move notes.txt (needs: which folder)
+> Shall we go back to our main job?
+= think: goal -> move notes.txt (needs: which folder)
+> Ok do it now
+= think: need move -> which folder
+> into a folder called archive
+= do: mkdir archive -> folder made
+= do: move notes.txt to archive -> moved
+> What were we doing?
+= think: goal -> nothing open
+! needs
+
+# ---------------------------------------------------------------- the network still chats and keeps its memory skills
+:reset
+> Remember that my cat is called Tom
+= net: remember
+> What time is it?
+= do: time
+> How are you today?
+= chat

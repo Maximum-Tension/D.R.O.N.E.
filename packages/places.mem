@@ -1,0 +1,123 @@
+# places.mem: a knowledge package for Lucy.
+# about: countries, their capitals, continents and languages, and the oceans
+# Each line: name, other names: what it is | property: value | property: value
+# Put this file in the mind/memory folder and Lucy knows it at once, no restart needed.
+
+france: France is a country in Europe. Its capital is Paris. | capital: Paris | continent: Europe | kind: country, place | language: French
+germany: Germany is a country in Europe. Its capital is Berlin. | capital: Berlin | continent: Europe | kind: country, place | language: German
+poland: Poland is a country in Europe. Its capital is Warsaw. | capital: Warsaw | continent: Europe | kind: country, place | language: Polish
+italy: Italy is a country in Europe. Its capital is Rome. | capital: Rome | continent: Europe | kind: country, place | language: Italian
+spain: Spain is a country in Europe. Its capital is Madrid. | capital: Madrid | continent: Europe | kind: country, place | language: Spanish
+portugal: Portugal is a country in Europe. Its capital is Lisbon. | capital: Lisbon | continent: Europe | kind: country, place | language: Portuguese
+united kingdom, uk, britain: United Kingdom is a country in Europe. Its capital is London. | capital: London | continent: Europe | kind: country, place | language: English
+england: England is a country in Europe. Its capital is London. | capital: London | continent: Europe | kind: country, place | language: English
+ireland: Ireland is a country in Europe. Its capital is Dublin. | capital: Dublin | continent: Europe | kind: country, place | language: English and Irish
+netherlands, holland: Netherlands is a country in Europe. Its capital is Amsterdam. | capital: Amsterdam | continent: Europe | kind: country, place | language: Dutch
+belgium: Belgium is a country in Europe. Its capital is Brussels. | capital: Brussels | continent: Europe | kind: country, place | language: Dutch, French and German
+switzerland: Switzerland is a country in Europe. Its capital is Bern. | capital: Bern | continent: Europe | kind: country, place | language: German, French, Italian and Romansh
+austria: Austria is a country in Europe. Its capital is Vienna. | capital: Vienna | continent: Europe | kind: country, place | language: German
+sweden: Sweden is a country in Europe. Its capital is Stockholm. | capital: Stockholm | continent: Europe | kind: country, place | language: Swedish
+norway: Norway is a country in Europe. Its capital is Oslo. | capital: Oslo | continent: Europe | kind: country, place | language: Norwegian
+denmark: Denmark is a country in Europe. Its capital is Copenhagen. | capital: Copenhagen | continent: Europe | kind: country, place | language: Danish
+finland: Finland is a country in Europe. Its capital is Helsinki. | capital: Helsinki | continent: Europe | kind: country, place | language: Finnish and Swedish
+greece: Greece is a country in Europe. Its capital is Athens. | capital: Athens | continent: Europe | kind: country, place | language: Greek
+turkey: Turkey is a country in Europe and Asia. Its capital is Ankara. | capital: Ankara | continent: Europe and Asia | kind: country, place | language: Turkish
+russia: Russia is a country in Europe and Asia. Its capital is Moscow. | capital: Moscow | continent: Europe and Asia | kind: country, place | language: Russian
+ukraine: Ukraine is a country in Europe. Its capital is Kyiv. | capital: Kyiv | continent: Europe | kind: country, place | language: Ukrainian
+czech republic, czechia: Czech Republic is a country in Europe. Its capital is Prague. | capital: Prague | continent: Europe | kind: country, place | language: Czech
+hungary: Hungary is a country in Europe. Its capital is Budapest. | capital: Budapest | continent: Europe | kind: country, place | language: Hungarian
+romania: Romania is a country in Europe. Its capital is Bucharest. | capital: Bucharest | continent: Europe | kind: country, place | language: Romanian
+united states, usa, america, us: United States is a country in North America. Its capital is Washington, D.C.. | capital: Washington, D.C. | continent: North America | kind: country, place | language: English
+canada: Canada is a country in North America. Its capital is Ottawa. | capital: Ottawa | continent: North America | kind: country, place | language: English and French
+mexico: Mexico is a country in North America. Its capital is Mexico City. | capital: Mexico City | continent: North America | kind: country, place | language: Spanish
+brazil: Brazil is a country in South America. Its capital is Brasilia. | capital: Brasilia | continent: South America | kind: country, place | language: Portuguese
+argentina: Argentina is a country in South America. Its capital is Buenos Aires. | capital: Buenos Aires | continent: South America | kind: country, place | language: Spanish
+chile: Chile is a country in South America. Its capital is Santiago. | capital: Santiago | continent: South America | kind: country, place | language: Spanish
+peru: Peru is a country in South America. Its capital is Lima. | capital: Lima | continent: South America | kind: country, place | language: Spanish
+colombia: Colombia is a country in South America. Its capital is Bogota. | capital: Bogota | continent: South America | kind: country, place | language: Spanish
+china: China is a country in Asia. Its capital is Beijing. | capital: Beijing | continent: Asia | kind: country, place | language: Chinese
+japan: Japan is a country in Asia. Its capital is Tokyo. | capital: Tokyo | continent: Asia | kind: country, place | language: Japanese
+south korea, korea: South Korea is a country in Asia. Its capital is Seoul. | capital: Seoul | continent: Asia | kind: country, place | language: Korean
+india: India is a country in Asia. Its capital is New Delhi. | capital: New Delhi | continent: Asia | kind: country, place | language: Hindi and English
+pakistan: Pakistan is a country in Asia. Its capital is Islamabad. | capital: Islamabad | continent: Asia | kind: country, place | language: Urdu and English
+indonesia: Indonesia is a country in Asia. Its capital is Jakarta. | capital: Jakarta | continent: Asia | kind: country, place | language: Indonesian
+thailand: Thailand is a country in Asia. Its capital is Bangkok. | capital: Bangkok | continent: Asia | kind: country, place | language: Thai
+vietnam: Vietnam is a country in Asia. Its capital is Hanoi. | capital: Hanoi | continent: Asia | kind: country, place | language: Vietnamese
+philippines: Philippines is a country in Asia. Its capital is Manila. | capital: Manila | continent: Asia | kind: country, place | language: Filipino and English
+iran: Iran is a country in Asia. Its capital is Tehran. | capital: Tehran | continent: Asia | kind: country, place | language: Persian
+iraq: Iraq is a country in Asia. Its capital is Baghdad. | capital: Baghdad | continent: Asia | kind: country, place | language: Arabic and Kurdish
+saudi arabia: Saudi Arabia is a country in Asia. Its capital is Riyadh. | capital: Riyadh | continent: Asia | kind: country, place | language: Arabic
+israel: Israel is a country in Asia. Its capital is Jerusalem. | capital: Jerusalem | continent: Asia | kind: country, place | language: Hebrew
+egypt: Egypt is a country in Africa. Its capital is Cairo. | capital: Cairo | continent: Africa | kind: country, place | language: Arabic
+nigeria: Nigeria is a country in Africa. Its capital is Abuja. | capital: Abuja | continent: Africa | kind: country, place | language: English
+kenya: Kenya is a country in Africa. Its capital is Nairobi. | capital: Nairobi | continent: Africa | kind: country, place | language: Swahili and English
+south africa: South Africa is a country in Africa. Its capital is Pretoria. | capital: Pretoria | continent: Africa | kind: country, place | language: many languages
+morocco: Morocco is a country in Africa. Its capital is Rabat. | capital: Rabat | continent: Africa | kind: country, place | language: Arabic and Berber
+ethiopia: Ethiopia is a country in Africa. Its capital is Addis Ababa. | capital: Addis Ababa | continent: Africa | kind: country, place | language: Amharic
+australia: Australia is a country in Oceania. Its capital is Canberra. | capital: Canberra | continent: Oceania | kind: country, place | language: English
+new zealand: New Zealand is a country in Oceania. Its capital is Wellington. | capital: Wellington | continent: Oceania | kind: country, place | language: English and Maori
+paris: Paris is the capital of France. | country: France | kind: city, capital, place
+berlin: Berlin is the capital of Germany. | country: Germany | kind: city, capital, place
+warsaw: Warsaw is the capital of Poland. | country: Poland | kind: city, capital, place
+rome: Rome is the capital of Italy. | country: Italy | kind: city, capital, place
+madrid: Madrid is the capital of Spain. | country: Spain | kind: city, capital, place
+lisbon: Lisbon is the capital of Portugal. | country: Portugal | kind: city, capital, place
+london: London is the capital of United Kingdom. | country: United Kingdom | kind: city, capital, place
+dublin: Dublin is the capital of Ireland. | country: Ireland | kind: city, capital, place
+amsterdam: Amsterdam is the capital of Netherlands. | country: Netherlands | kind: city, capital, place
+brussels: Brussels is the capital of Belgium. | country: Belgium | kind: city, capital, place
+bern: Bern is the capital of Switzerland. | country: Switzerland | kind: city, capital, place
+vienna: Vienna is the capital of Austria. | country: Austria | kind: city, capital, place
+stockholm: Stockholm is the capital of Sweden. | country: Sweden | kind: city, capital, place
+oslo: Oslo is the capital of Norway. | country: Norway | kind: city, capital, place
+copenhagen: Copenhagen is the capital of Denmark. | country: Denmark | kind: city, capital, place
+helsinki: Helsinki is the capital of Finland. | country: Finland | kind: city, capital, place
+athens: Athens is the capital of Greece. | country: Greece | kind: city, capital, place
+ankara: Ankara is the capital of Turkey. | country: Turkey | kind: city, capital, place
+moscow: Moscow is the capital of Russia. | country: Russia | kind: city, capital, place
+kyiv: Kyiv is the capital of Ukraine. | country: Ukraine | kind: city, capital, place
+prague: Prague is the capital of Czech Republic. | country: Czech Republic | kind: city, capital, place
+budapest: Budapest is the capital of Hungary. | country: Hungary | kind: city, capital, place
+bucharest: Bucharest is the capital of Romania. | country: Romania | kind: city, capital, place
+washington, d.c.: Washington, D.C. is the capital of United States. | country: United States | kind: city, capital, place
+ottawa: Ottawa is the capital of Canada. | country: Canada | kind: city, capital, place
+mexico city: Mexico City is the capital of Mexico. | country: Mexico | kind: city, capital, place
+brasilia: Brasilia is the capital of Brazil. | country: Brazil | kind: city, capital, place
+buenos aires: Buenos Aires is the capital of Argentina. | country: Argentina | kind: city, capital, place
+santiago: Santiago is the capital of Chile. | country: Chile | kind: city, capital, place
+lima: Lima is the capital of Peru. | country: Peru | kind: city, capital, place
+bogota: Bogota is the capital of Colombia. | country: Colombia | kind: city, capital, place
+beijing: Beijing is the capital of China. | country: China | kind: city, capital, place
+tokyo: Tokyo is the capital of Japan. | country: Japan | kind: city, capital, place
+seoul: Seoul is the capital of South Korea. | country: South Korea | kind: city, capital, place
+new delhi: New Delhi is the capital of India. | country: India | kind: city, capital, place
+islamabad: Islamabad is the capital of Pakistan. | country: Pakistan | kind: city, capital, place
+jakarta: Jakarta is the capital of Indonesia. | country: Indonesia | kind: city, capital, place
+bangkok: Bangkok is the capital of Thailand. | country: Thailand | kind: city, capital, place
+hanoi: Hanoi is the capital of Vietnam. | country: Vietnam | kind: city, capital, place
+manila: Manila is the capital of Philippines. | country: Philippines | kind: city, capital, place
+tehran: Tehran is the capital of Iran. | country: Iran | kind: city, capital, place
+baghdad: Baghdad is the capital of Iraq. | country: Iraq | kind: city, capital, place
+riyadh: Riyadh is the capital of Saudi Arabia. | country: Saudi Arabia | kind: city, capital, place
+jerusalem: Jerusalem is the capital of Israel. | country: Israel | kind: city, capital, place
+cairo: Cairo is the capital of Egypt. | country: Egypt | kind: city, capital, place
+abuja: Abuja is the capital of Nigeria. | country: Nigeria | kind: city, capital, place
+nairobi: Nairobi is the capital of Kenya. | country: Kenya | kind: city, capital, place
+pretoria: Pretoria is the capital of South Africa. | country: South Africa | kind: city, capital, place
+rabat: Rabat is the capital of Morocco. | country: Morocco | kind: city, capital, place
+addis ababa: Addis Ababa is the capital of Ethiopia. | country: Ethiopia | kind: city, capital, place
+canberra: Canberra is the capital of Australia. | country: Australia | kind: city, capital, place
+wellington: Wellington is the capital of New Zealand. | country: New Zealand | kind: city, capital, place
+africa: Africa is one of the seven continents. | kind: continent, place
+antarctica: Antarctica is one of the seven continents. | kind: continent, place
+asia: Asia is one of the seven continents. | kind: continent, place
+australia: Australia is one of the seven continents. | kind: continent, place
+europe: Europe is one of the seven continents. | kind: continent, place
+north america: North America is one of the seven continents. | kind: continent, place
+south america: South America is one of the seven continents. | kind: continent, place
+world, earth: continents: 7 | oceans: 5
+pacific ocean: The Pacific Ocean is one of the five oceans. | kind: ocean, place
+atlantic ocean: The Atlantic Ocean is one of the five oceans. | kind: ocean, place
+indian ocean: The Indian Ocean is one of the five oceans. | kind: ocean, place
+southern ocean: The Southern Ocean is one of the five oceans. | kind: ocean, place
+arctic ocean: The Arctic Ocean is one of the five oceans. | kind: ocean, place

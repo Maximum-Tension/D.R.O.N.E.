@@ -1,0 +1,123 @@
+# Lucy's work: doing what was asked, checking it, fixing what went wrong,
+# keeping things for later, and talking about it.  Run with
+#     python3 tools/check_chat.py tests/work_v1.txt
+
+=== the trash has one already: put it there under a free name
+> Create a folder named 42
+~ made the folder 42
+> Remove 42
+~ trash
+> Create a folder named 42
+~ made the folder 42
+> Remove 42
+~ already has something called 42
+~ 42 (2)
+> Is 42 still there?
+~ isn't in your files
+! Done, I made
+
+=== something that isn't there is not "done"
+> Delete the folder 42
+~ there is no 42
+! Done, 42 is in the trash
+
+=== made later, not right away
+> Create a folder named box 3 seconds later
+~ in 3 seconds
+! Done, I made
+> You did it wrong, it should be later
+~ haven't done it yet
+/wait 4
+~ made the folder box
+> Is there a folder called box?
+~ yes
+
+=== called off before its time
+> Make a folder called box 3 seconds later
+~ in 3 seconds
+> Never mind
+~ won't
+/wait 4
+> Is there a folder called box?
+~ no
+
+=== any request can wait for its time
+> Tell me what 2 + 2 is in 3 seconds
+~ in 3 seconds
+! It is 4
+/wait 4
+~ 4
+> In 2 seconds, tell me the time
+~ in 2 seconds
+/wait 3
+~ :
+
+=== told it's still there: she looks again, and looks further each time
+> Create a folder named 42
+> Remove 42
+~ trash
+> Folder 42 is still there
+~ I just checked
+~ searched all your folders
+> It is still there!
+~ the trash
+> It's still there
+~ from the trash for good
+> no
+> It's still there
+~ looking at another folder
+> It's still there
+~ Where do you see it
+> It's still there
+~ repeat myself
+! I just checked
+
+=== another one with that name may be the one meant
+> Create a folder named work
+> Create a folder named work/42
+> Create a folder named 42
+> Remove 42
+~ trash
+> Folder 42 is still there
+~ another 42
+~ work/42
+> yes
+~ 42
+> Is 42 gone?
+~ yes
+
+=== several at once
+> Create folders x and y
+~ folders x and y
+! folder X
+> Delete x and y
+~ x and y are in the trash
+
+=== the trash can be looked at
+> Create a folder named 42
+> Remove 42
+> What is in the trash?
+~ in the trash: 42
+> What files do you have?
+! trash/
+
+=== what we work on is remembered
+> Create a folder named 42
+> Remove 42
+> Which folder were we talking about?
+~ the folder 42
+> Which one?
+~ I mean the folder 42
+> Weren't you listening? I told you to remove it
+~ I heard you
+
+=== what she is told about the user
+> I have a dog called Nala.
+~ remember
+~ Nala
+> What is my dog called?
+~ Nala
+> My name is Sam.
+~ Sam
+> Why?
+! I'm not sure

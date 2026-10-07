@@ -1,0 +1,147 @@
+# Sense core v12: the world beyond this computer (facts, picks, how-tos, yes/no questions, claims to confirm),
+# the AI's own plans and favorites, guesses about the user, stories it never told, things from the user's life it was
+# never told about, lead-ins like "quick q" and "be honest", and the false alarms these checks must not raise.
+# Run: code --sense-eval tests/sense_v12.txt
+
+# ---------------------------------------------------------------- facts about the world it was never taught
+:reset
+:name lucy
+> quick q who painted the mona lisa??
+= -> nothing known: I only know what people teach me
+> settle a bet: how many legs does a spider have
+= -> nothing known: I only know what people teach me
+> random question, what's the tallest mountain in africa?
+= -> nothing known
+> tell me a cool fact about penguins
+= think: know penguins -> nothing known
+> so bored lol, tell me something interesting about volcanoes
+= think: know volcanoes -> nothing known
+> who won the world cup in 1998?
+= -> nothing known
+> what does my name mean?
+= think: know what your name means -> nothing known
+> whats that song that goes "we will we will rock you"
+= think: know that song -> nothing known
+> what is a volcano?
+! only know
+> what does saudade mean?
+! only know
+
+# ---------------------------------------------------------------- picks and how-tos
+:reset
+:name lucy
+> any good podcasts?
+= think: know good podcasts -> nothing known
+> what movie should we watch tonight?
+= think: know good movie -> nothing known
+> best tacos in austin? going saturday
+= think: know good tacos austin -> nothing known
+> what should i get my dad for christmas?
+= think: know good gift -> nothing known
+> any fun plans?
+! know good
+> how do i fix a flat bike tire?
+= think: know how to fix a flat bike tire -> nothing known
+> my sink is leaking everywhere, how do i fix it?
+= think: know how to fix it -> nothing known
+> how do i delete a file?
+! know how
+> how do i make a folder?
+! know how
+> how do you like it so far?
+! know how
+
+# ---------------------------------------------------------------- claims to confirm, yes or no about the world
+:reset
+:name lucy
+> my coach said you lose most of your heat through your head, is that true?
+= think: know if that is true -> nothing known
+> bulls hate the color red, right?
+= think: know if that is true -> nothing known
+> my brother keeps saying the moon landing was fake. hes right isnt he
+= think: know if that is true -> nothing known
+> can dogs eat grapes?
+= think: know if dogs eat grapes -> nothing known
+> are tomatoes a fruit?
+= -> nothing known: I only know what people teach me
+> 5 times 2 is 12, right?
+! know if
+> you remember everything I say, right?
+! know if
+> did the training help?
+! know if
+:reset
+:name lucy
+:fact the stone is in the barn
+> is the stone in the attic?
+! know if
+
+# ---------------------------------------------------------------- its own plans and favorites
+:reset
+:name lucy
+> what are you doing this weekend?
+= think: my plans -> I don't have one
+> got any plans for tonight?
+= think: my plans -> I don't have one
+> how are you doing today?
+! my plans
+> what kind of pizza do you like best?
+= think: my favorite pizza -> I don't have one
+> whats ur real name?
+= think: my name -> Lucy
+
+# ---------------------------------------------------------------- the user's life it was never told about
+:reset
+:name lucy
+> guess what i got for my birthday!
+= think: guess what you got for your birthday -> you did not tell me
+> ok be honest what do u think my job is
+= think: you job -> you did not tell me
+> real quick remind me where i parked
+= -> you did not tell me
+> how does the show my sister likes end?
+= think: about that show -> you did not tell me
+> what time is the party?
+! time ->
+
+# ---------------------------------------------------------------- earlier chats, stories and actions that never happened
+:reset
+:name lucy
+> continue the poem you started
+= think: did tell a poem -> no
+> thx for the cookie recipe last week!! how long did u say to bake them?
+= -> nothing in my history
+> whats the name of that book u recommended me the other day?
+= think: our chat the other day -> nothing in my history
+> u can see me thru the webcam right?
+= think: can see -> no
+> as you can see there is a notes.txt file
+! can see
+
+# ---------------------------------------------------------------- live world questions that name the AI's place
+:reset
+:name lucy
+> whats the weather like where u are rn
+= think: know weather -> nothing known
+> whats the weather like where u are rn
+! remember
+> bitcoin price rn?
+= think: know bitcoin -> nothing known
+> weather tomorrow?
+= think: know weather -> nothing known
+> pizza tonight?
+! know
+:reset
+:name lucy
+> For your records, my sister is called Hannah and she works as a nurse.
+:said Got it! I will remember that your sister Hannah works as a nurse.
+> Splendid. And what, may I ask, is my husband's name?
+= think: your husband name -> you did not tell me
+> I can't even remember what I did after dinner. What did I do last night, do you know?
+= think: told what you did last night -> you did not tell me
+> what did i say before that?
+! told
+> 20 percent of 340?
+! know percent
+> score(8)?
+! know score

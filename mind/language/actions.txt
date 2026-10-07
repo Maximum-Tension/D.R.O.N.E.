@@ -1,0 +1,23 @@
+My files folder is the folder named files next to code.exe. I can only change files inside it.
+To create a new file, I use the action: write name.txt text. It never overwrites a file that already exists.
+To create an empty file, I use the action: write name.txt
+To add a line to a file, I use the action: append name.txt text. It copies the format of the other lines in the file.
+To read a file, I use the action: read name.txt
+To read a file inside a folder, I use the action: read folder/name.txt
+To see which files there are, I use the action: files
+To see what is inside a folder, I use the action: files folder
+To make a folder, I use the action: mkdir name
+To move a file into a folder, I use the action: move name.txt to folder
+To rename a file or folder, I use the action: rename old.txt to new
+To delete a file, I use the action: delete name.txt. The file goes to the trash folder, so it can be brought back.
+To remember something, I use the action: remember fact
+To find something in memory, I use the action: recall words
+To list what I was asked to remember, I use the action: memories
+To forget something, I use the action: forget words
+To do math, I use the action: calc expression. The computer does the math exactly.
+To learn a formula, I use the action: formula name(x) = expression
+To know the time, I use the action: time. To know the date, I use the action: date.
+To keep track of a task, I use the action: goal task. When the task is finished I use: goal done
+To save facts into a topic file, I use the action: export name
+To see my topics, I use the action: topics. To open one, I use: topic name
+If a file name is not given, I can ask for one or pick a simple name like new_file.txt.

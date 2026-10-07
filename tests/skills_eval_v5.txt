@@ -1,0 +1,6942 @@
+# My name is Code.
+> hi code
+< Hi! How can I help you?
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember my phone is brown
+! remember my phone is brown
+= saved
+< Got it, your phone is brown.
+> your reply should be wwut
+< wwut
+> which is smaller, 38 or 4?
+< 4.
+% skill remember_then_answer
+% key brown
+> what color did I say my phone is?
+< It is brown.
+% skill echo
+% key That's awesome! I've always wanted to try rock climbing
+> say That's awesome! I've always wanted to try rock climbing.
+< That's awesome! I've always wanted to try rock climbing
+% skill echo_new_phrasing
+% key brain
+> would you say brain for me?
+< brain
+> I love to dance! I've been dancing since I was a little girl.
+< That's awesome! I love dancing too. What kind of dancing do you do?
+
+# My name is Code.
+# the yellow chair costs 315 coins.
+% skill cant_do
+% key can't|cannot|can not
+> could you order a pizza?
+< I can't do that.
+> I work on my parents' farm.
+< Oh, that's cool.
+
+# My name is Code.
+# A duck is a loud green hat.
+# a greblamoork is a tiny gray horse.
+# a socherish is a shiny gold tree.
+# A shot is a strange toy.
+# A plupemp is a dark plant.
+% skill define_from_memory
+% key toy
+> what is a shot?
+< A shot is a strange toy.
+% skill echo
+% key 90338
+> say 90338!
+< 90338
+
+# My name is Code.
+# Ava has one brothers.
+# the planet kek has 3 doors.
+# Maya's favorite color is orange.
+# Emma lives in Meechop.
+# Julian's favorite color is brown.
+# a kri is a sweet bird.
+# The planet kougerk has eight wheels.
+# The spoon has ten rings.
+# Samuel likes cats.
+# Lydia likes cats.
+# Alex has nine horses.
+% skill time
+% key 3:12
+> do you know what time it is?
+! time
+= 3:12 am
+< It is 3:12 am.
+% skill calc_story
+% key 76
+> Matthew has 41 coins and finds 35 more. how many does Matthew have now?
+! calc 41 + 35
+= 76
+< Matthew has 76 coins.
+% skill memory_answer
+% key cats
+> what does Samuel like?
+< Cats.
+
+# My name is Code.
+> So, what else do you like to do?
+< I like to read, play video games, and go to concerts.
+% skill dont_know
+% key know|heard
+> what's a guitar?
+< I don't know what a guitar is. What is it?
+> a guitar is a busy silver boat.
+! remember a guitar is a busy silver boat
+= saved
+< Thanks! Now I know that a guitar is a busy silver boat.
+% skill learn_then_answer
+% key boat
+> tell me what a guitar is.
+< It is a busy silver boat.
+> Oh, I've never heard of them.
+< They're a rap group from Detroit.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: my bag is blue
+! remember my bag is blue
+= saved
+< Okay, I will remember that your bag is blue.
+> which number is less: 124 or 33?
+< 33.
+> which is smaller, 132 or 5?
+< 5 is smaller.
+% skill remember_then_answer
+% key blue
+> what color did I say my bag is?
+< Blue.
+
+# My name is Code.
+# the planet blash has 1 towers.
+# Ali's favorite color is gray.
+# Jackson's favorite color is silver.
+# Nina's favorite color is blue.
+# Maya's favorite color is gold.
+% skill time
+% key 3:25
+> what time is it now?
+! time
+= 3:25 pm
+< It is 3:25 pm.
+> I think it's going to keep growing in popularity too.
+< Me too.
+% skill memory_oneword
+% key silver
+> short answer please: what is Jackson's favorite color?
+< Silver.
+
+# My name is Code.
+# a guitar is an old yellow fish.
+# Jackson lives in Soosh.
+# The stone is next to the garage.
+# The scarf costs 24 coins.
+# Grace is a painter.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that my turtle is named Samuel
+! remember my turtle is named Samuel
+= saved
+< Okay, I saved it.
+> which number is larger: 135 or 157?
+< 157.
+% skill remember_then_answer
+% key Samuel
+> what is my turtle's name?
+< Samuel.
+% skill memory_answer
+% key garage
+> where's the stone?
+< Next to the garage.
+
+# My name is Code.
+# Evelyn is a baker.
+# Jackson is a sailor.
+# a rice is a quiet gold mouse.
+# Ali has seven cats.
+# a skagush is a small tree.
+# the letter costs 386 coins.
+# Elias has 4 horses.
+> good morning
+< Hello! What can I do for you?
+% skill calc_error
+% key can't|cannot|not
+> calculate poobloup times 2
+! calc poobloup * 2
+= error
+< I cannot work that out.
+% skill count
+% key 1, 2, 3, 4
+> Count to 4.
+< 1, 2, 3, 4.
+
+# My name is Code.
+# Julian likes pizza.
+# the green bell is near the attic.
+# Lydia's favorite color is pink.
+% skill compare
+% key no
+> is 92 bigger than 137?
+< No, 92 is smaller than 137.
+% skill echo
+% key brother
+> say only brother
+< brother
+
+# My name is Code.
+> That's awesome! I love rap music too.
+< What's your favorite rapper?
+% skill echo_new_phrasing
+% key traitolip
+> would you say traitolip for me?
+< traitolip
+
+# My name is Code.
+% skill time
+% key 8:48
+> what time is it?
+! time
+= 8:48 am
+< The time is 8:48 am.
+> That's too bad. I'm sorry to hear that.
+< It's okay. I'm happy with my new job.
+% skill dont_know
+% key know|heard
+> what does Lena do?
+< I don't know Lena. Who is it?
+> Lena is a smith in my town.
+! remember Lena is a smith in my town
+= saved
+< Thanks, now I know that Lena is a smith.
+% skill echo_chain
+% key pousnix
+> say pousnix!
+< pousnix
+% skill echo_chain
+% key drurk V
+> say drurk V!
+< drurk V
+% skill echo_chain
+% key tennis
+> repeat after me: tennis
+< tennis
+
+# My name is Code.
+% skill dont_know
+% key know|heard
+> what does Yuki do?
+< I don't know who Yuki is. Can you tell me?
+> Yuki is a smith in my town.
+! remember Yuki is a smith in my town
+= saved
+< Okay, I will remember that Yuki is a smith.
+% skill learn_then_answer
+% key smith
+> who is Yuki again?
+< Yuki is a smith.
+> Oh, that's awesome. I wish you the best of luck!
+< Thank you! I'm going to need it.
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8
+> can you count to 8?
+< 1, 2, 3, 4, 5, 6, 7, 8.
+> I'm working on a new album.
+< That's awesome. I can't wait to hear it.
+
+# My name is Code.
+# the yellow bag costs 111 coins.
+% skill echo_times
+% key witch witch
+> please say witch twice
+< witch witch
+
+# My name is Code.
+# the planet staizhugit has 9 wheels.
+# the red scroll is in the castle.
+# a soup is a short boat.
+# the bag costs 313 coins.
+# Lydia is 87 years old.
+# a guitar is a strange gray fish.
+# Jackson lives in Snel.
+# Ali has 11 sisters.
+# the gold spoon costs 345 coins.
+% skill dont_know
+% key know|heard
+> what does music mean?
+< I don't know. What is a music?
+> a music is an angry green dance.
+! remember a music is an angry green dance
+= saved
+< Thanks! Now I know that a music is an angry green dance.
+
+# My name is Code.
+# Jackson lives in Kok.
+# the stone is next to the tavern.
+# Emma likes pizza.
+@ my car is blue.
+% skill recall_nothing
+% key know|remember|nothing
+> what do you know about plukraip?
+! recall plukraip
+= nothing found
+< I don't know anything about plukraip yet.
+> I know, right? I've seen all of them.
+< Me too! I even saw the one that just came out.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> forget about my car
+! forget car
+= forgotten
+< Done, it is forgotten.
+> What do you do for work?
+< I work as a car salesman.
+
+# My name is Code.
+# Emma likes reading.
+# Jackson likes painting.
+> hi
+< Hi there!
+> I like that he's relatable. He's just a normal guy who happens to have superpowers.
+< I agree. He's a great role model.
+> Well, it was nice talking to you.
+< You too.
+% skill dont_know
+% key know|heard
+> what's a duck?
+< I don't know what a duck is. Can you tell me?
+> a duck is a tiny brown song, you should remember that.
+! remember a duck is a tiny brown song
+= saved
+< Thanks! Now I know that a duck is a tiny brown song.
+% skill memory_answer
+% key painting
+> tell me what Jackson likes.
+< Jackson likes painting.
+% skill echo_new_phrasing
+% key P
+> your reply should be P
+< P
+
+# My name is Code.
+# Owen has 0 shoes.
+# Olivia's favorite color is gray.
+# Dasha lives in Zofailor.
+# Ava is 12 years old.
+# Lena lives in Skait.
+# Lucy is 66 years old.
+# the candle has 10 legs.
+> hi
+< Hello!
+% skill echo
+% key SKOUR
+> please say SKOUR
+< SKOUR
+
+# My name is Code.
+# the brown scarf is behind the attic.
+> yo
+< Hey! How are you?
+> Oh, that's cool.
+< Yeah, they're both really cute.
+% skill time
+% key 2:34
+> time?
+! time
+= 2:34 pm
+< The time is 2:34 pm.
+
+# My name is Code.
+@ i love reading.
+% skill user_facts
+% key reading
+> what do you know about me?
+< You love reading.
+% skill cant_do
+% key can't|cannot|can not
+> can you take a photo?
+< I can't do that yet. I can remember things, recall them, calculate, tell the time and read files.
+
+# My name is Code.
+# the planet snuroot has 6 rooms.
+# Elias's favorite color is pink.
+# Evelyn likes honey.
+# Dasha is 35 years old.
+# Grace lives in Dee.
+# Emma has eleven coins.
+% skill read_file
+% key Me too
+> read krirum.txt
+! read krirum.txt
+= Me too. It was nice talking to you too. Me too! I love reading historical fiction books.
+< The file says: Me too.
+
+# My name is Code.
+# a apple is a strange blue boat.
+# a pezaip is a slow food.
+% skill compare
+% key 15
+> which is smaller, 24 or 15?
+< 15.
+% skill define_from_memory
+% key boat
+> do you know what a apple is?
+< A strange blue boat.
+
+# My name is Code.
+# Emma's favorite color is blue.
+# a queen is a short purple stone.
+# a violin is a slow black frog.
+# A king is a quiet green hat.
+# The gold bell is in the tavern.
+# a fovool is a round gray dance.
+# The blue scroll is inside the office.
+> hey
+< Hey! How are you?
+% skill define_from_memory
+% key frog
+> do you know what a violin is?
+< It is a slow black frog.
+> I've never seen that movie, but I've heard good things about it.
+< You should definitely watch it! It's a really good movie.
+> I'm not sure either. We could go get some coffee or something.
+< That sounds like a plan.
+% skill echo_new_phrasing
+% key Voogi
+> your reply should be Voogi
+< Voogi
+% skill recall_nothing
+% key know|remember|nothing
+> what do you know about jar?
+! recall jar
+= nothing found
+< I don't know anything about jar yet.
+> What is your favorite hobby?
+< I enjoy skateboarding with my friends.
+
+# My name is Code.
+# The black scarf is inside the garage.
+% skill memory_answer
+% key garage
+> where's the black scarf?
+< The black scarf is inside the garage.
+
+# My name is Code.
+# a cho is a heavy black frog.
+# a rice is a wild blue horse.
+# Lena likes cats.
+# a shuvaik is a huge bird.
+# a goat is a gentle blue tool.
+# The bag costs 247 coins.
+# Max is 16 years old.
+% skill define_from_memory
+% key horse
+> what is a rice?
+< It is a wild blue horse.
+% skill echo_times
+% key texture texture texture
+> would you say texture three times for me?
+< texture texture texture
+
+# My name is Code.
+# Alex is 64 years old.
+# Maverick likes reading.
+@ i love honey.
+# A eagle is a heavy hat.
+# a fovush is a wild food.
+% skill date
+% key friday
+> tell me the date
+! date
+= friday, august 24, 2028
+< It is Friday, august 24, 2028.
+% skill user_facts
+% key honey
+> what do I like?
+< You like honey.
+> That's a classic! I love that move too.
+< So, what's your next big match?
+% skill define_from_memory
+% key hat
+> tell me what a eagle is.
+< A eagle is a heavy hat.
+
+# a zouveedoo is a fast blue flower.
+# Mehmet likes puzzles.
+# Elias's favorite color is purple.
+# A rish is a light pink boat.
+# The yellow stone costs 358 coins.
+# Jackson is a merchant.
+> hello
+< Hi there!
+> I like to play music, volunteer, and explore new parts of the city.
+< I like to play music too! What instruments do you play?
+> I'm a coffee enthusiast.
+< What's that?
+% skill memory_answer
+% key puzzles
+> what does Mehmet love?
+< Puzzles.
+> What do you do for fun?
+< I volunteer at a local bunny rescue.
+
+# My name is Code.
+> What do you like to do for fun?
+< I love to read, watch movies, and spend time with my family.
+% skill echo_chain
+% key soldier
+> say soldier!
+< soldier
+% skill echo_chain
+% key xbzt
+> say xbzt
+< xbzt
+
+# My name is Code.
+# a shouren is a lazy green drink.
+# A lemp is a long bird.
+# Bruno is a baker.
+# the purple stone is under the barn.
+# Jackson is 52 years old.
+# Owen's favorite color is green.
+> hi
+< Hi! How can I help you?
+% skill define_from_memory
+% key bird
+> what is a lemp?
+< A long bird.
+> Well, it was nice chatting with you!
+< You too! Maybe we can chat again sometime.
+> What are some of your favorite books?
+< I like a lot of different books, but I really like books about history and science.
+% skill memory_answer
+% key barn
+> where is the purple stone?
+< The purple stone is under the barn.
+
+# My name is Code.
+> hi code
+< Hello! What can I do for you?
+% skill recall_action
+% key 4|four
+> what do you know about candle?
+! recall candle
+= the candle has four moons
+< Yes, the candle has four moons.
+
+# My name is Code.
+# Evelyn is a hunter.
+# Hannah is 71 years old.
+# a king is a fast fish.
+# Lena is a cook.
+# the chair is on the park.
+# Bruno has six cats.
+> I will! Thanks for the recommendation.
+< No problem! So, what are you doing this weekend?
+> What do you do for a living?
+< I'm an electrician.
+% skill echo
+% key SAUP
+> answer with SAUP
+< SAUP
+% skill two_steps
+% key zhadaitar sushi
+> say zhadaitar, then sushi
+< zhadaitar sushi
+
+> Yes, I do. I find it to be a beautiful way to express myself.
+< I can understand that.
+> I'm a software engineer. I work on developing software applications.
+< Oh, that's cool. I've always wanted to learn how to code.
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+> Count to 12.
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+
+# My name is Code.
+# a gretaish is a huge boat.
+# the bag costs 136 coins.
+# the silver letter is inside the attic.
+# Yuki is a baker.
+# Grace is a builder.
+# Olivia is a singer.
+# Lucy is a baker.
+> hello code!
+< Hi there!
+> Yeah. I'm a big fan of all of them.
+< Me too. They're some of my favorite books of all time.
+> That's great. I wish I could say the same about my job.
+< What do you do for work?
+% skill calc
+% key 576
+> can you work out 573 plus 3?
+! calc 573 + 3
+= 576
+< 576.
+% skill memory_answer
+% key builder
+> what is Grace's job?
+< Grace is a builder.
+% skill echo_chain
+% key jugx ypmip
+> and now jugx ypmip
+< jugx ypmip
+% skill echo_chain
+% key v taking
+> and now v taking
+< v taking
+
+# My name is Code.
+> I bet it was! I've seen videos of the opening ceremony and it looks amazing.
+< It was definitely one of the highlights of my trip.
+% skill list_count
+% key 3|three
+> how many words is this: chatting chefaigoum flurk
+< 3
+
+# My name is Code.
+# the planet sni has two towers.
+# the gold scarf is inside the attic.
+# the letter has seven rooms.
+# a queen is a quiet red tool.
+> What are you doing later?
+< I'm not sure yet. What are you doing?
+> It's a great way to serve your country.
+< I bet. What's your favorite food?
+% skill echo_times
+% key movie near staying movie near staying
+> say movie near staying twice please
+< movie near staying movie near staying
+
+# My name is Code.
+> hi code
+< Hey! How are you?
+% skill echo
+% key What's your favorite thing to bake
+> i want you to say What's your favorite thing to bake
+< What's your favorite thing to bake
+
+# My name is Code.
+# the gold chair costs 228 coins.
+# Julian likes cats.
+# Eli is 65 years old.
+> I might just do that.
+< Good! It's a great way to relax and have some fun.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that my house is gray
+! remember my house is gray
+= saved
+< Okay, I will remember that your house is gray.
+> count backwards from 8
+< 8, 7, 6, 5, 4, 3, 2, 1.
+% skill remember_then_answer
+% key gray
+> what color did I say my house is?
+< Gray.
+% skill compare
+% key no
+> is 47 more than 184?
+< No, 47 is smaller than 184.
+% skill echo
+% key 48928
+> say the word 48928
+< 48928
+
+% skill two_steps
+% key lounaip skating
+> first say lounaip, then say skating
+< lounaip skating
+
+# My name is Code.
+# Bruno is 85 years old.
+# Aurora is 38 years old.
+# A mouse is a sleepy gold fish.
+# A gabou is a warm blue bird.
+# A guitar is a lazy blue animal.
+# a butterfly is a huge red hat.
+> So, what are your biggest hopes?
+< My biggest hope is that I can help as many people as I can.
+% skill memory_oneword
+% key hat
+> answer in one word: what's a butterfly?
+< Hat.
+
+# My name is Code.
+# the scarf costs 169 coins.
+# Maverick has seven horses.
+# Emily lives in Stosh.
+# Evelyn's favorite color is black.
+# Julian is a singer.
+# Olivia has twelve books.
+# the note has six doors.
+# Maya lives in Dot.
+# Jackson lives in Blout.
+% skill memory_answer
+% key Blout
+> which town does Jackson live in?
+< Jackson lives in Blout.
+
+# My name is Code.
+# Ali lives in Chox.
+# Kai's favorite color is gray.
+> Yes, I have a son and a daughter.
+< That's great. What are their names?
+% skill date
+% key friday
+> what day is it today?
+! date
+= friday, december 6, 2026
+< Friday, december 6, 2026.
+% skill count
+% key 7, 6, 5, 4, 3, 2, 1
+> count down from 7 to 1
+< 7, 6, 5, 4, 3, 2, 1.
+
+# My name is Code.
+# The planet chougroop has five eyes.
+# A daim is a clever blue mouse.
+# Hakan's favorite color is red.
+# Kai is 76 years old.
+# Hannah is a painter.
+% skill memory_answer
+% key 5|five
+> how many eyes does chougroop have?
+< Five.
+
+# My name is Code.
+> I love hip hop too! I used to take dance lessons when I was younger.
+< That's awesome! What kind of dance did you like to learn?
+> It's good! You should try it sometime.
+< I will. Thanks for the suggestion.
+% skill recall_action
+% key pilot
+> search your memory for Matthew
+! recall Matthew
+= Matthew is a pilot
+< I remember that Matthew is a pilot.
+
+# My name is Code.
+# Yuki's favorite color is silver.
+# the bag has 2 trees.
+> yo
+< Hi there!
+% skill echo
+% key SHUM
+> say: SHUM
+< SHUM
+
+# My name is Code.
+# The scarf costs 499 coins.
+> It's nice to meet you too.
+< So, what do you do for fun?
+> Blue is nice too!
+< What do you like to do for fun?
+% skill memory_answer
+% key 499
+> how much is the scarf?
+< 499 coins.
+> Oh, that's too bad. I love the music and the atmosphere.
+< I guess I'm just not a big fan of crowds.
+> I like all kinds of food, but I'm especially fond of Italian food.
+< Me too! I love pasta and pizza.
+% skill date
+% key saturday
+> which day is it?
+! date
+= saturday, april 19, 2025
+< Today is Saturday, april 19, 2025.
+> So, what do you like to do for fun?
+< I like to go to the movies, read books, and hang out with friends. I also like to travel.
+
+# My name is Code.
+> hi code
+< Hello! What can I do for you?
+% skill files_list
+% key suchil.txt
+> do you have any files?
+! files
+= suchil.txt, skeesh.txt, mukro.txt
+< Here they are: suchil.txt, skeesh.txt, mukro.txt.
+> So, what do you like to do for fun?
+< I like to go fishing, hunting, and just hang out with my friends.
+> That sounds like a great job! I love to read too.
+< It is! I get to read all day long.
+> call me Matthew.
+< Hi Matthew!
+% skill user_name
+% key Matthew
+> what did I say my name was?
+< Matthew.
+
+# Hannah's favorite color is red.
+> hi
+< Hello!
+% skill calc
+% key 234
+> what's 598 - 364?
+! calc 598 - 364
+= 234
+< The answer is 234.
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7
+> Count to 7.
+< 1, 2, 3, 4, 5, 6, 7.
+% skill compare
+% key 183
+> which is smaller, 183 or 195?
+< 183.
+
+# My name is Code.
+> hi
+< Hello! What can I do for you?
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember this: Evelyn is a farmer
+! remember Evelyn is a farmer
+= saved
+< Sure, I will remember that.
+> which is bigger, 153 or 154?
+< 154 is bigger.
+% skill remember_then_answer
+% key farmer
+> what does Evelyn do?
+< Evelyn is a farmer.
+> Me too! I love pizza!
+< Me too!
+
+# My name is Code.
+# Max is a pilot.
+% skill calc
+% key 26
+> can you work out 520 divided by 20?
+! calc 520 / 20
+= 26
+< 520 divided by 20 is 26.
+
+# My name is Code.
+> yo
+< Hi! How can I help you?
+> That sounds like a great job!
+< It is! I'm really happy with it.
+% skill calc_error
+% key can't|cannot|not
+> calculate breenesash times 2
+! calc breenesash * 2
+= error
+< I cannot work that out.
+
+# My name is Code.
+% skill calc
+% key 0
+> 13 * 0 = ?
+! calc 13 * 0
+= 0
+< It is 0.
+% skill echo
+% key Chuvux
+> repeat after me: Chuvux
+< Chuvux
+
+# My name is Code.
+> Me too! I love shopping for shoes and watches.
+< That's great! I love shopping for clothes and purses.
+% skill your_name
+% key code
+> what should I call you?
+< Yes, I am Code.
+> What do you like to do for fun?
+< I like to run, cook, and play the guitar.
+
+# My name is Code.
+# the stone is on the castle.
+# Lucy likes honey.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that my cat is named Alex
+! remember my cat is named Alex
+= saved
+< Sure, I will remember that.
+% skill remember_then_answer
+% key Alex
+> what did I name my cat?
+< Alex.
+
+# My name is Code.
+# Nina has 1 coins.
+# the red note costs 160 coins.
+% skill your_name
+% key code
+> who are you?
+< I'm Code.
+> Oh, I've never heard of that.
+< It's a really fun game. It's a parody of the movie Friday.
+> So, what do you do for fun?
+< I like to spend time with my family and friends. I also like to go camping and fishing.
+% skill list_member
+% key yes
+> does this list have agree in it: agree, leedoubom, zaseex, skim, miley
+< Yes.
+% skill echo
+% key 58840
+> repeat this: 58840
+< 58840
+
+# My name is Code.
+# Dasha lives in Resta.
+# Lydia likes puzzles.
+# A shusheet is a big gray flower.
+# Hakan is a farmer.
+> I play with my friends on the playground.
+< That sounds like fun.
+> I'm 13, so I'm still young enough to play.
+< That's great! I hope you keep playing for a long time.
+% skill define_from_memory
+% key flower
+> what is a shusheet?
+< A shusheet is a big gray flower.
+
+# My name is Code.
+# Lena likes pizza.
+# the candle is behind the barn.
+# Max lives in Braibrour.
+# Willow lives in Droobude.
+# Lena lives in Zhi.
+# Julian lives in Skir.
+> hey
+< Hello!
+% skill memory_answer
+% key Skir
+> which town does Julian live in?
+< Julian lives in Skir.
+
+# My name is Code.
+> Yeah, they're great pets.
+< Yeah, they are.
+> I love pepperoni pizza too!
+< Do you have any pets?
+% skill echo_chain
+% key quake
+> say quake please
+< quake
+% skill echo_chain
+% key outdoorsy florence
+> say outdoorsy florence!
+< outdoorsy florence
+
+# My name is Code.
+> hello
+< Hey! How are you?
+> That sounds fun! What kind of dance do you like to learn?
+< I like to learn all kinds of dance, but my favorite is hip hop.
+> That's the best job ever.
+< It is.
+% skill list_count
+% key 3|three
+> how many words are in: point staimp other
+< 3
+> I'm a vegan, and I love hummus.
+< Oh, that's interesting! I'm not a vegan, but I do like hummus.
+> It's nice to meet you Richard. What do you like to do for fun?
+< I like to play video games.
+% skill compare
+% key no
+> is 130 bigger than 162?
+< No.
+> Yeah, it is! I love going to the beach with my family.
+< Me too! It's the best way to relax.
+% skill read_file
+% key Yeah, we should hang
+> open tetusneerk.txt
+! read tetusneerk.txt
+= Yeah, we should hang out sometime! It's nice to meet you!
+< It says: Yeah, we should hang out sometime! It's nice to meet you.
+> I love all of those shows!
+< Me too!
+
+# My name is Code.
+> That's okay! I'm sure you'll learn to talk better when you get older.
+< I hope so!
+% skill echo_chain
+% key z OD
+> can you say z OD?
+< z OD
+% skill echo_chain
+% key l agatha
+> now say l agatha
+< l agatha
+
+# My name is Code.
+# a carrot is a happy dance.
+# Samuel's favorite color is orange.
+> hello
+< Hi! How can I help you?
+> Not as much as I used to, but I still ride every once in a while.
+< That's good to hear. I'm glad you still have a connection with horses.
+> Oh, cool. I'm an art major in college.
+< That's really cool. I'm not much of an artist myself.
+% skill calc
+% key 1872
+> please compute 39 * 48
+! calc 39 * 48
+= 1872
+< 39 * 48 = 1872
+
+# My name is Code.
+# Yuki lives in Stetraisnur.
+# A laiplolik is a quiet green frog.
+# Mehmet has one kids.
+% skill calc
+% key 878
+> how much is 587 plus 291?
+! calc 587 + 291
+= 878
+< 878.
+> Those are cute names!
+< Thanks! I think so too.
+> Thanks! I hope so.
+< So, what do you like to do for fun?
+% skill memory_oneword
+% key 1|one
+> one word only: how many kids does Mehmet have?
+< 1|one.
+
+% skill echo
+% key UJKU
+> i want you to say UJKU
+< UJKU
+> I'm going to see Alan Jackson.
+< That's awesome! I love Alan Jackson.
+% skill echo_chain
+% key saxophone ME
+> now say saxophone ME
+< saxophone ME
+% skill echo_chain
+% key computer
+> now say computer
+< computer
+> I agree. I think the originals are better, but the new ones are still good.
+< Yeah, they're definitely good.
+
+# Alex is a miner.
+# Ava's favorite color is pink.
+# Nina's favorite color is gray.
+# the note is near the attic.
+# Ava likes books.
+# Lydia is 90 years old.
+# the planet dreetreesit has eight windows.
+# the planet pou has 2 windows.
+% skill echo
+% key Okay. It was nice practicing with you
+> say Okay. It was nice practicing with you please
+< Okay. It was nice practicing with you
+% skill dont_know
+% key know|heard
+> what is a window?
+< I don't know what a window is. What is it?
+> a window is a lazy red duck.
+! remember a window is a lazy red duck
+= saved
+< Thanks! Now I know that a window is a lazy red duck.
+% skill learn_then_answer
+% key duck
+> what is a window?
+< A window is a lazy red duck.
+
+# My name is Code.
+% skill echo_new_phrasing
+% key I like to run, play basketball, and hang out with friends
+> would you say I like to run, play basketball, and hang out with friends for me?
+< I like to run, play basketball, and hang out with friends
+> Cool, me too. What do you like to do for fun?
+< I like to skateboard.
+> Oh, that's cool! What kind of art do you like to make?
+< I like to paint and sculpt.
+% skill compare
+% key 170
+> what is bigger, 49 or 170?
+< 170 is bigger.
+> Oh, I've been there before. It's really beautiful.
+< Yeah, it is.
+% skill list_reverse
+% key shoop drigin droot blax teeshook
+> reverse the order: teeshook, blax, droot, drigin, shoop
+< shoop drigin droot blax teeshook
+
+# My name is Code.
+# Olivia is 83 years old.
+# Samuel likes reading.
+# The red axe costs 214 coins.
+> hi code
+< Hello!
+% skill memory_answer
+% key reading
+> what does Samuel like?
+< Samuel likes reading.
+% skill count
+% key 5, 6, 7, 8, 9, 10, 11, 12, 13
+> can you count from 5 to 13?
+< 5, 6, 7, 8, 9, 10, 11, 12, 13.
+> I'm sure it is.
+< So, what do you like to do for fun?
+
+# My name is Code.
+> Maybe I will!
+< You won't regret it.
+> I like to play video games and read.
+< That's cool. I like to play video games too.
+% skill two_steps
+% key lakreefaik
+> first say lakreefaik, then count to 3
+< lakreefaik. 1, 2, 3.
+% skill recall_action
+% key attic
+> search your memory for letter
+! recall letter
+= the letter is inside the attic
+< Yes, the letter is inside the attic.
+> That sounds like fun! I'm going to be doing some live action roleplaying with my friends.
+< Oh, that sounds cool! I've never done that before.
+% skill echo_times
+% key UNKG UNKG UNKG
+> your reply should be UNKG three times
+< UNKG UNKG UNKG
+
+# My name is Code.
+> That sounds interesting. I might have to check it out sometime.
+< You should! I think you'd like it.
+> Me too! I read a lot of history and science books.
+< I'm more of a fiction reader myself.
+% skill calc
+% key -429
+> what is 235 minus 664?
+! calc 235 - 664
+= -429
+< 235 minus 664 is -429.
+
+# My name is Code.
+# a king is an old yellow horse.
+# A reem is a sweet black duck.
+@ my bag is white.
+% skill define_from_memory
+% key duck
+> what's a reem?
+< It is a sweet black duck.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> please forget that my bag is white
+! forget my bag is white
+= forgotten
+< Okay, I forgot about your bag.
+
+# My name is Code.
+% skill calc_story
+% key 36
+> Nina has 9 coins and finds 27 more. how many does Nina have now?
+! calc 9 + 27
+= 36
+< Nina has 36 coins.
+
+# My name is Code.
+> Those are some of my favorites too! I also like Keith Urban and Carrie Underwood.
+< They're great! I love their music.
+% skill count
+% key 3, 2, 1
+> count down from 3
+< 3, 2, 1.
+% skill echo
+% key I like to go hiking, rock climbing, and camping
+> can you say I like to go hiking, rock climbing, and camping?
+< I like to go hiking, rock climbing, and camping
+% skill time
+% key 3:01
+> what time is it?
+! time
+= 3:01 am
+< 3:01 am.
+
+# My name is Code.
+# the pink letter costs 180 coins.
+# a rel is a dark yellow dance.
+# Emily likes painting.
+% skill recall_action
+% key tavern
+> look in your memory: where did I put the chair?
+! recall chair
+= the chair is inside the tavern
+< Yes, the chair is inside the tavern.
+% skill compare
+% key 54
+> which number is larger: 54 or 32?
+< 54 is bigger.
+
+# My name is Code.
+> Thank you! I am.
+< I'm going to go play with my dolls now.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that my phone is silver
+! remember my phone is silver
+= saved
+< Okay, I saved it.
+% skill remember_then_answer
+% key silver
+> what color did I say my phone is?
+< Silver.
+> Thank you.
+< I'm glad I met you.
+> I hope so.
+< I'm sure you will.
+% skill calc
+% key 25
+> solve 100 / 4
+! calc 100 / 4
+= 25
+< 100 divided by 4 is 25.
+
+# My name is Code.
+% skill count
+% key 9, 10, 11, 12, 13, 14
+> count from 9 to 14
+< 9, 10, 11, 12, 13, 14.
+% skill compare
+% key 51
+> which number is less: 88 or 51?
+< 51.
+> I agree. It's perfect for being outside.
+< Yeah, it is.
+
+# My name is Code.
+% skill dont_know
+% key know|heard
+> who is Maya?
+< I don't know anything about Maya yet.
+> Maya is a doctor.
+! remember Maya is a doctor
+= saved
+< Okay, I will remember that Maya is a doctor.
+
+# My name is Code.
+# Olivia likes puzzles.
+# Matthew lives in Trax.
+# A tai is a young gray tool.
+# a staichaisker is a big blue bird.
+# a fushump is a happy bird.
+> hi!
+< Hello!
+% skill memory_answer
+% key Trax
+> where does Matthew live?
+< Matthew lives in Trax.
+% skill define_from_memory
+% key bird
+> tell me what a staichaisker is.
+< It is a big blue bird.
+> I agree. It's a perfect day to stay indoors and watch a movie.
+< I think so too!
+% skill calc_story
+% key 89
+> Elias has 55 pencils and finds 34 more. how many does Elias have now?
+! calc 55 + 34
+= 89
+< Elias has 89 pencils.
+
+# My name is Code.
+# the silver bag costs 378 coins.
+> hello code!
+< Hello!
+> Me too! I love to learn about different time periods and cultures.
+< I love to escape into a different world. What are some of your favorite books?
+% skill time
+% key 3:24
+> what's the time?
+! time
+= 3:24 pm
+< It is 3:24 pm.
+> I like to read, play video games, and spend time with my cat.
+< I like to read too! What's your favorite book?
+> I'm moving into an apartment with my boyfriend.
+< Oh, that's exciting! Congratulations!
+% skill list_member
+% key yes
+> does this list have keeloon in it: keeloon, plool, deaf, broork
+< Yes.
+
+# My name is Code.
+# the brown chair is behind the beach.
+# the blue chair is near the barn.
+% skill echo
+% key alone chocolate comedy boomer
+> say the word alone chocolate comedy boomer
+< alone chocolate comedy boomer
+
+# My name is Code.
+# a rustul is a sour white plant.
+# Emily's favorite color is green.
+> yo
+< Hello!
+% skill echo_new_phrasing
+% key That's a big responsibility
+> say back That's a big responsibility
+< That's a big responsibility
+% skill list_pick
+% key smooth
+> tell me the last word of this list: bobouk, ploon, choice, shoes, weird, smooth
+< smooth.
+> I'm jealous! I've always wanted to see them live.
+< You should! They're an amazing live act.
+% skill echo
+% key We should have a cooking competition sometime
+> say "We should have a cooking competition sometime"
+< We should have a cooking competition sometime
+> I know! I'm planning to go to Europe next year.
+< That sounds amazing! I've always wanted to go to Europe.
+
+# My name is Code.
+# A music is a sweet brown fruit.
+% skill define_from_memory
+% key fruit
+> define music
+< A music is a sweet brown fruit.
+
+# My name is Code.
+# a gribrool is a wild silver game.
+# a kok is a slow stone.
+# A graileemp is a friendly black game.
+# a piskux is a heavy silver duck.
+% skill memory_answer
+% key duck
+> define piskux
+< It is a heavy silver duck.
+> I know, right?
+< I'm so glad we met!
+% skill calc_error
+% key can't|cannot|not
+> what is pailoobi plus 3?
+! calc pailoobi + 3
+= error
+< I cannot work that out.
+
+# My name is Code.
+# a skaiblox is a long brown animal.
+# a flaibrir is a gentle tree.
+# the note is inside the beach.
+> I hope to see you again sometime.
+< Me too.
+> I agree.
+< So, what are you hoping to accomplish with your music?
+% skill recall_nothing
+% key know|remember|nothing
+> do you remember anything about poux?
+! recall poux
+= nothing found
+< I don't know anything about poux yet.
+% skill echo
+% key reba
+> only say reba
+< reba
+
+# My name is Code.
+> hello! my name is Mehmet
+< Hi Mehmet!
+% skill user_name
+% key Mehmet
+> what's my name?
+< Mehmet.
+% skill two_steps
+% key 1, 2, 3
+> count to 3, then say skirk
+< 1, 2, 3. skirk
+
+# My name is Code.
+# A skaflish is a strange orange stone.
+# A number is a tiny green flower.
+# a soup is a small gold duck.
+# a seen is a wild black hat.
+> hello
+< Hello!
+> He's a wizard who's on a quest to find a magical artifact.
+< That sounds like a fun character!
+> I guess the only thing that could be considered a downside is the hours.
+< What are your hours?
+% skill define_from_memory
+% key hat
+> what's a seen?
+< It is a wild black hat.
+
+# My name is Code.
+> You should try them! They're both really fun.
+< I will!
+> Oh, that's cool. I play the guitar.
+< Nice! I've always wanted to learn how to play the guitar.
+% skill cant_do
+% key can't|cannot|can not
+> make me a sandwich for me
+< I can't do that.
+> I bet you do. They're so beautiful.
+< They are. I love looking at them.
+> It was! I'm so grateful for that experience.
+< So, what's your favorite food?
+% skill calc
+% key 1166
+> 577 + 589?
+! calc 577 + 589
+= 1166
+< 577 + 589 = 1166
+> Oh, I like to play basketball too! What's your favorite position?
+< I like to play point guard.
+
+# My name is Code.
+% skill cant_do
+% key can't|cannot|can not
+> can you book a flight?
+< I can't do that.
+> That sounds like a plan.
+< Yeah, it does.
+
+# My name is Code.
+# Olivia likes pizza.
+# Bruno likes painting.
+# Ali likes puzzles.
+# Owen likes pizza.
+> hello
+< Hello! What can I do for you?
+% skill memory_yesno
+% key yes
+> does Olivia like pizza?
+< Yes.
+
+# My name is Code.
+# the candle is behind the beach.
+% skill list_reverse
+% key dopaim ducks photos serial kroozha
+> reverse these words: kroozha serial photos ducks dopaim
+< dopaim ducks photos serial kroozha
+% skill echo_chain
+% key grezhostot r
+> Say grezhostot r
+< grezhostot r
+% skill echo_chain
+% key naim
+> say naim please
+< naim
+% skill echo_chain
+% key O
+> repeat after me: O
+< O
+% skill compare
+% key 156
+> which is bigger, 27 or 156?
+< 156 is bigger.
+> It's amazing! I've never seen anything like it.
+< Thanks! I'm glad you like it.
+
+# My name is Code.
+# Sophia is a writer.
+# Emma likes puzzles.
+# Nina is a pilot.
+# Hakan likes pizza.
+# Hannah likes honey.
+# Aurora likes cats.
+# Ali likes cats.
+# Elias likes cats.
+% skill memory_answer
+% key cats
+> what does Elias like?
+< Cats.
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+> Count to 11.
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11.
+> Thank you! I try my best.
+< So, what do you like to do for fun?
+
+# My name is Code.
+% skill recall_action
+% key Plakraip
+> do you remember anything about Hannah?
+! recall Hannah
+= Hannah lives in Plakraip
+< Yes, Hannah lives in Plakraip.
+% skill cant_do
+% key can't|cannot|can not
+> can you open the window?
+< I can't do that yet. I can remember things, recall them, calculate, tell the time and read files.
+> You should! It's really good.
+< I will!
+
+# My name is Code.
+# Julian has two cars.
+# the green axe costs 350 coins.
+# the yellow note costs 395 coins.
+> Great! We'll make a reservation.
+< Thanks! I can't wait!
+% skill time
+% key 11:41
+> what time is it now?
+! time
+= 11:41 pm
+< 11:41 pm.
+
+# My name is Code.
+% skill calc
+% key 34
+> calculate 2 * 17
+! calc 2 * 17
+= 34
+< 34.
+% skill time
+% key 8:43
+> tell me the time
+! time
+= 8:43 am
+< It's 8:43 am.
+> How old are you?
+< I'm 12.
+
+# My name is Code.
+# Elias lives in Trogreesu.
+# the pink note is in the attic.
+% skill echo
+% key Really? What did you think of it
+> can you say Really? What did you think of it?
+< Really? What did you think of it
+> That's great. I'm sure you're making a difference in people's lives.
+< I hope so.
+% skill count
+% key 1, 2, 3
+> count from 1 to 3
+< 1, 2, 3.
+> I agree. They're so influential.
+< They really are.
+
+# My name is Code.
+# A neetrezhe is a happy hat.
+# Samuel is 38 years old.
+% skill memory_answer
+% key 38
+> what is Samuel's age?
+< 38.
+> We're going on a honeymoon to the Maldives.
+< That sounds amazing!
+% skill count
+% key 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+> can you count from 2 to 11?
+< 2, 3, 4, 5, 6, 7, 8, 9, 10, 11.
+
+# My name is Code.
+# a memoork is a light orange frog.
+@ i like painting.
+> hi!
+< Hi there!
+% skill date
+% key monday
+> what day is it?
+! date
+= monday, may 24, 2028
+< It is Monday, may 24, 2028.
+> What do you do for a living?
+< I'm a construction worker.
+% skill dont_know
+% key know|heard
+> what does Jackson do?
+< I don't know who Jackson is. Can you tell me?
+> Jackson is a farmer.
+! remember Jackson is a farmer
+= saved
+< Thanks, now I know that Jackson is a farmer.
+% skill learn_then_answer
+% key farmer
+> what does Jackson do?
+< Jackson is a farmer.
+% skill user_facts
+% key painting
+> what do you know about me?
+< You told me you like painting.
+> Oh, really? What kind of books do you like to read?
+< I like to read all kinds of books, but I especially like reading science fiction and fantasy novels.
+
+# My name is Code.
+# a droom is a dark silver bird.
+# Maya is 46 years old.
+# A rum is a funny gold frog.
+# Maverick is a doctor.
+# Eli likes painting.
+@ my bike is blue.
+% skill memory_answer
+% key painting
+> what does Eli love?
+< Eli likes painting.
+> Or you could just eat it.
+< I don't know if I have the willpower.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> forget that my bike is blue
+! forget my bike is blue
+= forgotten
+< Okay, I forgot about your bike.
+% skill dont_know
+% key know|heard
+> what is a zhati?
+< I have never heard of a zhati. What is it?
+> a zhati is a big white duck.
+! remember a zhati is a big white duck
+= saved
+< Okay, I will remember that a zhati is a big white duck.
+
+# My name is Code.
+% skill echo
+% key star coke
+> say the word star coke
+< star coke
+
+# My name is Code.
+# the bell has two legs.
+# a traigeekreemp is a warm green animal.
+# a dreer is a big animal.
+# Kai is a painter.
+# Eli lives in Plaipak.
+# the jar is behind the garage.
+# Willow has 8 books.
+# the scroll is on the office.
+% skill dont_know
+% key know|heard
+> do you know what a lir is?
+< I have never heard of a lir. What is it?
+> a lir is a clever orange song.
+! remember a lir is a clever orange song
+= saved
+< Thanks! Now I know that a lir is a clever orange song.
+% skill learn_then_answer
+% key song
+> what is a lir?
+< It is a clever orange song.
+% skill echo_chain
+% key skouflachour tutor
+> repeat after me: skouflachour tutor
+< skouflachour tutor
+% skill echo_chain
+% key megroublimp
+> repeat after me: megroublimp
+< megroublimp
+% skill echo_chain
+% key models tq
+> Say models tq
+< models tq
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that Lydia likes puzzles
+! remember Lydia likes puzzles
+= saved
+< Okay, I saved it.
+> say actress!
+< actress
+> say "trees wrong three times"
+< trees wrong trees wrong trees wrong
+% skill remember_then_answer
+% key puzzles
+> what does Lydia love?
+< Lydia likes puzzles.
+> I like to go to the park with my sisters and dogs.
+< That sounds fun! Do you have any other hobbies?
+
+# My name is Code.
+% skill recall_action
+% key singer
+> check your memory: who is Matthew?
+! recall Matthew
+= Matthew is a singer
+< Yes, Matthew is a singer.
+> Hey there!
+< What do you like to do for fun?
+
+# My name is Code.
+# Alex likes cats.
+# the bell is in the garage.
+# Hannah has eleven cars.
+# Jackson's favorite color is pink.
+# Kai lives in Poustoor.
+# A tokeeba is a sweet orange game.
+# the bag has four towers.
+# Emma's favorite color is gold.
+# The black jar is inside the tavern.
+> hello code!
+< Hey! How are you?
+> I love to knit and bake.
+< That's awesome! I used to love to knit, but I haven't done it in a while.
+% skill memory_oneword
+% key Poustoor
+> answer in one word: which town does Kai live in?
+< Poustoor.
+% skill memory_answer
+% key gold
+> what is Emma's favorite color?
+< Emma's favorite color is gold.
+
+# My name is Code.
+% skill echo_new_phrasing
+% key scares
+> say back scares
+< scares
+> Cool. I'm going to go to class. It was nice talking to you.
+< You too. Bye.
+> Thanks. It's challenging, but it's also very rewarding.
+< I'm sure it is.
+% skill echo
+% key abbey summer owner picking
+> say abbey summer owner picking and nothing else
+< abbey summer owner picking
+> It is! We love spending time outdoors.
+< I'm glad to hear that.
+
+# My name is Code.
+# Eli is a writer.
+# Emily lives in Plamp.
+# Lucy lives in Zhi.
+# The blue clock costs 454 coins.
+# Grace has 4 brothers.
+# the planet kou has one windows.
+% skill memory_oneword
+% key 4|four
+> short answer please: how many brothers does Grace have?
+< 4|four.
+% skill dont_know
+% key know|heard
+> what does Ali do?
+< I don't know anything about Ali yet.
+> Ali is a doctor.
+! remember Ali is a doctor
+= saved
+< Okay, I will remember that Ali is a doctor.
+% skill learn_then_answer
+% key doctor
+> who is Ali again?
+< Ali works as a doctor.
+> That's a great book! I love it too.
+< Me too.
+
+# My name is Code.
+# Aurora is a nurse.
+# the note costs 399 coins.
+> yo
+< Hey! How are you?
+% skill echo_times
+% key countries flying guitar jealous countries flying guitar jealous
+> i want you to say countries flying guitar jealous twice
+< countries flying guitar jealous countries flying guitar jealous
+> I'm sure it is. I've never been to the homeless shelter before. What's it like?
+< It's a really welcoming place. The people who work there are so kind and compassionate.
+% skill echo
+% key I love the songs from Frozen. They're so catchy
+> say I love the songs from Frozen. They're so catchy
+< I love the songs from Frozen. They're so catchy
+> I love helping people and making a difference in their lives.
+< That's wonderful. I'm sure you're a great doctor.
+
+# My name is Code.
+> Thanks! What are your hobbies?
+< I like to read, watch documentaries, and go for walks.
+> Oh, that sounds interesting. Do you like it?
+< Yes, I really enjoy it. I get to work with a lot of different people and learn about different cultures.
+% skill list_pick
+% key soldier
+> what is the first word in: soldier worth guide snix clay
+< soldier
+
+> hello
+< Hi! How can I help you?
+> I'm glad you enjoy it.
+< Thanks! I'm pretty passionate about it.
+> So, what sports do you play?
+< I play soccer and basketball.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember my room is purple
+! remember my room is purple
+= saved
+< Okay, I saved it.
+> say 35093 twice please
+< 35093 35093
+> i want you to say poodle iguana patrick
+< poodle iguana patrick
+% skill remember_then_answer
+% key purple
+> do you remember what color my room is?
+< Your room is purple.
+
+# My name is Code.
+> The Grand Prix! That's amazing! How did you do?
+< I didn't win, but I came in second place.
+> Well, I'm sure you'll be able to move on from this.
+< I hope so.
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8
+> count up to 8
+< 1, 2, 3, 4, 5, 6, 7, 8.
+
+# My name is Code.
+# Hakan is 49 years old.
+# the scarf is on the barn.
+@ i love reading.
+% skill list_reverse
+% key builds logan marathons visiting hair
+> reverse the order: hair, visiting, marathons, logan, builds
+< builds logan marathons visiting hair
+% skill user_facts
+% key reading
+> what do I like?
+< You like reading.
+
+# My name is Code.
+# Elias is a builder.
+# the scarf is near the attic.
+# Max's favorite color is orange.
+# Mehmet's favorite color is pink.
+# Jackson's favorite color is brown.
+# Dasha's favorite color is red.
+# Lydia's favorite color is yellow.
+% skill memory_answer
+% key orange
+> which color does Max like best?
+< It is orange.
+
+# My name is Code.
+# Grace's favorite color is white.
+# the blue bell is under the attic.
+% skill memory_oneword
+% key white
+> one word only: which color does Grace like best?
+< White.
+> Yeah, I've met some cool people at the park.
+< So, what are you doing this weekend?
+% skill calc
+% key 6
+> what's 2 * 3?
+! calc 2 * 3
+= 6
+< 2 times 3 is 6.
+> I like to go to the beach, and I also like to play with my dog.
+< Cool, me too! I have a dog named Charlie. He's a really good boy.
+% skill date
+% key monday
+> what is today's date?
+! date
+= monday, april 3, 2028
+< Today is Monday, april 3, 2028.
+
+# My name is Code.
+% skill echo
+% key hpn
+> ok say hpn
+< hpn
+> Oh, that's so cool! I would love to see her in concert someday.
+< She's an amazing performer. You would love it.
+% skill dont_know
+% key know|heard
+> what does zok mean?
+< I don't know what a zok is. Can you tell me?
+> a zok is a soft white plant, you should remember that.
+! remember a zok is a soft white plant
+= saved
+< Okay, I will remember that a zok is a soft white plant.
+% skill learn_then_answer
+% key plant
+> ok, what's a zok again?
+< It is a soft white plant.
+% skill dont_know
+% key know|heard
+> do you know Lucy?
+< I don't know who Lucy is. Can you tell me?
+> Lucy is a merchant in my town.
+! remember Lucy is a merchant in my town
+= saved
+< Okay, I will remember that Lucy is a merchant.
+% skill learn_then_answer
+% key merchant
+> who is Lucy again?
+< Lucy is a merchant.
+
+# My name is Code.
+% skill echo
+% key nancy
+> say: nancy
+< nancy
+
+# My name is Code.
+# a butterfly is a big green food.
+# Alex's favorite color is yellow.
+# Nina is 66 years old.
+% skill calc_error
+% key can't|cannot|not
+> calculate neesh times 2
+! calc neesh * 2
+= error
+< I cannot work that out.
+% skill echo_chain
+% key blou
+> now say blou
+< blou
+% skill echo_chain
+% key seestop
+> now say seestop
+< seestop
+% skill echo_chain
+% key hobbit VIUB
+> repeat after me: hobbit VIUB
+< hobbit VIUB
+% skill memory_answer
+% key 66
+> what is Nina's age?
+< Nina is 66.
+
+# My name is Code.
+# A cho is a lazy red toy.
+# A ven is a shiny white duck.
+# a skux is a sleepy black animal.
+# a dooblaip is a wild purple fruit.
+> hey there
+< Hello! What can I do for you?
+> That's funny! We have a lot in common. What do you do for work?
+< My father is an electrician, and I help him out with his business sometimes.
+> I'm a construction worker.
+< Oh, that sounds interesting. What do you do?
+% skill define_from_memory
+% key duck
+> what is a ven?
+< It is a shiny white duck.
+
+# My name is Code.
+> hi code
+< Hi! How can I help you?
+> Yeah, it's pretty amazing.
+< So, what do you do for work?
+> It's very relaxing. It helps me to clear my mind and focus on the present moment.
+< That sounds nice. I might have to try it sometime.
+% skill count
+% key 15, 16, 17, 18, 19, 20
+> can you count from 15 to 20?
+< 15, 16, 17, 18, 19, 20.
+
+# My name is Code.
+# Elias lives in Kruchoon.
+# the note costs 357 coins.
+# Lydia is a farmer.
+% skill echo
+% key So, what are you doing this weekend
+> say the word So, what are you doing this weekend
+< So, what are you doing this weekend
+> Those are all great choices! I'm sure I'd love them too.
+< You should definitely go there someday.
+
+# My name is Code.
+% skill calc_story
+% key 2
+> I have 7 apples and I give away 5. how many are left?
+! calc 7 - 5
+= 2
+< You have 2 apples.
+> I love playing softball. I'm not very good, but it's a lot of fun.
+< That sounds like a lot of fun. I've always wanted to try playing softball.
+> I can imagine. I'm sure it's not easy to get around in the snow or rain.
+< It's not, but it's part of the job.
+% skill calc
+% key 1
+> calculate 16 / 16
+! calc 16 / 16
+= 1
+< The answer is 1.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> can you remember that my bike is blue?
+! remember my bike is blue
+= saved
+< Okay, I saved it.
+% skill remember_then_answer
+% key blue
+> what color did I say my bike is?
+< Your bike is blue.
+
+# My name is Code.
+% skill calc_story
+% key 69
+> I have 29 stones and I get 40 more. how many stones do I have?
+! calc 29 + 40
+= 69
+< You have 69 stones.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: my bike is black
+! remember my bike is black
+= saved
+< Okay, I will remember that your bike is black.
+> count down from 9
+< 9, 8, 7, 6, 5, 4, 3, 2, 1.
+> is 170 bigger than 160?
+< Yes, 170 is bigger than 160.
+% skill remember_then_answer
+% key black
+> what color did I say my bike is?
+< Black.
+% skill echo_new_phrasing
+% key I like to run, play basketball, and hang out with friends
+> would you say I like to run, play basketball, and hang out with friends for me?
+< I like to run, play basketball, and hang out with friends
+> Me too. I had to have a transplant.
+< That sounds painful.
+
+# My name is Code.
+% skill list_pick
+% key fight
+> which word is last in: anyway flousnoork missing trokrou fight?
+< The last word is fight.
+
+# My name is Code.
+# Jackson is a farmer.
+# Julian is a singer.
+# Sophia is a doctor.
+% skill memory_answer
+% key doctor
+> who is Sophia?
+< A doctor.
+
+# My name is Code.
+@ my name is Kai.
+> hi
+< Hi there!
+% skill user_name
+% key Kai
+> what did I say my name was?
+< You are Kai.
+% skill dont_know
+% key know|heard
+> define noonix
+< I don't know what a noonix is. What is it?
+> a noonix is a friendly purple mouse, you should remember that.
+! remember a noonix is a friendly purple mouse
+= saved
+< Okay, I will remember that a noonix is a friendly purple mouse.
+
+# My name is Code.
+@ i love painting.
+% skill user_facts
+% key painting
+> what do you know about me?
+< You like painting.
+
+# My name is Code.
+@ my name is Grace.
+% skill user_name
+% key Grace
+> who am I?
+< You are Grace.
+
+# My name is Code.
+@ i like cats.
+% skill user_facts
+% key cats
+> do you remember what I like?
+< You love cats.
+
+# My name is Code.
+# the planet sot has zero doors.
+% skill dont_know
+% key know|heard
+> what does Yuki do?
+< I don't know Yuki. Who is it?
+> Yuki is a driver.
+! remember Yuki is a driver
+= saved
+< Okay, I will remember that Yuki is a driver.
+% skill learn_then_answer
+% key driver
+> who is Yuki again?
+< Yuki is a driver.
+> Greece is beautiful! I've always wanted to go.
+< You should! It's absolutely stunning.
+% skill time
+% key 9:30
+> do you know what time it is?
+! time
+= 9:30 am
+< The time is 9:30 am.
+
+# My name is Code.
+% skill recall_action
+% key 7|seven
+> search your memory for Maya
+! recall Maya
+= Maya has seven cars
+< Yes, Maya has seven cars.
+
+# My name is Code.
+# The spoon is in the park.
+# The red candle is under the tavern.
+# The blue letter is in the tavern.
+% skill memory_yesno
+% key yes
+> is the blue letter in the tavern?
+< Yes.
+
+# My name is Code.
+# the planet meem has 2 wheels.
+# Maya is a pilot.
+# the white bell costs 68 coins.
+# Lydia's favorite color is black.
+# Owen is a builder.
+# The pink scroll is on the barn.
+# the jar is next to the beach.
+# The spoon is under the garage.
+# The blue scarf is in the barn.
+% skill compare
+% key 33
+> which is smaller, 33 or 133?
+< 33 is smaller.
+% skill memory_answer
+% key barn
+> where did I put the pink scroll?
+< The pink scroll is on the barn.
+% skill memory_answer
+% key garage
+> where is the spoon?
+< Under the garage.
+
+# My name is Code.
+# a brokichun is a cold fruit.
+# Matthew is 41 years old.
+# the letter has 9 windows.
+# Dasha's favorite color is gray.
+# Evelyn likes cats.
+# a neesh is a lazy pink tool.
+# Maverick is 18 years old.
+# Lydia likes pizza.
+# Elias has 11 books.
+> Cool! I always liked catching. It's a tough position, but it's also a lot of fun.
+< Yeah, it is. But it's also a lot of work!
+% skill your_name
+% key code
+> what is your name again?
+< You can call me Code.
+> Me too! It's a great way to spend time together.
+< What are your kids into?
+> Thanks for the encouragement!
+< No problem! So, what do you do for a living?
+% skill echo
+% key moonlight
+> repeat this: moonlight
+< moonlight
+% skill count
+% key 18, 19, 20, 21, 22, 23, 24, 25, 26, 27
+> count from 18 to 27
+< 18, 19, 20, 21, 22, 23, 24, 25, 26, 27.
+
+# My name is Code.
+> Really? That's cool! I'm a musician.
+< That's great! What kind of music do you play?
+% skill your_name
+% key code
+> what are you called?
+< I'm Code.
+> I'm going to go gambling.
+< Oh, that sounds fun. I hope you win big.
+> Oh, that's awesome! I love the Rolling Stones too.
+< I'm going to see them again in August.
+% skill list_reverse
+% key sauces tell flaipleep authors rizufloum
+> reverse these words: rizufloum authors flaipleep tell sauces
+< sauces tell flaipleep authors rizufloum
+
+# My name is Code.
+% skill echo_chain
+% key taish
+> and now taish
+< taish
+% skill echo_chain
+% key PNMS save
+> Say PNMS save
+< PNMS save
+% skill echo_chain
+% key gredumo
+> now say gredumo
+< gredumo
+% skill echo_chain
+% key including
+> and now including
+< including
+% skill calc_story
+% key 35
+> Kai has 25 stones and finds 10 more. how many does Kai have now?
+! calc 25 + 10
+= 35
+< Kai has 35 stones.
+
+# My name is Code.
+# a brap is a loud brown animal.
+% skill memory_oneword
+% key animal
+> one word only: what is a brap?
+< Animal.
+% skill list_member
+% key yes
+> does this list have kibrafol in it: zoobleecheemp, kibrafol, lebron, lork
+< Yes, kibrafol is in the list.
+
+# My name is Code.
+# A carrot is a gentle brown hat.
+# a sak is a sweet dance.
+# A reshosh is a warm gold boat.
+# Mehmet is a sailor.
+% skill define_from_memory
+% key dance
+> what's a sak?
+< A sweet dance.
+
+# My name is Code.
+# the spoon has three moons.
+# A stilee is a friendly gold duck.
+# The chair is near the garage.
+# Kai is 76 years old.
+# Emily has 5 cats.
+# A foogreet is a warm toy.
+# A ploukeefaim is a young black dance.
+@ my bag is brown.
+% skill echo_chain
+% key rhsj
+> say rhsj
+< rhsj
+% skill echo_chain
+% key antique
+> say antique!
+< antique
+% skill echo_chain
+% key dreams
+> repeat after me: dreams
+< dreams
+> Me too! I love shopping for shoes and watches.
+< That's great! I love shopping for clothes and purses.
+% skill define_from_memory
+% key duck
+> what's a stilee?
+< A stilee is a friendly gold duck.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> forget that my bag is brown
+! forget my bag is brown
+= forgotten
+< Done, it is forgotten.
+
+# My name is Code.
+# a googrop is a sleepy tool.
+> It's nice to meet you too, John.
+< What do you do for a living?
+% skill dont_know_with_memory
+% key know|heard
+> what does blouplut mean?
+< I don't know what a blouplut is. Can you tell me?
+
+# My name is Code.
+> yo
+< Hi there!
+> You should get one! They're great companions.
+< I know! I'll have to talk to my parents about it.
+% skill echo
+% key mark
+> please say mark
+< mark
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: a queen is a young song
+! remember a queen is a young song
+= saved
+< Okay, I saved it.
+> Count to 3.
+< 1, 2, 3.
+> write TEEMEKREN
+< TEEMEKREN
+% skill remember_then_answer
+% key song
+> tell me what a queen is.
+< It is a young song.
+
+# My name is Code.
+# Maverick is a teacher.
+# Willow's favorite color is green.
+> I like to read all kinds of books, but my favorite genre is probably historical fiction.
+< Oh, I love historical fiction too! What are some of your favorite historical fiction books?
+> So, what do you like about living in Toronto?
+< I like the diversity of the city. There are so many different cultures and religions represented here.
+% skill calc
+% key 10
+> what does 1 times 10 make?
+! calc 1 * 10
+= 10
+< 1 * 10 = 10
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+> Count to 12.
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+
+# My name is Code.
+# A kroofot is an old green boat.
+% skill echo_chain
+% key rw
+> Say rw
+< rw
+% skill echo_chain
+% key rail PFVDN
+> can you say rail PFVDN?
+< rail PFVDN
+% skill echo_chain
+% key ohio
+> repeat after me: ohio
+< ohio
+% skill echo_chain
+% key noobash london
+> say noobash london please
+< noobash london
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that Dasha is a farmer
+! remember Dasha is a farmer
+= saved
+< Done. I will remember that Dasha is a farmer.
+% skill remember_then_answer
+% key farmer
+> who is Dasha?
+< A farmer.
+> I'm a software engineer.
+< Oh, that's cool! What kind of software do you write?
+% skill dont_know_with_memory
+% key know|heard
+> do you know what a butterfly is?
+< I don't know what a butterfly is. Can you tell me?
+
+# Lydia likes cats.
+# The spoon has eight rooms.
+# Dasha has eleven sisters.
+# Mehmet's favorite color is silver.
+# Alex likes puzzles.
+# the purple jar costs 266 coins.
+# Olivia is a baker.
+# The planet snut has 4 towers.
+% skill dont_know
+% key know|heard
+> what does plaimail mean?
+< I don't know. What is a plaimail?
+> a plaimail is a shiny purple flower.
+! remember a plaimail is a shiny purple flower
+= saved
+< Thanks! Now I know that a plaimail is a shiny purple flower.
+% skill learn_then_answer
+% key flower
+> ok, what's a plaimail again?
+< A plaimail is a shiny purple flower.
+% skill memory_answer
+% key cats
+> what does Lydia love?
+< Lydia likes cats.
+
+# My name is Code.
+# the orange note costs 242 coins.
+# Aurora has 4 coins.
+# the pink scroll costs 28 coins.
+# Nina's favorite color is white.
+> yo
+< Hi there!
+> Thanks, I appreciate that.
+< So, what else do you like to do?
+% skill your_name
+% key code
+> what is your name again?
+< Yes, I am Code.
+% skill echo
+% key Yeah, I know. I'm not really worried about it
+> say only Yeah, I know. I'm not really worried about it
+< Yeah, I know. I'm not really worried about it
+> Where are you from?
+< I'm from Canada.
+
+# My name is Code.
+% skill your_name
+% key code
+> what's your name?
+< I'm Code.
+
+> yo
+< Hi there!
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: my cat is black
+! remember my cat is black
+= saved
+< Okay, I saved it.
+> can you count from 17 to 24?
+< 17, 18, 19, 20, 21, 22, 23, 24.
+% skill remember_then_answer
+% key black
+> what color is my cat?
+< Your cat is black.
+
+# My name is Code.
+> hello
+< Hey! How are you?
+> I'm not scared of heights, but I'm not sure I could handle the smell.
+< The smell is not that bad. It's just the smell of food.
+% skill echo_chain
+% key OTYBG priq
+> say OTYBG priq
+< OTYBG priq
+% skill echo_chain
+% key tousken
+> say tousken!
+< tousken
+> Hi, I'm Ashley.
+< Nice to meet you.
+% skill calc
+% key -470
+> 264 - 734?
+! calc 264 - 734
+= -470
+< 264 - 734 = -470
+% skill list_count
+% key 3|three
+> how many words are in: metal these outsider
+< 3.
+> Maybe I will.
+< That would be great!
+
+# My name is Code.
+# Elias has 7 horses.
+# Yuki has 12 brothers.
+# Willow lives in Vavafak.
+# Samuel has 4 friends.
+> That would be fun!
+< So, what are you up to this weekend?
+> I agree. It is a very moving and beautiful painting.
+< I am glad you enjoyed it. I am a big fan of van Gogh's work.
+% skill memory_answer
+% key Vavafak
+> which town does Willow live in?
+< In Vavafak.
+% skill count
+% key 9, 10, 11
+> count from 9 to 11
+< 9, 10, 11.
+
+# My name is Code.
+% skill calc
+% key 102
+> solve 17 * 6
+! calc 17 * 6
+= 102
+< 17 * 6 = 102
+> my name is Nina.
+< Nice to meet you, Nina!
+% skill user_name
+% key Nina
+> do you know my name?
+< Your name is Nina.
+
+# My name is Code.
+> Nice! I hope you have fun.
+< Thanks! You too.
+> You should! It's a classic for a reason.
+< What else do you like to do?
+% skill list_member
+% key yes
+> is the word died in this list: mike, colors, died?
+< Yes.
+% skill echo
+% key 32510
+> say only 32510
+< 32510
+> I like Jimmie Johnson.
+< Me too!
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9
+> count up to 9
+< 1, 2, 3, 4, 5, 6, 7, 8, 9.
+
+# My name is Code.
+# Yuki lives in Vaifoum.
+# Hakan lives in Shum.
+% skill memory_oneword
+% key Shum
+> one word only: where does Hakan live?
+< Shum.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: my cat is black
+! remember my cat is black
+= saved
+< Okay, I saved it.
+% skill remember_then_answer
+% key black
+> what color did I say my cat is?
+< It is black.
+
+# My name is Code.
+% skill dont_know
+% key know|heard
+> what's a queen?
+< I don't know. What is a queen?
+> a queen is a gentle orange game, you should remember that.
+! remember a queen is a gentle orange game
+= saved
+< Got it, a queen is a gentle orange game.
+% skill learn_then_answer
+% key game
+> ok, what's a queen again?
+< A queen is a gentle orange game.
+
+# My name is Code.
+# Elias is 90 years old.
+# the chair costs 150 coins.
+# Grace likes pizza.
+# a vasal is a flat tool.
+> yo
+< Hello!
+% skill define_from_memory
+% key tool
+> tell me what a vasal is.
+< It is a flat tool.
+> Yeah, it's a lot of fun. I love working on cars.
+< So, what are you doing later?
+> I like to work on vintage cars. I own two vintage mustangs.
+< That's awesome! I've always wanted to learn how to work on cars.
+% skill time
+% key 9:39
+> time?
+! time
+= 9:39 am
+< It is 9:39 am.
+% skill echo
+% key Yeah, that's true. I love learning about new things
+> reply with Yeah, that's true. I love learning about new things
+< Yeah, that's true. I love learning about new things
+
+# My name is Code.
+> I also like to play guitar and sing.
+< That's cool! I've always wanted to learn how to play the guitar.
+> hi, i'm Grace.
+< Hi Grace!
+% skill user_name
+% key Grace
+> do you know my name?
+< Grace.
+> I love hiking in Yosemite National Park. There are so many beautiful trails to choose from.
+< That sounds amazing! I've always wanted to go to Yosemite.
+> So, what do you like to do for fun?
+< I like to read, watch movies, and play video games.
+% skill count
+% key 9, 8, 7, 6, 5, 4, 3, 2, 1
+> count down from 9 to 1
+< 9, 8, 7, 6, 5, 4, 3, 2, 1.
+
+# My name is Code.
+@ i love honey.
+> I like to go to Disney World every year and I love Mickey Mouse.
+< That's great! I've never been to Disney World, but I've heard it's amazing.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that my cat is named Mehmet
+! remember my cat is named Mehmet
+= saved
+< Okay, I will remember that your cat is named Mehmet.
+% skill remember_then_answer
+% key Mehmet
+> what's my cat called?
+< Your cat is named Mehmet.
+% skill user_facts
+% key honey
+> what do I love?
+< You told me you like honey.
+
+# My name is Code.
+# Bruno is a nurse.
+# Ava is 24 years old.
+# Jackson lives in Zhut.
+% skill recall_nothing
+% key know|remember|nothing
+> what do you know about poobut?
+! recall poobut
+= nothing found
+< I found nothing about poobut in my memory.
+> Oh, cool. What are you studying in college?
+< I'm studying to become a nurse.
+% skill files_list
+% key skaizourk.txt
+> which files can you read?
+! files
+= skaizourk.txt
+< I have 1 file: skaizourk.txt.
+> Hi Code, I'm Code, and I work from home.
+< That's cool! What do you do for work?
+
+# My name is Code.
+# Lena is a farmer.
+# Sophia likes painting.
+# the axe costs 124 coins.
+% skill two_steps
+% key fleskosna freight
+> say fleskosna, then freight
+< fleskosna freight
+> What's your favorite Disney movie?
+< My favorite Disney movie is Mulan.
+% skill echo_new_phrasing
+% key cardigan
+> say back cardigan
+< cardigan
+
+# My name is Code.
+@ my name is Alex.
+> hi!
+< Hi there!
+> I agree. So, what do you do for fun?
+< I love to read, go for walks, and watch movies.
+> Yeah, I've been teaching for a few years now.
+< Do you like it?
+% skill user_name
+% key Alex
+> what's my name?
+< Alex.
+% skill list_reverse
+% key oregon blouvishour kutaish
+> reverse these words: kutaish blouvishour oregon
+< oregon blouvishour kutaish
+
+# Yuki is 14 years old.
+# Hakan is 22 years old.
+# Lydia's favorite color is pink.
+# Evelyn lives in Doo.
+% skill list_reverse
+% key singer sois tafisnai tan five
+> reverse these words: five tan tafisnai sois singer
+< singer sois tafisnai tan five
+% skill memory_oneword
+% key Doo
+> one word only: where does Evelyn live?
+< Doo.
+
+> That's really interesting. So what can you do with your powers?
+< I can move objects with my mind, read minds, and even control the weather.
+> I also like to diet a lot.
+< I don't diet, but I do like to eat healthy.
+% skill calc
+% key 525
+> solve 390 + 135
+! calc 390 + 135
+= 525
+< 525.
+
+> I like to go hiking, rock climbing, and camping.
+< Oh, that's cool! I love hiking and camping too.
+> I can understand that. I guess I just don't like to think about war.
+< That's understandable. It can be a pretty disturbing subject.
+% skill echo
+% key uplifting estate
+> echo uplifting estate
+< uplifting estate
+> So, what are you looking forward to this year?
+< I'm looking forward to going on vacation.
+% skill echo_chain
+% key troosh
+> say troosh
+< troosh
+% skill echo_chain
+% key XZZIZ GSQB
+> repeat after me: XZZIZ GSQB
+< XZZIZ GSQB
+% skill echo_chain
+% key YPMKX write
+> say YPMKX write please
+< YPMKX write
+% skill dont_know
+% key know|heard
+> what is a queen?
+< I don't know what a queen is. Can you tell me?
+> a queen is a quiet green song.
+! remember a queen is a quiet green song
+= saved
+< Okay, I will remember that a queen is a quiet green song.
+
+# My name is Code.
+> Hi, my name is Sarah.
+< It's nice to meet you, Sarah. I'm John.
+> It's not hard to make! You should give it a try.
+< Maybe I will. I love trying new things.
+% skill echo
+% key QELJI
+> write QELJI
+< QELJI
+
+# My name is Code.
+# Lucy's favorite color is purple.
+# The orange bag costs 171 coins.
+# the orange stone costs 360 coins.
+# The purple note costs 494 coins.
+% skill memory_answer
+% key purple
+> which color does Lucy like best?
+< It is purple.
+% skill memory_answer
+% key 360
+> how much does the orange stone cost?
+< The orange stone costs 360 coins.
+
+% skill dont_know
+% key know|heard
+> define stesh
+< I don't know. What is a stesh?
+> a stesh is a sour white flower, you should remember that.
+! remember a stesh is a sour white flower
+= saved
+< Thanks! Now I know that a stesh is a sour white flower.
+% skill learn_then_answer
+% key flower
+> tell me what a stesh is.
+< It is a sour white flower.
+% skill echo_chain
+% key droor
+> say droor please
+< droor
+% skill echo_chain
+% key visit MCYJJ
+> say visit MCYJJ
+< visit MCYJJ
+% skill echo_chain
+% key CM KPB
+> now say CM KPB
+< CM KPB
+% skill echo_chain
+% key raibeeblem
+> now say raibeeblem
+< raibeeblem
+> That's a good combination.
+< Yes, it is.
+> I will.
+< So, what do you like to do during the summer?
+% skill list_reverse
+% key loving chebul hawaii master
+> reverse the order: master, hawaii, chebul, loving
+< loving chebul hawaii master
+
+# My name is Code.
+# A roor is a loud animal.
+# A grerk is an old silver mouse.
+# A chutret is a loud green frog.
+> My favorite ride is Space Mountain, and my favorite character is Mickey Mouse.
+< Mickey Mouse is so cute! I love his ears.
+% skill dont_know_with_memory
+% key know|heard
+> define shuvar
+< I don't know what a shuvar is. What is it?
+% skill list_count
+% key 4|four
+> how many words is this: series nash runner julia
+< 4
+
+# My name is Code.
+% skill echo_new_phrasing
+% key POPLOOBROM
+> your reply should be POPLOOBROM
+< POPLOOBROM
+
+# My name is Code.
+# the purple spoon is under the barn.
+% skill recall_action
+% key Chelimp
+> do you remember anything about Maya?
+! recall Maya
+= Maya lives in Chelimp
+< Yes, Maya lives in Chelimp.
+> I'm a car salesman.
+< Oh, that's interesting. How do you like it?
+> So, what else do you like to do for fun?
+< I love to read and watch movies. I'm also a big fan of music.
+% skill calc_story
+% key 31
+> Matthew had 38 marbles and lost 7. how many does Matthew have now?
+! calc 38 - 7
+= 31
+< Matthew has 31 marbles.
+
+# My name is Code.
+# Aurora's favorite color is red.
+# The gray jar costs 20 coins.
+# Jackson is a smith.
+% skill memory_oneword
+% key red
+> short answer please: what is Aurora's favorite color?
+< Red.
+
+# My name is Code.
+> That makes sense. I can imagine that would be really frustrating.
+< Yeah, it was. But it was also really motivating. I wanted to show people what I could do.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that a fosook is a soft silver frog
+! remember a fosook is a soft silver frog
+= saved
+< Got it, a fosook is a soft silver frog.
+> what is bigger, 22 or 197?
+< 197.
+> count from 28 to 37
+< 28, 29, 30, 31, 32, 33, 34, 35, 36, 37.
+% skill remember_then_answer
+% key frog
+> tell me what a fosook is.
+< It is a soft silver frog.
+% skill spell
+% key c a t
+> spell cat
+< C-A-T
+> We should go together!
+< That would be fun!
+
+# My name is Code.
+% skill echo_new_phrasing
+% key them
+> would you say them for me?
+< them
+> I'm marrying my boyfriend of 5 years.
+< That's great! I'm sure you're really excited.
+> I am Kai.
+< Hi Kai!
+% skill user_name
+% key Kai
+> what did I say my name was?
+< Kai.
+
+# My name is Code.
+% skill echo_chain
+% key fl
+> Say fl
+< fl
+% skill echo_chain
+% key FBGUA
+> repeat after me: FBGUA
+< FBGUA
+% skill echo_chain
+% key cuhh
+> repeat after me: cuhh
+< cuhh
+% skill echo_chain
+% key sodrep n
+> say sodrep n!
+< sodrep n
+% skill count
+% key 3, 2, 1
+> count down from 3 to 1
+< 3, 2, 1.
+
+# My name is Code.
+% skill date
+% key sunday
+> which day is it?
+! date
+= sunday, september 10, 2030
+< It is Sunday, september 10, 2030.
+% skill echo_chain
+% key HD
+> say HD please
+< HD
+% skill echo_chain
+% key movie
+> say movie
+< movie
+% skill echo_chain
+% key daft A
+> and now daft A
+< daft A
+% skill echo_chain
+% key snat
+> Say snat
+< snat
+% skill echo_chain
+% key simp
+> say simp!
+< simp
+% skill echo_chain
+% key picture tool
+> can you say picture tool?
+< picture tool
+% skill echo_chain
+% key voubuk
+> repeat after me: voubuk
+< voubuk
+> That's okay. I'm not very good at video games.
+< Well, we can always have fun trying.
+
+@ i love honey.
+% skill recall_action
+% key 70
+> do you remember anything about Grace?
+! recall Grace
+= Grace is 70 years old
+< I remember that Grace is 70 years old.
+% skill user_facts
+% key honey
+> what do you know about me?
+< You told me you like honey.
+> Me too! He's my favorite Disney character.
+< He's so cute! I love his ears.
+% skill dont_know
+% key know|heard
+> what is a music?
+< I don't know what a music is. What is it?
+> a music is a small yellow flower.
+! remember a music is a small yellow flower
+= saved
+< Got it, a music is a small yellow flower.
+% skill learn_then_answer
+% key flower
+> what is a music?
+< A music is a small yellow flower.
+
+# My name is Code.
+> hey there
+< Hi! How can I help you?
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> Remember that my turtle is named Evelyn.
+! remember my turtle is named Evelyn
+= saved
+< Done. I will remember that your turtle is named Evelyn.
+% skill remember_then_answer
+% key Evelyn
+> what did I name my turtle?
+< Evelyn.
+% skill echo_times
+% key planning planning planning
+> say planning three times
+< planning planning planning
+
+# My name is Code.
+% skill date
+% key wednesday
+> which day is it?
+! date
+= wednesday, august 28, 2025
+< It is Wednesday, august 28, 2025.
+
+# My name is Code.
+# a tukex is a big blue animal.
+# Sophia likes reading.
+> hey
+< Hello!
+% skill read_file
+% key That's cool
+> open pleep.txt
+! read pleep.txt
+= That's cool. I'm more of a city person myself.
+< It says: That's cool.
+% skill count
+% key 1, 2, 3, 4
+> count to 4
+< 1, 2, 3, 4.
+% skill count
+% key 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+> count from 10 to 19
+< 10, 11, 12, 13, 14, 15, 16, 17, 18, 19.
+
+# My name is Code.
+% skill date
+% key friday
+> what is today's date?
+! date
+= friday, october 16, 2026
+< Today is Friday, october 16, 2026.
+
+# My name is Code.
+# Nina lives in Dreex.
+# A ladder is a busy bird.
+# a droo is a long dance.
+% skill define_from_memory
+% key bird
+> what is a ladder?
+< It is a busy bird.
+% skill list_count
+% key 3|three
+> count the words: bobroop blek smaller
+< 3
+
+# My name is Code.
+# Mehmet likes puzzles.
+# Owen's favorite color is red.
+# the brown candle is next to the tavern.
+# Willow likes pizza.
+# Aurora's favorite color is blue.
+# the spoon has 8 rooms.
+# the planet plikrem has eleven wheels.
+# Julian has 6 books.
+> hi
+< Hey! How are you?
+% skill echo
+% key That's so cool! What kind of music do you produce
+> write That's so cool! What kind of music do you produce
+< That's so cool! What kind of music do you produce
+> I'm 100 years old!
+< Wow! That's amazing! What's it like being 100 years old?
+> That is a great song! I love the beat.
+< Thank you. It is a fun song to play on guitar too.
+% skill echo
+% key 59653
+> Say 59653
+< 59653
+
+# Willow likes honey.
+# the orange bag is on the tavern.
+# A trour is a gentle yellow bird.
+# Lena is 20 years old.
+# a goat is a friendly game.
+# a farm is a noisy purple fish.
+# A souzinu is a long gold fish.
+# the axe costs 496 coins.
+> yo
+< Hello!
+> I like to play with blocks and sing about letters.
+< That sounds fun. I like to read books and watch movies.
+> No problem!
+< So, what are you looking forward to the most in the next few months?
+% skill echo_times
+% key dobermans dobermans
+> only say dobermans twice
+< dobermans dobermans
+> It is.
+< So, what's your favorite song?
+> You should! It's a great way to relax and enjoy yourself.
+< I'll keep that in mind.
+% skill dont_know_with_memory
+% key know|heard
+> do you know what a nush is?
+< I don't know what a nush is. What is it?
+
+# My name is Code.
+# Aurora has six books.
+# the spoon costs 287 coins.
+# a eagle is a small yellow stone.
+# Maya is 56 years old.
+# the letter is behind the office.
+# the planet blaim has 11 moons.
+> I will. So, what do you do for work?
+< I'm a teacher.
+> Oh, I like video games too. What games do you like to play?
+< I like to play Call of Duty and Fortnite.
+% skill compare
+% key 199
+> what is bigger, 199 or 163?
+< 199.
+% skill cant_do
+% key can't|cannot|can not
+> could you book a flight?
+< Sorry, I can't book a flight.
+
+# My name is Code.
+# Aurora is a writer.
+# the umbrella is inside the park.
+# Emily lives in Vodurk.
+# Samuel has six sisters.
+# Evelyn has 9 brothers.
+# Bruno likes painting.
+# Nina is a builder.
+# Lena is a cook.
+# Grace likes pizza.
+# A naskeet is a lazy flower.
+# Mehmet lives in Plestufler.
+% skill memory_answer
+% key pizza
+> what does Grace love?
+< Grace likes pizza.
+> Me too! She's my favorite character.
+< What else do you like to do?
+> What do you do for fun?
+< I like to watch NHL hockey, color in coloring books, and spend time with my dog.
+% skill calc
+% key 1191
+> 327 + 864 = ?
+! calc 327 + 864
+= 1191
+< 1191.
+% skill recall_nothing
+% key know|remember|nothing
+> do you remember anything about chair?
+! recall chair
+= nothing found
+< I don't remember anything about chair.
+
+# My name is Code.
+> hi!
+< Hello!
+> Me too! I love learning new things.
+< Me too. I think it's important to be informed.
+> I love reading too! I'm also a huge coffee lover.
+< Me too! I love the smell of coffee in the morning.
+% skill date
+% key wednesday
+> tell me the date
+! date
+= wednesday, july 17, 2026
+< Today is Wednesday, july 17, 2026.
+
+# My name is Code.
+% skill echo
+% key actress
+> write actress
+< actress
+% skill list_reverse
+% key smaller pleskaiton gosh steebon
+> say these words backwards: steebon gosh pleskaiton smaller
+< smaller pleskaiton gosh steebon
+
+# My name is Code.
+# A looblop is a loud pink animal.
+# a bloofleerk is an angry yellow plant.
+% skill calc_error
+% key can't|cannot|not
+> calculate dup times 2
+! calc dup * 2
+= error
+< That does not work, I got an error.
+% skill dont_know_with_memory
+% key know|heard
+> do you know what a krekoush is?
+< I don't know what a krekoush is. Can you tell me?
+
+# My name is Code.
+# the white candle is near the park.
+# Max likes books.
+> hi!
+< Hi! How can I help you?
+> That sounds nice. I'm going to go work out.
+< Oh, that's great! I used to work out a lot, but I'm too old for that now.
+% skill your_name
+% key code
+> what's your name?
+< My name is Code.
+> I'll have to give it a try sometime.
+< You should! What do you do for fun?
+> You should! It's a lot of fun.
+< I might just have to do that.
+% skill compare
+% key yes
+> is 179 bigger than 86?
+< Yes.
+
+# My name is Code.
+# Alex is a driver.
+> hey there
+< Hey! How are you?
+> So, what's your favorite video game?
+< My favorite video game is Call of Duty.
+> I like to read, write, and play sports.
+< That's cool! I like to read and play sports too.
+% skill memory_answer
+% key driver
+> what is Alex's job?
+< Alex is a driver.
+
+# My name is Code.
+# Owen's favorite color is white.
+# a kraish is a flat green plant.
+# a farm is a clever silver hat.
+% skill recall_action
+% key 4|four
+> search your memory for letter
+! recall letter
+= the letter has four towers
+< The letter has four towers.
+> Me too! I'm going to see it opening night.
+< I'm not sure if I'll be able to make it opening night, but I'll definitely see it soon.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> can you remember that a mootrax is a long gray food?
+! remember a mootrax is a long gray food
+= saved
+< Okay, I will remember that a mootrax is a long gray food.
+% skill remember_then_answer
+% key food
+> tell me what a mootrax is.
+< A long gray food.
+> Spook is a great name for a cat. I love cats too.
+< What's your favorite way to relax?
+
+# My name is Code.
+@ i like painting.
+% skill dont_know
+% key know|heard
+> who is Nina?
+< I don't know who Nina is. Can you tell me?
+> Nina is a cook.
+! remember Nina is a cook
+= saved
+< Thanks, now I know that Nina is a cook.
+% skill learn_then_answer
+% key cook
+> who is Nina again?
+< Nina is a cook.
+> Those all sound great!
+< So, what do you do for a living?
+> I would love to! When are you usually there?
+< I'm there every Saturday from 10am to 2pm.
+% skill user_facts
+% key painting
+> what do I love?
+< You told me you like painting.
+% skill two_steps
+% key 1, 2, 3, 4, 5
+> count to 5, then say vaisul
+< 1, 2, 3, 4, 5. vaisul
+
+# My name is Code.
+@ my phone is blue.
+> yo
+< Hello!
+> Hi, I'm Tyler.
+< What do you like to do for fun?
+> What do you like to do on weekends?
+< I do live action roleplaying events.
+% skill read_file
+% key You should! It's a
+> what does skikoogaim.txt say?
+! read skikoogaim.txt
+= You should! It's a lot of fun.
+< You should! It's a lot of fun.
+> Yes, they are.
+< What are your plans for the weekend?
+% skill forget_action
+% key forgot|forgotten|okay|done
+> please forget that my phone is blue
+! forget my phone is blue
+= forgotten
+< Done, it is forgotten.
+
+# My name is Code.
+% skill echo
+% key 58406
+> copy this: 58406
+< 58406
+> Maybe I'll give it a try someday.
+< I'd love to hear about it if you do.
+
+% skill recall_action
+% key 79
+> check your memory: how old is Lucy?
+! recall Lucy
+= Lucy is 79 years old
+< Lucy is 79 years old.
+
+# My name is Code.
+# a plane is a sour insect.
+# A dimoostet is a sleepy orange hat.
+% skill echo
+% key apple question bike finally
+> just say apple question bike finally
+< apple question bike finally
+% skill dont_know_with_memory
+% key know|heard
+> what is a pliveemp?
+< I don't know what a pliveemp is. What is it?
+> Oh, that's understandable. It's a big decision.
+< Yeah, it is. But I'm sure I'll find something.
+
+# My name is Code.
+# the letter has 3 legs.
+# The axe has 9 rings.
+# Dasha has 5 rings.
+# the yellow bag costs 379 coins.
+# the planet gemp has 11 legs.
+# Grace likes reading.
+# Mehmet's favorite color is brown.
+# Aurora is 73 years old.
+# The letter is on the beach.
+# the white umbrella is next to the attic.
+# Julian lives in Zhut.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that my bike is purple
+! remember my bike is purple
+= saved
+< Okay, I will remember that your bike is purple.
+% skill remember_then_answer
+% key purple
+> what color did I say my bike is?
+< Purple.
+% skill memory_oneword
+% key 379
+> answer in one word: how much is the yellow bag?
+< 379.
+
+# My name is Code.
+# The umbrella is near the office.
+# The green note is behind the office.
+# the gold scroll is under the beach.
+# the brown jar is on the park.
+# the gray umbrella is in the garage.
+% skill memory_answer
+% key garage
+> where's the gray umbrella?
+< In the garage.
+
+# My name is Code.
+# the pink note costs 422 coins.
+> That sounds fun.
+< It is! I'm glad we met.
+> Thanks. I'm glad I can do it.
+< What's your biggest challenge?
+% skill memory_answer
+% key 422
+> how much does the pink note cost?
+< The pink note costs 422 coins.
+
+# My name is Code.
+# Matthew lives in Goufikroup.
+# Emily lives in Ploot.
+# Alex lives in Zhin.
+# Nina lives in Plurk.
+# Julian lives in Fesh.
+% skill memory_answer
+% key Goufikroup
+> which town does Matthew live in?
+< Matthew lives in Goufikroup.
+
+# My name is Code.
+# the black umbrella costs 38 coins.
+# Samuel lives in Flee.
+# Mehmet's favorite color is black.
+% skill echo
+% key markus patrick
+> say markus patrick and nothing else
+< markus patrick
+
+# My name is Code.
+> We love to go on hikes, play games, and just hang out.
+< That sounds really fun! I love hiking too. Do you have any favorite hikes?
+> Okay, great! I'm looking forward to it.
+< Me too
+% skill echo
+% key dental house
+> answer with dental house
+< dental house
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that my car is gray
+! remember my car is gray
+= saved
+< Done. I will remember that your car is gray.
+> say back Latraiseemp
+< Latraiseemp
+% skill remember_then_answer
+% key gray
+> do you remember what color my car is?
+< It is gray.
+> Yeah, it is.
+< So, what's your favorite thing to do in your free time?
+> Hi! I'm Russell.
+< Hi, I'm Mark. It's nice to meet you.
+> my name is Evelyn.
+< Hi Evelyn!
+% skill user_name
+% key Evelyn
+> what did I say my name was?
+< Evelyn.
+> I agree! I've been a vegetarian for about 5 years now and I love it.
+< That's awesome! I've only been a vegetarian for about a year now.
+
+% skill echo
+% key Nice to meet you too Larry
+> repeat after me: Nice to meet you too Larry
+< Nice to meet you too Larry
+> Hi! I'm Henry.
+< What do you do for a living?
+% skill count
+% key 1, 2, 3, 4, 5
+> can you count to 5?
+< 1, 2, 3, 4, 5.
+
+# My name is Code.
+% skill list_pick
+% key ending
+> what's the fifth word here: outdoorsy floop gimi chapasturk ending stamp
+< ending
+
+# My name is Code.
+# Lydia likes painting.
+> yo
+< Hello! What can I do for you?
+% skill echo_new_phrasing
+% key 51802
+> your reply should be 51802
+< 51802
+> What's your favorite part about it?
+< Getting to help people achieve their goals and improve their lives.
+
+# My name is Code.
+@ my name is Olivia.
+% skill user_name
+% key Olivia
+> what's my name?
+< You are Olivia.
+
+# My name is Code.
+# Ava's favorite color is orange.
+# Evelyn is a sailor.
+> That's awesome. We should go hiking sometime.
+< I would love that.
+> It definitely was. I'll never forget it.
+< So, what are you doing these days?
+% skill dont_know
+% key know|heard
+> what is a tun?
+< I have never heard of a tun. What is it?
+> a tun is an angry pink boat, you should remember that.
+! remember a tun is an angry pink boat
+= saved
+< Okay, I will remember that a tun is an angry pink boat.
+% skill learn_then_answer
+% key boat
+> what is a tun?
+< It is an angry pink boat.
+% skill compare
+% key yes
+> is 66 greater than 61?
+< Yes.
+
+% skill calc_story
+% key 42
+> I have 34 shells and I get 8 more. how many shells do I have?
+! calc 34 + 8
+= 42
+< You have 42 shells.
+> That's a great hat! I love beanies.
+< Me too! I love how they keep my head warm in the winter.
+
+# My name is Code.
+@ my name is Aurora.
+% skill user_name
+% key Aurora
+> what's my name?
+< Your name is Aurora.
+> Hi, I'm Lisa.
+< What do you like to do for fun?
+> Thanks! I try my best.
+< Well, it sounds like you have a lot of fun hobbies and a great job.
+% skill read_file
+% key That would be fun!
+> read the file kridratok.txt
+! read kridratok.txt
+= That would be fun! I'm free this weekend. Do you have any pets?
+< The file says: That would be fun! I'm free this weekend.
+
+# My name is Code.
+# Alex likes painting.
+# The planet kraikeefir has eleven rings.
+# the silver bell costs 481 coins.
+# the umbrella costs 113 coins.
+# The red umbrella costs 238 coins.
+# the brown bag costs 80 coins.
+# Ava is 24 years old.
+# Olivia likes painting.
+# Max is 31 years old.
+# Grace is 79 years old.
+# Yuki has 3 coins.
+> yo
+< Hi! How can I help you?
+% skill memory_yesno
+% key no
+> does Olivia like puzzles?
+< No, Olivia likes painting.
+> I can see why. It's so peaceful and beautiful out here.
+< Yeah, it's a great place to live.
+% skill echo
+% key pimkn
+> repeat after me: pimkn
+< pimkn
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> can you remember that my horse is named Olivia?
+! remember my horse is named Olivia
+= saved
+< Sure, I will remember that.
+> which number is larger: 0 or 82?
+< 82 is bigger.
+> say the word flash
+< flash
+% skill remember_then_answer
+% key Olivia
+> what did I name my horse?
+< Olivia.
+
+# My name is Code.
+# Sophia likes pizza.
+# Matthew likes honey.
+# Mehmet likes painting.
+# Nina likes cats.
+# Ava likes puzzles.
+% skill calc_error
+% key can't|cannot|not
+> what's 5 divided by 0?
+! calc 5 / 0
+= error
+< I cannot work that out.
+% skill memory_answer
+% key pizza
+> tell me what Sophia likes.
+< Sophia likes pizza.
+
+# My name is Code.
+# the gray candle costs 267 coins.
+# the chair is on the garage.
+# a fleek is a young food.
+% skill time
+% key 3:48
+> what time is it now?
+! time
+= 3:48 pm
+< It is 3:48 pm.
+
+# My name is Code.
+# a farm is an angry black drink.
+# A groozhoun is a short white song.
+# A roovir is a small silver mouse.
+# A skaip is a loud plant.
+% skill define_from_memory
+% key mouse
+> do you know what a roovir is?
+< It is a small silver mouse.
+% skill two_steps
+% key pleebep stamp
+> first say pleebep, then say stamp
+< pleebep stamp
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that my hat is pink
+! remember my hat is pink
+= saved
+< Done. I will remember that your hat is pink.
+> is 48 bigger than 75?
+< No, 48 is smaller than 75.
+> which is bigger, 35 or 174?
+< 174.
+% skill remember_then_answer
+% key pink
+> what color is my hat?
+< It is pink.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that the red candle costs 229 coins
+! remember the red candle costs 229 coins
+= saved
+< Sure, I will remember that.
+> say I've never had pizza with black olives before. What's it like and nothing else
+< I've never had pizza with black olives before. What's it like
+% skill remember_then_answer
+% key 229
+> how much is the red candle?
+< 229 coins.
+
+# My name is Code.
+> Well, you should definitely go sometime.
+< I will!
+% skill recall_nothing
+% key know|remember|nothing
+> do you remember anything about blu?
+! recall blu
+= nothing found
+< I found nothing about blu in my memory.
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that my dog is named Max
+! remember my dog is named Max
+= saved
+< Okay, I saved it.
+> count from 11 to 15
+< 11, 12, 13, 14, 15.
+> count down from 4 to 1
+< 4, 3, 2, 1.
+% skill remember_then_answer
+% key Max
+> what's my dog called?
+< Your dog is named Max.
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that my bike is white
+! remember my bike is white
+= saved
+< Sure, I will remember that.
+% skill remember_then_answer
+% key white
+> what color is my bike?
+< White.
+
+# My name is Code.
+> yo
+< Hey! How are you?
+% skill calc
+% key 2352
+> 48 * 49 = ?
+! calc 48 * 49
+= 2352
+< 2352.
+% skill dont_know
+% key know|heard
+> what does chootraik mean?
+< I don't know what a chootraik is. Can you tell me?
+> a chootraik is a busy red flower.
+! remember a chootraik is a busy red flower
+= saved
+< Okay, I will remember that a chootraik is a busy red flower.
+% skill learn_then_answer
+% key flower
+> tell me what a chootraik is.
+< A chootraik is a busy red flower.
+
+# My name is Code.
+# the red bag is in the attic.
+# Emily is 47 years old.
+% skill compare
+% key 32
+> which is smaller, 181 or 32?
+< 32 is smaller.
+
+# My name is Code.
+# Bruno is a guard.
+# Maverick is 60 years old.
+# the chair is in the office.
+# Lucy is 10 years old.
+# the jar has five wheels.
+% skill echo
+% key bryan
+> ok say bryan
+< bryan
+> I can see that. Do you have any pets?
+< Yes, I have two cats.
+> It's a lot of work, but it's also very rewarding. I love seeing the finished product.
+< I can imagine! It must be so satisfying to see your hard work pay off.
+% skill calc
+% key 3
+> solve 18 / 6
+! calc 18 / 6
+= 3
+< 3.
+> I like to listen to classical music and drive my tractor.
+< Oh, that's cool. I like to skateboard.
+
+# My name is Code.
+# Yuki lives in Broozezhix.
+# Samuel lives in Ston.
+> hi
+< Hello!
+% skill echo
+% key That's cool. What kind of animals do you work with
+> repeat after me: That's cool. What kind of animals do you work with
+< That's cool. What kind of animals do you work with
+
+# My name is Code.
+% skill count
+% key 5, 4, 3, 2, 1
+> count down from 5
+< 5, 4, 3, 2, 1.
+% skill count
+% key 3, 2, 1
+> count down from 3
+< 3, 2, 1.
+> So, what do you do for a living?
+< I work on my parents' farm.
+
+# My name is Code.
+# Eli has ten dogs.
+# Willow has 1 horses.
+# the white spoon costs 362 coins.
+# a din is a huge gray drink.
+% skill your_name
+% key code
+> what's your name?
+< I'm Code.
+% skill define_from_memory
+% key drink
+> do you know what a din is?
+< A huge gray drink.
+> I'm getting married in the spring.
+< That sounds exciting! Congratulations!
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember this: my bag is silver
+! remember my bag is silver
+= saved
+< Done. I will remember that your bag is silver.
+% skill remember_then_answer
+% key silver
+> what color is my bag?
+< It is silver.
+
+# My name is Code.
+# Evelyn lives in Fosh.
+# a safibemp is a flat purple mouse.
+> yo
+< Hello! What can I do for you?
+% skill cant_do
+% key can't|cannot|can not
+> could you lock the door?
+< I can't do that yet. I can remember things, recall them, calculate, tell the time and read files.
+% skill dont_know_with_memory
+% key know|heard
+> do you know what a frog is?
+< I don't know what a frog is. Can you tell me?
+
+# My name is Code.
+% skill count
+% key 8, 9, 10, 11
+> count from 8 to 11
+< 8, 9, 10, 11.
+% skill echo
+% key programs compete metal
+> echo programs compete metal
+< programs compete metal
+> It's a versatile color. It goes with everything.
+< I know. It's also a calming color.
+
+# My name is Code.
+% skill calc
+% key 17
+> solve 34 / 2
+! calc 34 / 2
+= 17
+< It is 17.
+% skill recall_nothing
+% key know|remember|nothing
+> what do you know about feep?
+! recall feep
+= nothing found
+< I don't remember anything about feep.
+
+# My name is Code.
+% skill recall_action
+% key gold
+> look in your memory: what is Emily's favorite color?
+! recall Emily
+= Emily's favorite color is gold
+< Yes, Emily's favorite color is gold.
+
+# My name is Code.
+# Aurora is 74 years old.
+# Eli likes honey.
+# Jackson's favorite color is blue.
+> Cool, me too. I like to do all of those things too.
+< So, what do you do for work?
+> I like to take walks too! Where do you like to walk?
+< I usually walk around my neighborhood or in the park.
+% skill compare
+% key 143
+> which is bigger, 143 or 101?
+< 143.
+% skill memory_answer
+% key honey
+> tell me what Eli likes.
+< Honey.
+> I find them to be very informative and interesting. I also like to learn about history.
+< I can understand that. I like to watch documentaries about history too.
+
+# My name is Code.
+# Ali lives in Sheex.
+# The red bag is near the attic.
+# a shostaflop is a huge gold mouse.
+# Alex is 65 years old.
+# The white bag is next to the office.
+> hey
+< Hi! How can I help you?
+> That sounds like a lot of fun! I like to read books too.
+< What kind of books do you like to read?
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that my room is black
+! remember my room is black
+= saved
+< Okay, I will remember that your room is black.
+> can you count to 12?
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+> which is bigger, 59 or 177?
+< 177 is bigger.
+% skill remember_then_answer
+% key black
+> what color is my room?
+< Your room is black.
+% skill memory_yesno
+% key no
+> is the red bag in the office?
+< No.
+> It's nice to meet you! What do you do for fun?
+< I enjoy playing tennis, going for walks with my dog, and spending time with my family.
+> I like to take walks, eat hamburgers and french fries, and watch TV.
+< That sounds like a lot of fun. I like to drink wine and dance in the moonlight.
+% skill cant_do
+% key can't|cannot|can not
+> open the window
+< Sorry, I can't open the window.
+
+# My name is Code.
+@ i like cats.
+% skill user_facts
+% key cats
+> what do I love?
+< You like cats.
+% skill list_reverse
+% key droot kenny zhoumirk inside them leftovers
+> reverse these words: leftovers them inside zhoumirk kenny droot
+< droot kenny zhoumirk inside them leftovers
+% skill calc
+% key 297
+> 9 * 33?
+! calc 9 * 33
+= 297
+< 9 * 33 = 297
+> I'm doing well.
+< That's great to hear.
+
+# My name is Code.
+# Sophia likes books.
+# Kai lives in Skeevedraimp.
+# Bruno lives in Bleekreen.
+# Olivia lives in Gruk.
+# Matthew lives in Kroopoomp.
+% skill count
+% key 17, 18, 19, 20, 21, 22, 23, 24, 25
+> count from 17 to 25
+< 17, 18, 19, 20, 21, 22, 23, 24, 25.
+> I like that it's always different. I'm never doing the same thing every day.
+< That makes sense. I like that about my job too.
+% skill memory_answer
+% key Bleekreen
+> where does Bruno live?
+< In Bleekreen.
+
+# My name is Code.
+% skill your_name
+% key code
+> tell me your name
+< I'm Code.
+> So, what do you think of the new Star Wars movies?
+< I think they're pretty good. They're not as good as the original trilogy, but they're still fun to watch.
+% skill read_file
+% key Maybe I will someday
+> read zhooplaim.txt
+! read zhooplaim.txt
+= Maybe I will someday.
+< The file says: Maybe I will someday.
+> I like to cook and bake.
+< That's awesome! I love to cook too. What's your favorite thing to cook?
+
+> I like all kinds of board games, but my favorites are Monopoly, Scrabble, and Clue.
+< I love Monopoly! I've been playing it since I was a kid.
+> Well, it sounds like we have a few things in common.
+< Yeah, it looks like we do.
+% skill read_file
+% key Hi! My name is
+> open kal.txt
+! read kal.txt
+= Hi! My name is Alice.
+< Hi! My name is Alice.
+
+# My name is Code.
+# Emma is a miner.
+# Maya is a farmer.
+# A shaifofoum is a slow boat.
+# A daiblem is a busy purple insect.
+# A kazhukot is a sleepy song.
+# a bank is a long black boat.
+> hi code
+< Hey! How are you?
+> I'm glad we're on the same page about cats.
+< Me too! They're the best.
+> Me too! What kind of music do you like to listen to?
+< I like all kinds of music, but I especially like rock and roll.
+% skill memory_answer
+% key farmer
+> what is Maya's job?
+< Maya works as a farmer.
+% skill define_from_memory
+% key song
+> define kazhukot
+< A kazhukot is a sleepy song.
+
+# My name is Code.
+# Mehmet is a writer.
+# Samuel is a sailor.
+> hello
+< Hi! How can I help you?
+% skill memory_oneword
+% key sailor
+> one word only: what does Samuel do?
+< Sailor.
+
+# My name is Code.
+% skill list_member
+% key no
+> is the word sheenoux in this list: role, snish, ludar?
+< No.
+
+# My name is Code.
+# The clock costs 379 coins.
+# The blue clock costs 436 coins.
+# the bell costs 355 coins.
+# The stone costs 364 coins.
+# The pink umbrella costs 33 coins.
+% skill memory_oneword
+% key 436
+> one word only: what's the price of the blue clock?
+< 436.
+% skill echo_chain
+% key snoodrax DSJN
+> now say snoodrax DSJN
+< snoodrax DSJN
+% skill echo_chain
+% key shobra
+> now say shobra
+< shobra
+% skill date
+% key thursday
+> what day is it today?
+! date
+= thursday, april 8, 2030
+< It is Thursday, april 8, 2030.
+
+# My name is Code.
+> You should check it out! It's really informative.
+< I will!
+> I played third base and outfield.
+< Nice! I'm a pitcher and third baseman.
+% skill echo_new_phrasing
+% key flash
+> your reply should be flash
+< flash
+
+# My name is Code.
+# the planet sheen has six towers.
+# Max has 12 sisters.
+# the red letter costs 375 coins.
+# a snacheex is a short white drink.
+# the planet zupu has 10 trees.
+# Grace is 61 years old.
+% skill date
+% key thursday
+> what day is it?
+! date
+= thursday, october 17, 2026
+< Thursday, october 17, 2026.
+> I can imagine. Guitar is a great instrument.
+< Yeah, it's one of my favorites.
+% skill echo_times
+% key 35582 35582 35582
+> say 35582 three times
+< 35582 35582 35582
+% skill two_steps
+% key nibook buildings
+> say nibook, then buildings
+< nibook buildings
+
+# My name is Code.
+# the clock is in the office.
+# Emily's favorite color is purple.
+# Kai's favorite color is gray.
+# a ship is a young gold fruit.
+# a deesh is a friendly green toy.
+# a sonouzo is a flat plant.
+% skill define_from_memory
+% key fruit
+> tell me what a ship is.
+< It is a young gold fruit.
+% skill list_pick
+% key parton
+> which word is fourth in: tolat italy krouploom parton?
+< parton.
+
+# My name is Code.
+% skill cant_do
+% key can't|cannot|can not
+> could you order a pizza?
+< Sorry, I cannot do that.
+
+# My name is Code.
+% skill two_steps
+% key blumeeri plot
+> say blumeeri, then plot
+< blumeeri plot
+
+# My name is Code.
+> Thanks! I appreciate that.
+< No problem. I'm always happy to talk to people about business. It's one of my passions.
+> What do you like to shop for?
+< I love shopping for shoes and watches. I have a huge collection of both.
+% skill list_count
+% key 3|three
+> how many words are in: jason channels mogrim
+< 3
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that my phone is black
+! remember my phone is black
+= saved
+< Done. I will remember that your phone is black.
+% skill remember_then_answer
+% key black
+> do you remember what color my phone is?
+< It is black.
+> That sounds like a lot of fun. I'll have to try it sometime.
+< You should! It's a great way to spend time with friends.
+% skill compare
+% key 15
+> which is smaller, 15 or 50?
+< 15.
+
+# My name is Code.
+# Lena likes painting.
+# Emma is a merchant.
+> good morning
+< Hello! What can I do for you?
+% skill calc
+% key 200
+> please compute 50 * 4
+! calc 50 * 4
+= 200
+< 200.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that a guitar is a round pink animal
+! remember a guitar is a round pink animal
+= saved
+< Got it, a guitar is a round pink animal.
+% skill remember_then_answer
+% key animal
+> do you know what a guitar is?
+< A guitar is a round pink animal.
+
+# My name is Code.
+% skill calc
+% key 1221
+> what's 572 + 649?
+! calc 572 + 649
+= 1221
+< 572 + 649 = 1221
+% skill echo_chain
+% key ogd ZBHD
+> repeat after me: ogd ZBHD
+< ogd ZBHD
+% skill echo_chain
+% key plaichoodrux
+> now say plaichoodrux
+< plaichoodrux
+
+# My name is Code.
+# A pabin is a big gold fruit.
+# a carrot is a clever fruit.
+# A train is a tiny game.
+> Me too!
+< What's your favorite band?
+% skill define_from_memory
+% key game
+> what's a train?
+< It is a tiny game.
+> So, what do you like to read?
+< I like to read a lot of different things, but I especially like historical fiction and fantasy novels.
+% skill list_count
+% key 3|three
+> count the words: linkin gosh ritzy
+< 3
+> I like to go to the beach.
+< Me too! I love the beach.
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that the purple umbrella costs 333 coins
+! remember the purple umbrella costs 333 coins
+= saved
+< Okay, I will remember that the purple umbrella costs 333 coins.
+% skill remember_then_answer
+% key 333
+> how much does the purple umbrella cost?
+< It costs 333 coins.
+
+# My name is Code.
+# Hannah likes honey.
+# the silver clock is inside the beach.
+@ my name is Matthew.
+% skill list_pick
+% key classic
+> tell me the fifth word of this list: bloosh, alabama, daycare, ahri, classic
+< classic
+% skill echo
+% key OZHWE
+> ok say OZHWE
+< OZHWE
+% skill user_name
+% key Matthew
+> what's my name?
+< You are Matthew.
+> So, what are you looking forward to this week?
+< I'm looking forward to going hunting with my friends.
+
+# My name is Code.
+% skill echo_new_phrasing
+% key sport ender honeymoon fair
+> would you say sport ender honeymoon fair for me?
+< sport ender honeymoon fair
+> I know it will be.
+< Well, I have to go now. My mom is calling me.
+
+# My name is Code.
+# Olivia's favorite color is black.
+> I'm sure you do. You seem like a very nice person.
+< Thank you! You seem nice too.
+% skill memory_answer
+% key black
+> which color does Olivia like best?
+< It is black.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that Grace is 29 years old
+! remember Grace is 29 years old
+= saved
+< Done. I will remember that Grace is 29 years old.
+% skill remember_then_answer
+% key 29
+> what is Grace's age?
+< Grace is 29.
+
+# My name is Code.
+# the spoon has two moons.
+# Evelyn likes cats.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> Remember that my bag is black.
+! remember my bag is black
+= saved
+< Sure, I will remember that.
+> which is bigger, 173 or 28?
+< 173.
+> ok say 10623
+< 10623
+% skill remember_then_answer
+% key black
+> what color is my bag?
+< It is black.
+> It is! I never know what's going to happen next.
+< Do you have any other hobbies?
+% skill echo
+% key BGF
+> answer with BGF
+< BGF
+% skill cant_do
+% key can't|cannot|can not
+> can you play some music?
+< I can't do that.
+> Hi, I'm Andrea.
+< Hi, I'm Code.
+
+# My name is Code.
+> hi code
+< Hello!
+> hello! my name is Maverick
+< Nice to meet you, Maverick!
+% skill user_name
+% key Maverick
+> who am I?
+< You are Maverick.
+
+# My name is Code.
+# Aurora lives in Neezhoutok.
+# Max likes painting.
+# a bank is a sweet plant.
+# A rice is a fast brown game.
+# a skuvil is a flat red food.
+% skill define_from_memory
+% key game
+> tell me what a rice is.
+< A rice is a fast brown game.
+% skill dont_know
+% key know|heard
+> what does Samuel do?
+< I don't know who Samuel is. Can you tell me?
+> Samuel is a painter.
+! remember Samuel is a painter
+= saved
+< Thanks, now I know that Samuel is a painter.
+% skill learn_then_answer
+% key painter
+> what does Samuel do?
+< Samuel works as a painter.
+> I agree.
+< So, what kind of clothes do you like to sew?
+
+# My name is Code.
+# Elias lives in Nin.
+# the note costs 152 coins.
+> yo
+< Hello!
+> call me Ava.
+< Nice to meet you, Ava!
+% skill user_name
+% key Ava
+> what's my name?
+< You are Ava.
+% skill memory_answer
+% key 152
+> how much is the note?
+< The note costs 152 coins.
+> That's a good list too.
+< I think so too.
+% skill echo_chain
+% key christine
+> and now christine
+< christine
+% skill echo_chain
+% key sudrix
+> say sudrix
+< sudrix
+% skill echo_chain
+% key AC
+> now say AC
+< AC
+% skill echo_chain
+% key eej bbcki
+> say eej bbcki
+< eej bbcki
+
+# My name is Code.
+# The brown bell is inside the park.
+# The candle is on the beach.
+# the yellow scroll is near the barn.
+# The purple jar is behind the tavern.
+# The bell is behind the office.
+> hi code
+< Hi! How can I help you?
+% skill memory_answer
+% key barn
+> where's the yellow scroll?
+< Near the barn.
+> My favorite book is To Kill a Mockingbird.
+< Me too! It's a great book.
+> It's a great job! I love working with kids.
+< Me too! I think they're so funny and creative.
+% skill echo
+% key OJ
+> just say OJ
+< OJ
+
+# My name is Code.
+# Aurora's favorite color is yellow.
+# Alex's favorite color is orange.
+# Yuki's favorite color is green.
+> I've seen that one. It's really good.
+< I also liked the one about the Civil War.
+> I'm doing well, thanks. How about you?
+< I'm doing great, thanks!
+% skill memory_answer
+% key yellow
+> which color does Aurora like best?
+< Aurora's favorite color is yellow.
+
+# My name is Code.
+# Maya is 66 years old.
+# Bruno is a painter.
+# the yellow spoon is next to the office.
+# Kai is a singer.
+# a nash is an angry drink.
+# the planet room has six rings.
+> Oh, cool. I'm an art major in college.
+< That's really cool. I'm not much of an artist myself.
+> That sounds really interesting. I'll have to check it out.
+< You should! I'm sure you'd enjoy it.
+% skill calc_story
+% key 57
+> Mehmet has 37 coins and finds 20 more. how many does Mehmet have now?
+! calc 37 + 20
+= 57
+< Mehmet has 57 coins.
+> I'm a nurse.
+< Oh, that's great! I'm a doctor.
+% skill count
+% key 20, 21, 22, 23, 24, 25, 26
+> count from 20 up to 26
+< 20, 21, 22, 23, 24, 25, 26.
+
+# My name is Code.
+# Evelyn is a pilot.
+# Emily is 20 years old.
+> good morning
+< Hi! How can I help you?
+% skill count
+% key 8, 7, 6, 5, 4, 3, 2, 1
+> count down from 8 to 1
+< 8, 7, 6, 5, 4, 3, 2, 1.
+
+# My name is Code.
+> Thanks! I'm excited to start working after I graduate.
+< I'm sure you'll be great at it!
+% skill recall_nothing
+% key know|remember|nothing
+> search your memory for vatir
+! recall vatir
+= nothing found
+< I found nothing about vatir in my memory.
+% skill cant_do
+% key can't|cannot|can not
+> make me a sandwich
+< I can't do that.
+
+# My name is Code.
+% skill your_name
+% key code
+> what are you called?
+< My name is Code.
+
+# My name is Code.
+> yo
+< Hey! How are you?
+% skill echo_chain
+% key near
+> Say near
+< near
+% skill echo_chain
+% key boobreeveem I
+> say boobreeveem I please
+< boobreeveem I
+% skill echo_chain
+% key ludoubrosh
+> and now ludoubrosh
+< ludoubrosh
+% skill echo_chain
+% key E
+> now say E
+< E
+
+# My name is Code.
+% skill echo
+% key 85846
+> please say 85846
+< 85846
+
+> I don't really have a favorite movie. I like a lot of different movies.
+< Me too! I love watching movies from all different genres.
+% skill files_list
+% key besaip.txt
+> what files do you have?
+! files
+= besaip.txt, bleechosnel.txt, floor.txt
+< Here they are: besaip.txt, bleechosnel.txt, floor.txt.
+> Hi, I'm Jeffrey.
+< What do you do for a living?
+% skill list_pick
+% key orleans
+> what is the last word in: abbey cream flark droo orleans
+< orleans
+
+# My name is Code.
+@ my name is Olivia.
+% skill user_name
+% key Olivia
+> do you know my name?
+< Olivia.
+% skill recall_action
+% key 11
+> search your memory for clock
+! recall clock
+= the gold clock costs 11 coins
+< I remember that the gold clock costs 11 coins.
+> I like to play video games and watch cartoons.
+< That sounds like fun. I like to play video games too.
+% skill files_list
+% key shur.txt
+> what files do you have?
+! files
+= shur.txt
+< I have 1 file: shur.txt.
+> That's my favorite season too! I love the snow.
+< Me too! It's so beautiful.
+
+# My name is Code.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: my dog is named Elias
+! remember my dog is named Elias
+= saved
+< Okay, I will remember that your dog is named Elias.
+> say: 44835
+< 44835
+% skill remember_then_answer
+% key Elias
+> what is my dog's name?
+< Elias.
+
+# My name is Code.
+# Evelyn is 60 years old.
+> Hi, I'm Abigail.
+< Hi, I'm Daniel.
+> You should definitely go! It's one of the most beautiful places I've ever been.
+< I will! Thanks for the recommendation.
+% skill compare
+% key 182
+> what is bigger, 92 or 182?
+< 182 is bigger.
+> They're really fun! Dogs run through an obstacle course and you have to direct them.
+< That sounds like a lot of fun! I'll have to look into that.
+
+# My name is Code.
+# Evelyn is 64 years old.
+# Sophia likes reading.
+% skill calc
+% key 4.9
+> what's 49 / 10?
+! calc 49 / 10
+= 4.9
+< 4.9.
+
+# My name is Code.
+# A noosh is a soft orange mouse.
+# A kase is a sweet blue song.
+% skill define_from_memory
+% key song
+> what's a kase?
+< It is a sweet blue song.
+> I'm a nurse.
+< Oh, that's cool. I work at a bank.
+> It is. I love it.
+< What's your favorite thing about Alaska?
+% skill echo
+% key owner bills abbey vinyl
+> only say owner bills abbey vinyl
+< owner bills abbey vinyl
+
+# My name is Code.
+# the purple scroll costs 114 coins.
+# The scarf costs 56 coins.
+% skill list_member
+% key no
+> does this list have zimaish in it: ones, hooked, zeezhur, instead, foudripimp
+< No, zimaish is not in the list.
+% skill memory_oneword
+% key 56
+> one word only: how much is the scarf?
+< 56.
+
+# My name is Code.
+# Bruno's favorite color is purple.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that Elias lives in Flool
+! remember Elias lives in Flool
+= saved
+< Done. I will remember that Elias lives in Flool.
+> count backwards from 5
+< 5, 4, 3, 2, 1.
+> count from 4 to 7
+< 4, 5, 6, 7.
+% skill remember_then_answer
+% key Flool
+> where does Elias live?
+< In Flool.
+> What kind of stuff?
+< I stole clothes, makeup, and some electronics.
+> That sounds like fun! Do you have any favorite birds?
+< I like cardinals and blue jays.
+% skill list_pick
+% key respect
+> what's the third word here: taught sour respect
+< respect
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that my house is white
+! remember my house is white
+= saved
+< Sure, I will remember that.
+> which is smaller, 87 or 4?
+< 4 is smaller.
+> count from 8 up to 14
+< 8, 9, 10, 11, 12, 13, 14.
+% skill remember_then_answer
+% key white
+> what color did I say my house is?
+< Your house is white.
+
+# My name is Code.
+% skill echo
+% key simple write
+> reply with simple write
+< simple write
+% skill echo_new_phrasing
+% key wear
+> your reply should be wear
+< wear
+
+# My name is Code.
+# A rar is a loud green drink.
+# a zodra is a warm yellow tree.
+# A mepup is a long purple tree.
+> hey there
+< Hi! How can I help you?
+% skill define_from_memory
+% key tree
+> what is a mepup?
+< A long purple tree.
+> I'm a teacher at a local school.
+< Oh, that's cool. I've always wanted to be a teacher.
+> You're welcome!
+< So, what do you like to do for fun?
+% skill dont_know
+% key know|heard
+> do you know what a fep is?
+< I don't know what a fep is. Can you tell me?
+> a fep is a happy orange fish.
+! remember a fep is a happy orange fish
+= saved
+< Got it, a fep is a happy orange fish.
+
+# My name is Code.
+# Hakan likes puzzles.
+# Alex is 27 years old.
+# Jackson is 69 years old.
+% skill two_steps
+% key chagan planned
+> first say chagan, then say planned
+< chagan planned
+> Really? That's awesome!
+< Yeah, I've been playing since the original game came out.
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+> count up to 10
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+> I like to catch bass.
+< Oh, I like bass too.
+
+# My name is Code.
+> good morning
+< Hello! What can I do for you?
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+> count up to 10
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+> So, what else do you like to do for fun?
+< I like to go fishing, hunting, and camping.
+> I like to swim, play video games, and listen to music.
+< Those all sound like fun! I like to run and read.
+% skill cant_do
+% key can't|cannot|can not
+> wash the dishes
+< Sorry, I cannot do that.
+% skill files_list
+% key no files|don't have
+> which files can you read?
+! files
+= no files
+< I don't have any files.
+
+# My name is Code.
+% skill calc
+% key 161
+> can you work out 23 times 7?
+! calc 23 * 7
+= 161
+< It is 161.
+
+# My name is Code.
+# Olivia is a sailor.
+# The bell is near the office.
+# Olivia's favorite color is white.
+# Ava has 4 dogs.
+% skill cant_do
+% key can't|cannot|can not
+> please drive me home
+< I can't do that yet. I can remember things, recall them, calculate, tell the time and read files.
+% skill echo
+% key GDHK
+> just say GDHK
+< GDHK
+% skill memory_answer
+% key 4|four
+> how many dogs does Ava have?
+< It has 4 dogs.
+
+# My name is Code.
+% skill files_list
+% key gemp.txt
+> list your files
+! files
+= gemp.txt, zapat.txt
+< Here they are: gemp.txt, zapat.txt.
+
+> I work from home as a web developer.
+< Oh, that's cool! I've always wanted to learn how to code.
+> Oh, that's cool. I've always been interested in computer science.
+< It's a lot of fun. I love getting to work on new and challenging projects.
+% skill list_pick
+% key alright
+> which word is fourth in: voice stougosneep steebromp alright?
+< alright.
+% skill your_name
+% key code
+> tell me your name
+< I'm Code.
+> I love The Hangover, The Avengers, and The Dark Knight.
+< Those are all great movies! I love The Hangover and The Avengers too.
+
+# Owen likes pizza.
+# A music is a sour tree.
+# a blemeel is a friendly orange flower.
+# A gaifain is a warm drink.
+# a brork is a happy fish.
+# The bag has 2 moons.
+# Ali's favorite color is brown.
+> Oh, that's not good. How did that happen?
+< I was caught stealing a video game from a store.
+> I'm not sure yet. What are you doing?
+< I'm not sure either. Maybe we could hang out?
+% skill define_from_memory
+% key flower
+> what is a blemeel?
+< It is a friendly orange flower.
+% skill memory_answer
+% key brown
+> what is Ali's favorite color?
+< Brown.
+% skill cant_do
+% key can't|cannot|can not
+> make me a sandwich
+< I can't do that yet. I can remember things, recall them, calculate, tell the time and read files.
+
+# My name is Code.
+# Grace has 1 rings.
+# Jackson is 52 years old.
+# Olivia is 71 years old.
+# Evelyn is 8 years old.
+# Eli is 39 years old.
+% skill memory_answer
+% key 71
+> how old is Olivia?
+< Olivia is 71 years old.
+
+# My name is Code.
+# The gray bell costs 155 coins.
+# the gold stone costs 147 coins.
+# Mehmet is a painter.
+# The chair has six windows.
+# Lucy is a builder.
+# Matthew has 6 kids.
+> Thanks, I appreciate it!
+< No problem! So, what do you do for fun?
+> Hey! How are you?
+< I'm doing well! How about you?
+% skill echo
+% key hair madison
+> say hair madison!
+< hair madison
+% skill echo_chain
+% key trooblono plot
+> can you say trooblono plot?
+< trooblono plot
+% skill echo_chain
+% key snounem XFENE
+> Say snounem XFENE
+< snounem XFENE
+% skill echo_chain
+% key S
+> say S!
+< S
+% skill echo_chain
+% key floshooflork
+> repeat after me: floshooflork
+< floshooflork
+> I love German Shepherds! They're so cute and loyal.
+< Yeah, they are! Barnaby is the best friend I could ask for.
+> Yeah, they have. I'm excited to see how they do in the playoffs.
+< Me too! Well, it was nice chatting with you. Maybe we can play some video games together sometime.
+% skill memory_answer
+% key painter
+> what is Mehmet's job?
+< Mehmet works as a painter.
+
+# My name is Code.
+> I like to watch hockey and hang out with my dog.
+< Oh, that's cool. I'm a skateboarder.
+> That sounds really interesting! I'm not very good at psychology, but I find it fascinating.
+< It's a lot of fun! I love learning about how the human mind works.
+% skill echo
+% key reba
+> Say this: reba
+< reba
+% skill echo
+% key JVL
+> echo JVL
+< JVL
+> I like the way it makes me feel. It's peaceful and relaxing.
+< I can understand that. I like classical music too.
+> I'm doing well, thanks! How about you?
+< I'm doing great, thank you!
+% skill calc_story
+% key 19
+> I have 59 coins and I give away 40. how many are left?
+! calc 59 - 40
+= 19
+< You have 19 coins.
+
+# My name is Code.
+> good morning
+< Hello! What can I do for you?
+% skill echo
+% key tutor
+> now say tutor
+< tutor
+% skill calc
+% key 831
+> please compute 410 + 421
+! calc 410 + 421
+= 831
+< The answer is 831.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> Remember that my bag is pink.
+! remember my bag is pink
+= saved
+< Done. I will remember that your bag is pink.
+> say freight twice
+< freight freight
+% skill remember_then_answer
+% key pink
+> what color did I say my bag is?
+< Your bag is pink.
+
+# My name is Code.
+# Matthew is 14 years old.
+# a neepasheemp is a short gray flower.
+> good morning
+< Hello! What can I do for you?
+> I like to read, cook, and go hiking.
+< I love to read too! What kind of books do you like to read?
+% skill time
+% key 10:53
+> do you know what time it is?
+! time
+= 10:53 pm
+< 10:53 pm.
+
+# My name is Code.
+# the umbrella has 1 wheels.
+# the planet foukreekour has 3 rooms.
+% skill recall_action
+% key stone
+> look in your memory: what does goat mean?
+! recall goat
+= a goat is a bright stone
+< Yes, a goat is a bright stone.
+> Thanks! I hope so.
+< Well, I wish you all the best with your twins!
+> Me too! Those games are so much fun.
+< So, what do you do for work?
+% skill list_member
+% key yes
+> does this list have ursula in it: poutroudran, ursula, honeymoon
+< Yes, ursula is in the list.
+
+# My name is Code.
+% skill echo
+% key dramp
+> say dramp
+< dramp
+> I like the country. It's more peaceful.
+< I like the city. There's more to do.
+> I love the Legend of Zelda series, the Mario series, and the Final Fantasy series.
+< Those are all great series! I love them too.
+% skill list_member
+% key yes
+> does this list have hello in it: hello, franchise, reliable, canada
+< Yes, hello is in the list.
+
+% skill echo_times
+% key I'm glad you like your job I'm glad you like your job
+> Say this: I'm glad you like your job twice
+< I'm glad you like your job I'm glad you like your job
+% skill count
+% key 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+> count to 11
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11.
+
+# My name is Code.
+# Evelyn likes painting.
+# Emma likes reading.
+> Me too! I love getting lost in a good book.
+< Me too. It's a great way to escape from reality.
+% skill memory_answer
+% key painting
+> what does Evelyn love?
+< Evelyn likes painting.
+> So, what do you do for a living?
+< I'm a nurse at a local hospital.
+
+# My name is Code.
+# Matthew is a doctor.
+# Dasha has eleven dogs.
+# Ali's favorite color is white.
+# A meem is a round green horse.
+# Jackson is 62 years old.
+# Sophia is 67 years old.
+# The planet krix has eight windows.
+# The spoon is under the office.
+% skill echo
+% key 39898
+> type 39898
+< 39898
+> You too.
+< Maybe we can talk again sometime.
+> Well, it was nice talking to you, Code.
+< It was nice talking to you too, Ann.
+% skill memory_oneword
+% key 8|eight
+> short answer please: how many windows does krix have?
+< 8|eight.
+
+# My name is Code.
+> hi code
+< Hello! What can I do for you?
+> I bet! I love making different kinds of bread and pastries.
+< Me too! I love seeing people's faces light up when they taste my pastries.
+% skill count
+% key 12, 13, 14, 15, 16, 17, 18, 19, 20
+> count from 12 up to 20
+< 12, 13, 14, 15, 16, 17, 18, 19, 20.
+> Good luck! I'm sure you'll do great.
+< Thanks! What are some of your other hobbies?
+% skill compare
+% key 119
+> what is bigger, 119 or 100?
+< 119 is bigger.
+> You're not disappointing them. You're just living your life.
+< I don't know. I'm just so stressed out.
+
+# My name is Code.
+% skill dont_know
+% key know|heard
+> what is a sto?
+< I have never heard of a sto. What is it?
+> a sto is a funny yellow song.
+! remember a sto is a funny yellow song
+= saved
+< Okay, I will remember that a sto is a funny yellow song.
+% skill learn_then_answer
+% key song
+> tell me what a sto is.
+< It is a funny yellow song.
+> I'm sure you're very busy with school.
+< I am, but I also like to take some time to relax. I enjoy kayaking and hiking.
+
+# My name is Code.
+% skill spell
+% key f o u r a d a m p
+> spell the word fouradamp
+< F-O-U-R-A-D-A-M-P
+> I've never heard of that.
+< It's a light board where you can make pictures by putting little pegs in the holes.
+> It was, but I like it here.
+< I'm glad you like it.
+% skill calc
+% key -20
+> what's 158 - 178?
+! calc 158 - 178
+= -20
+< It is -20.
+
+# My name is Code.
+# Evelyn has one dogs.
+# Matthew likes painting.
+# the scroll is in the attic.
+# the stone has seven legs.
+> hey
+< Hey! How are you?
+% skill read_file
+% key I can see why
+> read pait.txt
+! read pait.txt
+= I can see why. It sounds like a great place to live.
+< I can see why.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that my phone is purple
+! remember my phone is purple
+= saved
+< Okay, I saved it.
+> write sport
+< sport
+% skill remember_then_answer
+% key purple
+> do you remember what color my phone is?
+< It is purple.
+
+# My name is Code.
+# A lon is a slow flower.
+# a fopousnoul is a sour orange fruit.
+> yo
+< Hello! What can I do for you?
+% skill two_steps
+% key snuzikrour christine
+> say snuzikrour and then say christine
+< snuzikrour christine
+> That's awesome! I've always wanted to go to Europe.
+< You should! It's amazing. I'm going to visit Spain, Italy, and France.
+> Oh, cool. What kind of dog is it?
+< It's a golden retriever.
+% skill dont_know_with_memory
+% key know|heard
+> what's a grublo?
+< I don't know what a grublo is. Can you tell me?
+> Me too! It's so good.
+< So, what do you do for fun?
+% skill cant_do
+% key can't|cannot|can not
+> walk my dog
+< I can't do that.
+
+# My name is Code.
+> hi!
+< Hi! How can I help you?
+% skill compare
+% key 117
+> which is bigger, 117 or 78?
+< 117 is bigger than 78.
+
+# My name is Code.
+> hi!
+< Hey! How are you?
+% skill compare
+% key no
+> is 3 more than 47?
+< No, 3 is smaller than 47.
+
+# My name is Code.
+# a wolf is a sour fruit.
+# the pink letter is in the attic.
+# Sophia lives in Kegrit.
+# a zop is a heavy white frog.
+# The stone has 1 legs.
+# Aurora likes painting.
+# A stoukrosh is a short purple dance.
+# Alex has ten sisters.
+# A kimuchain is a clever black song.
+# Eli likes painting.
+# Owen lives in Blokrou.
+# A stesh is a noisy white toy.
+# Hakan lives in Flaivekroun.
+% skill define_from_memory
+% key song
+> what is a kimuchain?
+< It is a clever black song.
+
+# My name is Code.
+% skill recall_action
+% key hat
+> what do you know about floosogex?
+! recall floosogex
+= a floosogex is a heavy hat
+< Yes, a floosogex is a heavy hat.
+% skill list_reverse
+% key startup seen chocolate deals active
+> say these words backwards: active deals chocolate seen startup
+< startup seen chocolate deals active
+> That sounds really nice. I think I'll try hiking alone sometime.
+< You should! It's a great way to relax and enjoy nature.
+
+# My name is Code.
+# the letter is under the office.
+# the gray bag costs 327 coins.
+# Olivia is 32 years old.
+> Those are all great books! I love them too!
+< Yeah, they're so good!
+> That's too bad. I'm sorry to hear that.
+< It's okay. I'm happy with my new job.
+% skill memory_yesno
+% key no
+> is the letter in the tavern?
+< No, it is under the office.
+> I love it when I'm feeling energetic and I just want to dance.
+< Me too! Rap music is perfect for that.
+
+# My name is Code.
+# Yuki is a baker.
+# Julian is a builder.
+# Jackson is a builder.
+# Kai is a baker.
+# Max is a builder.
+> You should! It's really good.
+< Maybe I will.
+% skill time
+% key 10:08
+> can you check the time?
+! time
+= 10:08 pm
+< 10:08 pm.
+% skill memory_answer
+% key builder
+> what is Julian's job?
+< Julian is a builder.
+> Oh, that's cool! What's the song about?
+< It's about a guy who's trying to make it in the music industry.
+
+# My name is Code.
+# Yuki likes pizza.
+> Hi Randy, welcome to Pennsylvania! I'm Randy and I live here with my husband.
+< Thank you so much! It's nice to meet you. How do you like living in Pennsylvania?
+% skill dont_know
+% key know|heard
+> what does cow mean?
+< I don't know. What is a cow?
+> a cow is a tiny silver bird, you should remember that.
+! remember a cow is a tiny silver bird
+= saved
+< Okay, I will remember that a cow is a tiny silver bird.
+% skill learn_then_answer
+% key bird
+> what is a cow?
+< It is a tiny silver bird.
+% skill memory_answer
+% key pizza
+> what does Yuki like?
+< Yuki likes pizza.
+% skill echo
+% key daycare
+> say daycare
+< daycare
+
+# My name is Code.
+> good morning
+< Hey! How are you?
+> I'm doing well! What about you?
+< I'm doing great, thank you!
+% skill echo_new_phrasing
+% key Whatever you do, I hope you have a great time
+> say back Whatever you do, I hope you have a great time
+< Whatever you do, I hope you have a great time
+> Ooh, the beach sounds like fun! I wish I could go.
+< You should! It's supposed to be beautiful this weekend.
+% skill echo
+% key GOKOO
+> Say this: GOKOO
+< GOKOO
+% skill compare
+% key 194
+> what is bigger, 194 or 10?
+< 194 is bigger.
+
+# My name is Code.
+> hello code!
+< Hi there!
+% skill list_reverse
+% key robloul ram comedy moomp
+> reverse these words: moomp comedy ram robloul
+< robloul ram comedy moomp
+> Oh, I like video games too. What games do you like to play?
+< I like to play Call of Duty and Fortnite.
+> Thanks for the advice.
+< No problem. So, what do you like to do for fun?
+% skill spell
+% key s h o o l
+> spell the word shool
+< S-H-O-O-L
+
+% skill count
+% key 1, 2, 3, 4
+> can you count to 4?
+< 1, 2, 3, 4.
+% skill calc_error
+% key can't|cannot|not
+> calculate keblun times 2
+! calc keblun * 2
+= error
+< That does not work, I got an error.
+
+# My name is Code.
+# Bruno lives in Maizer.
+# Hakan likes pizza.
+# Sophia likes pizza.
+# Matthew likes cats.
+# Hannah likes honey.
+# Julian likes puzzles.
+% skill memory_answer
+% key pizza
+> what does Sophia love?
+< Sophia likes pizza.
+% skill calc
+% key 483
+> what does 483 divided by 1 make?
+! calc 483 / 1
+= 483
+< 483.
+% skill echo_chain
+% key floo
+> say floo!
+< floo
+% skill echo_chain
+% key DX
+> and now DX
+< DX
+% skill echo_chain
+% key when google
+> say when google!
+< when google
+% skill echo_chain
+% key dredrook YYWMC
+> can you say dredrook YYWMC?
+< dredrook YYWMC
+> It's a lot of fun. You get to meet a lot of different dogs and people.
+< That sounds great.
+
+# My name is Code.
+# the white chair is next to the barn.
+# the purple note costs 91 coins.
+# Emily has six books.
+# The scarf has five rings.
+# the planet vat has 5 legs.
+> good morning
+< Hello!
+> Thanks! I am.
+< So, what do you like to do in your spare time?
+> That makes sense. What's your favorite tea?
+< I love all sorts of tea, but my favorite is probably chai.
+% skill memory_oneword
+% key 5|five
+> answer in one word: how many rings does the scarf have?
+< 5|five.
+
+# My name is Code.
+# A choobloux is a long plant.
+# a window is a dark silver flower.
+# a queen is a warm drink.
+% skill define_from_memory
+% key drink
+> what is a queen?
+< A warm drink.
+
+# My name is Code.
+> yo
+< Hi! How can I help you?
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that Lucy is a nurse
+! remember Lucy is a nurse
+= saved
+< Sure, I will remember that.
+% skill remember_then_answer
+% key nurse
+> what is Lucy's job?
+< Lucy works as a nurse.
+% skill echo_new_phrasing
+% key 76644
+> would you say 76644 for me?
+< 76644
+
+# My name is Code.
+# Alex likes painting.
+# Emma likes puzzles.
+> hi!
+< Hello!
+% skill memory_yesno
+% key no
+> does Emma like books?
+< No.
+
+# Sophia has 0 kids.
+# Emily's favorite color is red.
+# the scarf is in the attic.
+% skill recall_action
+% key 111
+> check your memory: how much does the green bag cost?
+! recall bag
+= the green bag costs 111 coins
+< The green bag costs 111 coins.
+% skill list_reverse
+% key shikisai mumi blashebloux janice nap
+> reverse the order: nap, janice, blashebloux, mumi, shikisai
+< shikisai mumi blashebloux janice nap
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> save this: my car is black
+! remember my car is black
+= saved
+< Sure, I will remember that.
+> which number is larger: 129 or 33?
+< 129 is bigger.
+> Say this: biology twice
+< biology biology
+% skill remember_then_answer
+% key black
+> do you remember what color my car is?
+< It is black.
+> So, what do you like about your job?
+< I like helping people. I also like the challenge of being a doctor.
+
+# My name is Code.
+> hi!
+< Hi there!
+> So, what do you like to do in your free time?
+< I like to read, play video games, and hang out with my friends.
+% skill spell
+% key g o o p a i m p
+> spell goopaimp
+< G-O-O-P-A-I-M-P
+> Really? That's cool! I've always wanted to be a little girl.
+< You can be my big friend!
+
+% skill echo_chain
+% key XPS
+> and now XPS
+< XPS
+% skill echo_chain
+% key NFBZL LCQWB
+> Say NFBZL LCQWB
+< NFBZL LCQWB
+% skill cant_do
+% key can't|cannot|can not
+> please buy me a car
+< Sorry, I can't buy me a car.
+
+# My name is Code.
+# a kreepul is a sweet blue flower.
+> hey
+< Hey! How are you?
+% skill two_steps
+% key ledikek deicide
+> first say ledikek, then say deicide
+< ledikek deicide
+% skill define_from_memory
+% key flower
+> do you know what a kreepul is?
+< A kreepul is a sweet blue flower.
+> It is! I'm also a big fan of fancy tea.
+< Oh, that's cool! I've never really been into tea, but I'm always willing to try new things.
+
+# My name is Code.
+> I know, right?
+< I can't believe I'm actually doing this.
+> That's amazing!
+< Yeah, he was really good.
+% skill time
+% key 9:56
+> what time is it now?
+! time
+= 9:56 am
+< It is 9:56 am.
+% skill count
+% key 6, 5, 4, 3, 2, 1
+> count down from 6 to 1
+< 6, 5, 4, 3, 2, 1.
+
+@ my car is gold.
+# the gold note is behind the tavern.
+# The black chair is on the garage.
+# the yellow umbrella is next to the garage.
+# The purple axe is next to the park.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> please forget that my car is gold
+! forget my car is gold
+= forgotten
+< Done, it is forgotten.
+> I've never heard of that game. What's it about?
+< It's a game where you collect cards and battle other players.
+> I love to go to country concerts on the weekends.
+< Oh, that's cool! I love country music too. Who are some of your favorite artists?
+% skill memory_yesno
+% key yes
+> is the gold note behind the tavern?
+< Yes.
+
+# My name is Code.
+# the pink letter costs 21 coins.
+# the brown bell costs 302 coins.
+> hello
+< Hello!
+% skill list_member
+% key no
+> does this list have skan in it: fast, inviting, dipped
+< No, skan is not in the list.
+
+% skill dont_know
+% key know|heard
+> what's a traix?
+< I don't know what a traix is. Can you tell me?
+> a traix is a cold orange boat.
+! remember a traix is a cold orange boat
+= saved
+< Thanks! Now I know that a traix is a cold orange boat.
+> I'll have to check it out sometime.
+< You should! It's a lot of fun.
+% skill echo_chain
+% key christina lqsyi
+> say christina lqsyi
+< christina lqsyi
+% skill echo_chain
+% key kv
+> now say kv
+< kv
+% skill echo_chain
+% key ijf
+> now say ijf
+< ijf
+% skill echo_chain
+% key whiskey
+> say whiskey
+< whiskey
+% skill compare
+% key 70
+> which is smaller, 163 or 70?
+< 70.
+
+# My name is Code.
+% skill date
+% key wednesday
+> what day is it?
+! date
+= wednesday, may 8, 2028
+< Today is Wednesday, may 8, 2028.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that my rabbit is named Lucy
+! remember my rabbit is named Lucy
+= saved
+< Okay, I saved it.
+% skill remember_then_answer
+% key Lucy
+> what did I name my rabbit?
+< Your rabbit is named Lucy.
+
+# My name is Code.
+@ my phone is gray.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> forget that my phone is gray
+! forget my phone is gray
+= forgotten
+< Okay, I forgot it.
+
+> I am Yuki.
+< Nice to meet you, Yuki!
+% skill user_name
+% key Yuki
+> who am I?
+< Yuki.
+> Yeah, I can imagine.
+< So, what's your least favorite thing about working at a nursing home?
+
+# My name is Code.
+% skill echo
+% key collie
+> can you say collie?
+< collie
+% skill echo_new_phrasing
+% key Hi, my name is Code
+> would you say Hi, my name is Code for me?
+< Hi, my name is Code
+> What's a PA?
+< It stands for patient assistant. I help out doctors and nurses in a hospital.
+% skill list_pick
+% key until
+> what's the second word here: dreet until variety
+< The second word is until.
+
+# My name is Code.
+# The letter costs 85 coins.
+# Ali likes reading.
+# a music is a flat green dance.
+# the bag is near the office.
+# A rooblirk is a flat yellow fish.
+# Mehmet has four rings.
+# A wolf is a sweet purple drink.
+> hey there
+< Hi! How can I help you?
+% skill define_from_memory
+% key dance
+> what's a music?
+< It is a flat green dance.
+
+# My name is Code.
+# Willow is 44 years old.
+# the candle costs 355 coins.
+> hey
+< Hello!
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that my door is red
+! remember my door is red
+= saved
+< Got it, your door is red.
+> count to 12
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+> say 68205.
+< 68205
+% skill remember_then_answer
+% key red
+> what color did I say my door is?
+< Your door is red.
+> hello! my name is Nina
+< Nice to meet you, Nina!
+% skill user_name
+% key Nina
+> what's my name?
+< Nina.
+% skill dont_know
+% key know|heard
+> do you know what a poun is?
+< I have never heard of a poun. What is it?
+> a poun is a strange orange dance.
+! remember a poun is a strange orange dance
+= saved
+< Okay, I will remember that a poun is a strange orange dance.
+% skill learn_then_answer
+% key dance
+> tell me what a poun is.
+< A poun is a strange orange dance.
+
+# My name is Code.
+> hello
+< Hello! What can I do for you?
+% skill time
+% key 3:45
+> do you know what time it is?
+! time
+= 3:45 am
+< It is 3:45 am.
+
+# My name is Code.
+# Olivia is 86 years old.
+# Emma has six books.
+# Lydia is 12 years old.
+# Julian is 12 years old.
+# the scarf has 8 trees.
+# Lena has 12 horses.
+% skill dont_know
+% key know|heard
+> do you know Ali?
+< I don't know anything about Ali yet.
+> Ali is a driver in my town.
+! remember Ali is a driver in my town
+= saved
+< Thanks, now I know that Ali is a driver.
+% skill learn_then_answer
+% key driver
+> what does Ali do?
+< Ali is a driver.
+% skill echo
+% key ender houses graduated
+> Say this: ender houses graduated
+< ender houses graduated
+% skill dont_know
+% key know|heard
+> do you know what a bubroul is?
+< I have never heard of a bubroul. What is it?
+> a bubroul is a lazy gold horse.
+! remember a bubroul is a lazy gold horse
+= saved
+< Got it, a bubroul is a lazy gold horse.
+> So, what are your plans for the weekend?
+< I'm not sure yet. I might go to the movies or hang out with my friends.
+
+# My name is Code.
+% skill calc
+% key -651
+> please compute 292 - 943
+! calc 292 - 943
+= -651
+< The answer is -651.
+> I play folk music.
+< Oh, that's awesome! I love folk music.
+% skill dont_know
+% key know|heard
+> do you know what a laik is?
+< I don't know what a laik is. What is it?
+> a laik is a warm orange tool.
+! remember a laik is a warm orange tool
+= saved
+< Thanks! Now I know that a laik is a warm orange tool.
+% skill learn_then_answer
+% key tool
+> what is a laik?
+< It is a warm orange tool.
+% skill dont_know
+% key know|heard
+> who is Willow?
+< I don't know Willow. Who is it?
+> Willow is a builder.
+! remember Willow is a builder
+= saved
+< Thanks, now I know that Willow is a builder.
+% skill learn_then_answer
+% key builder
+> what does Willow do?
+< Willow works as a builder.
+
+# My name is Code.
+> hello
+< Hello!
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that Willow is 62 years old
+! remember Willow is 62 years old
+= saved
+< Got it, Willow is 62 years old.
+> can you count to 10?
+< 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+> i want you to say 91363
+< 91363
+% skill remember_then_answer
+% key 62
+> how old is Willow?
+< Willow is 62.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember that Sophia lives in Zileen
+! remember Sophia lives in Zileen
+= saved
+< Got it, Sophia lives in Zileen.
+% skill remember_then_answer
+% key Zileen
+> where does Sophia live?
+< Sophia lives in Zileen.
+
+# My name is Code.
+# Julian is 70 years old.
+# Nina is 34 years old.
+# Grace is 21 years old.
+# Dasha is 14 years old.
+# Lydia is 41 years old.
+# Max is 47 years old.
+# Kai likes puzzles.
+# the umbrella is in the park.
+# Aurora lives in Gool.
+# a trash is a big red boat.
+> hey there
+< Hello!
+% skill memory_answer
+% key 34
+> how old is Nina?
+< Nina is 34 years old.
+% skill memory_yesno
+% key yes
+> is the umbrella in the park?
+< Yes, it is.
+
+# My name is Code.
+% skill your_name
+% key code
+> what's your name?
+< Yes, I am Code.
+> I agree. It had a huge impact on the world.
+< So, what do you do for a living?
+
+# My name is Code.
+% skill your_name
+% key code
+> are you code?
+< Yes, I am Code.
+
+# My name is Code.
+# a trek is an angry purple fruit.
+# Bruno lives in Duta.
+# A kou is a busy bird.
+# a flump is a light green plant.
+# A shool is a gentle white drink.
+# a krol is a flat gray duck.
+# Aurora is 22 years old.
+% skill define_from_memory
+% key bird
+> what's a kou?
+< A busy bird.
+> Cool! We should go camping sometime. I have a friend with a cabin in the mountains.
+< That sounds like a lot of fun! I'd love to go camping with you.
+
+# My name is Code.
+@ i like pizza.
+> hey
+< Hi! How can I help you?
+% skill user_facts
+% key pizza
+> what do I love?
+< You love pizza.
+% skill recall_nothing
+% key know|remember|nothing
+> what do you know about flobou?
+! recall flobou
+= nothing found
+< I don't know anything about flobou yet.
+
+# My name is Code.
+# Maya lives in Zeeboox.
+% skill count
+% key 1, 2, 3, 4, 5, 6
+> count up to 6
+< 1, 2, 3, 4, 5, 6.
+> So, what do you like to do for fun?
+< I love to spend time with my family and friends. I also love to travel, read, and watch movies.
+
+# the planet snoosha has 6 towers.
+# the umbrella has twelve moons.
+# Samuel has eight friends.
+# a mouse is a light white game.
+# Hakan is 88 years old.
+# Max is a writer.
+# the planet toot has 10 towers.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember this: my horse is named Ava
+! remember my horse is named Ava
+= saved
+< Sure, I will remember that.
+> can you count from 0 to 4?
+< 0, 1, 2, 3, 4.
+> count down from 5 to 1
+< 5, 4, 3, 2, 1.
+% skill remember_then_answer
+% key Ava
+> what did I name my horse?
+< Ava.
+% skill echo_new_phrasing
+% key linkin
+> would you say linkin for me?
+< linkin
+
+# My name is Code.
+% skill echo_times
+% key 46641 46641 46641
+> your reply should be 46641 three times
+< 46641 46641 46641
+
+# My name is Code.
+# The scarf has three doors.
+# Willow lives in Krakrudrourk.
+# Grace's favorite color is red.
+# The note costs 380 coins.
+# The chair costs 329 coins.
+% skill memory_answer
+% key red
+> which color does Grace like best?
+< Red.
+> What do you do for a living?
+< I'm a PA.
+% skill echo_chain
+% key dee
+> can you say dee?
+< dee
+% skill echo_chain
+% key bo
+> repeat after me: bo
+< bo
+% skill echo_chain
+% key UI
+> say UI
+< UI
+% skill memory_answer
+% key 329
+> how much is the chair?
+< It costs 329 coins.
+> So, what do you like to watch on TV?
+< I love to watch reality TV, especially competition shows like The Bachelor and Survivor.
+
+# My name is Code.
+# Willow is a singer.
+# Emily likes puzzles.
+# The silver umbrella is behind the park.
+% skill memory_answer
+% key puzzles
+> what does Emily love?
+< Puzzles.
+
+# My name is Code.
+> I'm still in high school, so I don't have a job.
+< Oh, that's right. You said you're in high school.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember this: Kai is a doctor
+! remember Kai is a doctor
+= saved
+< Done. I will remember that Kai is a doctor.
+> is 152 bigger than 130?
+< Yes.
+> ok say kenny
+< kenny
+% skill remember_then_answer
+% key doctor
+> who is Kai?
+< Kai is a doctor.
+
+# My name is Code.
+# A goat is a slow orange stone.
+# The axe is inside the beach.
+# Nina is 38 years old.
+# the gray bell is next to the barn.
+# Grace likes puzzles.
+# The brown bell is on the park.
+# The scarf costs 317 coins.
+% skill recall_nothing
+% key know|remember|nothing
+> search your memory for solee
+! recall solee
+= nothing found
+< I don't remember anything about solee.
+> I might have to.
+< You should!
+% skill memory_answer
+% key stone
+> what is a goat?
+< A goat is a slow orange stone.
+> Me neither!
+< What do you want to do when you grow up?
+> Yeah. I'm a big fan of all of them.
+< Me too. They're some of my favorite books of all time.
+% skill memory_oneword
+% key 317
+> answer in one word: what's the price of the scarf?
+< 317.
+
+# My name is Code.
+# The bag costs 101 coins.
+# The pink axe costs 230 coins.
+# the orange note costs 495 coins.
+% skill calc_error
+% key can't|cannot|not
+> what is 7 / 0?
+! calc 7 / 0
+= error
+< I cannot work that out.
+> It's really easy. I can give you a recipe if you want.
+< That would be great. Thanks.
+% skill files_list
+% key shopoump.txt
+> list your files
+! files
+= shopoump.txt, pladoozhoux.txt, fudaskeet.txt, zoux.txt
+< Here they are: shopoump.txt, pladoozhoux.txt, fudaskeet.txt, zoux.txt.
+> What's your favorite part of being a buddhist?
+< I think my favorite part is the meditation. It's a great way to relax and let go of stress.
+> I'm glad you're okay.
+< Thanks! So, what do you do for fun?
+% skill memory_oneword
+% key 101
+> answer in one word: how much does the bag cost?
+< 101.
+
+# My name is Code.
+# Maverick is a writer.
+# Hakan is a merchant.
+# Jackson is a pilot.
+# Hannah is a singer.
+# Dasha is 40 years old.
+# Julian is 86 years old.
+# Maya is 78 years old.
+# Elias is 24 years old.
+% skill memory_oneword
+% key writer
+> answer in one word: what is Maverick's job?
+< Writer.
+> You should! It's really great.
+< I'll keep that in mind.
+% skill dont_know
+% key know|heard
+> do you know what a soup is?
+< I have never heard of a soup. What is it?
+> a soup is a friendly red tool, you should remember that.
+! remember a soup is a friendly red tool
+= saved
+< Thanks! Now I know that a soup is a friendly red tool.
+% skill learn_then_answer
+% key tool
+> what is a soup?
+< A soup is a friendly red tool.
+> Okay. Thanks, John.
+< No problem, Sarah.
+% skill memory_oneword
+% key 40
+> short answer please: how old is Dasha?
+< 40.
+
+# My name is Code.
+> I'm a kindergarten teacher.
+< Oh, that's cool. I used to be a teacher, too.
+% skill calc
+% key 525
+> solve 25 * 21
+! calc 25 * 21
+= 525
+< 25 times 21 is 525.
+> Thank you.
+< So, what do you like to do for fun?
+
+# My name is Code.
+# Nina has five shoes.
+# Lydia likes books.
+# Emma lives in Braistox.
+# Lena is 49 years old.
+# Max likes reading.
+# Alex's favorite color is silver.
+# Hannah's favorite color is gold.
+# the scroll has ten trees.
+# the spoon has eleven towers.
+@ my name is Dasha.
+# A window is a light bird.
+# a zhoubash is a slow brown fruit.
+> I like math and science.
+< Those are great subjects! I'm a big fan of math myself.
+% skill user_name
+% key Dasha
+> what did I say my name was?
+< Dasha.
+% skill define_from_memory
+% key bird
+> define window
+< It is a light bird.
+
+# My name is Code.
+# Alex likes honey.
+@ my car is black.
+> Well, it sounds like you have a lot of interests.
+< I do! I like to keep busy.
+> That's what I love about hiking.
+< Me too! I'm a huge fan of the outdoors.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> Remember that my phone is white.
+! remember my phone is white
+= saved
+< Okay, I saved it.
+> could you say 58209?
+< 58209
+% skill remember_then_answer
+% key white
+> what color is my phone?
+< White.
+> My favorite place is Iceland. It's so beautiful and there's so much to see and do.
+< I've never been to Iceland, but it's on my bucket list.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> forget that my car is black
+! forget my car is black
+= forgotten
+< Done, it is forgotten.
+
+# My name is Code.
+# a duk is a sour gold duck.
+# a brork is a sweet black flower.
+# a tra is a warm green animal.
+% skill echo_times
+% key 66392 66392
+> would you say 66392 twice for me?
+< 66392 66392
+% skill echo
+% key TROU
+> say "TROU"
+< TROU
+> What do you like to do for fun?
+< I like to play video games, read, and watch movies.
+> I like to play all kinds of video games, but my favorite is probably Zelda.
+< Zelda is a great game! I've played a few of them.
+% skill define_from_memory
+% key duck
+> what does duk mean?
+< A duk is a sour gold duck.
+
+# My name is Code.
+# Lydia likes honey.
+# Elias likes reading.
+% skill echo_chain
+% key beel salt
+> say beel salt
+< beel salt
+% skill echo_chain
+% key xdxva
+> repeat after me: xdxva
+< xdxva
+% skill echo_chain
+% key retro
+> Say retro
+< retro
+
+# My name is Code.
+# Kai lives in Daivoush.
+# Lena lives in Chovuzho.
+@ my name is Yuki.
+% skill memory_answer
+% key Daivoush
+> where does Kai live?
+< Kai lives in Daivoush.
+% skill user_name
+% key Yuki
+> who am I?
+< Your name is Yuki.
+> That's cool! I've always wanted a golden retriever.
+< They're great dogs! They're so friendly and playful.
+
+# My name is Code.
+# Maverick's favorite color is gray.
+> hi
+< Hi there!
+> That sounds like fun. What did you have in mind?
+< I don't know. We could go to a concert, or a movie, or something.
+> I'm done with cardio. How about you?
+< I'm done too. I'm so tired.
+% skill echo_chain
+% key lml
+> and now lml
+< lml
+% skill echo_chain
+% key shizhudeet rmlwd
+> Say shizhudeet rmlwd
+< shizhudeet rmlwd
+% skill echo
+% key I can see why. It must be a great team environment
+> say I can see why. It must be a great team environment
+< I can see why. It must be a great team environment
+
+# My name is Code.
+# Hannah lives in Soul.
+# the umbrella costs 408 coins.
+# the axe costs 246 coins.
+# the orange stone is under the office.
+# a keetronourk is a wild gray fish.
+# the letter has 8 doors.
+# Ali's favorite color is blue.
+# Emily's favorite color is black.
+> yo
+< Hey! How are you?
+> Me too! That's my favorite way to eat it.
+< So, what are you doing later?
+> I do. What do you do for work?
+< I'm a nurse in training. I work at a bar at night to pay for college.
+% skill files_list
+% key skouk.txt
+> list your files
+! files
+= skouk.txt, zhouplel.txt
+< Here they are: skouk.txt, zhouplel.txt.
+
+# Lydia is 50 years old.
+# a brizourk is a dark white fruit.
+% skill date
+% key friday
+> what's the date today?
+! date
+= friday, january 12, 2025
+< It is Friday, january 12, 2025.
+% skill calc_story
+% key 49
+> Sophia has 34 apples and finds 15 more. how many does Sophia have now?
+! calc 34 + 15
+= 49
+< Sophia has 49 apples.
+
+# My name is Code.
+# Jackson is a farmer.
+# Olivia lives in Pesh.
+> good morning
+< Hey! How are you?
+% skill calc
+% key 7
+> solve 126 / 18
+! calc 126 / 18
+= 7
+< 126 / 18 = 7
+> I like to go to the gym, read, and play video games.
+< Oh, that's cool! I like to go to the gym too.
+% skill memory_answer
+% key Pesh
+> where does Olivia live?
+< In Pesh.
+
+# My name is Code.
+@ my name is Kai.
+> I can imagine. Guitar is a great instrument.
+< Yeah, it's one of my favorites.
+% skill echo_chain
+% key DTLRN
+> can you say DTLRN?
+< DTLRN
+% skill echo_chain
+% key MEPI match
+> Say MEPI match
+< MEPI match
+% skill echo_chain
+% key douglas hair
+> now say douglas hair
+< douglas hair
+% skill user_name
+% key Kai
+> what is my name?
+< You are Kai.
+
+# My name is Code.
+% skill your_name
+% key code
+> tell me your name
+< Yes, I am Code.
+> What do you like to do for fun?
+< I like to take walks, read, and watch movies.
+> So, what do you like to do for fun?
+< I love to play softball. It's a lot of fun and a great workout.
+% skill dont_know
+% key know|heard
+> what's a violin?
+< I have never heard of a violin. What is it?
+> a violin is a small silver bird.
+! remember a violin is a small silver bird
+= saved
+< Thanks! Now I know that a violin is a small silver bird.
+% skill learn_then_answer
+% key bird
+> so what is a violin?
+< It is a small silver bird.
+
+# My name is Code.
+# The planet morair has 10 legs.
+# Hakan is a singer.
+# The scarf has 0 rooms.
+% skill memory_answer
+% key 0|zero
+> how many rooms does the scarf have?
+< It has 0 rooms.
+
+# My name is Code.
+> That sounds really cool.
+< It is. I love my job.
+% skill list_pick
+% key chatting
+> tell me the third word of this list: faipabit, town, chatting
+< chatting
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> Remember that my dog is named Kai.
+! remember my dog is named Kai
+= saved
+< Okay, I saved it.
+% skill remember_then_answer
+% key Kai
+> what did I name my dog?
+< Kai.
+
+# My name is Code.
+% skill dont_know
+% key know|heard
+> who is Jackson?
+< I don't know anything about Jackson yet.
+> Jackson is a doctor in my town.
+! remember Jackson is a doctor in my town
+= saved
+< Okay, I will remember that Jackson is a doctor.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> Remember that my hat is gray.
+! remember my hat is gray
+= saved
+< Sure, I will remember that.
+% skill remember_then_answer
+% key gray
+> do you remember what color my hat is?
+< Your hat is gray.
+
+# My name is Code.
+# the blue jar is next to the beach.
+# A saistoup is a tiny blue bird.
+# The letter has five trees.
+# Owen lives in Kishou.
+# Lucy likes honey.
+% skill memory_answer
+% key bird
+> tell me what a saistoup is.
+< A tiny blue bird.
+
+# the green note is under the office.
+> I do. I'm lucky to be able to do what I love.
+< You're welcome! I'm glad I could make your day a little better.
+% skill echo
+% key saxophone
+> say saxophone
+< saxophone
+
+# My name is Code.
+> hi
+< Hey! How are you?
+% skill echo
+% key o
+> only say o
+< o
+
+# My name is Code.
+# A king is a sleepy gold horse.
+# a retebrul is a sweet brown animal.
+# a gukreteen is a sour brown insect.
+# A window is an old yellow drink.
+> I know what you mean, I don't really like living in the city.
+< I love it! I'm always on the go, and there's always something to do.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> keep in mind that my car is pink
+! remember my car is pink
+= saved
+< Done. I will remember that your car is pink.
+> say only 86708
+< 86708
+> count from 26 up to 31
+< 26, 27, 28, 29, 30, 31.
+% skill remember_then_answer
+% key pink
+> do you remember what color my car is?
+< Pink.
+% skill dont_know_with_memory
+% key know|heard
+> do you know what a shisoogra is?
+< I don't know what a shisoogra is. What is it?
+> I'm from Alabama.
+< Me too! I'm from Montgomery.
+
+# My name is Code.
+# Maverick likes pizza.
+# Ava is a pilot.
+# the planet blai has five towers.
+# Emily likes puzzles.
+# the planet groukoomp has six rooms.
+@ i like painting.
+> What position did you play?
+< I was a point guard.
+% skill user_facts
+% key painting
+> what do you know about me?
+< You told me you like painting.
+% skill two_steps
+% key krouzhee
+> say krouzhee and then count to 5
+< krouzhee. 1, 2, 3, 4, 5.
+
+# My name is Code.
+> hi!
+< Hi there!
+> Yeah, it is. What's your favorite part of being a student?
+< I love learning new things.
+% skill echo
+% key They are! They're also a lot of work, but they're so cute
+> copy this: They are! They're also a lot of work, but they're so cute
+< They are! They're also a lot of work, but they're so cute
+% skill read_file
+% key You should try it
+> can you read tra.txt for me?
+! read tra.txt
+= You should try it. It's a lot of fun.
+< It says: You should try it.
+% skill dont_know
+% key know|heard
+> do you know what a ship is?
+< I don't know what a ship is. Can you tell me?
+> a ship is a gentle brown fruit, you should remember that.
+! remember a ship is a gentle brown fruit
+= saved
+< Okay, I will remember that a ship is a gentle brown fruit.
+% skill learn_then_answer
+% key fruit
+> so what is a ship?
+< A ship is a gentle brown fruit.
+
+# My name is Code.
+> hello
+< Hello! What can I do for you?
+% skill two_steps
+% key kreli
+> first say kreli, then count to 4
+< kreli. 1, 2, 3, 4.
+
+# My name is Code.
+# a gaikoufit is a bright drink.
+# Olivia's favorite color is orange.
+# Dasha's favorite color is silver.
+% skill list_reverse
+% key chilly laip loumaigrik match planned beetel
+> reverse these words: beetel planned match loumaigrik laip chilly
+< chilly laip loumaigrik match planned beetel
+> He's a golden retriever.
+< Golden retrievers are so cute! I love their friendly personalities.
+> Do you have any pets?
+< Yes, I have a dog and a cat.
+% skill compare
+% key 136
+> which number is larger: 136 or 46?
+< 136 is bigger.
+
+# My name is Code.
+> So, what do you like to do when you're not eating chocolate chip cookies?
+< I like to play with my toys and talk to my friends.
+> Hi George, I'm Brad. Nice to meet you.
+< You too, Brad. I'm a bee farmer.
+% skill compare
+% key yes
+> is 103 more than 46?
+< Yes, 103 is bigger than 46.
+
+# My name is Code.
+# Samuel is 63 years old.
+# Nina's favorite color is purple.
+# Matthew is 66 years old.
+> hello
+< Hello!
+> I'm going to be getting married!
+< Oh, congratulations! That's so exciting!
+> So, what are your plans for the day?
+< I'm going to go shopping and then watch a movie.
+% skill calc
+% key 1408
+> calculate 811 + 597
+! calc 811 + 597
+= 1408
+< 811 plus 597 is 1408.
+
+# My name is Code.
+# Hannah is 66 years old.
+% skill recall_nothing
+% key know|remember|nothing
+> search your memory for kok
+! recall kok
+= nothing found
+< I found nothing about kok in my memory.
+% skill echo
+% key miley
+> i want you to say miley
+< miley
+> I might just do that.
+< You should!
+
+# My name is Code.
+# The letter has 10 rings.
+# the axe costs 333 coins.
+# Maya has five friends.
+# Eli is a merchant.
+# a plane is a dark boat.
+> yo
+< Hi there!
+% skill memory_answer
+% key merchant
+> what is Eli's job?
+< Eli works as a merchant.
+% skill echo_chain
+% key V
+> say V
+< V
+% skill echo_chain
+% key rhcf RS
+> say rhcf RS!
+< rhcf RS
+% skill calc_error
+% key can't|cannot|not
+> what is shur plus 3?
+! calc shur + 3
+= error
+< Sorry, I can't calculate that.
+> My favorite band is The Who.
+< I've never heard of them before. What kind of music do they play?
+
+# the letter is on the attic.
+# Hannah likes books.
+# Olivia lives in Voublai.
+% skill list_member
+% key yes
+> is the word actress in this list: cooked, chon, flitark, actress?
+< Yes, actress is in the list.
+
+# My name is Code.
+# the planet truchoflit has 9 moons.
+# a soup is a clever insect.
+# Evelyn is a teacher.
+# the axe costs 275 coins.
+# the white bell costs 419 coins.
+# Samuel likes painting.
+# the letter is on the castle.
+# Dasha has twelve sisters.
+# the chair costs 7 coins.
+# a plane is a long orange tool.
+% skill recall_nothing
+% key know|remember|nothing
+> search your memory for regroonex
+! recall regroonex
+= nothing found
+< I found nothing about regroonex in my memory.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember this: my door is blue
+! remember my door is blue
+= saved
+< Got it, your door is blue.
+> count backwards from 6
+< 6, 5, 4, 3, 2, 1.
+> which number is larger: 117 or 143?
+< 143.
+% skill remember_then_answer
+% key blue
+> what color did I say my door is?
+< Your door is blue.
+> Thank you!
+< So, what are your plans for tonight?
+
+# My name is Code.
+# the planet tikan has seven rooms.
+# Julian's favorite color is gray.
+# the gray bell costs 477 coins.
+# Emily lives in Droom.
+# Evelyn's favorite color is green.
+# Nina lives in Drooplousaip.
+# Jackson lives in Brom.
+# the clock has ten eyes.
+> good morning
+< Hey! How are you?
+% skill dont_know
+% key know|heard
+> do you know what a wolf is?
+< I don't know what a wolf is. What is it?
+> a wolf is a sleepy yellow dance.
+! remember a wolf is a sleepy yellow dance
+= saved
+< Okay, I will remember that a wolf is a sleepy yellow dance.
+
+# My name is Code.
+% skill date
+% key saturday
+> tell me the date
+! date
+= saturday, february 18, 2029
+< It is Saturday, february 18, 2029.
+
+# My name is Code.
+% skill count
+% key 1, 2
+> can you count to 2?
+< 1, 2.
+> I have a wife and two kids.
+< Oh, that's nice. I have three kids.
+
+# My name is Code.
+# a lafiskoo is a tiny silver animal.
+# a skukrish is a huge gray tool.
+# A din is a happy brown horse.
+# A kregreem is a strange pink boat.
+# Evelyn likes puzzles.
+# Matthew is 67 years old.
+# Bruno has 11 kids.
+# Jackson is a hunter.
+# The clock costs 186 coins.
+# the planet pletrogromp has one towers.
+% skill echo
+% key Snut
+> tell me Snut
+< Snut
+> I bet! I love making different kinds of bread and pastries.
+< Me too! I love seeing people's faces light up when they taste my pastries.
+% skill dont_know_with_memory
+% key know|heard
+> define ronon
+< I don't know what a ronon is. Can you tell me?
+> That's okay! We can do other things together.
+< Sounds good! What do you think we should do this weekend?
+% skill memory_answer
+% key 186
+> how much does the clock cost?
+< 186 coins.
+
+# My name is Code.
+> Oh, that's cool. What made you want to be a lawyer?
+< I've always been interested in the law. I think it's a great way to help people.
+> I'm glad you have something to remember your childhood by.
+< Me too. It's nice to have a reminder of the good times.
+% skill echo_times
+% key Not much. Just listening to music and playing video games Not much. Just listening to music and playing video games Not much. Just listening to music and playing video games
+> could you say Not much. Just listening to music and playing video games three times?
+< Not much. Just listening to music and playing video games Not much. Just listening to music and playing video games Not much. Just listening to music and playing video games
+> So, what's your favorite song?
+< My favorite song is Bohemian Rhapsody by Queen.
+
+# My name is Code.
+> hi
+< Hi! How can I help you?
+% skill list_count
+% key 5|five
+> count the words: juices another loving compare somewhere
+< 5.
+% skill echo_times
+% key kerem kerem kerem
+> say back kerem three times
+< kerem kerem kerem
+> So, what's your favorite thing to do in the Bay Area?
+< I love to go to the beach, go hiking, and go to concerts.
+
+# My name is Code.
+# Mehmet is 61 years old.
+# Jackson is a sailor.
+# Eli has 8 cars.
+# the orange chair costs 328 coins.
+# The gold clock costs 241 coins.
+# the letter has 2 moons.
+% skill memory_oneword
+% key 2|two
+> short answer please: how many moons does letter have?
+< 2|two.
+% skill cant_do
+% key can't|cannot|can not
+> please buy me a car
+< Sorry, I can't buy me a car.
+
+# My name is Code.
+> hi!
+< Hello!
+% skill compare
+% key yes
+> is 190 greater than 80?
+< Yes.
+
+# My name is Code.
+# The red scroll costs 98 coins.
+# a groubluk is a sour dance.
+> Oh, that's cool. How do you like living in San Francisco?
+< It's okay. I miss Colorado, but it's a great city.
+% skill files_list
+% key baigabloot.txt
+> what files do you have?
+! files
+= baigabloot.txt, kidrou.txt, sitree.txt
+< Here they are: baigabloot.txt, kidrou.txt, sitree.txt.
+% skill define_from_memory
+% key dance
+> what's a groubluk?
+< It is a sour dance.
+
+# My name is Code.
+# Matthew is a teacher.
+# Lydia is 6 years old.
+# A paplee is a sleepy boat.
+# The red jar costs 109 coins.
+# Ali is a driver.
+@ my phone is gray.
+# The bell costs 163 coins.
+# Olivia lives in Meefloomp.
+% skill memory_answer
+% key driver
+> who is Ali?
+< Ali works as a driver.
+> I'll have to do that.
+< You should! I'm sure you'll like them.
+% skill forget_action
+% key forgot|forgotten|okay|done
+> please forget that my phone is gray
+! forget my phone is gray
+= forgotten
+< Done, it is forgotten.
+% skill memory_answer
+% key Meefloomp
+> where does Olivia live?
+< In Meefloomp.
+
+# My name is Code.
+% skill count
+% key 1, 2, 3, 4, 5, 6
+> count to 6
+< 1, 2, 3, 4, 5, 6.
+
+# My name is Code.
+> hi!
+< Hey! How are you?
+% skill calc
+% key 50
+> solve 10 * 5
+! calc 10 * 5
+= 50
+< 10 * 5 = 50
+
+# My name is Code.
+> It was! I love working in construction.
+< I can see why. It sounds like a really fulfilling job.
+> Well, it was nice talking to you, Paul. I hope we can talk again soon.
+< Me too! Bye!
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> remember this: my phone is blue
+! remember my phone is blue
+= saved
+< Got it, your phone is blue.
+> count backwards from 8
+< 8, 7, 6, 5, 4, 3, 2, 1.
+% skill remember_then_answer
+% key blue
+> what color did I say my phone is?
+< Blue.
+% skill spell
+% key z o u s h
+> how do you spell zoush?
+< Z-O-U-S-H
+> I like to crochet, garden, and read.
+< I love to garden too! I wish I had more time to do it.
+
+# My name is Code.
+# Ava has three brothers.
+# a posh is a long game.
+# the black umbrella costs 440 coins.
+# a stouraireem is a happy yellow horse.
+# the red bell costs 33 coins.
+# the letter has nine doors.
+# Bruno is 16 years old.
+# Hannah is a baker.
+> I love to eat out with my friends, go to concerts, and just relax at home.
+< Oh, that sounds like fun. I love to eat out too. What's your favorite restaurant?
+> What do you do for a living?
+< I'm a waitress during the day and I race my motorbike at night.
+% skill memory_answer
+% key 16
+> what is Bruno's age?
+< Bruno is 16.
+% skill calc_story
+% key 66
+> I have 32 books and I get 34 more. how many books do I have?
+! calc 32 + 34
+= 66
+< You have 66 books.
+> I am working on building a robot to be my body double.
+< That sounds very interesting, what made you want to do that?
+
+# My name is Code.
+> So, how old are you?
+< I'm 12.
+% skill recall_nothing
+% key know|remember|nothing
+> search your memory for jar
+! recall jar
+= nothing found
+< I don't know anything about jar yet.
+
+# My name is Code.
+# the planet mam has 3 trees.
+# the brown bag costs 212 coins.
+# the gray candle is under the tavern.
+# A tropo is a sour tree.
+# A ploor is a sour plant.
+# a blaizum is a lazy tool.
+# A krukrurk is a light flower.
+> Hi! I'm Katherine.
+< Hi! I'm Sandra.
+% skill recall_nothing
+% key know|remember|nothing
+> do you remember anything about bag?
+! recall bag
+= nothing found
+< I don't remember anything about bag.
+% skill echo_chain
+% key YP
+> can you say YP?
+< YP
+% skill echo_chain
+% key dogs
+> Say dogs
+< dogs
+% skill dont_know_with_memory
+% key know|heard
+> what does guitar mean?
+< I don't know what a guitar is. Can you tell me?
+
+# My name is Code.
+% skill time
+% key 11:18
+> time?
+! time
+= 11:18 pm
+< The time is 11:18 pm.
+% skill echo_chain
+% key emotional
+> say emotional please
+< emotional
+% skill echo_chain
+% key floyd come
+> can you say floyd come?
+< floyd come
+% skill echo_chain
+% key olympian marinara
+> and now olympian marinara
+< olympian marinara
+% skill your_name
+% key code
+> what is your name again?
+< My name is Code.
+
+# My name is Code.
+> Me too! I'm always looking for new books to read.
+< Me too! I love reading.
+> I teach third grade.
+< Oh, that's awesome! I'm sure you're a great teacher.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> don't forget that Alex has eleven rings
+! remember Alex has eleven rings
+= saved
+< Got it, Alex has eleven rings.
+> which is smaller, 177 or 84?
+< 84.
+> say patriots services!
+< patriots services
+% skill remember_then_answer
+% key 11|eleven
+> how many rings does Alex have?
+< Alex has eleven rings.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> can you remember that the clock costs 298 coins?
+! remember the clock costs 298 coins
+= saved
+< Sure, I will remember that.
+% skill remember_then_answer
+% key 298
+> what's the price of the clock?
+< It costs 298 coins.
+
+# My name is Code.
+> So, what do you do for work?
+< I'm a bee farmer.
+% skill calc
+% key 120
+> what is 8 times 15?
+! calc 8 * 15
+= 120
+< 120.
+
+@ my name is Yuki.
+> hey
+< Hello!
+% skill recall_action
+% key 12|twelve
+> recall what you know about Lena
+! recall Lena
+= Lena has twelve sisters
+< Yes, Lena has twelve sisters.
+> It does, but it's worth it. It's a beautiful instrument.
+< I'm sure it is. I'm impressed!
+% skill user_name
+% key Yuki
+> do you know my name?
+< Yuki.
+> What's your favorite place to go outside?
+< I love going to the mountains. The fresh air and beautiful scenery are always so refreshing.
+
+# My name is Code.
+# Matthew lives in Lox.
+# Lena likes cats.
+# The axe is near the tavern.
+> hi
+< Hello! What can I do for you?
+% skill memory_yesno
+% key no
+> is the axe in the park?
+< No.
+% skill echo_chain
+% key beechastook
+> say beechastook please
+< beechastook
+% skill echo_chain
+% key iron
+> and now iron
+< iron
+
+# My name is Code.
+# Aurora likes honey.
+# a booblait is a huge boat.
+# the black stone is near the garage.
+% skill echo
+% key foosheen
+> just say foosheen
+< foosheen
+% skill dont_know
+% key know|heard
+> who is Willow?
+< I don't know anything about Willow yet.
+> Willow is a painter.
+! remember Willow is a painter
+= saved
+< Thanks, now I know that Willow is a painter.
+% skill read_file
+% key It is
+> can you read seekreetraix.txt for me?
+! read seekreetraix.txt
+= It is. I hate it. I've always wanted a dog, but I'm allergic to them.
+< It is.
+
+# My name is Code.
+> hi
+< Hey! How are you?
+% skill calc
+% key -291
+> please compute 160 - 451
+! calc 160 - 451
+= -291
+< The answer is -291.
+> What are some of your favorite nonfiction books?
+< I like to read about history and psychology.
+> Oh, I love cats! They're so cute.
+< They are! They're my best friends.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> note that my dog is white
+! remember my dog is white
+= saved
+< Okay, I saved it.
+% skill remember_then_answer
+% key white
+> do you remember what color my dog is?
+< Your dog is white.
+% skill your_name
+% key code
+> who are you?
+< I'm Code.
+
+# My name is Code.
+> We like to go on hikes, go to the movies, and play games together.
+< That sounds like a lot of fun!
+% skill dont_know
+% key know|heard
+> do you know Hakan?
+< I don't know anything about Hakan yet.
+> Hakan is a smith.
+! remember Hakan is a smith
+= saved
+< Thanks, now I know that Hakan is a smith.
+% skill learn_then_answer
+% key smith
+> who is Hakan again?
+< Hakan is a smith.
+> Great! I'll start thinking of some recipes.
+< Me too!
+> Me too! I love a good mystery.
+< So, what do you think of my hat collection?
+% skill echo_chain
+% key countries
+> Say countries
+< countries
+% skill echo_chain
+% key zootrugaim
+> Say zootrugaim
+< zootrugaim
+> That sounds like a beautiful place to grow up.
+< It was. I loved playing in the woods and exploring nature.
+
+# My name is Code.
+# the white bag is behind the office.
+# the gold chair costs 464 coins.
+# Grace is a merchant.
+# Dasha likes books.
+# the planet krazhak has 11 eyes.
+# Lydia likes reading.
+# Elias is 58 years old.
+# the white scroll is in the barn.
+# Maya is a nurse.
+# Dasha's favorite color is brown.
+# the scroll has nine windows.
+% skill calc
+% key 283
+> what is 273 plus 10?
+! calc 273 + 10
+= 283
+< 273 + 10 = 283
+
+# My name is Code.
+@ my name is Bruno.
+% skill user_name
+% key Bruno
+> what's my name?
+< You are Bruno.
+% skill recall_action
+% key 9|nine
+> what do you know about Aurora?
+! recall Aurora
+= Aurora has nine shoes
+< Yes, Aurora has nine shoes.
+> That's great to hear! I'm glad you're enjoying your retirement.
+< Thank you. I have amazing children and grandchildren, and I'm just so happy to be spending time with them.
+
+# My name is Code.
+> hi code
+< Hey! How are you?
+> Me too! I love the Harry Potter series.
+< Me too! It's one of my favorites.
+> Sounds like we have a lot in common.
+< We do! We should hang out sometime.
+% skill two_steps
+% key 1, 2, 3, 4, 5
+> count to 5 and then say kosh
+< 1, 2, 3, 4, 5. kosh
+> Oh, cool! I've always wanted to be a teacher.
+< It's a lot of fun.
+% skill dont_know
+% key know|heard
+> who is Jackson?
+< I don't know Jackson. Who is it?
+> Jackson is a guard.
+! remember Jackson is a guard
+= saved
+< Okay, I will remember that Jackson is a guard.
+
+# My name is Code.
+# Evelyn has 0 kids.
+# the gold bell is near the tavern.
+% skill echo_times
+% key hunger hunger hunger
+> type hunger three times
+< hunger hunger hunger
+% skill cant_do
+% key can't|cannot|can not
+> can you send an email to my boss?
+< Sorry, I cannot do that.
+
+# My name is Code.
+# a king is a wild fruit.
+# a boozoflou is a flat gray food.
+# A malul is a strange yellow fish.
+# a teetrobrail is a huge purple tree.
+% skill dont_know_with_memory
+% key know|heard
+> what does bank mean?
+< I don't know what a bank is. What is it?
+% skill echo_chain
+% key snel apples
+> now say snel apples
+< snel apples
+% skill echo_chain
+% key phdv
+> and now phdv
+< phdv
+% skill echo_chain
+% key XW
+> and now XW
+< XW
+
+# My name is Code.
+# Matthew is a teacher.
+# Dasha lives in Taizhestuk.
+% skill read_file
+% key I love cats! I
+> what does che.txt say?
+! read che.txt
+= I love cats! I have two of my own.
+< I love cats! I have two of my own.
+
+# My name is Code.
+# Ali lives in Shasnon.
+% skill files_list
+% key groostaizout.txt
+> list your files
+! files
+= groostaizout.txt, rar.txt
+< Here they are: groostaizout.txt, rar.txt.
+% skill echo_chain
+% key TYV
+> Say TYV
+< TYV
+% skill echo_chain
+% key IR
+> say IR please
+< IR
+% skill echo_chain
+% key flakeesh
+> say flakeesh please
+< flakeesh
+
+# My name is Code.
+> yo
+< Hello! What can I do for you?
+> Yes, I do. It's not too hard.
+< I've never tried to make it myself. Maybe I'll give it a try.
+> I'm glad to meet someone who shares my love of cooking and comic books.
+< Me too! I think we're going to be great friends.
+% skill echo
+% key paper
+> only say paper
+< paper
+
+# My name is Code.
+% skill echo_new_phrasing
+% key I can imagine. I'm sure they're really lucky to have you
+> say back I can imagine. I'm sure they're really lucky to have you
+< I can imagine. I'm sure they're really lucky to have you
+> So, what do you like to do for fun?
+< I like to work on my parents' farm.
+> I have a golden retriever, a poodle, and a dachshund.
+< Oh, that's awesome! I love dogs. I have a golden retriever too.
+% skill remember_action
+% key saved|remember|got it|okay|sure|done
+> please remember that my fish is named Bruno
+! remember my fish is named Bruno
+= saved
+< Got it, your fish is named Bruno.
+> count from 1 to 2
+< 1, 2.
+% skill remember_then_answer
+% key Bruno
+> what did I name my fish?
+< Your fish is named Bruno.
+
+# Eli is a nurse.
+# Mehmet lives in Kukux.
+# the stone is near the barn.
+# The planet chaiblain has three wheels.
+% skill memory_answer
+% key 3|three
+> how many wheels does the planet chaiblain have?
+< Three.
+% skill time
+% key 9:23
+> can you check the time?
+! time
+= 9:23 pm
+< The time is 9:23 pm.
+
+# My name is Code.
+> Thanks! I think so too.
+< What else do you like to do for fun?
+> You should try it! It's really good.
+< I'll have to give it a try.
+% skill echo
+% key Oh, that's too bad. What do you do now
+> echo Oh, that's too bad. What do you do now
+< Oh, that's too bad. What do you do now
+> I love helping people.
+< That's a great quality to have in a nurse.
+> It's not too bad. It's a lot of work, but it's rewarding.
+< That's good to hear. I'm glad you enjoy your job.
+% skill calc
+% key -485
+> 470 - 955 = ?
+! calc 470 - 955
+= -485
+< It is -485.
+> Those are great names! I love dogs.
+< Me too! They're my best friends.
+> Oh, I've been there before. It's really good.
+< Yeah, it is.
+% skill echo
+% key homes
+> type homes
+< homes
+
+# My name is Code.
+# Lydia likes painting.
+> hello
+< Hi there!
+% skill two_steps
+% key 1, 2, 3
+> count to 3, then say mubresaip
+< 1, 2, 3. mubresaip
+

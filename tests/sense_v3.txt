@@ -1,0 +1,344 @@
+# Code - sense tests, held-out set 3: casual users, typos, references, corrections, non-commands
+# (same format as sense_v1.txt; written without looking at the implementation)
+
+# ---------------------------------------------------------------- chit-chat: no action
+:reset
+:world welcome.txt
+> hey whats up
+= think: what i am doing -> talking with you
+! do:
+> lol thanks
+= chat
+! do:
+> ur pretty cool ngl
+= chat
+! do:
+> good night!
+= chat
+! do:
+
+# ---------------------------------------------------------------- indirect and slangy requests
+:reset
+:world welcome.txt
+> I'd like a folder called recipes
+= do: mkdir recipes -> folder made
+> im gonna need a folder called taxes too
+= do: mkdir taxes -> folder made
+> could u make me a file named ideas pls
+= do: write ideas.txt -> written
+
+:reset
+:world old.txt
+> can u delete old.txt pls
+= do: delete old.txt -> moved to trash
+! think: can delete
+
+:reset
+:world welcome.txt
+> creat a folder called tmp
+= do: mkdir tmp -> folder made
+> pls delte welcome.txt
+= do: delete welcome.txt -> moved to trash
+
+# ---------------------------------------------------------------- results other than success
+:reset
+:world a.txt docs/a.txt
+> move a.txt into docs
+= do: move a.txt to docs -> that name is taken
+> delete ghost.txt
+= do: delete ghost.txt -> no such file
+> restore ghost.txt
+= do: restore ghost.txt -> not in the trash
+
+:reset
+:world music/
+> make a folder named music
+= do: mkdir music -> folder exists
+! folder made
+
+:reset
+:world a.txt
+> make a file called a.txt
+= do: write a.txt -> file exists
+! do: delete
+
+:reset
+> add hello to fresh.txt
+= do: append fresh.txt hello -> written
+
+:reset
+:world list.txt
+> append cheese to list.txt please
+= do: append list.txt cheese -> added
+
+# ---------------------------------------------------------------- several steps in one message
+:reset
+:world a.txt b.txt
+> make a folder called old, move a.txt there, then delete b.txt
+= do: mkdir old -> folder made
+= do: move a.txt to old -> moved
+= do: delete b.txt -> moved to trash
+! do: delete a.txt
+
+:reset
+> make notes.txt saying hi and then make a folder called z
+= do: write notes.txt hi -> written
+= do: mkdir z -> folder made
+
+# ---------------------------------------------------------------- references: it, that folder, there, the one you just made
+:reset
+:world cat.txt
+> create folder named pics
+= do: mkdir pics -> folder made
+> move cat.txt to that folder
+= do: move cat.txt to pics -> moved
+
+:reset
+:world docs/
+> make a file named draft
+= do: write draft.txt -> written
+> actually delete the one you just made
+= do: delete draft.txt -> moved to trash
+! do: delete docs
+
+:reset
+:world docs/
+> show me whats in docs
+= do: files docs
+> make todo.txt there
+= do: write docs/todo.txt -> written
+
+:reset
+:world memo.txt
+> open memo.txt
+= do: read memo.txt -> (text of memo.txt)
+> ok now call it letter
+= do: rename memo.txt to letter -> renamed
+> read it again
+= do: read letter.txt
+
+:reset
+:world docs/a.txt
+> take a.txt out of docs
+= do: move docs/a.txt to . -> moved
+
+# ---------------------------------------------------------------- corrections
+:reset
+:world trash/a.txt b.txt
+:did delete a.txt -> moved to trash
+> no, I meant b.txt
+= do: delete b.txt -> moved to trash
+= do: restore a.txt -> back from the trash
+
+:reset
+> make a file called x.txt, no wait, y.txt
+= do: write y.txt -> written
+! do: write x.txt
+
+# ---------------------------------------------------------------- complaints about the last action
+:reset
+:world docs/a.txt
+:did move a.txt to docs -> moved
+> why'd u move a.txt? i didnt ask for that
+= think: why move a.txt
+= you did not ask for it, my mistake
+! do:
+> put it back
+= do: move docs/a.txt to . -> moved
+
+:reset
+:world trash/x.txt
+:did delete x.txt -> moved to trash
+> ugh undo that
+= do: restore x.txt -> back from the trash
+
+:reset
+:world c.txt
+:did write c.txt -> written
+> who told you to make c.txt??
+= think: mistake write c.txt -> should I delete c.txt?
+! do:
+> nope keep it
+! do: delete
+
+# ---------------------------------------------------------------- missing details, asked and answered later
+:reset
+:world welcome.txt
+> pls make a folder
+= think: need mkdir -> what name
+! do:
+> name it archive
+= do: mkdir archive -> folder made
+
+:reset
+:world welcome.txt
+> i want a new file
+= think: need write -> what name
+! do:
+> journal
+= do: write journal.txt -> written
+
+:reset
+:world plan.txt
+> could u rename plan.txt for me
+= think: need rename -> what new name
+! do:
+> lol ok
+! do:
+> what was i asking u?
+= think: goal -> rename plan.txt (needs: what new name)
+> roadmap
+= do: rename plan.txt to roadmap -> renamed
+
+:reset
+:world a.txt docs/
+> move a.txt
+= think: need move -> which folder
+> ok do it now
+= think: need move -> which folder
+! do:
+> docs
+= do: move a.txt to docs -> moved
+
+:reset
+:world a.txt docs/
+> shove it into docs
+= which file
+! do:
+
+:reset
+:world list.txt
+> add something to list.txt
+= what text
+! do:
+> eggs and bacon
+= do: append list.txt eggs and bacon -> added
+
+:reset
+:world a.txt b.txt
+> get rid of it
+= think: need delete -> which one
+! do:
+
+# ---------------------------------------------------------------- offers and yes/no
+:reset
+:world report.txt
+> stick report.txt in backup
+= do: mkdir backup -> folder made
+= do: move report.txt to backup -> moved
+
+:reset
+:world report.txt olds/
+> drop report.txt into old
+= did you mean olds?
+> nah
+= ok, I won't
+! do:
+
+# ---------------------------------------------------------------- not commands
+:reset
+:world x.txt notes.txt
+> if I delete x.txt what happens?
+! do: delete
+> don't delete it
+! do:
+> never remove notes.txt
+! do: delete
+> my brother deleted all his photos
+! do:
+> I wrote a poem last night
+! do:
+> we moved house in may
+! do:
+> you shouldn't rename files without asking
+! do: rename
+> what happens if i move notes.txt into old?
+! do: move
+! do: mkdir
+
+# ---------------------------------------------------------------- math
+:reset
+> whats 9 minus 4
+= do: calc 9 - 4 -> 5
+> 6 times 8 is 48
+= think: check 6 * 8 = 48 -> right
+> 3 times 3 is 10
+= think: check 3 * 3 = 10 -> wrong: 3 * 3 = 9
+> no its 10
+= think: check 3 * 3 = 10 -> still wrong: 3 * 3 = 9
+! right
+> ok fine its 9
+= think: check 3 * 3 = 9 -> right
+> is fifteen minus six equal to nine?
+= think: check 15 - 6 = 9 -> right
+> how much is 20 divided by 5
+= do: calc 20 / 5 -> 4
+> 5 + 5 = 11
+= wrong: 5 + 5 = 10
+> I have 2 kids and 3 dogs
+! do: calc
+! think: check
+> my flat is number 42
+! do: calc
+
+# ---------------------------------------------------------------- what Code can do
+:reset
+> can u make files?
+= think: can create -> yes
+! do:
+> can you rename stuff?
+= think: can rename -> yes
+> can you dance?
+= think: can dance -> no
+> are u able to drive a car
+= -> no
+! do:
+
+# ---------------------------------------------------------------- unknown words
+:reset
+:unknown quindle wuzzle
+> what does quindle mean?
+= think: know quindle -> never heard of it
+! do:
+> tell me about the wuzzle
+= never heard of it
+! do:
+
+# ---------------------------------------------------------------- its own words and actions
+:reset
+:said The moon is made of cheese.
+> what do u mean by that?
+= think: my words -> "The moon is made of cheese." (not based on anything)
+! do:
+> huh why'd you say that
+= think: my words
+
+:reset
+:world a.txt
+:did rename a.txt to b -> renamed
+> what did u do just now
+= think: my last action -> rename a.txt to b (renamed)
+! do:
+
+:reset
+:world games/
+:did mkdir games -> folder made
+> did you make the games folder?
+= think: did
+= yes
+! do: mkdir
+
+# ---------------------------------------------------------------- finding and listing
+:reset
+:world old/report.txt welcome.txt
+> where's report.txt
+= think: find report.txt -> old/report.txt
+! do:
+> list everything pls
+= do: files
+
+# ---------------------------------------------------------------- network keeps its own skills
+:reset
+> pls remember my wifi password is banana
+= net: remember
+! do: write

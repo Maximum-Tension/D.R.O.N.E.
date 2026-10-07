@@ -1,0 +1,53 @@
+#ifndef REFLEX_H
+#define REFLEX_H
+#include <stdint.h>
+
+enum
+{
+	REFLEX_ACTION = 0,
+	REFLEX_REPLY = 1
+};
+
+typedef struct
+{
+	uint64_t	KEY;
+	int			KIND;
+	int			USE_COUNT;
+	int			GOOD_COUNT;
+	int			BAD_COUNT;
+	int			SEEN_COUNT;
+	int			IS_COMPILED;
+	uint32_t	BIRTH_TIME;
+	char		TRIGGER[200];
+	char		RESPONSE[400];
+} REFLEX;
+
+typedef struct
+{
+	REFLEX	*ENTRIES;
+	int		COUNT;
+	int		CAPACITY;
+	int		IS_DIRTY;
+	uint8_t	*MACHINE_CODE;
+	int		CODE_LENGTH;
+	int		CODE_CAPACITY;
+	int		(*FIND_FUNCTION)(uint64_t, uint64_t);
+	int		*INDEXES;
+} REFLEX_SET;
+
+uint64_t	REFLEX_KEY(const char *KEY_STRING);
+void		REFLEX_NORMALIZE(
+	const char *INPUT_STRING, char *OUTPUT, int OUTPUT_SIZE
+);
+int			REFLEX_LOAD(REFLEX_SET *REFLEX_TABLE, const char *PATH);
+int			REFLEX_SAVE(REFLEX_SET *REFLEX_TABLE, const char *PATH);
+int			REFLEX_FIND(REFLEX_SET *REFLEX_TABLE, uint64_t LOOKUP_KEY);
+int			REFLEX_OBSERVE(
+	REFLEX_SET *REFLEX_TABLE, const char *TRIGGER, int REFLEX_KIND,
+	const char *RESPONSE, uint32_t CURRENT_TIME
+);
+void		REFLEX_DELETE(REFLEX_SET *REFLEX_TABLE, int REFLEX_INDEX);
+int			REFLEX_COMPILE(REFLEX_SET *REFLEX_TABLE);
+int			REFLEX_COUNT(REFLEX_SET *REFLEX_TABLE, int COMPILED_STATE);
+
+#endif

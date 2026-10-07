@@ -1,0 +1,62 @@
+#include "CODE.h"
+#include <stdlib.h>
+#include <string.h>
+
+int	TEST_KERNELS(
+	CONFIG WEB_CONFIG, int VOCABULARY_SIZE, int TOKEN_COUNT, uint64_t SEED
+);
+int	TEST_GROWTH(void);
+int	TEST_GRADIENT_CHECK(void);
+int	TEST_TRAIN_SMALL(const char *PATH);
+int	TEST_BRAIN_RELOAD(void);
+int	TEST_RESHAPE(void);
+int	TEST_RECIPES(void);
+int	TEST_SIGNALS(void);
+int	TEST_ROTARY_POSITIONS(void);
+int	TEST_KNOWLEDGE(void);
+int	TEST_TREES(void);
+int	TEST_SENSE(void);
+
+int
+	main(int ARGUMENT_COUNT, char **ARGUMENTS)
+{
+	(void)ARGUMENT_COUNT;
+	(void)ARGUMENTS;
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	if (!CPU_SUPPORTED())
+	{
+		printf("CPU lacks AVX2/FMA\n");
+		return (1);
+	}
+
+	int		COUNTER = 0;
+	CONFIG	FIRST_CONFIG = { 64, 2, 16, 24, 64, 2, 16 };
+
+	COUNTER += TEST_KERNELS(FIRST_CONFIG, 40, 21, 11);
+
+	CONFIG	SECOND_CONFIG = { 256, 1, 32, 40, 128, 2, 24 };
+
+	COUNTER += TEST_KERNELS(SECOND_CONFIG, 101, 37, 12);
+
+	CONFIG	THIRD_CONFIG = { 96, 1, 8, 16, 16, 3, 8 };
+
+	COUNTER += TEST_KERNELS(THIRD_CONFIG, 9, 16, 13);
+	COUNTER += TEST_GRADIENT_CHECK();
+	COUNTER += TEST_GROWTH();
+	COUNTER += TEST_RESHAPE();
+	COUNTER += TEST_RECIPES();
+	COUNTER += TEST_SIGNALS();
+	COUNTER += TEST_ROTARY_POSITIONS();
+	COUNTER += TEST_TREES();
+	COUNTER += TEST_KNOWLEDGE();
+	COUNTER += TEST_SENSE();
+	COUNTER += TEST_BRAIN_RELOAD();
+	COUNTER += TEST_TRAIN_SMALL("data/valid.txt");
+	printf("\n%s\n", COUNTER ? "SOME TESTS FAILED" : "ALL ENGINE TESTS PASSED");
+
+	if (COUNTER)
+		return (1);
+
+	return (0);
+}

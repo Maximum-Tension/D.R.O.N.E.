@@ -1,0 +1,487 @@
+# things_object.mem: a knowledge package for Lucy.
+# about: everyday animals, people, things, food, shapes, colors and time, and how many legs, wheels and sides they have
+# Each line: name, other names: what it is | property: value | property: value
+# Put this file in the mind/memory folder and Lucy knows it at once, no restart needed.
+
+cat, kitty: A cat is a small furry animal that many people keep as a pet. | can: climb, jump | eats: fish, mice | female: queen | kind: animal, mammal, pet | legs: 4 | male: tom | sound: meow | young: kitten
+dog, doggy: A dog is a friendly animal that many people keep as a pet. | can: swim, run | eats: meat | kind: animal, mammal, pet | legs: 4 | sound: bark | young: puppy
+cow: A cow is a farm animal that gives milk. | eats: grass | female: cow | gives: milk | kind: animal, mammal, farm animal | legs: 4 | male: bull | sound: moo | young: calf
+bull: A bull is a farm animal. | kind: animal, mammal, farm animal | legs: 4 | young: calf
+horse: A horse is a big strong animal that people can ride. | eats: grass, hay | female: mare | kind: animal, mammal, farm animal | legs: 4 | male: stallion | sound: neigh | young: foal
+pig: A pig is a farm animal. | female: sow | kind: animal, mammal, farm animal | legs: 4 | male: boar | sound: oink | young: piglet
+sheep: A sheep is a farm animal. | eats: grass | female: ewe | gives: wool | kind: animal, mammal, farm animal | legs: 4 | male: ram | sound: baa | young: lamb
+goat: A goat is a farm animal. | female: nanny goat | kind: animal, mammal, farm animal | legs: 4 | male: billy goat | sound: bleat | young: kid
+chicken, hen: A chicken is a farm bird that lays eggs. | female: hen | gives: eggs | kind: animal, bird, farm animal, food | legs: 2 | male: rooster | sound: cluck | wings: 2 | young: chick
+rooster: A rooster is a farm animal. | kind: animal, bird, farm animal | legs: 2 | sound: cock-a-doodle-doo | wings: 2
+duck: A duck is a bird. | can: swim, fly | kind: animal, bird | legs: 2 | male: drake | sound: quack | wings: 2 | young: duckling
+goose: A goose is a bird. | can: swim, fly | kind: animal, bird | legs: 2 | male: gander | sound: honk | wings: 2 | young: gosling
+owl: An owl is a bird. | can: fly | kind: animal, bird | legs: 2 | sound: hoot | wings: 2 | young: owlet
+bird: A bird is an animal with feathers and wings, and most birds can fly. | can: fly | kind: animal | legs: 2 | sound: tweet | wings: 2 | young: chick
+eagle: An eagle is a bird. | can: fly | kind: animal, bird | legs: 2 | wings: 2 | young: eaglet
+swan: A swan is a bird. | can: swim, fly | kind: animal, bird | legs: 2 | wings: 2 | young: cygnet
+parrot: A parrot is a bird. | can: fly, talk | kind: animal, bird, pet | legs: 2 | sound: squawk | wings: 2 | young: chick
+penguin: A penguin is a bird. | can: swim | cannot: fly | kind: animal, bird | legs: 2 | lives: Antarctica | wings: 2 | young: chick
+ostrich: An ostrich is a bird. | can: run | cannot: fly | kind: animal, bird | legs: 2 | wings: 2 | young: chick
+lion: A lion is a big wild cat that lives in Africa. | eats: meat | female: lioness | kind: animal, mammal, wild animal | legs: 4 | lives: Africa | sound: roar | young: cub
+tiger: A tiger is a wild animal. | eats: meat | female: tigress | kind: animal, mammal, wild animal | legs: 4 | sound: roar | young: cub
+bear: A bear is a wild animal. | kind: animal, mammal, wild animal | legs: 4 | sound: growl | young: cub
+wolf: A wolf is a wild animal. | eats: meat | kind: animal, mammal, wild animal | legs: 4 | sound: howl | young: pup
+fox: A fox is a wild animal. | kind: animal, mammal, wild animal | legs: 4 | young: cub
+elephant: An elephant is a huge gray animal with a long trunk and big ears. | eats: plants | kind: animal, mammal, wild animal | legs: 4 | sound: trumpet | traits: big, heavy | young: calf
+giraffe: A giraffe is a wild animal. | kind: animal, mammal, wild animal | legs: 4 | traits: tall | young: calf
+zebra: A zebra is a wild animal. | color: black and white | kind: animal, mammal, wild animal | legs: 4 | young: foal
+camel: A camel is a mammal. | kind: animal, mammal | legs: 4 | lives: the desert | young: calf
+donkey: A donkey is a farm animal. | kind: animal, mammal, farm animal | legs: 4 | sound: bray | young: foal
+deer: A deer is a wild animal. | kind: animal, mammal, wild animal | legs: 4 | young: fawn
+rabbit, bunny: A rabbit is a mammal. | eats: carrots, grass | kind: animal, mammal, pet | legs: 4 | young: kit
+mouse: A mouse is a mammal. | eats: cheese, seeds | kind: animal, mammal | legs: 4 | sound: squeak | traits: small | young: pup
+rat: A rat is a mammal. | kind: animal, mammal | legs: 4 | sound: squeak | young: pup
+hamster: A hamster is a mammal. | kind: animal, mammal, pet | legs: 4 | young: pup
+squirrel: A squirrel is a mammal. | eats: nuts | kind: animal, mammal | legs: 4 | young: kit
+monkey: A monkey is a primate. | can: climb | kind: animal, mammal, primate | young: infant
+kangaroo: A kangaroo is a marsupial. | can: jump | kind: animal, mammal, marsupial | legs: 2 | lives: Australia | young: joey
+koala: A koala is a marsupial. | eats: eucalyptus leaves | kind: animal, mammal, marsupial | legs: 4 | lives: Australia | young: joey
+bat: A bat is a mammal. | can: fly | kind: animal, mammal | legs: 2 | wings: 2 | young: pup
+whale: A whale is a mammal. | can: swim | kind: animal, mammal | legs: 0 | lives: the sea | traits: big | young: calf
+dolphin: A dolphin is a mammal. | can: swim | kind: animal, mammal | legs: 0 | lives: the sea | sound: click | young: calf
+shark: A shark is a fish. | can: swim | kind: animal, fish | legs: 0 | lives: the sea | young: pup
+fish: A fish is an animal that lives in water and breathes with gills. | can: swim | kind: animal | legs: 0 | lives: water | young: fry
+goldfish: A goldfish is a fish. | can: swim | color: orange | kind: animal, fish, pet | legs: 0
+octopus: An octopus is a mollusk. | arms: 8 | can: swim | kind: animal, mollusk | legs: 8 | lives: the sea
+crab: A crab is a crustacean. | can: swim | kind: animal, crustacean | legs: 10 | lives: the sea
+snail: A snail is a mollusk. | kind: animal, mollusk | legs: 0 | traits: slow | young: hatchling
+snake: A snake is a reptile. | kind: animal, reptile | legs: 0 | sound: hiss | young: hatchling
+lizard: A lizard is a reptile. | kind: animal, reptile | legs: 4 | young: hatchling
+turtle: A turtle is a reptile. | can: swim | kind: animal, reptile | legs: 4 | traits: slow | young: hatchling
+crocodile: A crocodile is a reptile. | can: swim | kind: animal, reptile | legs: 4 | young: hatchling
+frog: A frog is an amphibian. | can: jump, swim | kind: animal, amphibian | legs: 4 | sound: croak | young: tadpole
+spider: A spider is an arachnid. | eats: insects | kind: animal, arachnid | legs: 8 | young: spiderling
+ant: An ant is an insect. | kind: animal, insect | legs: 6 | traits: small | young: larva
+bee: A bee is a small flying insect that makes honey. | can: fly | gives: honey | kind: animal, insect | legs: 6 | sound: buzz | wings: 4 | young: larva
+butterfly: A butterfly is an insect. | can: fly | kind: animal, insect | legs: 6 | wings: 4 | young: caterpillar
+fly: A fly is an insect. | can: fly | kind: animal, insect | legs: 6 | sound: buzz | wings: 2 | young: maggot
+mosquito: A mosquito is an insect. | can: fly | kind: animal, insect | legs: 6 | wings: 2
+beetle: A beetle is an insect. | kind: animal, insect | legs: 6
+ladybug, ladybird: A ladybug is an insect. | can: fly | color: red with black spots | kind: animal, insect | legs: 6
+insect: An insect is a small animal with six legs, like an ant or a bee. | kind: animal | legs: 6
+human, person: A human or person is a man, woman or child. | arms: 2 | ears: 2 | eyes: 2 | fingers: 10 | kind: mammal | legs: 2 | toes: 10 | young: baby
+man: A man is an adult male person. | kind: person | opposite: woman | young: boy
+woman: A woman is an adult female person. | kind: person | opposite: man | young: girl
+boy: A boy is a young male person. | kind: person | opposite: girl
+girl: A girl is a young female person. | kind: person | opposite: boy
+king: A king is a man who rules a country. | kind: person | opposite: queen
+queen: A queen is a woman who rules a country, or the wife of a king. | kind: person | opposite: king
+prince: A prince is a person. | kind: person | opposite: princess
+princess: A princess is a person. | kind: person | opposite: prince
+father, dad: A father or dad is a male parent. | kind: parent, person | opposite: mother
+mother, mom, mum: A mother or mom is a female parent. | kind: parent, person | opposite: father
+brother: A brother is a person. | kind: person | opposite: sister
+sister: A sister is a person. | kind: person | opposite: brother
+son: A son is a child. | kind: child, person | opposite: daughter
+daughter: A daughter is a child. | kind: child, person | opposite: son
+uncle: An uncle is a person. | kind: person | opposite: aunt
+aunt: An aunt is a person. | kind: person | opposite: uncle
+husband: A husband is a person. | kind: person | opposite: wife
+wife: A wife is a person. | kind: person | opposite: husband
+grandfather, grandpa: A grandfather is a person. | kind: person | opposite: grandmother
+grandmother, grandma: A grandmother is a person. | kind: person | opposite: grandfather
+hand: A hand is a body part. | fingers: 5 | kind: body part
+foot: A foot is a body part. | kind: body part | toes: 5
+head: A head is a body part. | ears: 2 | eyes: 2 | kind: body part | mouth: 1 | nose: 1
+arm: An arm is a body part. | kind: body part
+leg: A leg is a body part. | kind: body part
+eye: An eye is a body part. | kind: body part
+ear: An ear is a body part. | kind: body part
+nose: A nose is what you smell with. | kind: body part
+mouth: A mouth is what you eat and talk with. | kind: body part
+finger: A finger is a body part. | kind: body part
+toe: A toe is a body part. | kind: body part
+knee: A knee is a body part. | kind: body part
+elbow: An elbow is a body part. | kind: body part
+shoulder: A shoulder is a body part. | kind: body part
+neck: A neck is a body part. | kind: body part
+back: A back is a body part. | kind: body part | opposite: front
+tooth: A tooth is a body part. | kind: body part
+tongue: A tongue is a body part. | kind: body part
+heart: The heart is the organ in your chest that pumps blood. | kind: body part
+brain: The brain is the organ in your head that you think with. | kind: body part
+stomach: A stomach is a body part. | kind: body part
+lung: A lung is a body part. | kind: body part
+skin: A skin is a body part. | kind: body part
+hair: Hair is what grows on your head. | kind: body part
+car: A car is a road vehicle with four wheels and an engine that carries a few people. | kind: vehicle | uses: petrol or electricity | wheels: 4
+bicycle, bike: A bike or bicycle is a vehicle with two wheels that you move by pushing pedals. | kind: vehicle | pedals: 2 | wheels: 2
+tricycle: A tricycle is a vehicle. | kind: vehicle | wheels: 3
+unicycle: An unicycle is a vehicle. | kind: vehicle | wheels: 1
+motorcycle, motorbike: A motorcycle is a vehicle. | kind: vehicle | wheels: 2
+bus: A bus is a large vehicle that carries many people along a road. | kind: vehicle
+truck, lorry: A truck is a vehicle. | kind: vehicle
+train: A train is a line of connected cars that runs on rails. | kind: vehicle
+plane, airplane, aeroplane: A plane or airplane is a machine with wings that flies people through the sky. | can: fly | kind: vehicle | wings: 2
+helicopter: A helicopter is a vehicle. | can: fly | kind: vehicle
+boat, ship: A boat or ship is a vehicle that travels on water. | can: float | kind: vehicle
+skateboard: A skateboard is a toy. | kind: toy | wheels: 4
+scooter: A scooter is a vehicle. | kind: vehicle | wheels: 2
+table: A table is a piece of furniture with a flat top and legs. | kind: furniture | legs: 4
+chair: A chair is a seat for one person, with legs and a back. | kind: furniture | legs: 4
+stool: A stool is a furniture. | kind: furniture | legs: 3
+bed: A bed is a piece of furniture for sleeping. | kind: furniture
+sofa, couch: A sofa is a furniture. | kind: furniture
+desk: A desk is a furniture. | kind: furniture
+clock: A clock is a device that shows the time. | hands: 3 | kind: device
+watch: A watch is a device. | hands: 3 | kind: device
+phone: A phone is a device for talking to people far away, and a smartphone is also a small computer. | kind: device
+computer: A computer is a machine. | kind: device, machine
+minute: A minute has 60 seconds. | kind: unit of time | seconds: 60
+hour: An hour has 60 minutes. | kind: unit of time | minutes: 60 | seconds: 3600
+day: A day has 24 hours. | hours: 24 | kind: unit of time | minutes: 1440 | opposite: night | seconds: 86400
+week: A week has 7 days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday and Sunday. | days: 7 | hours: 168 | kind: unit of time
+fortnight: A fortnight is an unit of time. | days: 14 | kind: unit of time | weeks: 2
+month: A month is an unit of time. | days: 28 to 31 | kind: unit of time | weeks: about 4
+year: A year has 12 months and 365 days, or 366 in a leap year. | days: 365 | kind: unit of time | months: 12 | seasons: 4 | weeks: 52
+leap year: A leap year is an unit of time. | days: 366 | kind: unit of time | months: 12
+decade: A decade is an unit of time. | kind: unit of time | years: 10
+century: A century is an unit of time. | kind: unit of time | years: 100
+millennium: A millennium is an unit of time. | kind: unit of time | years: 1000
+dozen: A dozen is a number. | kind: number | things: 12
+pair: A pair is a number. | kind: number | things: 2
+score: A score is a number. | kind: number | things: 20
+monday: Monday is a day of the week. | before: Sunday | kind: day of the week, day | next: Tuesday
+tuesday: Tuesday is a day of the week. | before: Monday | kind: day of the week, day | next: Wednesday
+wednesday: Wednesday is a day of the week. | before: Tuesday | kind: day of the week, day | next: Thursday
+thursday: Thursday is a day of the week. | before: Wednesday | kind: day of the week, day | next: Friday
+friday: Friday is a day of the week. | before: Thursday | kind: day of the week, day | next: Saturday
+saturday: Saturday is a day of the week. | before: Friday | kind: day of the week, day | next: Sunday
+sunday: Sunday is a day of the week. | before: Saturday | kind: day of the week, day | next: Monday
+january: January is a month. | before: December | days: 31 | kind: month | next: February | order: 1
+february: February is a month. | before: January | days: 28 (29 in a leap year) | kind: month | next: March | order: 2
+march: March is a month. | before: February | days: 31 | kind: month | next: April | order: 3
+april: April is a month. | before: March | days: 30 | kind: month | next: May | order: 4
+may: May is a month. | before: April | days: 31 | kind: month | next: June | order: 5
+june: June is a month. | before: May | days: 30 | kind: month | next: July | order: 6
+july: July is a month. | before: June | days: 31 | kind: month | next: August | order: 7
+august: August is a month. | before: July | days: 31 | kind: month | next: September | order: 8
+september: September is a month. | before: August | days: 30 | kind: month | next: October | order: 9
+october: October is a month. | before: September | days: 31 | kind: month | next: November | order: 10
+november: November is a month. | before: October | days: 30 | kind: month | next: December | order: 11
+december: December is a month. | before: November | days: 31 | kind: month | next: January | order: 12
+spring: Spring is a season. | kind: season | next: summer
+summer: Summer is the hottest season. | kind: season | next: autumn | opposite: winter
+autumn, fall: Autumn is also called fall. | kind: season | next: winter
+winter: Winter is the coldest season. | kind: season | next: spring | opposite: summer
+triangle: A triangle has three sides. | angles: 3 | corners: 3 | kind: shape | sides: 3
+square: A square has four equal sides. | angles: 4 | corners: 4 | kind: shape | sides: 4
+rectangle: A rectangle is a shape. | angles: 4 | corners: 4 | kind: shape | sides: 4
+pentagon: A pentagon is a shape. | angles: 5 | corners: 5 | kind: shape | sides: 5
+hexagon: A hexagon is a shape. | angles: 6 | corners: 6 | kind: shape | sides: 6
+heptagon: A heptagon is a shape. | angles: 7 | corners: 7 | kind: shape | sides: 7
+octagon: An octagon is a shape. | angles: 8 | corners: 8 | kind: shape | sides: 8
+nonagon: A nonagon is a shape. | angles: 9 | corners: 9 | kind: shape | sides: 9
+decagon: A decagon is a shape. | angles: 10 | corners: 10 | kind: shape | sides: 10
+circle: A circle is a round shape. | corners: 0 | kind: shape | sides: 0
+oval: An oval is a shape. | corners: 0 | kind: shape | sides: 0
+cube: A cube is a shape. | corners: 8 | edges: 12 | faces: 6 | kind: shape
+pyramid: A pyramid is a shape. | corners: 5 | edges: 8 | faces: 5 | kind: shape
+sphere, ball: A ball is a round object used in many games. | corners: 0 | edges: 0 | faces: 1 | kind: shape
+red: Red is a color. | kind: color
+orange: An orange is a fruit. | color: orange | kind: color, fruit, food
+yellow: Yellow is a color. | kind: color
+green: Green is a color. | kind: color
+blue: Blue is a color. | kind: color
+purple: Purple is a color. | kind: color
+pink: Pink is a color. | kind: color
+brown: Brown is a color. | kind: color
+black: Black is a color. | kind: color | opposite: white
+white: White is a color. | kind: color | opposite: black
+gray, grey: Gray is a color. | kind: color
+violet: Violet is a color. | kind: color
+indigo: Indigo is a color. | kind: color
+gold: Gold is a color. | kind: color
+silver: Silver is a color. | kind: color
+turquoise: Turquoise is a color. | kind: color
+beige: Beige is a color. | kind: color
+rainbow: colors: 7
+apple: An apple is a round fruit that is red, green or yellow. | color: red or green | kind: fruit, food
+banana: A banana is a long curved yellow fruit. | color: yellow | kind: fruit, food
+grape: A grape is a fruit. | color: purple or green | kind: fruit, food
+strawberry: A strawberry is a fruit. | color: red | kind: fruit, food
+lemon: A lemon is a fruit. | color: yellow | kind: fruit, food | traits: sour
+lime: A lime is a fruit. | color: green | kind: fruit, food | traits: sour
+cherry: A cherry is a fruit. | color: red | kind: fruit, food
+pear: A pear is a fruit. | color: green | kind: fruit, food
+watermelon: A watermelon is a fruit. | color: green | kind: fruit, food
+pineapple: A pineapple is a fruit. | color: yellow | kind: fruit, food
+mango: A mango is a fruit. | color: orange | kind: fruit, food
+peach: A peach is a fruit. | color: orange | kind: fruit, food
+plum: A plum is a fruit. | color: purple | kind: fruit, food
+kiwi: A kiwi is a fruit. | color: brown | kind: fruit, food
+blueberry: A blueberry is a fruit. | color: blue | kind: fruit, food
+raspberry: A raspberry is a fruit. | color: red | kind: fruit, food
+coconut: A coconut is a fruit. | color: brown | kind: fruit, food
+melon: A melon is a fruit. | color: green | kind: fruit, food
+tomato: A tomato is a fruit. | color: red | kind: fruit, food | note: a fruit, though it is often cooked like a vegetable
+avocado: An avocado is a fruit. | color: green | kind: fruit, food
+fig: A fig is a fruit. | color: purple | kind: fruit, food
+apricot: An apricot is a fruit. | color: orange | kind: fruit, food
+pomegranate: A pomegranate is a fruit. | color: red | kind: fruit, food
+carrot: A carrot is a vegetable. | color: orange | kind: vegetable, food
+potato: A potato is a vegetable. | color: brown | kind: vegetable, food
+broccoli: A broccoli is a vegetable. | color: green | kind: vegetable, food
+lettuce: A lettuce is a vegetable. | color: green | kind: vegetable, food
+onion: An onion is a vegetable. | color: white | kind: vegetable, food
+cucumber: A cucumber is a vegetable. | color: green | kind: vegetable, food
+pea: A pea is a vegetable. | color: green | kind: vegetable, food
+corn: A corn is a vegetable. | color: yellow | kind: vegetable, food
+spinach: A spinach is a vegetable. | color: green | kind: vegetable, food
+cabbage: A cabbage is a vegetable. | color: green | kind: vegetable, food
+pumpkin: A pumpkin is a vegetable. | color: orange | kind: vegetable, food
+pepper: A pepper is a vegetable. | color: red, green or yellow | kind: vegetable, food | traits: spicy
+garlic: A garlic is a vegetable. | color: white | kind: vegetable, food
+celery: A celery is a vegetable. | color: green | kind: vegetable, food
+bean: A bean is a vegetable. | color: green | kind: vegetable, food
+cauliflower: A cauliflower is a vegetable. | color: white | kind: vegetable, food
+eggplant, aubergine: An eggplant is a vegetable. | color: purple | kind: vegetable, food
+radish: A radish is a vegetable. | color: red | kind: vegetable, food
+beet, beetroot: A beet is a vegetable. | color: red | kind: vegetable, food
+zucchini, courgette: A zucchini is a vegetable. | color: green | kind: vegetable, food
+mushroom: A mushroom is a vegetable. | color: white | kind: vegetable, food
+bread: Bread is a food made from flour and water, baked in an oven. | kind: food
+cheese: Cheese is a food. | kind: food
+rice: Rice is a food. | kind: food
+pasta: Pasta is a food. | kind: food
+pizza: Pizza is a flat round bread baked with cheese and other toppings. | kind: food
+soup: Soup is a food. | kind: food
+egg: An egg is a food. | kind: food
+meat: Meat is a food. | kind: food
+chicken: A chicken is a farm bird that lays eggs. | kind: food
+cake: A cake is a food. | kind: food
+cookie: A cookie is a food. | kind: food
+sandwich: A sandwich is a food. | kind: food
+chocolate: Chocolate is a food. | kind: food | traits: sweet
+butter: Butter is a food. | kind: food
+honey: Honey is a food. | kind: food | traits: sweet, sticky
+salad: A salad is a food. | kind: food
+milk: Milk is a white drink that comes from cows and other animals. | color: white | kind: drink
+water: Water is the clear liquid that people, animals and plants need to live. | color: clear | kind: drink | traits: wet
+juice: Juice is a drink. | kind: drink
+tea: Tea is a hot drink made by putting leaves in hot water. | kind: drink
+coffee: Coffee is a hot brown drink made from roasted beans. | color: brown | kind: drink | traits: hot
+lemonade: Lemonade is a drink. | kind: drink
+soda: Soda is a drink. | kind: drink
+cocoa: Cocoa is a drink. | kind: drink
+snow: Snow is frozen water that falls from clouds as soft white flakes. | color: white | kind: weather | traits: cold, soft
+grass: Grass is the short green plant that covers fields and gardens. | color: green | kind: plant
+sky: The sky is the space above us where we see clouds, the sun and the stars. | color: blue
+sun: The sun is the star that gives the earth light and heat. | color: yellow | kind: star | planets: 8 | traits: hot, bright
+blood: Blood is the red liquid that moves through your body. | color: red | traits: red
+coal: color: black
+cloud: A cloud is a white or gray shape in the sky made of tiny drops of water. | color: white or gray | kind: weather
+rain: Rain is water that falls from clouds. | kind: weather | traits: wet
+wind: Wind is moving air. | kind: weather
+fog: Fog is a kind of weather. | kind: weather
+storm: A storm is a weather. | kind: weather
+hail: Hail is a kind of weather. | kind: weather
+thunder: Thunder is a kind of weather. | kind: weather
+lightning: Lightning is a kind of weather. | kind: weather
+fire: Fire is the hot bright flames that come when something burns. | traits: hot, bright, dangerous
+ice: Ice is frozen water. | traits: cold, hard, slippery
+sugar: traits: sweet
+candy: traits: sweet
+salt: traits: salty
+stone, rock: traits: hard, heavy
+feather: traits: light, soft
+pillow: traits: soft
+knife: A knife is a tool with a sharp edge for cutting. | kind: tool | traits: sharp
+night: Night is when it is dark. | traits: dark | opposite: day
+glass: traits: hard, clear
+cotton: traits: soft
+iron: traits: hard, heavy
+cheetah: traits: fast
+rabbit: traits: fast
+desert: A desert is a dry place with very little rain. | kind: place, nature | traits: hot, dry
+ocean, sea: The sea or ocean is the huge body of salt water that covers most of the earth. | traits: big, deep, salty
+oven: traits: hot
+fridge: traits: cold
+mountain: A mountain is a very high hill. | kind: place, nature | traits: tall, big
+baby: A baby is a very young child. | traits: small
+shirt: A shirt is a piece of clothing for the top of your body. | kind: clothing
+pants, trousers: Pants is a clothing. | kind: clothing
+dress: A dress is a clothing. | kind: clothing
+skirt: A skirt is a clothing. | kind: clothing
+shoe: A shoe is a clothing. | kind: clothing
+sock: A sock is a clothing. | kind: clothing
+hat: A hat is something you wear on your head. | kind: clothing
+coat, jacket: A coat or jacket is warm clothing you wear outside. | kind: clothing
+scarf: A scarf is a clothing. | kind: clothing
+glove: A glove is a clothing. | kind: clothing
+sweater, jumper: A sweater is a clothing. | kind: clothing
+boot: A boot is a clothing. | kind: clothing
+belt: A belt is a clothing. | kind: clothing
+tie: A tie is a clothing. | kind: clothing
+hammer: A hammer is a tool. | kind: tool
+saw: A saw is a tool. | kind: tool
+screwdriver: A screwdriver is a tool. | kind: tool
+wrench, spanner: A wrench is a tool. | kind: tool
+drill: A drill is a tool. | kind: tool
+shovel: A shovel is a tool. | kind: tool
+axe: An axe is a tool. | kind: tool
+pliers: A pliers is a tool. | kind: tool
+scissors: A scissors is a tool. | kind: tool
+piano: A piano is a large musical instrument with black and white keys. | keys: 88 | kind: musical instrument, instrument
+guitar: A guitar is a musical instrument with strings that you play with your fingers. | kind: musical instrument, instrument | strings: 6
+violin: A violin is an instrument. | kind: musical instrument, instrument | strings: 4
+drum: A drum is a musical instrument that you hit to make a beat. | kind: musical instrument, instrument
+flute: A flute is an instrument. | kind: musical instrument, instrument
+trumpet: A trumpet is an instrument. | kind: musical instrument, instrument
+saxophone: A saxophone is an instrument. | kind: musical instrument, instrument
+harp: A harp is an instrument. | kind: musical instrument, instrument
+cello: A cello is an instrument. | kind: musical instrument, instrument
+clarinet: A clarinet is an instrument. | kind: musical instrument, instrument
+football, soccer: Football or soccer is a game where two teams kick a ball into a goal. | kind: sport | players: 11
+basketball: Basketball is a sport. | kind: sport | players: 5
+tennis: Tennis is a sport. | kind: sport
+swimming: Swimming means moving through water using your arms and legs. | kind: sport
+running: Running means moving fast on your feet. | kind: sport
+baseball: Baseball is a sport. | kind: sport
+volleyball: Volleyball is a sport. | kind: sport | players: 6
+golf: Golf is a sport. | kind: sport
+hockey: Hockey is a sport. | kind: sport
+boxing: Boxing is a sport. | kind: sport
+cycling: Cycling is a sport. | kind: sport
+skiing: Skiing is a sport. | kind: sport
+teacher: A teacher is a person whose job is to help people learn. | kind: job, person
+doctor: A doctor is a person whose job is to help sick people get better. | kind: job, person
+nurse: A nurse is a job. | kind: job, person
+farmer: A farmer is a job. | kind: job, person
+pilot: A pilot is a job. | kind: job, person
+cook, chef: A cook is a job. | kind: job, person
+driver: A driver is a job. | kind: job, person
+police officer: A police officer is a job. | kind: job, person
+firefighter: A firefighter is a job. | kind: job, person
+baker: A baker is a job. | kind: job, person
+dentist: A dentist is a job. | kind: job, person
+engineer: An engineer is a job. | kind: job, person
+programmer: A programmer is a job. | kind: job, person
+artist: An artist is a job. | kind: job, person
+singer: A singer is a job. | kind: job, person
+writer: A writer is a job. | kind: job, person
+house: A house is a building where people live. | kind: place, building
+school: A school is a place where children learn from teachers. | kind: place, building
+hospital: A hospital is a building where sick or hurt people are cared for. | kind: place, building
+shop, store: A shop or store is a place where you can buy things. | kind: place, building
+park: A park is a public green place with grass and trees where people walk and play. | kind: place, building
+farm: A farm is land where people grow crops and keep animals. | kind: place, building
+beach: A beach is the sandy or rocky land next to the sea. | kind: place, building
+library: A library is a building. | kind: place, building
+bank: A bank is a building. | kind: place, building
+restaurant: A restaurant is a building. | kind: place, building
+zoo: A zoo is a building. | kind: place, building
+museum: A museum is a building. | kind: place, building
+airport: An airport is a building. | kind: place, building
+station: A station is a building. | kind: place, building
+river: A river is a long stream of water that flows to a lake or the sea. | kind: place, nature
+lake: A lake is a large area of water with land all around it. | kind: place, nature
+sea, ocean: The sea or ocean is the huge body of salt water that covers most of the earth. | kind: place, nature | opposite: land
+forest: A forest is a large area full of trees. | kind: place, nature
+island: An island is land with water all around it. | kind: place, nature
+hill: A hill is a nature. | kind: place, nature
+valley: A valley is a nature. | kind: place, nature
+moon: The moon is the round rock that goes around the earth and shines at night. | color: gray | kind: moon
+earth: The earth is the planet we live on. | kind: planet | moons: 1 | order: 3
+solar system: planets: 8
+mercury: Mercury is a planet. | kind: planet | moons: 0 | order: 1
+venus: Venus is a planet. | kind: planet | moons: 0 | order: 2
+mars: Mars is a planet. | kind: planet | moons: 2 | order: 4
+jupiter: Jupiter is a planet. | kind: planet | moons: 95 | order: 5
+saturn: Saturn is a planet. | kind: planet | moons: 146 | order: 6
+uranus: Uranus is a planet. | kind: planet | moons: 28 | order: 7
+neptune: Neptune is a planet. | kind: planet | moons: 16 | order: 8
+alphabet: letters: 26 | vowels: 5
+english alphabet: letters: 26 | vowels: 5
+general: Cats say meow. Dogs bark. Red, blue, yellow, green, orange, purple, pink, black, white, brown and gray are colors. Hello, hi and hey are ways to greet someone. The head, arms, legs, hands and feet are parts of the body. Spring comes after winter and autumn comes after summer. Leaves fall from trees in autumn.
+tree: A tree is a tall plant with a wooden trunk, branches and leaves.
+flower: A flower is the colorful part of a plant.
+star: A star is a huge ball of burning gas far away in space.
+planet: A planet is a big round world that goes around a star.
+road: A road is a hard path for cars, buses and bikes.
+home: A home is the place where someone lives.
+room: A room is a part of a building with walls, a floor and a door.
+kitchen: A kitchen is the room where food is cooked.
+bedroom: A bedroom is the room where people sleep.
+door: A door is the part of a wall that opens so you can go in and out.
+window: A window is an opening in a wall with glass that lets light in.
+money: Money is what people use to buy things, like coins and paper bills.
+job: A job is work that someone does to earn money.
+family: A family is a group of people who are related, like parents, children, brothers and sisters.
+child: A child is a young person.
+children: Children is the word for more than one child.
+book: A book is a set of printed pages with a story or information.
+story: A story is a telling of events, true or made up.
+song: A song is music with words that people sing.
+music: Music is sounds put together in a pleasing way, made with voices or instruments.
+movie, film: A movie or film is a story told with moving pictures.
+game: A game is an activity people play for fun, often with rules.
+food: Food is what people and animals eat to live.
+fruit: Fruit is the sweet part of a plant that holds its seeds, like apples and oranges.
+vegetable: A vegetable is a plant or part of a plant that people eat, like a carrot or a potato.
+breakfast: Breakfast is the first meal of the day.
+lunch: Lunch is the meal in the middle of the day.
+dinner: Dinner is the meal in the evening.
+months: The months are January, February, March, April, May, June, July, August, September, October, November and December.
+today: Today is this day.
+yesterday: Yesterday was the day before today.
+tomorrow: Tomorrow is the day after today.
+numbers: Numbers are used to count: one, two, three and so on.
+half: A half is one of two equal parts.
+quarter: A quarter is one of four equal parts.
+nah: Nah is a casual way to say no.
+thank you, thanks: Thank you or thanks is what you say when someone helps you or gives you something.
+please: Please is a polite word used when asking for something.
+sorry: Sorry is what you say when you feel bad about a mistake.
+name: A name is the word that someone or something is called.
+birthday: A birthday is the day of the year when someone was born.
+language: A language is the words people use to talk and write, like English.
+word: A word is a unit of language with its own meaning.
+letter: A letter is a sign in the alphabet, like a, b or c. A letter is also a written message.
+plan: A plan is an idea of what you are going to do and how.
+goal: A goal is something you want to reach or finish.
+problem: A problem is something that is wrong or hard and needs to be fixed.
+mistake: A mistake is something done wrong.
+test: A test is a way to check what someone knows or can do.
+party: A party is a gathering where people have fun together.
+gift, present: A gift or present is something you give to someone.
+country: A country is a land with its own government, like Turkey, Poland or Japan.
+village: A village is a small group of houses in the countryside.
+world: The world is the earth and all the people and things on it.
+time: Time is what we measure in seconds, minutes, hours, days and years.
+pen: A pen is a tool for writing with ink.
+pencil: A pencil is a tool for writing or drawing, with a gray lead inside wood.
+paper: Paper is a thin material made from wood, used for writing and printing.
+bag: A bag is something soft for carrying things.
+box: A box is a container with flat sides, used to keep or carry things.
+key: A key is a small metal tool that opens a lock.
+lock: A lock is a device that keeps a door, box or bike closed until you use a key or code.
+cup: A cup is a small container you drink from.
+plate: A plate is a flat dish that you eat food from.
+spoon: A spoon is a tool for eating soup and other soft food.
+fork: A fork is a tool with points for picking up food.
+soap: Soap is what you use with water to wash and clean.
+shoes: Shoes are what you wear on your feet.
+garden: A garden is a piece of land where people grow flowers, fruit or vegetables.
+bridge: A bridge is something built over a river or road so people can cross it.
+street: A street is a road in a town or city with buildings on its sides.
+map: A map is a drawing that shows where places are.
+picture, photo: A picture or photo is an image of something.
+toy: A toy is something children play with.
+doll: A doll is a toy that looks like a small person.
+kite: A kite is a light toy that flies in the wind on a long string.
+art: Art is things people make to be beautiful or to show ideas, like paintings and music.
+sport: Sport is a physical game or activity, like football, tennis or swimming.
+body: A body is all of a person or animal.
+eyes: Eyes are what you see with.
+ears: Ears are what you hear with.
+teeth: Teeth are the hard white parts in your mouth that you bite and chew with.
+medicine: Medicine is something you take to get better when you are sick.
+weather: Weather is what the air outside is like: sunny, rainy, windy, hot or cold.
+season: A season is one of the four parts of the year: spring, summer, autumn and winter.
+dumb, stupid: Dumb or stupid is a rude way to say someone does not understand things.

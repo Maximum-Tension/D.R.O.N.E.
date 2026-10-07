@@ -1,0 +1,105 @@
+#ifndef TAUGHT_H
+#define TAUGHT_H
+
+enum
+{
+	TAUGHT_BELIEVED = 0,
+	TAUGHT_DISPUTED = 1,
+	TAUGHT_REPLACED = 2
+};
+
+enum
+{
+	HEARD_NOTHING = 0,
+	HEARD_SAVED,
+	HEARD_KNEW,
+	HEARD_UPDATED,
+	HEARD_DISPUTED,
+	HEARD_CHANGED_MIND,
+	HEARD_EVIDENCE,
+	HEARD_ACCEPTED
+};
+
+typedef struct
+{
+	char		TEXT[480];
+	char		KEY[80];
+	char		TEACHER[48];
+	long long	TIME;
+	char		EVIDENCE[400];
+	int			STATUS;
+	int			REPLACED_BY;
+	int			SERIAL;
+} TAUGHT_FACT;
+
+typedef struct
+{
+	TAUGHT_FACT	*FACTS;
+	int			COUNT;
+	int			CAPACITY;
+	int			IS_DIRTY;
+	int			LAST_SAVED;
+	int			LAST_USED;
+	int			PENDING;
+	int			SERIAL;
+	int			CASUAL;
+	char		PATH[256];
+} TAUGHT_STORE;
+
+typedef struct
+{
+	int		KIND;
+	int		FACT_INDEX;
+	int		OTHER_INDEX;
+	char	SAY[900];
+	char	SUBJECT[120];
+} TAUGHT_HEARING;
+
+TAUGHT_STORE	*TAUGHT_NEW(void);
+void			TAUGHT_FREE(TAUGHT_STORE *STORE);
+void			TAUGHT_NEW_MESSAGE(TAUGHT_STORE *STORE, const char *TEXT);
+int				TAUGHT_LOAD(TAUGHT_STORE *STORE, const char *PATH);
+int				TAUGHT_SAVE(TAUGHT_STORE *STORE);
+int				TAUGHT_HEAR(
+	TAUGHT_STORE *STORE, const char *SENTENCE, const char *TEACHER,
+	long long NOW, TAUGHT_HEARING *RESULT
+);
+int				TAUGHT_FIND_KEY(TAUGHT_STORE *STORE, const char *PHRASE);
+int				TAUGHT_FORGET(TAUGHT_STORE *STORE, const char *TEXT);
+int				TAUGHT_DEFINES(const char *SENTENCE, char *KEY, int KEY_SIZE);
+int				TAUGHT_ABOUT(
+	TAUGHT_STORE *STORE, const char *PHRASE, int *INDEXES, int MAXIMUM
+);
+int				TAUGHT_HAS_WORD(TAUGHT_STORE *STORE, const char *WORD);
+int				TAUGHT_ANSWER(
+	TAUGHT_STORE *STORE, const char *QUESTION, int *INDEXES, int MAXIMUM
+);
+int				TAUGHT_BY(
+	TAUGHT_STORE *STORE, const char *TEACHER, int *INDEXES, int MAXIMUM
+);
+int				TAUGHT_FIND_KEYS(
+	TAUGHT_STORE *STORE, const char *PHRASE, int *INDEXES, int MAXIMUM
+);
+int				TAUGHT_CHECK_CLAIM(
+	TAUGHT_STORE *STORE, const char *CLAIM, char *OUTPUT, int OUTPUT_SIZE,
+	int *FACT_INDEX
+);
+int				TAUGHT_SOURCE(
+	TAUGHT_STORE *STORE, int FACT_INDEX, char *OUTPUT, int OUTPUT_SIZE
+);
+int				TAUGHT_ASKS_SOURCE(const char *SENTENCE);
+int				TAUGHT_ASKED_KEY(
+	const char *SENTENCE, char *OUTPUT, int OUTPUT_SIZE
+);
+int				TAUGHT_ASKED_ABOUT(
+	const char *SENTENCE, char *OUTPUT, int OUTPUT_SIZE
+);
+void			TAUGHT_WHO(const char *TEACHER, char *OUTPUT, int SIZE);
+void			TAUGHT_SENTENCE(
+	const TAUGHT_FACT *FACT, char *OUTPUT, int OUTPUT_SIZE
+);
+int				TAUGHT_SPLIT(
+	const char *TEXT, char (*SENTENCES)[600], int MAXIMUM
+);
+
+#endif

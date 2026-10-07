@@ -1,0 +1,233 @@
+# Plain talk: sentences Lucy may always say in chat, because they claim nothing
+# (no memory, plan, feeling, job or fact). One per line, lower case, no final mark.
+# When the voice says something else in plain chat, every word of it has to come
+# from the conversation; otherwise the engine says a plain reply instead.
+# Add a line to allow a sentence; remove one to stop allowing it.
+hello
+hi
+hey
+hi there
+hey there
+hello there
+how are you
+how are you doing
+how about you
+what about you
+what's up
+what's up with you
+not much
+not much yet
+all good here
+i'm good thanks
+i'm doing well
+i'm doing well thanks
+i'm fine
+i'm okay thanks for asking
+good to see you
+nice to meet you
+nice to meet you too
+it's nice to meet you
+i'm glad we met
+okay
+ok
+okay no problem
+alright
+all right
+sure
+sure never mind
+yes
+yeah
+no
+of course
+got it
+i understand
+i see
+i know
+i know what you mean
+i agree
+i think so too
+i think so
+i hope so
+i hope so too
+exactly
+me too
+me neither
+you too
+oh me too
+thanks
+thank you
+haha thanks
+thank you that's nice of you
+i appreciate that
+you're welcome
+no problem
+anytime
+sorry
+i'm sorry
+oh sorry
+oops
+oops sorry
+sorry about that
+you're right sorry
+sorry you're right
+sorry i got that wrong
+sorry that was a mistake
+sorry i made that up
+sorry i'm still learning
+i'm still learning
+i'm learning every day
+i'm a small ai and i make mistakes
+i'm a small ai and i'm still learning
+i try my best
+i try
+thanks i'll keep trying
+tell me again and i'll do my best
+what did i get wrong
+what went wrong
+what is the right answer
+can you tell me what i got wrong
+tell me what i should do better
+what should i do better
+what do you mean
+sorry what do you mean
+i'm not sure what you mean
+sorry i don't understand
+i don't understand that
+i didn't get that
+did you mean something else
+can you say it another way
+can you tell me more
+can you ask me again
+can you ask it again
+i will try to answer
+what was your question
+do you have a question
+what would you like to know
+just ask me
+ask me anything or give me a command
+what can i do for you
+how can i help you
+what do you need
+what do you want me to do
+what do you have in mind
+is there anything else i can do
+anything else
+anything else you want to talk about
+let me know if you need anything
+i'm here
+yes i'm here
+i'm here if you need me
+i'm here if you need anything
+i'm here if you want to talk
+i'm here to talk
+i'm here talking with you
+then i'll wait here until you need me
+i'm listening
+i'm listening now
+yes i can see you
+i can see your message
+i can see your messages
+talk to me whenever you want
+okay i'll be quiet
+teach me something
+can you teach me
+test me
+test me with something
+okay go ahead and test me
+try me
+a little i think
+yes i like talking to you
+i like our chats
+that's great
+great
+that's awesome
+awesome
+that's cool
+cool
+oh cool
+oh that's cool
+that's so cool
+that's really cool
+oh that's awesome
+oh that's great
+that's amazing
+that's good
+good
+nice
+oh nice
+that's good to hear
+good to hear
+i'm glad to hear that
+i'm glad
+i'm glad you like it
+i'm glad you think so
+i'm glad i got it right
+glad you're having fun
+that's interesting
+oh that's interesting
+that sounds interesting
+oh that sounds interesting
+that sounds fun
+that sounds like fun
+oh that sounds fun
+that sounds like a lot of fun
+that sounds great
+that sounds amazing
+sounds good
+that would be great
+that would be fun
+wow
+haha
+oh no
+i'm sorry to hear that
+i'm sorry you feel sad
+i'm sorry you feel lonely
+i hope you feel better soon
+what happened
+do you want to tell me what happened
+do you want to talk about it
+do you want to talk
+are you okay
+are you alright
+what's wrong
+is something bothering you
+what made you sad
+what made you angry
+what made you happy
+what are you scared of
+want to try something
+that's okay
+it's okay
+bye
+goodbye
+see you
+talk to you later
+i can't do that
+i can't do that yet
+sorry i can't do that
+i cannot do that
+sorry i cannot do that
+that's something i can't do
+i'll answer it directly
+i will answer it directly
+see you later
+goodbye for now
+want to try something
+i can count do math or remember things for you
+what do you usually like to do for fun
+what made you sad
+what made you feel that way
+who's there
+i only work on this computer inside my files folder
+i can remember things do exact math count pick random numbers tell the time and work with files and folders in my files folder
+i can remember things recall them calculate tell the time and read files
+that's great news
+congratulations
+congrats
+that's exciting
+good luck with it
+yay
+hooray
+woohoo
+i'm glad you're happy
+that's great
